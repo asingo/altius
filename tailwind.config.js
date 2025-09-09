@@ -4,10 +4,17 @@ import colors from "tailwindcss/colors";
 export default {
     presets: [preset],
     theme: {
+        fontFamily: {
+            'body': ['Overused Grotesk']
+        },
         extend: {
             colors: {
-                ...colors,
-            }
+                primary: '#225CA8',
+                secondary: '#5590DD',
+            },
+                maxWidth: {
+                    'screen-2xl': '1400px',
+                },
         }
     },
     content: [

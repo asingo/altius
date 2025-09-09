@@ -2,3 +2,35 @@
 @tailwind components;
 @tailwind utilities;
 @tailwind variants;
+
+@layer base{
+    @font-face {
+        font-family: "Overused Grotesk";
+        src: url("../fonts/OverusedGrotesk-VF.woff2") format("woff2-variations");
+        font-weight: 300 900;
+    }
+}
+body{
+    font-family: "Overused Grotesk", sans-serif;
+}
+
+p{
+    font-size: 20px;
+    color: #525252;
+}
+
+.menu-interaction {
+    @apply absolute -left-0.5 -bottom-1 h-[1.5px] w-full bg-white
+    origin-center scale-x-0 transition-transform duration-300 ease-in-out
+    group-hover:scale-x-100;
+}
+
+.btn-outline {
+    @apply text-white flex items-center gap-1.5 border border-white rounded-xl px-4 py-2 transition-all duration-200 ease-in-out;
+}
+.btn-outline:hover, .btn-outline-alt {
+    @apply border-[#225CA8] bg-[#225CA8];
+}
+
+
+
