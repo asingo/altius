@@ -10,13 +10,15 @@ class Link extends Component
 {
     public $href;
     public $class;
+    public $outlined;
     /**
      * Create a new component instance.
      */
-    public function __construct($href, $class = '')
+    public function __construct($href, $class = '', $outlined = false)
     {
         $this->href = $href;
         $this->class = $class;
+        $this->outlined = $outlined;
     }
 
     /**

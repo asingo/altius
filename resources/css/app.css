@@ -32,5 +32,12 @@ p{
     @apply border-[#225CA8] bg-[#225CA8];
 }
 
+.filter-doctor .fi-fo-field-wrp-label span{
+    @apply text-[16px] text-primary;
+}
+.filter-doctor .fi-input-wrp-prefix{
+    @apply border-none pe-0;
+}
+
 
 

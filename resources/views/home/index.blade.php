@@ -1,6 +1,7 @@
 @extends('template')
 @section('content')
     <!-- Link Swiper's CSS -->
+    @filamentStyles()
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@11/swiper-bundle.min.css"/>
     <style>
         .hero img {
@@ -37,7 +38,7 @@
                 <h1 class="font-semibold text-6xl">Your Health Is Our Priority</h1>
                 <div class="swiper-pagination mt-4"></div>
                 <div class="doctor-filter mt-6">
-{{--                    @livewire('frontend.home.filter-doctor')--}}
+                    @livewire('frontend.home.filter-doctor')
                 </div>
             </div>
 
@@ -67,7 +68,14 @@
             },
         });
     </script>
-    </div>
     @include('home.section.about-us')
     @include('home.section.testimony')
+    {{--    Section Background--}}
+    <div>
+        <img src="{{asset('asset/image-home.jpg')}}">
+    </div>
+    {{--/    Section Background--}}
+    @include('home.section.health-screening')
+    @include('home.section.offers')
+    @filamentScripts
 @endsection

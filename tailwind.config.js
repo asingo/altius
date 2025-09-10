@@ -11,6 +11,7 @@ export default {
             colors: {
                 primary: '#225CA8',
                 secondary: '#5590DD',
+                accent: '#1A467F'
             },
                 maxWidth: {
                     'screen-2xl': '1400px',
