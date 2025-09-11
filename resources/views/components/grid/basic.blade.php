@@ -1,4 +1,4 @@
-@props(['image','heading','description'])
+@props(['image' => '','heading' => '','description' => ''])
 <div>
     <div class="rounded-2xl">
         <img src="{{$image}}" class="w-full object-cover rounded-2xl">
