@@ -17,7 +17,8 @@ class Slider extends Component
     public $arrow;
     public $centered;
     public $class;
-    public function __construct($id, $items = '1', $class = '', $arrow = null, $infinity = 'false', $centered = 'true')
+    public $items_mobile;
+    public function __construct($id, $items = '1', $class = '', $mobile = null, $arrow = null, $infinity = 'false', $centered = 'true')
     {
         $this->infinity = $infinity;
         $this->class = $class;
@@ -25,6 +26,7 @@ class Slider extends Component
         $this->arrow = $arrow;
         $this->id = $id;
         $this->centered = $centered;
+        $this->items_mobile = $mobile;
     }
 
     /**

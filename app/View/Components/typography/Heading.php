@@ -8,12 +8,14 @@ use Illuminate\View\Component;
 
 class Heading extends Component
 {
+    public $class;
+
     /**
      * Create a new component instance.
      */
-    public function __construct()
+    public function __construct($class = '')
     {
-        //
+        $this->class = $class;
     }
 
     /**

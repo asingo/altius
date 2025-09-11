@@ -11,15 +11,15 @@
 <body>
 <header x-data="{ atTop: false }"
         @scroll.window="atTop = window.scrollY > 50;"
-        class="header text-[18px] fixed top-0 left-0 right-0 z-[99] pt-4 transition-all duration-500 ease-in-out"
+        class="header text-[18px] fixed top-0 left-0 right-0 z-[99] pt-4 transition-all duration-500 ease-in-out px-6 2xl:px-0"
         :class="atTop && 'drop-shadow-lg' "
         :style="atTop ? {background: 'white'} : {background: 'linear-gradient(180deg,rgba(23, 23, 23, 0.8) 0%, rgba(23, 23, 23, 0) 100%)'}"
 >
     <div class="flex items-center justify-between max-w-screen-2xl mx-auto border-b border-white pb-4">
         <div class="header-left">
-            <img :class="!atTop && 'brightness-0 invert' " src="{{asset('asset/logo.png')}}" alt="">
+            <img :class="!atTop && 'brightness-0 invert' " class="w-[150px] lg:w-full" src="{{asset('asset/logo.png')}}" alt="">
         </div>
-        <nav class="menu">
+        <nav class="menu xl:flex hidden">
             <ul class="flex items-center gap-6 text-white" :class="atTop && '!text-[#171717]' ">
                 <li>
                     <a href="{{route('home')}}" class="relative group">
@@ -68,12 +68,12 @@
                 </li>
             </ul>
         </nav>
-        <div class="header-right flex items-center gap-4">
+        <div class="header-right flex items-center gap-2 sm:gap-4">
             <div x-data="{ open: false, selected: 'EN' }" class="relative inline-block text-left">
                 <!-- Trigger Button -->
                 <button
                     @click="open = !open"
-                    class="flex items-center gap-1.5 px-4 py-2 text-white" :class="atTop && '!text-[#171717]' "
+                    class="flex items-center gap-1.5 sm:px-4 py-2 text-white text-sm sm:text-[16px]" :class="atTop && '!text-[#171717]' "
                 >
                     <span x-text="selected"></span>
                     <svg :class="{'rotate-180': open}" class="w-5 h-5 stroke-1.5 transform transition-transform"
@@ -107,16 +107,52 @@
                     </ul>
                 </div>
             </div>
-            <a href="#" class="btn-outline" :class="atTop && 'btn-outline-alt' ">
+            <a href="#" class="btn-outline text-sm sm:text-[16px]" :class="atTop && 'btn-outline-alt' ">
                 <x-heroicon-o-user-circle class="w-5 h-5"/>
                 Login
             </a>
+            <div x-data="{open:false, selected:'EN'}" class="items-center flex">
+                <button class="text-white" :class="atTop && '!text-[#171717]'" @click="open = !open; atTop = !atTop">
+                    <x-heroicon-o-bars-3 class="w-6 h-6"/>
+                </button>
+
+                <div
+                    x-show="open"
+                    @click.outside="open = false"
+                    x-transition:enter="transition ease-out duration-500"
+                    x-transition:enter-start="opacity-0 -translate-y-5"
+                    x-transition:enter-end="opacity-100 translate-y-0"
+                    x-transition:leave="transition ease-in duration-500"
+                    x-transition:leave-start="opacity-100 translate-y-0"
+                    x-transition:leave-end="opacity-0 -translate-y-5"
+                    class="absolute bg-white w-screen left-0 h-screen top-14 z-50"
+                >
+                    <ul class="py-2">
+                        <li>
+                            <a href="#"
+                               @click.prevent="selected = 'EN'; open = false"
+                               class="block px-4 py-2 hover:bg-gray-100">
+                                EN
+                            </a>
+                        </li>
+                        <li>
+                            <a href="#"
+                               @click.prevent="selected = 'ID'; open = false"
+                               class="block px-4 py-2 hover:bg-gray-100">
+                                ID
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+
         </div>
     </div>
 </header>
 @yield('content')
 <footer>
-    <div class="bg-[#012D61] py-16">
+    <div class="bg-[#012D61] py-16 px-6 2xl:px-0">
         <div
             class="max-w-screen-2xl mx-auto grid grid-cols-1 md:grid-cols-4 divide-y md:divide-y-0 md:divide-x divide-white/20 text-center">
 
@@ -172,8 +208,8 @@
 
         </div>
         <div class="max-w-screen-2xl mx-auto mt-6">
-            <div class="flex justify-between">
-                <div>
+            <div class="flex justify-between md:flex-row flex-col gap-6 items-center">
+                <div class="flex items-center flex-col">
                     <span class="text-[24px] text-white font-semibold ">Follow Altius Hospitals</span>
                     <div class="flex gap-2 h-12 mt-4 items-center">
                         <div class="border w-12 h-12 border-white p-2.5 rounded-full">
@@ -187,10 +223,10 @@
                         </div>
                     </div>
                 </div>
-                <div>
+                <div class="flex items-center flex-col">
                     <span class="text-[24px] text-white font-semibold ">About Altius Hospitals</span>
                     <nav class="menu-footer mt-4">
-                        <ul class="flex h-12 items-center gap-6 text-white">
+                        <ul class="flex md:h-12 items-center md:flex-row flex-col gap-6 text-white">
                             <li>
                                 <a href="{{route('home')}}" class="relative group">
                                     <span>Medical Professionals</span>
@@ -229,11 +265,11 @@
     </div>
     <div class="bg-[#D5E3F6]">
         <div class="max-w-screen-2xl mx-auto py-4">
-            <div class="flex justify-between">
+            <div class="flex justify-between md:flex-row flex-col gap-6 items-center">
                 <div>
                     <span>&copy; {{date('Y')}} Altius Hospitals. All rights reserved</span>
                 </div>
-                <div class="flex gap-4">
+                <div class="flex gap-8 md:gap-4">
                     <a href="#">Terms & Conditions</a>
                     <a href="#">Privacy Policy</a>
                 </div>

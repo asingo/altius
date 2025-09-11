@@ -13,9 +13,12 @@ export default {
                 secondary: '#5590DD',
                 accent: '#1A467F'
             },
-                maxWidth: {
-                    'screen-2xl': '1400px',
-                },
+            maxWidth: {
+                'screen-2xl': '1400px',
+            },
+            screens: {
+                'xs': '480px'
+            }
         }
     },
     content: [
