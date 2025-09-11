@@ -1,3 +1,4 @@
+@props(['id', 'items', 'items_mobile', 'centered', 'infinity', 'arrow', 'class'])
 <style>
     /*.slider-container {*/
     /*    position: relative;*/

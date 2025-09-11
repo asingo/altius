@@ -1,4 +1,4 @@
-
+@props(['thumbnail', 'profile', 'name', 'date', 'title'])
     <div class="flex gap-4 flex-col lg:flex-row justify-stretch slider-testimony-item">
         <div class="lg:w-5/12">
             <div class="relative w-full h-full">
