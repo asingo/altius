@@ -14,7 +14,7 @@ class Basic extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct($image, $heading, $description = null)
+    public function __construct($image, $heading, $description = '')
     {
         $this->image = $image;
         $this->heading = $heading;
