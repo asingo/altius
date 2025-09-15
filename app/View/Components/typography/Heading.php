@@ -9,13 +9,15 @@ use Illuminate\View\Component;
 class Heading extends Component
 {
     public $class;
+    public $location;
 
     /**
      * Create a new component instance.
      */
-    public function __construct($class = '')
+    public function __construct($class = '', $location = 'section')
     {
         $this->class = $class;
+        $this->location = $location;
     }
 
     /**

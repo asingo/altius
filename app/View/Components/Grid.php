@@ -1,20 +1,20 @@
 <?php
 
-namespace App\View\Components\typography;
+namespace App\View\Components;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Subheading extends Component
+class Grid extends Component
 {
+    public $class;
     /**
      * Create a new component instance.
      */
-    public $location;
-    public function __construct($location = 'section')
+    public function __construct($class = '')
     {
-        $this->location = $location;
+        $this->class = $class;
     }
 
     /**
@@ -22,6 +22,6 @@ class Subheading extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.typography.subheading');
+        return view('components.grid');
     }
 }

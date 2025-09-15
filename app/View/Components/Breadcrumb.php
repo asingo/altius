@@ -1,20 +1,22 @@
 <?php
 
-namespace App\View\Components\typography;
+namespace App\View\Components;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Subheading extends Component
+class Breadcrumb extends Component
 {
     /**
      * Create a new component instance.
      */
-    public $location;
-    public function __construct($location = 'section')
+    public $parent;
+    public $child;
+    public function __construct($parent, $child)
     {
-        $this->location = $location;
+        $this->parent = $parent;
+        $this->child = $child;
     }
 
     /**
@@ -22,6 +24,6 @@ class Subheading extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.typography.subheading');
+        return view('components.breadcrumb');
     }
 }

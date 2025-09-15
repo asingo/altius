@@ -1,20 +1,22 @@
 <?php
 
-namespace App\View\Components\typography;
+namespace App\View\Components\grid;
 
 use Closure;
 use Illuminate\Contracts\View\View;
 use Illuminate\View\Component;
 
-class Subheading extends Component
+class ItemsIcon extends Component
 {
+    public $icon;
+    public $title;
     /**
      * Create a new component instance.
      */
-    public $location;
-    public function __construct($location = 'section')
+    public function __construct($icon, $title)
     {
-        $this->location = $location;
+        $this->icon = $icon;
+        $this->title = $title;
     }
 
     /**
@@ -22,6 +24,6 @@ class Subheading extends Component
      */
     public function render(): View|Closure|string
     {
-        return view('components.typography.subheading');
+        return view('components.grid.items-icon');
     }
 }

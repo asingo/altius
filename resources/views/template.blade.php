@@ -9,20 +9,28 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
-<header x-data="{ atTop: false }"
-        @scroll.window="atTop = window.scrollY > 50;"
+
+<header x-data="{ atTop: @js(!$isHeaderOverlay) }"
+        x-init="console.log(atTop)"
+        @if($isHeaderOverlay)
+            @scroll.window="atTop = window.scrollY > 50;"
+        @endif
         class="header text-[18px] fixed top-0 left-0 right-0 z-[99] pt-4 transition-all duration-500 ease-in-out px-6 2xl:px-0"
         :class="atTop && 'drop-shadow-lg' "
         :style="atTop ? {background: 'white'} : {background: 'linear-gradient(180deg,rgba(23, 23, 23, 0.8) 0%, rgba(23, 23, 23, 0) 100%)'}"
 >
     <div class="flex items-center justify-between max-w-screen-2xl mx-auto border-b border-white pb-4">
         <div class="header-left">
-            <img :class="!atTop && 'brightness-0 invert' " class="w-[150px] lg:w-full" src="{{asset('asset/logo.png')}}" alt="">
+            <a href="/">
+                <img :class="!atTop && 'brightness-0 invert' " class="w-[150px] lg:w-[220px]"
+                     src="{{asset('asset/logo.png')}}" alt="">
+            </a>
         </div>
         <nav class="menu xl:flex hidden">
-            <ul class="flex items-center gap-6 text-white" :class="atTop && '!text-[#171717]' ">
+            <ul class="flex items-center gap-6 {{!$isHeaderOverlay ?'!text-[#171717]' : 'text-white'}}"
+                :class="atTop && '!text-[#171717]' ">
                 <li>
-                    <a href="{{route('home')}}" class="relative group">
+                    <a href="{{route('about')}}" class="relative group">
                         <span :class="atTop && 'hover:!text-primary' ">About Us</span>
                         <span class="menu-interaction" :class="atTop && '!bg-primary' "></span>
                     </a>
@@ -73,7 +81,8 @@
                 <!-- Trigger Button -->
                 <button
                     @click="open = !open"
-                    class="flex items-center gap-1.5 sm:px-4 py-2 text-white text-sm sm:text-[16px]" :class="atTop && '!text-[#171717]' "
+                    class="flex items-center gap-1.5 sm:px-4 py-2 text-white text-sm sm:text-[16px]"
+                    :class="atTop && '!text-[#171717]' "
                 >
                     <span x-text="selected"></span>
                     <svg :class="{'rotate-180': open}" class="w-5 h-5 stroke-1.5 transform transition-transform"
@@ -111,7 +120,7 @@
                 <x-heroicon-o-user-circle class="w-5 h-5"/>
                 Login
             </a>
-            <div x-data="{open:false, selected:'EN'}" class="items-center flex">
+            <div x-data="{open:false}" class="flex xl:hidden items-center">
                 <button class="text-white" :class="atTop && '!text-[#171717]'" @click="open = !open; atTop = !atTop">
                     <x-heroicon-o-bars-3 class="w-6 h-6"/>
                 </button>
@@ -129,7 +138,7 @@
                 >
                     <ul class="flex flex-col gap-5 mx-6 mt-4 pt-4 border-t">
                         <li>
-                            <a href="{{route('home')}}" class="relative group">
+                            <a href="{{route('about')}}" class="relative group">
                                 <span :class="atTop && 'hover:!text-primary' ">About Us</span>
                                 <span class="menu-interaction" :class="atTop && '!bg-primary' "></span>
                             </a>
@@ -275,7 +284,8 @@
                                     <span>Careers</span>
                                     <span class="menu-interaction"></span>
                                 </a>
-                            </li><li>
+                            </li>
+                            <li>
                                 <a href="{{route('home')}}" class="relative group">
                                     <span>News</span>
                                     <span class="menu-interaction"></span>

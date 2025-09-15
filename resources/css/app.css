@@ -9,6 +9,10 @@
         src: url("../fonts/OverusedGrotesk-VF.woff2") format("woff2-variations");
         font-weight: 300 900;
     }
+    @font-face {
+        font-family: "DM Serif Text";
+        src: url("../fonts/DMSerifText-Regular.ttf") format("truetype");
+    }
 }
 body{
     font-family: "Overused Grotesk", sans-serif;
