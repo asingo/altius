@@ -26,7 +26,7 @@
                 </p>
             </div>
             <div class="mt-auto pt-6">
-                <img src="{{ asset('asset/image-visi.jpg') }}" alt="vision" class="w-full rounded-2xl">
+                <img src="{{ asset('asset/Image-visi.jpg') }}" alt="vision" class="w-full rounded-2xl">
             </div>
         </div>
 
@@ -50,7 +50,7 @@
                 </p>
             </div>
             <div class="mt-auto pt-6">
-                <img src="{{ asset('asset/image-visi.jpg') }}" alt="mission" class="w-full rounded-2xl">
+                <img src="{{ asset('asset/Image-visi.jpg') }}" alt="mission" class="w-full rounded-2xl">
             </div>
         </div>
     </div>
