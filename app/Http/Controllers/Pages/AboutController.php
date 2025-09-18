@@ -10,6 +10,8 @@ class AboutController extends Controller
     public function about()
     {
         $isHeaderOverlay = false;
-        return view('pages.about.index', compact('isHeaderOverlay'));
+        $title = 'About Altius Hospitals';
+        $slug = 'about';
+        return view('pages.about.index', compact('isHeaderOverlay', 'title', 'slug'));
     }
 }

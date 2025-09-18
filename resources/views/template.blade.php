@@ -5,13 +5,12 @@
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>{{env('APP_NAME')}}</title>
+    <title>{{$title}} - {{env('APP_NAME')}}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body>
 
-<header x-data="{ atTop: @js(!$isHeaderOverlay) }"
-        x-init="console.log(atTop)"
+<header x-data="{ atTop: @js(!$isHeaderOverlay), slug: '{{$slug}}' }"
         @if($isHeaderOverlay)
             @scroll.window="atTop = window.scrollY > 50;"
         @endif
@@ -31,8 +30,8 @@
                 :class="atTop && '!text-[#171717]' ">
                 <li>
                     <a href="{{route('about')}}" class="relative group">
-                        <span :class="atTop && 'hover:!text-primary' ">About Us</span>
-                        <span class="menu-interaction" :class="atTop && '!bg-primary' "></span>
+                        <span :class="[atTop && 'hover:!text-primary', slug == 'about' ? '!text-primary' : ''] ">About Us</span>
+                        <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'about' ? '!bg-primary !scale-x-100' :'']"></span>
                     </a>
                 </li>
                 <li>

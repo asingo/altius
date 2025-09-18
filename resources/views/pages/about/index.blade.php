@@ -1,7 +1,7 @@
 @extends('template')
 @section('content')
     <div class="max-w-screen-2xl mx-auto py-24 px-6 2xl:px-0 mt-6">
-        <x-breadcrumb parent="Home" child="About Us" />
+        <x-breadcrumb parent="Home" child="{{$title}}" />
         <div class="mt-8">
             <x-typography.subheading location="page">About Altius Hospitals</x-typography.subheading>
             <x-typography.heading location="page" class="mt-4">Altius Hospitals is a hospital built by doctors
@@ -16,8 +16,4 @@
         @include('pages.about.section.vision')
         @include('pages.about.section.more-about')
     </div>
-
-    <script type="module">
-        Alpine.start()
-    </script>
 @endsection

@@ -3,6 +3,7 @@
 use App\Http\Controllers\Pages\AboutController;
 use App\Http\Controllers\Pages\HomeController;
 
+use App\Http\Controllers\Pages\LocationController;
 use Illuminate\Support\Facades\Route;
 
 Route::controller(HomeController::class)->group(function () {
@@ -10,3 +11,4 @@ Route::controller(HomeController::class)->group(function () {
 }
 );
 Route::get('/about', [AboutController::class, 'about'])->name('about');
+Route::get('/location', [LocationController::class, 'location'])->name('location');

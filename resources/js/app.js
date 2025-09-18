@@ -1,3 +1,7 @@
 import Alpine from 'alpinejs';
-window.Alpine = Alpine;
+if(!window.Alpine){
+    window.Alpine = Alpine;
+    Alpine.start();
+}
+
 

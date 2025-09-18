@@ -9,6 +9,8 @@ class HomeController extends Controller
     public function home()
     {
         $isHeaderOverlay = true;
-        return view('pages.home.index', compact('isHeaderOverlay'));
+        $title = 'Home';
+        $slug = 'home';
+        return view('pages.home.index', compact('isHeaderOverlay', 'title', 'slug'));
     }
 }

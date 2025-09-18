@@ -63,12 +63,11 @@ class AdminPanelProvider extends PanelProvider
                     ->label('Media')
                     ->pluralLabel('Media')
                     ->navigationIcon('heroicon-o-photo')
-                    ->navigationGroup('Content')
                     ->navigationSort(3)
                     ->navigationCountBadge()
-                    ->registerNavigation(false)
+                    ->registerNavigation(true)
                     ->defaultListView('grid' || 'list')
-                    ->resource(\App\Filament\Resources\MediaResource::class)
+//                    ->resource(\App\Filament\Resources\MediaResource::class)
             ]);
     }
 }
