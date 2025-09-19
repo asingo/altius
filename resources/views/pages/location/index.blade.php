@@ -4,18 +4,28 @@
         <x-breadcrumb parent="Home" child="{{$title}}" />
         <div class="mt-8">
             <x-typography.subheading location="page">Our Locations</x-typography.subheading>
-            <x-typography.heading location="page" class="mt-4">Find an Altius Hospital near you
+            <x-typography.heading location="page">Find an Altius Hospital near you
             </x-typography.heading>
         </div>
-        <div>
+        <div class="flex flex-col gap-10 mt-8 md:mt-14">
             @foreach($data as $v)
-                <div>
+                <div class="grid grid-cols-1 md:grid-cols-2 md:gap-10 gap-3">
                     <div>
-                        <img src="{{asset($v->thumbnail)}}" alt=""/>
+                        <img class="rounded-xl w-full object-cover" src="{{asset($v->thumbnail)}}" alt=""/>
                     </div>
-                    <div>
-                        <h3>{{$v->title}}</h3>
-                        <span>{{$v->meta}}</span>
+                    <div class="flex flex-col gap-3 md:gap-5">
+                        <h3 class="text-2xl md:text-3xl text-textsub font-semibold">{{$v->title}}</h3>
+                        <div class="text-textsub text-lg md:text-xl">{{$v->meta}}</div>
+                        <a href="{{$v->link_maps}}" class="text-primary hover:text-accent gap-2 items-center text-lg flex">
+                            <x-heroicon-s-map-pin class="w-7 h-7"/>
+                            <span>Building & Maps</span>
+                            <x-heroicon-o-chevron-right class="w-7 h-7"/>
+                        </a> <a href="{{$v->link_contact}}" class="text-primary hover:text-accent gap-2 items-center text-lg flex">
+                            <x-heroicon-s-phone class="w-7 h-7"/>
+                            <span>Contact Us</span>
+                            <x-heroicon-o-chevron-right class="w-7 h-7"/>
+                        </a>
+                        <x-button.link class="mt-2" href="{{request()->url().'/'.$v->slug}}">See Location</x-button.link>
                     </div>
                 </div>
             @endforeach

@@ -13,10 +13,14 @@ class Breadcrumb extends Component
      */
     public $parent;
     public $child;
-    public function __construct($parent, $child)
+    public $subparentlink;
+    public $subparent;
+    public function __construct($parent, $child, $subparent = '', $subparentlink ='#')
     {
         $this->parent = $parent;
         $this->child = $child;
+        $this->subparent = $subparent;
+        $this->subparentlink = $subparentlink;
     }
 
     /**

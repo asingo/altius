@@ -35,9 +35,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('home')}}" class="relative group">
-                        <span :class="atTop && 'hover:!text-primary' ">Location</span>
-                        <span class="menu-interaction" :class="atTop && '!bg-primary' "></span>
+                    <a href="{{route('location')}}" class="relative group">
+                        <span :class="[atTop && 'hover:!text-primary', slug == 'location' ? '!text-primary' : ''] ">Location</span>
+                        <span class="menu-interaction":class="[atTop && '!bg-primary', slug == 'location' ? '!bg-primary !scale-x-100' :'']"></span>
                     </a>
                 </li>
                 <li>
@@ -143,7 +143,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('home')}}" class="relative group">
+                            <a href="{{route('location')}}" class="relative group">
                                 <span :class="atTop && 'hover:!text-primary' ">Location</span>
                                 <span class="menu-interaction" :class="atTop && '!bg-primary' "></span>
                             </a>
@@ -248,7 +248,7 @@
         </div>
         <div class="max-w-screen-2xl mx-auto mt-6">
             <div class="flex justify-between md:flex-row flex-col gap-6 items-center">
-                <div class="flex items-center flex-col">
+                <div class="flex items-center md:items-start flex-col">
                     <span class="text-[24px] text-white font-semibold ">Follow Altius Hospitals</span>
                     <div class="flex gap-2 h-12 mt-4 items-center">
                         <div class="border w-12 h-12 border-white p-2.5 rounded-full">
@@ -262,10 +262,10 @@
                         </div>
                     </div>
                 </div>
-                <div class="flex items-center flex-col">
+                <div class="flex items-center md:items-end flex-col">
                     <span class="text-[24px] text-white font-semibold ">About Altius Hospitals</span>
                     <nav class="menu-footer mt-4">
-                        <ul class="flex md:h-12 items-center md:flex-row flex-col gap-6 text-white">
+                        <ul class="flex md:h-12 text-lg items-center md:flex-row flex-col gap-6 text-white">
                             <li>
                                 <a href="{{route('home')}}" class="relative group">
                                     <span>Medical Professionals</span>
@@ -304,8 +304,8 @@
         </div>
     </div>
     <div class="bg-[#D5E3F6]">
-        <div class="max-w-screen-2xl mx-auto py-4">
-            <div class="flex justify-between md:flex-row flex-col gap-6 items-center">
+        <div class="max-w-screen-2xl mx-auto py-4 px-6 2xl:px-0">
+            <div class="flex justify-between md:flex-row text-lg flex-col gap-6 items-center">
                 <div>
                     <span>&copy; {{date('Y')}} Altius Hospitals. All rights reserved</span>
                 </div>
