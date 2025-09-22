@@ -39,9 +39,14 @@ p{
 .filter-doctor .fi-fo-field-wrp-label span{
     @apply text-[16px] text-primary;
 }
-.filter-doctor .fi-input-wrp-prefix{
+.filter-doctor .fi-input-wrp-prefix, .doctor-search .fi-input-wrp-prefix {
     @apply border-none pe-0;
 }
 
+.doctor-search input {
+    @apply text-lg py-2 bg-white;
+}
 
-
+.location-filter > div span{
+    @apply text-lg font-normal;
+}

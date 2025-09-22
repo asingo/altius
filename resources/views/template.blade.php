@@ -37,13 +37,13 @@
                 <li>
                     <a href="{{route('location')}}" class="relative group">
                         <span :class="[atTop && 'hover:!text-primary', slug == 'location' ? '!text-primary' : ''] ">Location</span>
-                        <span class="menu-interaction":class="[atTop && '!bg-primary', slug == 'location' ? '!bg-primary !scale-x-100' :'']"></span>
+                        <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'location' ? '!bg-primary !scale-x-100' :'']"></span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('home')}}" class="relative group">
-                        <span :class="atTop && 'hover:!text-primary' ">Medical Professionals</span>
-                        <span class="menu-interaction" :class="atTop && '!bg-primary' "></span>
+                    <a href="{{route('doctor')}}" class="relative group">
+                        <span :class="[atTop && 'hover:!text-primary', slug == 'medical-professional' ? '!text-primary' : ''] ">Medical Professionals</span>
+                        <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'medical-professional' ? '!bg-primary !scale-x-100' :''] "></span>
                     </a>
                 </li>
                 <li>
@@ -149,7 +149,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('home')}}" class="relative group">
+                            <a href="{{route('doctor')}}" class="relative group">
                                 <span :class="atTop && 'hover:!text-primary' ">Medical Professionals</span>
                                 <span class="menu-interaction" :class="atTop && '!bg-primary' "></span>
                             </a>
@@ -267,7 +267,7 @@
                     <nav class="menu-footer mt-4">
                         <ul class="flex md:h-12 text-lg items-center md:flex-row flex-col gap-6 text-white">
                             <li>
-                                <a href="{{route('home')}}" class="relative group">
+                                <a href="{{route('doctor')}}" class="relative group">
                                     <span>Medical Professionals</span>
                                     <span class="menu-interaction"></span>
                                 </a>

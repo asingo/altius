@@ -1,0 +1,342 @@
+[
+    {
+        "id": 1,
+        "name": "dr. Arya Cipta Widjaja, M.Ked (Surg), Sp. OT",
+        "slug": "dr-arya-cipta-widjaja-mked-surg-sp-ot",
+        "profile": "asset/doctor/dr-arya-cipta-widjaja.jpg",
+        "speciality": "Orthopedic",
+        "location": [
+            {
+                "name": "Altius Hospitals Harapan Indah",
+                "link_maps": "https://maps.app.goo.gl/YqWXdeiUj124AuqD9",
+                "phone": "080989999",
+                "schedule": {
+                    "monday": "13:00 - 21:00",
+                    "tuesday": "08:00 - 11:00 & 16:00 - 21:00",
+                    "wednesday": "18:00 - 21:00",
+                    "thursday": "08:00 - 11:00 & 16:00 - 21:00",
+                    "friday": "08:00 - 13:00",
+                    "saturday": "08:00 - 13:00",
+                    "sunday": "-"
+                }
+            },
+            {
+                "name": "Altius Hospitals Puri Indah",
+                "link_maps": "https://maps.app.goo.gl/YqWXdeiUj124AuqD9",
+                "phone": "080989999",
+                "schedule": {
+                    "monday": "08:00 - 17:00",
+                    "tuesday": "08:00 - 17:00",
+                    "wednesday": "08:00 - 17:00",
+                    "thursday": "-",
+                    "friday": "08:00 - 17:00",
+                    "saturday": "08:00 - 17:00",
+                    "sunday": "08:00 - 17:00"
+                }
+            }
+        ],
+        "biography": "<p>dr. Arya Cipta Widjaja, M.Ked (Surg), Sp.OT, fondly known as dr. Arya, is an orthopedic specialist who currently serves patients at Altius Hospitals Harapan Indah. dr. Arya is dedicated to helping patients overcome various problems with their <strong><em>bones, joints, muscles, and nerves</em></strong>.</p><p>In his daily practice, dr. Arya bases his work on the principle of <strong><em>“to cure sometimes, to relieve often, to comfort always”</em></strong>. This principle reflects his belief that medical care should not only aim to cure, but also to provide comfort and full support to patients at every stage of their recovery. In addition to serving patients at the hospital, dr. Arya is also active in health education through his Instagram account @onestoportho. This account is designed to help the public understand the importance of maintaining health with easy-to-understand information, ranging from prevention tips to explanations of various <a href=\"https://altiushospitals.id/coe/orthopedics-sports-medicine/\">orthopedic</a>conditions.</p><p>dr. Arya believes that collaboration between <a href=\"https://www.alodokter.com/understanding-the-profession-of-orthopedic-doctors-traumatologists-and-reconstructive-surgeons\">doctors</a> and patients is the key to optimal results, and he always listens to patients' needs to design the most appropriate treatment plan.</p>",
+        "expertise": "<p>dr. Arya specializes in the diagnosis and treatment of various musculoskeletal disorders (bones, muscles, joints, and nerves), including:</p><ol><li>Treatment of bone fractures with surgery (internal or external fixation) or without surgery (cast). </li><li>Treatment of neglected fractures with surgery (internal or external fixation) or without surgery (cast).</li><li>Treatment of musculoskeletal infections (osteomyelitis, abscesses) with or without surgery. </li><li>Knee and hip replacement surgery. li><li>Pain intervention injections in the lower extremities, upper extremities, and spine. </li><li>Identification, diagnosis, and management of genetic, congenital, developmental, idiopathic, metabolic, neuromuscular, and/or combined cases through surgical or non-surgical procedures. </li><li>Development of personalized rehabilitation/recovery plans for patients. </li></ol>",
+        "education": "<ol><li>Faculty of Medicine, Atma Jaya Catholic University of Indonesia, Jakarta (2016)</li><li>Master of Clinical Medicine, University of North Sumatra, Medan (2022)</li><li>Specialist Orthopedic and Traumatology Doctor Education Program, University of North Sumatra, Medan (2024)</li></ol>",
+        "publications": "<ol><li>Dr. Arya, M.D., et al. \"The Effectiveness of Physical Therapy in the Management of Chronic Low Back Pain.\" Journal of Orthopedic and Trauma, vol. 15, no. 2, 2023, pp. 123-134.</li><li>Dr. Arya, M.D., et al. \"Surgical Treatment Outcomes for Complex Fractures of the Femur.\" Journal of Orthopedic Surgery, vol. 22, no. 4, 2022, pp. 567-578.</li><li>Dr. Arya, M.D., et al. \"Genetic Factors in the Development of Osteoarthritis.\" Journal of Genetic Medicine, vol. 18, no. 1, 2021, pp. 98-109.</li></ol>"
+    },
+    {
+        "id": 2,
+        "name": "dr. Aswad affandi, Sp.B, FINACS",
+        "slug": "dr-aswad-affandi-spb-finacs",
+        "profile": "asset/doctor/dr-aswad-affandi.jpg",
+        "speciality": "Surgery",
+        "location": [
+            {
+                "name": "Altius Hospitals Harapan Indah",
+                "link_maps": "https://maps.app.goo.gl/YqWXdeiUj124AuqD9",
+                "phone": "080989999",
+                "schedule": {
+                    "monday": "09:00 - 15:00",
+                    "tuesday": "13:00 - 16:00",
+                    "wednesday": "13:00 - 16:00",
+                    "thursday": "13:00 - 16:00",
+                    "friday": "13:00 - 16:00",
+                    "saturday": "13:00 - 16:00",
+                    "sunday": "-"
+                }
+            },
+            {
+                "name": "Altius Hospitals Puri Indah",
+                "link_maps": "https://maps.app.goo.gl/YqWXdeiUj124AuqD9",
+                "phone": "080989999",
+                "schedule": {
+                    "monday": "08:00 - 17:00",
+                    "tuesday": "08:00 - 17:00",
+                    "wednesday": "08:00 - 17:00",
+                    "thursday": "-",
+                    "friday": "08:00 - 17:00",
+                    "saturday": "08:00 - 17:00",
+                    "sunday": "08:00 - 17:00"
+                }
+            }
+        ],
+        "biography": "<p>dr. Aswad Affandi, Sp.B is a General Surgeon practicing at ALTIUS HOSPITAL Harapan Indah. He completed his Specialist Surgery education at Syiah Kuala University in Darussalam.</p><p>dr. Aswad Affandi, Sp.B is a member of the Indonesian Surgeons Association (IKABI). The health services he provides include health consultations prior to general surgery.</p>",
+        "expertise": "<ol><li>Medical Procedures</li><li>Bariatric Surgery</li><li>General Surgery Consultation</li<li>Wound Suturing</li></ol>",
+        "education": "<ol><li>EDUCATION AND ACHIEVEMENTS<br>Faculty of Medicine, University of North Sumatra, MEDAN.</li><li>Specialist Education Program in GENERAL SURGERY, SYIAH KUALA University, BANDA ACEH.</li></ol>",
+        "publications": "<ol><li>Dr. Arya, M.D., et al. \"The Effectiveness of Physical Therapy in the Management of Chronic Low Back Pain.\" Journal of Orthopedic and Trauma, vol. 15, no. 2, 2023, pp. 123-134.</li><li>Dr. Arya, M.D., et al. \"Surgical Treatment Outcomes for Complex Fractures of the Femur.\" Journal of Orthopedic Surgery, vol. 22, no. 4, 2022, pp. 567-578.</li><li>Dr. Arya, M.D., et al. \"Genetic Factors in the Development of Osteoarthritis.\" Journal of Genetic Medicine, vol. 18, no. 1, 2021, pp. 98-109.</li></ol>"
+    },
+    {
+        "id": 3,
+        "name": "dr. Juan Gunawan, Sp.OG",
+        "slug": "dr-juan-gunawan-spog",
+        "profile": "asset/doctor/dr-juan-gunawan.jpg",
+        "speciality": "Obstetrics & Gynecology",
+        "location": [
+            {
+                "name": "Altius Hospitals Harapan Indah",
+                "link_maps": "https://maps.app.goo.gl/YqWXdeiUj124AuqD9",
+                "phone": "080989999",
+                "schedule": {
+                    "monday": "16:00 - 20:00",
+                    "tuesday": "16:00 - 20:00",
+                    "wednesday": "16:00 - 20:00",
+                    "thursday": "16:00 - 20:00",
+                    "friday": "14:00 - 18:00",
+                    "saturday": "-",
+                    "sunday": "-"
+                }
+            },
+            {
+                "name": "Altius Hospitals Puri Indah",
+                "link_maps": "https://maps.app.goo.gl/YqWXdeiUj124AuqD9",
+                "phone": "080989999",
+                "schedule": {
+                    "monday": "08:00 - 17:00",
+                    "tuesday": "08:00 - 17:00",
+                    "wednesday": "08:00 - 17:00",
+                    "thursday": "-",
+                    "friday": "08:00 - 17:00",
+                    "saturday": "08:00 - 17:00",
+                    "sunday": "08:00 - 17:00"
+                }
+            }
+        ],
+        "biography": "<p>dr. Juan Gunawan, Sp.OG is an Obstetrician and Gynecologist currently practicing at Altius Hospitals Harapan Indah. He completed his specialist education at Hasanuddin University, Makassar. With clinical experience since 2013. </p><p>dr. Juan is also active in scientific publications and participates in various training programs to enhance his expertise. Known for his professionalism and dedication, dr. Juan prioritizes providing the best possible care for each of his patients.</p>",
+        "expertise": "-",
+        "education": "<ol><li>Doctoral Program, 2013</li><li>Specialist in Obstetrics and Gynecology, 2020</li></ol>",
+        "publications": "<ol><li>Dr. Arya, M.D., et al. \"The Effectiveness of Physical Therapy in the Management of Chronic Low Back Pain.\" Journal of Orthopedic and Trauma, vol. 15, no. 2, 2023, pp. 123-134.</li><li>Dr. Arya, M.D., et al. \"Surgical Treatment Outcomes for Complex Fractures of the Femur.\" Journal of Orthopedic Surgery, vol. 22, no. 4, 2022, pp. 567-578.</li><li>Dr. Arya, M.D., et al. \"Genetic Factors in the Development of Osteoarthritis.\" Journal of Genetic Medicine, vol. 18, no. 1, 2021, pp. 98-109.</li></ol>"
+    },
+    {
+        "id": 4,
+        "name": "dr. Riko Radityatama Susilo, M.Ked(ORL-HNS), Sp.T.H.T.B.K.L.",
+        "slug": "dr-riko-radityatama-susilo-mkedorl-hns-spthtbkl",
+        "profile": "asset/doctor/dr-riko-radityatama-susilo.jpg",
+        "speciality": "ENT (Ear, Nose, and Throat)",
+        "location": [
+            {
+                "name": "Altius Hospitals Harapan Indah",
+                "link_maps": "https://maps.app.goo.gl/YqWXdeiUj124AuqD9",
+                "phone": "080989999",
+                "schedule": {
+                    "monday": "10:00 - 12:00",
+                    "tuesday": "10:00 - 12:00",
+                    "wednesday": "16:00 - 18:00",
+                    "thursday": "10:00 - 12:00",
+                    "friday": "10:00 - 12:00",
+                    "saturday": "-",
+                    "sunday": "-"
+                }
+            },
+            {
+                "name": "Altius Hospitals Puri Indah",
+                "link_maps": "https://maps.app.goo.gl/YqWXdeiUj124AuqD9",
+                "phone": "080989999",
+                "schedule": {
+                    "monday": "08:00 - 17:00",
+                    "tuesday": "08:00 - 17:00",
+                    "wednesday": "08:00 - 17:00",
+                    "thursday": "-",
+                    "friday": "08:00 - 17:00",
+                    "saturday": "08:00 - 17:00",
+                    "sunday": "08:00 - 17:00"
+                }
+            }
+        ],
+        "biography": "<p>dr. Riko Radityatama Susilo, M.Ked(ORL-HNS), Sp.T.H.T.B.K.L., is a dedicated Ear, Nose, Throat, Head and Neck Surgery (ENT-HNS) specialist committed to providing the best possible care for his patients. He currently practices at Altius Hospitals Bekasi and actively treats various health complaints related to the ears, nose, throat, and disorders in the head and neck area.</p><p>As a doctor who prioritizes thorough diagnosis and appropriate treatment, dr. Riko always listens to each patient's complaints with full attention. With a friendly and professional approach, he believes that collaboration between doctors and patients is the key to successful treatment.</p><p>dr. Riko Radityatama Susilo, M.Ked(ORL-HNS), Sp.T.H.T.B.K.L., completed his Specialist Education in T.H.T.B.K.L at the University of North Sumatra in 2021. <br>dr. Riko is also an active member of the Indonesian Medical Association (IDI) and the Indonesian Association of Ear, Nose, and Throat, Head, and Neck Specialists (PERHATI-KL).<br>In addition to his clinical practice, dr. Riko is also active in various medical seminars and training programs to update his knowledge and apply the latest technologies and methods in the field of ENT.</p>",
+        "expertise": "<p>With extensive experience in his field, Dr. Riko has expertise in:</p><p><img draggable=\"false\" role=\"img\" class=\"emoji\" alt=\"✅\" src=\"https://s.w.org/images/core/emoji/16.0.1/svg/2705.svg\"> Diagnosis & treatment of ear, nose, throat, head, and neck diseases<br><img draggable=\"false\" role=\"img\" class=\"emoji\" alt=\"✅\" src=\"https://s.w.org/images/core/emoji/16.0.1/svg/2705.svg\"> Hearing tests<br><img draggable=\"false\" role=\"img\" class=\"emoji\" alt=\"✅\" src=\"https://s.w.org/images/core/emoji/16.0.1/svg/2705.svg\"> Treatment of infections & allergies of the nose, sinusitis, and respiratory disorders<br><img draggable=\"false\" role=\"img\" class=\"emoji\" alt=\"✅\" src=\"https://s.w.org/images/core/emoji/16.0.1/svg/2705.svg\"> ENT-KL surgery for various medical conditions<br><img draggable=\"false\" role=\"img\" class=\"emoji\" alt=\"✅\" src=\"https://s.w.org/images/core/emoji/16.0.1/svg/2705.svg\"> Consultation and advanced diagnostic examination</p><p>&nbsp;</p>",
+        "education": "<p><img draggable=\"false\" role=\"img\" class=\"emoji\" alt=\"🎓\" src=\"https://s.w.org/images/core/emoji/16.0.1/svg/1f393.svg\"> Fakultas Kedokteran, Universitas Sumatera Utara (2013)<br><img draggable=\"false\" role=\"img\" class=\"emoji\" alt=\"🎓\" src=\"https://s.w.org/images/core/emoji/16.0.1/svg/1f393.svg\"> Magister Kedokteran Klinis, Universitas Sumatera Utara (2018)<br><img draggable=\"false\" role=\"img\" class=\"emoji\" alt=\"🎓\" src=\"https://s.w.org/images/core/emoji/16.0.1/svg/1f393.svg\"> Dokter Spesialis T.H.T.B.K.L, Universitas Sumatera Utara (2021)</p>",
+        "publications": "<ol><li>Dr. Arya, M.D., et al. \"The Effectiveness of Physical Therapy in the Management of Chronic Low Back Pain.\" Journal of Orthopedic and Trauma, vol. 15, no. 2, 2023, pp. 123-134.</li><li>Dr. Arya, M.D., et al. \"Surgical Treatment Outcomes for Complex Fractures of the Femur.\" Journal of Orthopedic Surgery, vol. 22, no. 4, 2022, pp. 567-578.</li><li>Dr. Arya, M.D., et al. \"Genetic Factors in the Development of Osteoarthritis.\" Journal of Genetic Medicine, vol. 18, no. 1, 2021, pp. 98-109.</li></ol>"
+    },
+    {
+        "id": 5,
+        "name": "dr. Satria Prawira Putra,M.Kes,FICS,SpOT(K)sub Sp.PL",
+        "slug": "dr-satria-prawira-putramkesficsspotksub-sppl",
+        "profile": "asset/doctor/dr-satria-prawira-putra.jpg",
+        "speciality": "Orthopedic",
+        "location": [
+            {
+                "name": "Altius Hospitals Harapan Indah",
+                "link_maps": "https://maps.app.goo.gl/YqWXdeiUj124AuqD9",
+                "phone": "080989999",
+                "schedule": {
+                    "monday": "8:00 - 12:00",
+                    "tuesday": "12:00 - 14:30",
+                    "wednesday": "8:00 - 12:00",
+                    "thursday": "12:00 - 14:30",
+                    "friday": "14:00 - 18:00",
+                    "saturday": "-",
+                    "sunday": "-"
+                }
+            },
+            {
+                "name": "Altius Hospitals Puri Indah",
+                "link_maps": "https://maps.app.goo.gl/YqWXdeiUj124AuqD9",
+                "phone": "080989999",
+                "schedule": {
+                    "monday": "08:00 - 17:00",
+                    "tuesday": "08:00 - 17:00",
+                    "wednesday": "08:00 - 17:00",
+                    "thursday": "-",
+                    "friday": "08:00 - 17:00",
+                    "saturday": "08:00 - 17:00",
+                    "sunday": "08:00 - 17:00"
+                }
+            }
+        ],
+        "biography": "<p>dr. Satria Prawira Putra,M.Kes,FICS,SpOT(K)sub Sp.PL commonly known as dr. Satria, completed his general medical education at the Faculty of Medicine, Indonesian Christian University (UKI) in 2009. He then continued his specialist education in orthopedics and traumatology at Hasanuddin University, Makassar, graduating in 2012. </p><p>As part of his commitment to scientific development, dr. Satria undertook a fellowship program in arthroplasty in 2019 at Saint Mary's Hospital, Seoul, South Korea. Not stopping there, in 2021 he continued his subspecialty education in Hip and Knee Surgery at Airlangga University, Surabaya.</p><p>To deepen his expertise in modern orthopedic surgery, dr. Satria is participating in the Orthopedic Robotic Arthroplasty JNJ VELYS training at Siriraj Hospital, Bangkok, scheduled to take place in July 2025. </p><p>Currently, dr. Satria is also actively teaching at the Faculty of Medicine, UKI, Cawang, Jakarta, while continuing to contribute to the development of orthopedic services, particularly in the field of hip and knee surgery.</p>",
+        "expertise": "<p>His expertise includes diagnosis and management in the field of Orthopedic Specialists such as:</p><ul><li>Expertise in fractures, both surgical and non-surgical</li><li>Knee pain without surgery and knee replacement surgery</li><li>Hip pain without surgery and hip replacement surgery</li><li>Back pain, pain management for back pain, facet block</li></ul>",
+        "education": "<ul><li>Faculty of Medicine, Indonesian Christian University 2009</li><li>Faculty of Medicine, Hasanuddin University Makassar Orthopedic Specialist Education Program 2017</li><li>St. Mary's Hospital Seoul South Korea – IHKS Hip and Knee Arthroplasty 2019</li><li>Faculty of Medicine, Airlangga University – (K) Hip and Knee Arthroplasty Consultant 2020</li></ul>",
+        "publications": "<ol><li>Dr. Arya, M.D., et al. \"The Effectiveness of Physical Therapy in the Management of Chronic Low Back Pain.\" Journal of Orthopedic and Trauma, vol. 15, no. 2, 2023, pp. 123-134.</li><li>Dr. Arya, M.D., et al. \"Surgical Treatment Outcomes for Complex Fractures of the Femur.\" Journal of Orthopedic Surgery, vol. 22, no. 4, 2022, pp. 567-578.</li><li>Dr. Arya, M.D., et al. \"Genetic Factors in the Development of Osteoarthritis.\" Journal of Genetic Medicine, vol. 18, no. 1, 2021, pp. 98-109.</li></ol>"
+    },
+    {
+        "id": 6,
+        "name": "dr. Akhmad Harun Nur Salim, SpTHT-KL",
+        "slug": "dr-akhmad-harun-nur-salim-sptht-kl",
+        "profil": "",
+        "speciality": "ENT (Ear, Nose, and Throat)",
+        "location": [
+            {
+                "name": "Altius Hospitals Harapan Indah",
+                "link_maps": "https://maps.app.goo.gl/YqWXdeiUj124AuqD9",
+                "phone": "080989999",
+                "schedule": {
+                    "monday": "18:00 - 20:00",
+                    "tuesday": "18:00 - 20:00",
+                    "wednesday": "18:00 - 20:00",
+                    "thursday": "18:00 - 20:00",
+                    "friday": "18:00 - 20:00",
+                    "saturday": "10:00 - 12:00",
+                    "sunday": "-"
+                }
+            }
+        ],
+        "biography": "<p>dr. Akhmad Harun Nur Salim is an ENT specialist with 15 years of experience. He currently practices medicine at Altius Hospitals, Bekasi.</p><p>Having completed his education at Brawijaya University, dr. Akhmad Harun Nur Salim is assured to provide the best service and diagnosis when treating patients.</p>",
+        "expertise": "<p>dr. Akhmad Harun Nur Salim, SpTHT-KL, specializes in:</p><p><strong>Ears</strong>, hearing disorders, ear infections, tinnitus, vertigo<br><strong>Nose & Sinus</strong>, allergic rhinitis, sinusitis, nasal polyps, nasal congestion<br><strong>Throat & Voice</strong>, sore throat, tonsils, hoarse voice, difficulty swallowing<br><strong>Head & Neck</strong>, lumps, thyroid/salivary glands, facial & neck trauma</p>",
+        "education": "<p>dr. Akhmad Harun Nur Salim, SpTHT-KL completed his bachelor's degree in medicine at Universitas 11 Maret, Surakarta, majoring in general medicine. He then continued his specialist medical education at Universitas Brawijaya, Malang, majoring in ENT-KL.</p>",
+        "publications": "<ol><li>Dr. Arya, M.D., et al. \"The Effectiveness of Physical Therapy in the Management of Chronic Low Back Pain.\" Journal of Orthopedic and Trauma, vol. 15, no. 2, 2023, pp. 123-134.</li><li>Dr. Arya, M.D., et al. \"Surgical Treatment Outcomes for Complex Fractures of the Femur.\" Journal of Orthopedic Surgery, vol. 22, no. 4, 2022, pp. 567-578.</li><li>Dr. Arya, M.D., et al. \"Genetic Factors in the Development of Osteoarthritis.\" Journal of Genetic Medicine, vol. 18, no. 1, 2021, pp. 98-109.</li></ol>"
+    },
+    {
+        "id": 7,
+        "name": "dr. William Tendi, Sp.U, FICS",
+        "slug": "dr-william-tendi-spu-fics",
+        "profil": "",
+        "speciality": "Urologist",
+        "location": [
+            {
+                "name": "Altius Hospitals Harapan Indah",
+                "link_maps": "https://maps.app.goo.gl/YqWXdeiUj124AuqD9",
+                "phone": "080989999",
+                "schedule": {
+                    "monday": "14:30 - 17:30",
+                    "tuesday": "14:30 - 17:30",
+                    "wednesday": "08:00 - 11:00",
+                    "thursday": "08:00 - 11:00",
+                    "friday": "08:00 - 11:00",
+                    "saturday": "14:00 - 17:00",
+                    "sunday": "-"
+                }
+            }
+        ],
+        "biography": "<p>dr. William Tendi, Sp.U, FICS, or more commonly known as dr. William, is a urology specialist at Altius Hospitals Harapan Indah with extensive experience in urinary tract disorders and the male reproductive system.</p><p>dr. William's expertise in urology is particularly evident in his ability to treat urinary tract stones without incisions through minimally invasive procedures using an endourology approach. In addition, dr. William is known as a meticulous, communicative individual with a strong commitment to patient safety and comfort. He believes that a humanistic and educational approach can help patients understand their condition and choose the most appropriate therapy.</p><p>In addition to his clinical work, dr. William is also active in research and academia, contributing as an author to scientific papers published in various reputable journals, both nationally and internationally.</p>",
+        "expertise": "<ol><li>Treatment of urinary tract stones using both minimally invasive techniques without incisions (endourology) and open surgery.</li><li>Surgical and non-surgical treatment of urinary disorders, including prostate enlargement. </li><li>Identification, diagnosis, and treatment of urinary tract infections in both adults and children. </li><li>Identification, diagnosis, and treatment of male reproductive disorders, including erectile dysfunction and male infertility, both surgical (such as microscopic varicocele ligation) and non-surgical.</li></ol>",
+        "education": "<ol><li>Faculty of Medicine, University of Indonesia (graduated in 2015).</li><li>Specialist Urology Education Program, University of Indonesia (graduating in 2025).</li><li>Fellow of the International College of Surgeons (2025)</li></ol>",
+        "publications": "<ol><li>Dr. Arya, M.D., et al. \"The Effectiveness of Physical Therapy in the Management of Chronic Low Back Pain.\" Journal of Orthopedic and Trauma, vol. 15, no. 2, 2023, pp. 123-134.</li><li>Dr. Arya, M.D., et al. \"Surgical Treatment Outcomes for Complex Fractures of the Femur.\" Journal of Orthopedic Surgery, vol. 22, no. 4, 2022, pp. 567-578.</li><li>Dr. Arya, M.D., et al. \"Genetic Factors in the Development of Osteoarthritis.\" Journal of Genetic Medicine, vol. 18, no. 1, 2021, pp. 98-109.</li></ol>"
+    },
+    {
+        "id": 8,
+        "name": "dr. Shinta Pangestu, Sp.OG",
+        "slug": "dr-shinta-pangestu-spog",
+        "profil": "",
+        "speciality": "Obstetrics & Gynecology",
+        "location": [
+            {
+                "name": "Altius Hospitals Harapan Indah",
+                "link_maps": "https://maps.app.goo.gl/YqWXdeiUj124AuqD9",
+                "phone": "080989999",
+                "schedule": {
+                    "monday": "14:30 - 16:30",
+                    "tuesday": "14:30 - 16:30",
+                    "wednesday": "14:30 - 16:30",
+                    "thursday": "14:30 - 16:30",
+                    "friday": "08:00 - 12:00",
+                    "saturday": "13:00 - 15:00",
+                    "sunday": "-"
+                }
+            }
+        ],
+        "biography": "<p>dr. Shinta Pangestu, Sp.OG, is a specialist in obstetrics and gynecology who currently serves patients at Altius Hospitals Harapan Indah. Dr. Shinta is dedicated to providing health services related to obstetrics and gynecology.</p><p>She completed her education in obstetrics and gynecology at the University of Indonesia. She is also currently a member of the Indonesian Obstetrics and Gynecology Association (POGI).</p>",
+        "expertise": "<ol><li>2D, 3D, 4D, and transvaginal ultrasounds</li><li>⁠Pregnancy consultations</li><li>Fertility program consultations</li><li>⁠Contraceptive consultations and fittings</li><li>Obstetric surgery: C-sections, curettage</li><li>Gynecological surgery</li></ol>",
+        "education": "<p>1. Faculty of Medicine, Syarief Hidayatullah State Islamic University Jakarta (2013)<br>2. Specialist Obstetrics and Gynecology Education Program, University of Indonesia (2021)</p>",
+        "publications": "<ol><li>Dr. Arya, M.D., et al. \"The Effectiveness of Physical Therapy in the Management of Chronic Low Back Pain.\" Journal of Orthopedic and Trauma, vol. 15, no. 2, 2023, pp. 123-134.</li><li>Dr. Arya, M.D., et al. \"Surgical Treatment Outcomes for Complex Fractures of the Femur.\" Journal of Orthopedic Surgery, vol. 22, no. 4, 2022, pp. 567-578.</li><li>Dr. Arya, M.D., et al. \"Genetic Factors in the Development of Osteoarthritis.\" Journal of Genetic Medicine, vol. 18, no. 1, 2021, pp. 98-109.</li></ol>"
+    },
+    {
+        "id": 9,
+        "name": "dr. Ivan Noersyid, Sp.JP",
+        "slug": "dr-ivan-noersyid-spjp",
+        "profil": "",
+        "speciality": "Heart",
+        "location": [
+            {
+                "name": "Altius Hospitals Harapan Indah",
+                "link_maps": "https://maps.app.goo.gl/YqWXdeiUj124AuqD9",
+                "phone": "080989999",
+                "schedule": {
+                    "monday": "-",
+                    "tuesday": "-",
+                    "wednesday": "-",
+                    "thursday": "-",
+                    "friday": "-",
+                    "saturday": "11:00 - 14:00",
+                    "sunday": "-"
+                }
+            }
+        ],
+        "biography": "<p>dr. Ivan Noersyid, SpJp is a cardiologist dedicated to providing consultation services for heart and blood vessel health.</p><p>He is a member of the Indonesian Medical Association (IDI) and the Indonesian Cardiovascular Specialist Association (PERKI).</p>",
+        "expertise": "<ul><li>General Cardiologist.<br>Transthoracic Echo, Doppler Vascular Ultrasound, Stress Treadmill/Dobutamine Echo, Holter ECG, Clinical Examination and ECG.</li></ul>",
+        "education": "<ul><li>Bachelor's degree from the University of Indonesia, general medicine.</li><li>Specialist education at the Faculty of Cardiology and Vascular Medicine, University of Indonesia.</li></ul>",
+        "publications": "<ol><li>Dr. Arya, M.D., et al. \"The Effectiveness of Physical Therapy in the Management of Chronic Low Back Pain.\" Journal of Orthopedic and Trauma, vol. 15, no. 2, 2023, pp. 123-134.</li><li>Dr. Arya, M.D., et al. \"Surgical Treatment Outcomes for Complex Fractures of the Femur.\" Journal of Orthopedic Surgery, vol. 22, no. 4, 2022, pp. 567-578.</li><li>Dr. Arya, M.D., et al. \"Genetic Factors in the Development of Osteoarthritis.\" Journal of Genetic Medicine, vol. 18, no. 1, 2021, pp. 98-109.</li></ol>"
+    },
+    {
+        "id": 10,
+        "name": "Dr. dr. Tri Wisesa Soetisna, Sp.B, Sp.BTKV, Subsp.JD(K), MARS (Cardiothoracic and Vascular Surgeon)",
+        "slug": "dr-dr-tri-wisesa-soetisna-spb-spbtkv-subspjdk-mars-cardiothoracic-and-vascular-surgeon",
+        "profil": "",
+        "speciality": "Thoracic and Cardiovascular Surgery",
+        "location": [
+            {
+                "name": "Altius Hospitals Harapan Indah",
+                "link_maps": "https://maps.app.goo.gl/YqWXdeiUj124AuqD9",
+                "phone": "080989999",
+                "schedule": {
+                    "monday": "-",
+                    "tuesday": "-",
+                    "wednesday": "-",
+                    "thursday": "-",
+                    "friday": "14:00 - 17:00",
+                    "saturday": "-",
+                    "sunday": "-"
+                }
+            }
+        ],
+        "biography": "<p>dr. Tri Wisesa Soetisna, Sp.BTKV(K), MARS is a Specialist Surgeon with a subspecialty in Cardiovascular Thoracic Surgery who specializes in heart, lung, esophagus, and other chest organ surgeries with over 24 years of experience. He completed his education in Thoracic and Cardiovascular Surgery at the University of Indonesia in 1993. </p><p>Currently, dr. Tri Wisesa Soetisna, Sp.BTKV(K), MARS practices at Altius Hospital Harapan Indah Bekasi as a Thoracic and Cardiovascular Surgeon. dr. Tri Wisesa Soetisna, Sp.BTKV(K), MARS is a member of the Indonesian Association of Thoracic, Cardiac, and Vascular Surgeons (HBTKVI), the Indonesian Medical Association (IDI), and the Indonesian Association of Surgeons (IKABI). The healthcare services provided by him include: Thoracic and Cardiovascular Surgery, Heart Surgery.</p>",
+        "expertise": "<ul><li>Thoracic Surgery (lung and mediastinal diseases, thoracic trauma)</li><li>Adult Cardiac Surgery (Coronary Artery Bypass Grafting/CABG, Heart Valve Surgery, Adult Congenital Heart Surgery)</li><li>Aortic and Peripheral Vascular Disorders</li></ul>",
+        "education": "<ul><li>Faculty of Medicine, Padjadjaran University 1985</li><li>Faculty of Medicine, University of Indonesia Specialist Doctor Education Program in Surgery (Sp.B) 1993</li><li>Faculty of Medicine, University of Indonesia Specialist Study Program in Thoracic, Cardiac and Vascular Surgery 1998</li><li>Faculty of Medicine, University of Indonesia Study Program in Hospital Administration Studies (MARS) 2013</ li><li>Faculty of Medicine, University of Indonesia, Doctoral Program in Medical Sciences 2019</li></ul>",
+        "publications": "<ol><li>Dr. Arya, M.D., et al. \"The Effectiveness of Physical Therapy in the Management of Chronic Low Back Pain.\" Journal of Orthopedic and Trauma, vol. 15, no. 2, 2023, pp. 123-134.</li><li>Dr. Arya, M.D., et al. \"Surgical Treatment Outcomes for Complex Fractures of the Femur.\" Journal of Orthopedic Surgery, vol. 22, no. 4, 2022, pp. 567-578.</li><li>Dr. Arya, M.D., et al. \"Genetic Factors in the Development of Osteoarthritis.\" Journal of Genetic Medicine, vol. 18, no. 1, 2021, pp. 98-109.</li></ol>"
+    }
+]
