@@ -8,18 +8,22 @@ use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
 use Livewire\Component;
 
-class LocationDoctor extends Component implements HasForms
+class LocationDoctor extends Component
 {
-    use InteractsWithForms;
+    public $data;
+    public $location;
 
-    public function form(Form $form): Form
+    public function locationChanged()
     {
-       return $form->schema([
-            Radio::make('location')->options([
-                'Altius Hospitals Harapan Indah' => 'Altius Hospitals Harapan Indah',
-                'Altius Hospitals Puri Indah' => 'Altius Hospitals Puri Indah',
-            ])->label('')
-        ]);
+        $this->dispatch('handleLocationFilter', $this->location);
+    }
+
+    public function mount()
+    {
+        $this->data = [
+            'Altius Hospitals Harapan Indah',
+            'Altius Hospitals Puri Indah'
+        ];
     }
 
     public function render()

@@ -12,15 +12,22 @@ class ListDoctors extends Component
     public $page = 1;
     public $perPage = 5;
     public $search = '';
+    public $location = '';
 
     protected $listeners = [
         'handleSearch' => 'handleSearch',
+        'handleLocationFilter' => 'handleLocationFilter',
     ];
 
     public function mount($data): void
     {
         $this->data = collect($data);
         $this->filteredData = $this->data;
+    }
+
+    public function handleLocationFilter($data)
+    {
+        $this->location = $data;
     }
 
     public function handleSearch($search)
@@ -35,6 +42,11 @@ class ListDoctors extends Component
         $this->filteredData = $this->data->filter(function ($doctor) {
             return str_contains(strtolower($doctor['name']), strtolower($this->search));
         })->values();
+    }
+
+    protected function applyFilter()
+    {
+        $this->filteredData = $this->data->filter(function ($doctor) {});
     }
 
     public function getPaginatedDataProperty()
