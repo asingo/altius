@@ -39,14 +39,14 @@ p{
 .filter-doctor .fi-fo-field-wrp-label span{
     @apply text-[16px] text-primary;
 }
-.filter-doctor .fi-input-wrp-prefix, .doctor-search .fi-input-wrp-prefix {
+.filter-doctor .fi-input-wrp-prefix, .doctor-search .fi-input-wrp-prefix, .speciality-filter .fi-input-wrp-prefix, .date-filter .fi-input-wrp-prefix {
     @apply border-none pe-0;
 }
 
-.doctor-search input {
+.doctor-search input, .speciality-filter input, .date-filter input {
     @apply text-lg py-2 bg-white;
 }
 
-.location-filter > div span{
+.location-filter > div span {
     @apply text-lg font-normal;
 }

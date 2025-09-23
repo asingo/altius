@@ -13,10 +13,14 @@ class ListDoctors extends Component
     public $perPage = 5;
     public $search = '';
     public $location = '';
+    public $speciality = '';
+    public $date = '';
 
     protected $listeners = [
         'handleSearch' => 'handleSearch',
         'handleLocationFilter' => 'handleLocationFilter',
+        'handleSpecialityFilter' => 'handleSpecialityFilter',
+        'handleDateFilter' => 'handleDateFilter',
     ];
 
     public function mount($data): void
@@ -28,25 +32,59 @@ class ListDoctors extends Component
     public function handleLocationFilter($data)
     {
         $this->location = $data;
+        $this->applyFilter();
+        $this->page = 1;
+    }
+
+    public function handleDateFilter($data)
+    {
+        $this->date = $data;
+        $this->applyFilter();
+        $this->page = 1;
     }
 
     public function handleSearch($search)
     {
         $this->search = $search['query'];
-        $this->applySearch();
+        $this->applyfilter();
         $this->page = 1; // reset to first page after search
     }
 
-    protected function applySearch()
+    public function handleSpecialityFilter($speciality)
     {
-        $this->filteredData = $this->data->filter(function ($doctor) {
-            return str_contains(strtolower($doctor['name']), strtolower($this->search));
-        })->values();
+        $this->speciality = $speciality;
+        $this->applyFilter();
+        $this->page = 1;
     }
+
+
 
     protected function applyFilter()
     {
-        $this->filteredData = $this->data->filter(function ($doctor) {});
+        $this->filteredData = $this->data->filter(function ($doctor) {
+            $matchesSearch = $this->search === ''
+                || str_contains(strtolower($doctor['name']), strtolower($this->search));
+
+            $matchesSpeciality = $this->speciality === '' || strtolower($this->speciality) === 'all'
+                || str_contains(strtolower($doctor['speciality']), strtolower($this->speciality));
+
+            $matchesLocation = $this->location === '' || strtolower($this->location) === 'all'
+                || collect($doctor['location'])->contains(function ($location) {
+                    return str_contains(strtolower($location['name']), strtolower($this->location));
+                });
+
+            $matchesDate = $this->date === ''
+                || strtolower($this->date) === 'all'
+                || collect($doctor['location'])->contains(function ($location) {
+                    $day = strtolower($this->date);
+
+                    return isset($location['schedule'][$day])
+                        && $location['schedule'][$day] !== '-';
+                });
+
+            return $matchesSearch && $matchesLocation && $matchesSpeciality && $matchesDate;
+        })->values();
+
     }
 
     public function getPaginatedDataProperty()

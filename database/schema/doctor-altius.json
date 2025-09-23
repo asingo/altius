@@ -165,7 +165,7 @@
     },
     {
         "id": 5,
-        "name": "dr. Satria Prawira Putra,M.Kes,FICS,SpOT(K)sub Sp.PL",
+        "name": "dr. Satria Prawira Putra, M.Kes, FICS, SpOT(K)sub Sp.PL",
         "slug": "dr-satria-prawira-putramkesficsspotksub-sppl",
         "profile": "asset/doctor/dr-satria-prawira-putra.jpg",
         "speciality": "Orthopedic",
@@ -293,7 +293,7 @@
         "speciality": "Heart",
         "location": [
             {
-                "name": "Altius Hospitals Harapan Indah",
+                "name": "Altius Hospitals Puri Indah",
                 "link_maps": "https://maps.app.goo.gl/YqWXdeiUj124AuqD9",
                 "phone": "080989999",
                 "schedule": {
@@ -320,7 +320,7 @@
         "speciality": "Thoracic and Cardiovascular Surgery",
         "location": [
             {
-                "name": "Altius Hospitals Harapan Indah",
+                "name": "Altius Hospitals Puri Indah",
                 "link_maps": "https://maps.app.goo.gl/YqWXdeiUj124AuqD9",
                 "phone": "080989999",
                 "schedule": {
