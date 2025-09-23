@@ -43,12 +43,19 @@ p, ol, ul:not(.menu-list) li{
     @apply border-none pe-0;
 }
 
-.doctor-search input, .speciality-filter input, .date-filter input {
+.doctor-search input, .speciality-filter input, .date-filter input{
     @apply text-lg py-2 bg-white;
 }
+.department-filter .fi-fo-select{
+    @apply py-0.5;
+}
 
-.location-filter > div span {
+.location-filter > div span, .department-filter .fi-fo-select .choices__item {
     @apply text-lg font-normal;
+}
+
+.department-filter .fi-fo-select .choices__item button{
+    @apply hidden;
 }
 
 ol{
