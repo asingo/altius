@@ -4,10 +4,10 @@
     <div class="h-[700px] relative"
          style="background-image: url({{asset('asset/doctor/hero-medical-profesional.jpg')}})">
         <div class="h-full relative" style="background: rgba(0,0,0,0.2)">
-            <div class="absolute text-white max-w-screen-2xl mx-auto px-6 2xl:px-0 left-0 bottom-8 right-0">
-                <h3 class="text-[24px] text-white font-semibold">Doctors and Medical Staff</h3>
-                <x-typography.heading class="text-white">Explore Our Doctors by Using the Options Below
-                </x-typography.heading>
+            <div class="absolute text-white max-w-screen-2xl mx-auto px-6 2xl:px-0 left-0 bottom-1/2 top-1/2 right-0">
+                <h1 class="text-5xl text-white mb-4 font-semibold">Doctors and Medical Staff</h1>
+                <h3 class="text-white text-3xl">Explore Our Doctors by Using the Options Below
+                </h3>
             </div>
         </div>
     </div>
