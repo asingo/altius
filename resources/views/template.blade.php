@@ -26,7 +26,7 @@
             </a>
         </div>
         <nav class="menu xl:flex hidden">
-            <ul class="flex items-center gap-6 {{!$isHeaderOverlay ?'!text-[#171717]' : 'text-white'}}"
+            <ul class="menu-list flex items-center gap-6 {{!$isHeaderOverlay ?'!text-[#171717]' : 'text-white'}}"
                 :class="atTop && '!text-[#171717]' ">
                 <li>
                     <a href="{{route('about')}}" class="relative group">
@@ -265,7 +265,7 @@
                 <div class="flex items-center md:items-end flex-col">
                     <span class="text-[24px] text-white font-semibold ">About Altius Hospitals</span>
                     <nav class="menu-footer mt-4">
-                        <ul class="flex md:h-12 text-lg items-center md:flex-row flex-col gap-6 text-white">
+                        <ul class="menu-list flex md:h-12 text-lg items-center md:flex-row flex-col gap-6 text-white">
                             <li>
                                 <a href="{{route('doctor')}}" class="relative group">
                                     <span>Medical Professionals</span>

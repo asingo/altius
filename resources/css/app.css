@@ -18,7 +18,7 @@ body{
     font-family: "Overused Grotesk", sans-serif;
 }
 
-p, ol, li{
+p, ol, ul:not(.menu-list) li{
     font-size: 20px;
     color: #525252;
 }
