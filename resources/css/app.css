@@ -18,7 +18,7 @@ body{
     font-family: "Overused Grotesk", sans-serif;
 }
 
-p{
+p, ol, li{
     font-size: 20px;
     color: #525252;
 }
@@ -49,4 +49,8 @@ p{
 
 .location-filter > div span {
     @apply text-lg font-normal;
+}
+
+ol{
+    @apply list-disc text-lg ml-5;
 }

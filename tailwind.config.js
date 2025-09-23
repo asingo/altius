@@ -13,6 +13,7 @@ export default {
                 primary: '#225CA8',
                 secondary: '#5590DD',
                 accent: '#1A467F',
+                shade: '#EAF1FB',
                 textsub: '#525252',
                 texthead: '#171717'
             },
@@ -36,5 +37,6 @@ export default {
         '../../storage/framework/views/*.php',
         '../**/*.blade.php',
         './resources/views/**/*.blade.php',
+        './resources/views/**/**/*.blade.php',
     ],
 }

@@ -18,4 +18,5 @@ Route::controller(LocationController::class)->group(function () {
 });
 Route::controller(DoctorController::class)->group(function () {
     Route::get('/medical-professional', 'doctor')->name('doctor');
+    Route::get('/medical-professional/{slug}', 'doctorDetail')->name('doctorDetail');
 });
