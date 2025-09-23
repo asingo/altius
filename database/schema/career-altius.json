@@ -1,0 +1,102 @@
+[
+  {
+    "id": 1,
+    "type": "Non Medical", 
+    "title": "Medical Record Staff",
+    "location": "Altius Hospitals Harapan Indah",
+    "departement": "Health Information Management",
+    "created_at": "2025-09-23T08:15:02+00:00",
+    "qualification": "<ul><li>Minimum Bachelor’s Degree from Medical Records major</li><li>Have 3 years of experience from related fields</li><li>Have a good leadership and good communication, service excellence</li></ul>",
+    "description": "<ul><li>esponsible for the implementation of all registration activities and medical records in the hospital</li><li>Take care of the process of completing administration / medical record correspondence</li><li>Develop a draft medical record SOP and service flow</li><li>Organize and organize medical record file storage</li><li>Input medical record data from status into hospital system</li></ul>"
+  },
+  {
+    "id": 2,
+    "type": "Medical", 
+    "title": "Nurse – Rawat Jalan/Rawat Inap",
+    "location": "Altius Hospitals Harapan Indah",
+    "departement": "Nurse",
+    "created_at": "2025-09-23T08:15:02+00:00",
+    "qualification": "<ul><li>Graduated in Nursing major</li><li><strong>Preferably</strong>&nbsp;have certification in ACLS/ BTCLS/ ICU</li><li>Proven at least 2 years of experience in the same position</li><li>Excellent in details, hospitality skills, including the ability to listen and serve people</li></ul>",
+    "description": "<ul><li>Assessing patients and gaining their trust</li><li>Planning and delivering patient’s care</li><li>Taking samples, pulses, temperatures and blood pressures</li><li>Monitoring and administering medication progress</li><li>Writing records and input to the system</li><li>Providing emotional support to patients and relatives</li><li>Reports to Nurse Coordinator</li></ul>"
+  },
+  {
+    "id": 3,
+    "type": "Non Medical", 
+    "title": "Admission & Cashier – Hospital",
+    "location": "Altius Hospitals Harapan Indah",
+    "departement": "Administration",
+    "created_at": "2025-09-23T08:15:02+00:00",
+    "qualification": "<ul><li>Minimum Diploma Degree majoring in Keperawatan, Farmasi, Kesehatan Masyarakat</li><li>Proven 2 years of experience in hospital as admission/front liners services</li><li>Patient-focused, experience in managing complaints &amp; feedback</li><li>Strong communication and interpersonal skills</li><li>Lives in/near Bekasi</li><li>Clean and neat appearance</li></ul>",
+    "description":"<ul><li>Manage patient pre-admission process</li><li>Answer patient questions regarding admission procedures</li><li>Screen patients’ medical insurance and payment information validity and verify third-party approvals when necessary</li><li>Guide patients through the admission process and gather relevant personal information through pre-admission interviews</li></ul>"
+  },
+  {
+    "id": 4,
+    "type": "Medical", 
+    "title": "Nurse – IGD",
+    "location": "Altius Hospitals Harapan Indah",
+    "departement": "Nurse",
+    "created_at": "2025-09-23T08:15:02+00:00",
+    "qualification": "<ul><li>Min. D3 in Nursing</li><li>Must have ACLS / BTCLS training Emergency</li></ul>",
+    "description":"<ul><li>Being ready to respond and equipped to deal with a medical emergency.</li><li>Quickly assessing patient needs.</li><li>Treating critical injuries, allergic reactions, and trauma.</li><li>Performing minor medical operations.</li><li>Cleaning wounds.</li><li>Drawing blood.</li><li>Maintaining emergency room care standards.</li><li>Assisting with insurance paperwork.</li><li>Ensuring the efficiency of the patient check-in process.</li><li>Displaying strong decision-making skills in emergency scenarios.</li></ul>"
+  },
+  {
+    "id": 5,
+    "type": "Non Medical", 
+    "title": "Sales Executive",
+    "location": "Altius Hospitals Harapan Indah",
+    "departement": "Sales",
+    "created_at": "2025-09-23T08:15:02+00:00",
+    "qualification": "<ul><li>Bachelor’s Degree with at least 1 year of working experience in the related field, fresh graduates are welcome to apply.</li><li>Proved experience in Sales marketing field</li><li>Creative individual with high agility and adaptability</li><li>Ability to build strong relationships with clients and customers</li><li>Excellent interpersonal, communication, presentation, and negotiation skills</li></ul>",
+    "description":"<ul><li>Coordinate and implement sales &amp; marketing programs to enlarge business segment.</li><li>Strengthen brand awareness in society, align with marketing programs</li><li>Work closely with related departments to develop new packages / services that is in line with the trend</li><li>Build long-term partnerships with various stakeholders to develop the hospital business</li><li>Build cross-functional relationships with organizational stakeholders to understand products, services, and industry trend to develop focused communications program</li></ul>"
+  },
+  {
+    "id": 6,
+    "type": "Non Medical", 
+    "title": "Pharmacy Manager",
+    "location": "Altius Hospitals Harapan Indah",
+    "departement": "Manager",
+    "created_at": "2025-09-23T08:15:02+00:00",
+    "qualification": "<ul><li>Graduated from Pharmacy degree and Apothecary with usable STRA (Surat Tanda Registrasi Apoteker)</li><li>Has experience on handling PBBF is preferable</li><li>Willing to Administer Pharmacy Practice License (SIPA/Surat Ijin Praktek Apoteker)</li><li>Have a minimum of 2 years experience as Head of Pharmacy Department / Head of Pharmacy Installation in a Hospital.</li><li>Have good knowledge and understanding of the strategy and flow of hospital pharmaceutical services (Inpatient, Outpatient, Clinical Pharmacy, Pharmaceutical Logistics, etc.).</li><li>Able to prepare and carry out continuous improvement programs for pharmaceutical services.</li><li>Have good leadership and communication skills.</li></ul>",
+    "description":"-"
+  },
+  {
+    "id": 7,
+    "type": "Non Medical", 
+    "title": "Medical Record Coordinator",
+    "location": "Altius Hospitals Harapan Indah",
+    "departement": "Health Information Management",
+    "created_at": "2025-09-23T08:15:02+00:00",
+    "qualification": "<ul><li>Minimum Bachelor’s Degree from Medical Records major</li><li>Have 3 years of experience from related fields</li><li>Have a good leadership and good communication, service excellence</li></ul>",
+    "description":"<ul><li>Responsible for the implementation of all registration activities and medical records in the hospital</li><li>Take care of the process of completing administration / medical record correspondence</li><li>Develop a draft medical record SOP and service flow</li><li>Organize and organize medical record file storage</li><li>Input medical record data from status into hospital system</li></ul>"
+  },
+  {
+    "id": 8,
+    "type": "Medical", 
+    "title": "Radiografer",
+    "location": "Altius Hospitals Harapan Indah",
+    "departement": "Radiographer",
+    "created_at": "2025-09-23T08:15:02+00:00",
+    "qualification": "<ul><li>Valid and active medical license</li><li>Proficient in general radiology techniques, including X-ray, MRI, and ultrasound.</li><li>Patient management skills.</li><li>Bachelor’s degree in Radiography</li></ul>",
+    "description":"<ul><li>Evaluating patients’ medical histories</li><li>Suggesting alternative medical imaging techniques, when necessary.</li><li>Informing patients about the medical imaging process.</li><li>Using devices such as computer tomography (CT) scanners and magnetic resonance imaging (MRI) machines.</li><li>Performing or directing radiology staff to carry out image-guided, diagnostic procedures.</li><li>Interpreting the results from diagnostic imaging procedures to determine diagnoses.</li><li>Following medical protocols for resuscitation, bleeding, infection, or other emergency situations, when necessary</li></ul>"
+  },
+  {
+    "id": 9,
+    "type": "Medical", 
+    "title": "Nurse – ICU",
+    "location": "Altius Hospitals Harapan Indah",
+    "departement": "Nurse",
+    "created_at": "2025-09-23T08:15:02+00:00",
+    "qualification": "<ul><li>Minimum D3</li><li>Have at least 3 years ICU experience</li><li>Have ICU certificate</li><li>Have ACLS certificate</li></ul>",
+    "description":"<ul><li>Evaluate and monitor the patient’s progress.</li><li>Identify sudden or subtle changes in a patient’s medical condition.</li><li>Deliver regular updates to doctors, patients, and their family members.</li><li>Begin treatment and monitor doses.</li><li>Care for patient needs throughout their recovery in the ICU unit.</li><li>Complete all necessary paperwork before transferring a patient.</li><li>Maintain patient records.</li></ul>"
+  },
+  {
+    "id": 10,
+    "type": "Medical", 
+    "title": "Nurse – CSSD",
+    "location": "Altius Hospitals Harapan Indah",
+    "departement": "Nurse",
+    "created_at": "2025-09-23T08:15:02+00:00",
+    "qualification": "<ul><li>Min. D3 in Nursing</li><li>Have CSSD experience in hospital</li><li>Have certificate about CSSD</li></ul>",
+    "description":"<ul><li>Handle all equipment’s with care and cleaning through the standard instrument processing.</li><li>Clean, disinfect and pack the medical instruments for sterilization based on the instrument processing of the department.</li><li>Keeping the facility’s stock of sterile devices up to date by regular inventory of stocks.</li><li>Identification of surgical instrumentation by proper name and appropriate sterilization method.</li><li>Report immediately broken or malfunctioning equipment to charge nurse.</li><li>Maintains a safe and clean working environment in compliance with healthcare procedures and regulations.</li></ul>"
+  }
+]

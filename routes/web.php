@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Pages\AboutController;
+use App\Http\Controllers\Pages\CareerController;
 use App\Http\Controllers\Pages\DoctorController;
 use App\Http\Controllers\Pages\HomeController;
 
@@ -19,4 +20,7 @@ Route::controller(LocationController::class)->group(function () {
 Route::controller(DoctorController::class)->group(function () {
     Route::get('/medical-professional', 'doctor')->name('doctor');
     Route::get('/medical-professional/{slug}', 'doctorDetail')->name('doctorDetail');
+});
+Route::controller(CareerController::class)->group(function () {
+   Route::get('/career', 'career')->name('career');
 });

@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Doctor;
+namespace App\Livewire\Frontend\Doctor;
 
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;

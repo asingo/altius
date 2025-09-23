@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Livewire\Doctor\Detail;
+namespace App\Livewire\Frontend\Doctor\Detail;
 
 use Livewire\Component;
 

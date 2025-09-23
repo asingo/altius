@@ -41,22 +41,22 @@
                             x-transition:leave-end="opacity-0 transform -translate-y-2"
                             class="space-y-6 lg:hidden"
                         >
-                            @livewire('doctor.location-doctor')
-                            @livewire('doctor.speciality-doctor')
-                            @livewire('doctor.date-doctor')
+                            @livewire('frontend.doctor.location-doctor')
+                            @livewire('frontend.doctor.speciality-doctor')
+                            @livewire('frontend.doctor.date-doctor')
                         </div>
 
                         <!-- Always visible on desktop -->
                         <div class="space-y-6 hidden lg:block">
-                            @livewire('doctor.location-doctor')
-                            @livewire('doctor.speciality-doctor')
-                            @livewire('doctor.date-doctor')
+                            @livewire('frontend.doctor.location-doctor')
+                            @livewire('frontend.doctor.speciality-doctor')
+                            @livewire('frontend.doctor.date-doctor')
                         </div>
                     </div>
 
                     <div class="lg:col-span-2">
-                        @livewire('doctor.search-doctor')
-                        @livewire('doctor.list-doctors', ['data' => $data])
+                        @livewire('frontend.doctor.search-doctor')
+                        @livewire('frontend.doctor.list-doctors', ['data' => $data])
                     </div>
                 </div>
 

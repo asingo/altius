@@ -1,11 +1,7 @@
 <?php
 
-namespace App\Livewire\Doctor;
+namespace App\Livewire\Frontend\Doctor;
 
-use Filament\Forms\Components\Radio;
-use Filament\Forms\Concerns\InteractsWithForms;
-use Filament\Forms\Contracts\HasForms;
-use Filament\Forms\Form;
 use Livewire\Component;
 
 class LocationDoctor extends Component

@@ -1,8 +1,7 @@
 <?php
 
-namespace App\Livewire\Doctor;
+namespace App\Livewire\Frontend\Doctor;
 
-use Illuminate\Pagination\LengthAwarePaginator;
 use Livewire\Component;
 
 class ListDoctors extends Component
@@ -104,7 +103,6 @@ class ListDoctors extends Component
     public function render()
     {
         $totalPages = ceil($this->filteredData->count() / $this->perPage);
-
         return view('livewire.doctor.list-doctors', [
             'doctors' => $this->paginatedData,
             'totalPages' => $totalPages,
