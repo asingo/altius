@@ -23,4 +23,5 @@ Route::controller(DoctorController::class)->group(function () {
 });
 Route::controller(CareerController::class)->group(function () {
    Route::get('/career', 'career')->name('career');
+   Route::get('/career/{slug}', 'careerDetail')->name('careerDetail');
 });

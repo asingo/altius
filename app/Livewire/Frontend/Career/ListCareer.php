@@ -11,7 +11,7 @@ class ListCareer extends Component
     public $page = 1;
     public $perPage = 5;
     public $search = '';
-    public $department = '';
+    public $department = 'All Department';
     public $type = '';
     protected $listeners = [
         'handleTypeFilter' => 'handleTypeFilter',

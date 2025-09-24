@@ -10,10 +10,18 @@
 </head>
 <body>
 
-<header x-data="{ atTop: @js(!$isHeaderOverlay), slug: '{{$slug}}' }"
+<header x-data="{ atTop: @js(!$isHeaderOverlay), slug: '{{$slug}}',topStatus: null,
+        openMobile: false}"
         @if($isHeaderOverlay)
-            @scroll.window="atTop = window.scrollY > 50;"
+            @scroll.window="if (!openMobile) atTop = window.scrollY > 50;"
         @endif
+        x-effect="
+        if (openMobile) {
+            topStatus = atTop;
+            atTop = true;
+        } else if (topStatus !== null) {
+            atTop = topStatus;
+        }"
         class="header text-[18px] fixed top-0 left-0 right-0 z-[99] pt-4 transition-all duration-500 ease-in-out px-6 2xl:px-0"
         :class="atTop && 'drop-shadow-lg' "
         :style="atTop ? {background: 'white'} : {background: 'linear-gradient(180deg,rgba(23, 23, 23, 0.8) 0%, rgba(23, 23, 23, 0) 100%)'}"
@@ -119,14 +127,14 @@
                 <x-heroicon-o-user-circle class="w-5 h-5"/>
                 Login
             </a>
-            <div x-data="{open:false}" class="flex xl:hidden items-center">
-                <button class="text-white" :class="atTop && '!text-[#171717]'" @click="open = !open; atTop = !atTop">
+            <div class="flex xl:hidden items-center">
+                <button class="text-white" :class="atTop && '!text-[#171717]'" @click="openMobile = !openMobile">
                     <x-heroicon-o-bars-3 class="w-6 h-6"/>
                 </button>
 
                 <div
-                    x-show="open"
-                    @click.outside="open = false"
+                    x-show="openMobile"
+                    @click.outside="openMobile = false"
                     x-transition:enter="transition ease-out duration-500"
                     x-transition:enter-start="opacity-0 -translate-y-5"
                     x-transition:enter-end="opacity-100 translate-y-0"
@@ -135,7 +143,7 @@
                     x-transition:leave-end="opacity-0 -translate-y-5"
                     class="absolute bg-white w-screen left-0 h-screen top-14 z-50"
                 >
-                    <ul class="flex flex-col gap-5 mx-6 mt-4 pt-4 border-t">
+                    <ul class="menu-list flex flex-col gap-5 mx-6 mt-4 pt-4 border-t">
                         <li>
                             <a href="{{route('about')}}" class="relative group">
                                 <span :class="atTop && 'hover:!text-primary' ">About Us</span>

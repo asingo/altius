@@ -1,6 +1,6 @@
 <div class="max-w-screen-2xl mx-auto py-24 px-6 2xl:px-0">
     <div class="flex flex-col items-center mb-8">
-        <x-typography.subheading>Medical Testimony</x-typography.subheading>
+        <x-typography.subheading location="section">Medical Testimony</x-typography.subheading>
         <x-typography.heading class="text-center">Experience trusted Healthcare</x-typography.heading>
     </div>
     <x-slider id="testimonySlider">

@@ -7,7 +7,7 @@
             {{--            <svg width="16" height="17" viewBox="0 0 16 17" fill="none" xmlns="http://www.w3.org/2000/svg">--}}
             {{--                <path d="M8 0.5L10.472 6.02795L16 8.5L10.472 10.972L8 16.5L5.52795 10.972L0 8.5L5.52795 6.02795L8 0.5Z" fill="#5590DD"/>--}}
             {{--            </svg>--}}
-            <x-typography.subheading>Experience peace of mind</x-typography.subheading>
+            <x-typography.subheading location="section">Experience peace of mind</x-typography.subheading>
             <h2 class="text-primary text-3xl font-medium my-2">When Your Health, Is Our Priority</h2>
             <p>
                 Altius Hospitals delivers international-standard healthcare with the genuine warmth of Indonesian

@@ -43,15 +43,27 @@ p, ol, ul:not(.menu-list) li{
     @apply border-none pe-0;
 }
 
-.doctor-search input, .speciality-filter input, .date-filter input{
+.doctor-search input, .speciality-filter input, .date-filter input, .careerForm input{
     @apply text-lg py-2 bg-white;
 }
-.department-filter .fi-fo-select{
+.department-filter .fi-fo-select, .careerForm .fi-fo-select{
     @apply py-0.5;
 }
 
-.location-filter > div span, .department-filter .fi-fo-select .choices__item {
+.location-filter > div span, .department-filter .fi-fo-select .choices__item, .careerForm .fi-fo-select .choices__item {
     @apply text-lg font-normal;
+}
+
+.careerForm .filepond--drop-label label{
+    @apply text-lg text-slate-400;
+}
+
+.careerForm .filepond--drop-label label span{
+    @apply text-primary hover:text-accent;
+}
+
+.careerForm .fi-checkbox-input{
+    @apply w-5 h-5;
 }
 
 .department-filter .fi-fo-select .choices__item button{
@@ -59,5 +71,13 @@ p, ol, ul:not(.menu-list) li{
 }
 
 ol{
+    @apply list-decimal text-lg ml-5;
+}
+
+ul:not(.menu-list){
     @apply list-disc text-lg ml-5;
+}
+
+.careerForm .fi-fo-field-wrp-label span{
+    @apply text-xl font-normal text-textsub;
 }
