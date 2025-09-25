@@ -55,9 +55,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('home')}}" class="relative group">
-                        <span :class="atTop && 'hover:!text-primary' ">Health Screening</span>
-                        <span class="menu-interaction" :class="atTop && '!bg-primary' "></span>
+                    <a href="{{route('screening')}}" class="relative group">
+                        <span :class="[atTop && 'hover:!text-primary', slug == 'health-screening' ? '!text-primary' : ''] ">Health Screening</span>
+                        <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'health-screening' ? '!bg-primary !scale-x-100' :''] "></span>
                     </a>
                 </li>
                 <li>
@@ -163,7 +163,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('home')}}" class="relative group">
+                            <a href="{{route('screening')}}" class="relative group">
                                 <span :class="atTop && 'hover:!text-primary' ">Health Screening</span>
                                 <span class="menu-interaction" :class="atTop && '!bg-primary' "></span>
                             </a>
@@ -281,7 +281,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{route('home')}}" class="relative group">
+                                <a href="{{route('screening')}}" class="relative group">
                                     <span>Health Screening</span>
                                     <span class="menu-interaction"></span>
                                 </a>

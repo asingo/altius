@@ -13,7 +13,7 @@
                     <x-button.link class="!bg-texthead rounded-xl">Overview</x-button.link>
                     <x-button.link href="#pub" class="!bg-shade rounded-xl !text-primary">Publication</x-button.link>
                 </div>
-                @livewire('doctor.detail.location-select', ['data' => $data['location']])
+                @livewire('frontend.doctor.detail.location-select', ['data' => $data['location']])
             </div>
             <div class="md:col-span-2 md:mr-24 md:border-b-2 md:border-slate-300 w-full">
                 <img src="{{asset($data['profile'])}}" alt="image" class="rounded-2xl w-full">

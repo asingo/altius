@@ -1,0 +1,179 @@
+[
+    {
+        "id": 1,
+        "title": "General Health Screening Package",
+        "image": "asset/ScreeningPackage/cover-1.jpg",
+        "slug": "general-health-screening-package",
+        "category": "health screening",
+        "location": "Altius Hospitals Harapan Indah",
+        "age": [
+            "young adult",
+            "adult"
+        ],
+        "gender": "all",
+        "price": 1370000,
+        "description": "Recommended for individuals aged 25-35 years old, suitable for both male and female."
+    },
+    {
+        "id": 2,
+        "title": "Basic Lite Check-Up",
+        "image": "asset/ScreeningPackage/cover-1.jpg" ,
+        "slug": "basic-lite-check-up",
+        "category": "lite check up",
+        "location": "Altius Hospitals Harapan Indah",
+        "age": [
+            "teenager",
+            "young adult"
+        ],
+        "gender": "all",
+        "price": 650000,
+        "description": "An affordable health check-up for early detection, including basic blood and urine tests."
+    },
+    {
+        "id": 3,
+        "title": "Comprehensive General Check-Up",
+        "image": "asset/ScreeningPackage/cover-1.jpg" ,
+        "slug": "comprehensive-general-check-up",
+        "category": "general checkup",
+        "location": "Altius Hospitals Harapan Indah",
+        "age": [
+            "adult",
+            "senior"
+        ],
+        "gender": "all",
+        "price": 1850000,
+        "description": "Complete medical examination designed for adults and seniors to maintain overall health."
+    },
+    {
+        "id": 4,
+        "title": "Child Vaccination Package",
+        "image": "asset/ScreeningPackage/cover-1.jpg" ,
+        "slug": "child-vaccination-package",
+        "category": "vaccine",
+        "location": "Altius Hospitals Harapan Indah",
+        "age": [
+            "children"
+        ],
+        "gender": "all",
+        "price": 420000,
+        "description": "Essential vaccination package for children aged 1–5 years to protect against common diseases."
+    },
+    {
+        "id": 5,
+        "title": "Women’s Health Screening",
+        "image": "asset/ScreeningPackage/cover-1.jpg" ,
+        "slug": "womens-health-screening",
+        "category": "health screening",
+        "location": "Altius Hospitals Harapan Indah",
+        "age": [
+            "young adult",
+            "adult"
+        ],
+        "gender": "female",
+        "price": 1550000,
+        "description": "Specialized health screening focusing on female reproductive and general wellness."
+    },
+    {
+        "id": 6,
+        "title": "Men’s Executive Check-Up",
+        "image": "asset/ScreeningPackage/cover-1.jpg" ,
+        "slug": "mens-executive-check-up",
+        "category": "general checkup",
+        "location": "Altius Hospitals Harapan Indah",
+        "age": [
+            "adult"
+        ],
+        "gender": "male",
+        "price": 2100000,
+        "description": "Tailored check-up for working men to monitor cardiovascular, liver, and metabolic health."
+    },
+    {
+        "id": 7,
+        "title": "Senior Citizen Lite Check-Up",
+        "image": "asset/ScreeningPackage/cover-1.jpg" ,
+        "slug": "senior-citizen-lite-check-up",
+        "category": "lite check up",
+        "location": "Altius Hospitals Harapan Indah",
+        "age": [
+            "senior"
+        ],
+        "gender": "all",
+        "price": 890000,
+        "description": "Simple and effective screening for seniors, focusing on blood pressure, cholesterol, and diabetes."
+    },
+    {
+        "id": 8,
+        "title": "HPV Vaccination Package",
+        "image": "asset/ScreeningPackage/cover-1.jpg" ,
+        "slug": "hpv-vaccination-package",
+        "category": "vaccine",
+        "location": "Altius Hospitals Harapan Indah",
+        "age": [
+            "teenager",
+            "young adult"
+        ],
+        "gender": "female",
+        "price": 1350000,
+        "description": "Protection for teenage girls and women against HPV infections, a leading cause of cervical cancer."
+    },
+    {
+        "id": 9,
+        "title": "Diabetes and Heart Screening",
+        "image": "asset/ScreeningPackage/cover-1.jpg" ,
+        "slug": "diabetes-and-heart-screening",
+        "category": "health screening",
+        "location": "Altius Hospitals Harapan Indah",
+        "age": [
+            "adult",
+            "senior"
+        ],
+        "gender": "all",
+        "price": 1200000,
+        "description": "Focused screening to detect risks of diabetes and heart disease at an early stage."
+    },
+    {
+        "id": 10,
+        "title": "Corporate Wellness Check-Up",
+        "image": "asset/ScreeningPackage/cover-1.jpg" ,
+        "slug": "corporate-wellness-check-up",
+        "category": "others",
+        "location": "Altius Hospitals Harapan Indah",
+        "age": [
+            "adult"
+        ],
+        "gender": "all",
+        "price": 2500000,
+        "description": "Special check-up package for companies to ensure employee health and productivity."
+    },
+    {
+        "id": 11,
+        "title": "Flu Vaccination Package",
+        "image": "asset/ScreeningPackage/cover-1.jpg" ,
+        "slug": "flu-vaccination-package",
+        "category": "vaccine",
+        "location": "Altius Hospitals Harapan Indah",
+        "age": [
+            "teenager",
+            "young adult",
+            "adult"
+        ],
+        "gender": "all",
+        "price": 280000,
+        "description": "Seasonal flu vaccine to protect individuals from influenza viruses and related complications."
+    },
+    {
+        "id": 12,
+        "title": "Pregnancy Lite Check-Up",
+        "image": "asset/ScreeningPackage/cover-1.jpg" ,
+        "slug": "pregnancy-lite-check-up",
+        "category": "lite check up",
+        "location": "Altius Hospitals Harapan Indah",
+        "age": [
+            "young adult",
+            "adult"
+        ],
+        "gender": "female",
+        "price": 960000,
+        "description": "Basic prenatal health check-up for expecting mothers to ensure safe pregnancy monitoring."
+    }
+]
