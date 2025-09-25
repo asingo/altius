@@ -7,14 +7,92 @@ use Livewire\Component;
 class ListScreening extends Component
 {
     public $data;
+    public $filteredData;
+    public $page = 1;
+    public $perPage = 6;
+
+    public $category = 'all';
+    public $location = 'all';
+    public $age = 'all';
+    public $gender = 'all';
+
+    protected $listeners = [
+        'handleCategoryFilter' => 'handleCategoryFilter',
+        'handleLocationFilter' => 'handleLocationFilter',
+        'handleAgeFilter' => 'handleAgeFilter',
+        'handleGenderFilter' => 'handleGenderFilter',
+    ];
+
+    public function handleGenderFilter($data)
+    {
+        $this->gender = $data;
+        $this->applyFilter();
+        $this->page = 1;
+    }
+
+    public function handleAgeFilter($data)
+    {
+        $this->age = $data;
+        $this->applyFilter();
+        $this->page = 1;
+    }
+
+    public function handleCategoryFilter($data)
+    {
+        $this->category = $data;
+        $this->applyFilter();
+        $this->page = 1;
+    }
+
+    public function handleLocationFilter($data)
+    {
+        $this->location = $data;
+        $this->applyFilter();
+        $this->page = 1;
+    }
+
+    public function setPage($page)
+    {
+        $totalPages = ceil($this->filteredData->count() / $this->perPage);
+        if ($page >= 1 && $page <= $totalPages) {
+            $this->page = $page;
+        }
+    }
+
+    public function applyFilter()
+    {
+
+        $this->filteredData = $this->data->filter(function ($screening) {
+            $matchesCategory = $this->category === null || $this->category == 'all' || strtolower($this->category['name']) === strtolower($screening['category']);
+            $matchesLocation =  $this->location === 'all' || collect($screening['location'])->contains(function ($location) {
+                return str_contains(strtolower($location), strtolower($this->location));
+                });
+            $matchesAge = $this->age === 'all' || collect($screening['age'])->contains(function ($age) {
+                    return str_contains(strtolower($age), strtolower($this->age));
+                });
+            $matchesGender = $this->gender === 'all' || strtolower($this->gender) === strtolower($screening['gender']);
+            return $matchesCategory && $matchesLocation && $matchesAge && $matchesGender;
+        });
+    }
+
+    public function getPaginatedDataProperty()
+    {
+        $offset = ($this->page - 1) * $this->perPage;
+        return $this->filteredData->slice($offset, $this->perPage)->values();
+    }
 
     public function mount($data): void
     {
-        $this->data = $data;
+        $this->data = collect($data);
+        $this->filteredData = $this->data;
     }
 
     public function render()
     {
-        return view('livewire.frontend.screening.list-screening');
+        $totalPages = ceil($this->filteredData->count() / $this->perPage);
+        return view('livewire.frontend.screening.list-screening', [
+            'screening' => $this->paginatedData,
+            'totalPages' => $totalPages,
+        ]);
     }
 }

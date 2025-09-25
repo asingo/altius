@@ -39,6 +39,14 @@ class ListCareer extends Component
         $this->page = 1;
     }
 
+    public function setPage($page)
+    {
+        $totalPages = ceil($this->filteredData->count() / $this->perPage);
+        if ($page >= 1 && $page <= $totalPages) {
+            $this->page = $page;
+        }
+    }
+
     public function handleDepartmentFilter($data)
     {
         $this->department = $data;

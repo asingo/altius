@@ -4,8 +4,8 @@
         "title": "General Health Screening Package",
         "image": "asset/ScreeningPackage/cover-1.jpg",
         "slug": "general-health-screening-package",
-        "category": "health screening",
-        "location": "Altius Hospitals Harapan Indah",
+        "category": "general check up",
+        "location": ["Altius Hospitals Harapan Indah", "Altius Hospitals Puri Indah"],
         "age": [
             "young adult",
             "adult"
@@ -20,7 +20,7 @@
         "image": "asset/ScreeningPackage/cover-1.jpg" ,
         "slug": "basic-lite-check-up",
         "category": "lite check up",
-        "location": "Altius Hospitals Harapan Indah",
+        "location": ["Altius Hospitals Harapan Indah"],
         "age": [
             "teenager",
             "young adult"
@@ -34,8 +34,8 @@
         "title": "Comprehensive General Check-Up",
         "image": "asset/ScreeningPackage/cover-1.jpg" ,
         "slug": "comprehensive-general-check-up",
-        "category": "general checkup",
-        "location": "Altius Hospitals Harapan Indah",
+        "category": "general check up",
+        "location": ["Altius Hospitals Harapan Indah", "Altius Hospitals Puri Indah"],
         "age": [
             "adult",
             "senior"
@@ -50,7 +50,7 @@
         "image": "asset/ScreeningPackage/cover-1.jpg" ,
         "slug": "child-vaccination-package",
         "category": "vaccine",
-        "location": "Altius Hospitals Harapan Indah",
+        "location": ["Altius Hospitals Harapan Indah"],
         "age": [
             "children"
         ],
@@ -63,8 +63,8 @@
         "title": "Women’s Health Screening",
         "image": "asset/ScreeningPackage/cover-1.jpg" ,
         "slug": "womens-health-screening",
-        "category": "health screening",
-        "location": "Altius Hospitals Harapan Indah",
+        "category": "general check up",
+        "location": ["Altius Hospitals Harapan Indah", "Altius Hospitals Puri Indah"],
         "age": [
             "young adult",
             "adult"
@@ -78,8 +78,8 @@
         "title": "Men’s Executive Check-Up",
         "image": "asset/ScreeningPackage/cover-1.jpg" ,
         "slug": "mens-executive-check-up",
-        "category": "general checkup",
-        "location": "Altius Hospitals Harapan Indah",
+        "category": "general check up",
+        "location": ["Altius Hospitals Harapan Indah"],
         "age": [
             "adult"
         ],
@@ -93,7 +93,7 @@
         "image": "asset/ScreeningPackage/cover-1.jpg" ,
         "slug": "senior-citizen-lite-check-up",
         "category": "lite check up",
-        "location": "Altius Hospitals Harapan Indah",
+        "location": ["Altius Hospitals Harapan Indah", "Altius Hospitals Puri Indah"],
         "age": [
             "senior"
         ],
@@ -107,7 +107,7 @@
         "image": "asset/ScreeningPackage/cover-1.jpg" ,
         "slug": "hpv-vaccination-package",
         "category": "vaccine",
-        "location": "Altius Hospitals Harapan Indah",
+        "location": ["Altius Hospitals Harapan Indah"],
         "age": [
             "teenager",
             "young adult"
@@ -121,8 +121,8 @@
         "title": "Diabetes and Heart Screening",
         "image": "asset/ScreeningPackage/cover-1.jpg" ,
         "slug": "diabetes-and-heart-screening",
-        "category": "health screening",
-        "location": "Altius Hospitals Harapan Indah",
+        "category": "heart screening",
+        "location": ["Altius Hospitals Harapan Indah", "Altius Hospitals Puri Indah"],
         "age": [
             "adult",
             "senior"
@@ -137,7 +137,7 @@
         "image": "asset/ScreeningPackage/cover-1.jpg" ,
         "slug": "corporate-wellness-check-up",
         "category": "others",
-        "location": "Altius Hospitals Harapan Indah",
+        "location": ["Altius Hospitals Harapan Indah"],
         "age": [
             "adult"
         ],
@@ -151,7 +151,7 @@
         "image": "asset/ScreeningPackage/cover-1.jpg" ,
         "slug": "flu-vaccination-package",
         "category": "vaccine",
-        "location": "Altius Hospitals Harapan Indah",
+        "location": ["Altius Hospitals Harapan Indah", "Altius Hospitals Puri Indah"],
         "age": [
             "teenager",
             "young adult",
@@ -167,7 +167,7 @@
         "image": "asset/ScreeningPackage/cover-1.jpg" ,
         "slug": "pregnancy-lite-check-up",
         "category": "lite check up",
-        "location": "Altius Hospitals Harapan Indah",
+        "location": ["Altius Hospitals Puri Indah"],
         "age": [
             "young adult",
             "adult"

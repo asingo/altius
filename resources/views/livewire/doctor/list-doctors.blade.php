@@ -21,7 +21,7 @@
             </div>
         </div>
     @endforeach
-        <div class="mt-4 flex items-center gap-2">
+        <div class="mt-6 flex items-center gap-2">
             {{-- Previous Button --}}
             <button
                 wire:click="setPage({{ $page - 1 }})"
