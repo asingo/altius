@@ -1,0 +1,29 @@
+[
+    {
+        "id": 1,
+        "title":"Altius Hospitals Puri Indah",
+        "address":"Jl. Taman Aries No.1RT.5/RW.8, Meruya Utara, Kec. Kembangan, Kota Jakarta Barat, Daerah Khusus Ibukota Jakarta 11620",
+        "contact" : {
+            "general":"021-3000 8877",
+            "customer":"0857 8877 8877"
+        }
+    },
+    {
+        "id": 2,
+        "title":"Altius Hospitals Harapan Indah",
+        "address":"Jl. Harapan Indah Bulevar Sektor V, Pusaka Rakyat, Kec. Tarumajaya, Kabupaten Bekasi, Jawa Barat 17214",
+        "contact" : {
+            "general":"021-3000 8877",
+            "customer":"0857 8877 8877"
+        }
+    },
+    {
+        "id": 3,
+        "title":"Altius Cardiac Clinic",
+        "address":"The Vida, Lt.7 Jl. Perjuangan No.8 1 building 7th floor, RT.1/RW.7, Kebon Jeruk, West Jakarta City, Jakarta 11530",
+        "contact" : {
+            "general":"021-3000 8877",
+            "customer":"0857 8877 8877"
+        }
+    }
+]

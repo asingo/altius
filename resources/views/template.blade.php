@@ -61,9 +61,9 @@
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('home')}}" class="relative group">
-                        <span :class="atTop && 'hover:!text-primary' ">Contact Us</span>
-                        <span class="menu-interaction" :class="atTop && '!bg-primary' "></span>
+                    <a href="{{route('contact')}}" class="relative group">
+                        <span :class="[atTop && 'hover:!text-primary', slug == 'contact-us' ? '!text-primary' : ''] ">Contact Us</span>
+                        <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'contact-us' ? '!bg-primary !scale-x-100' :''] "></span>
                     </a>
                 </li>
                 <li>
@@ -169,7 +169,7 @@
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('home')}}" class="relative group">
+                            <a href="{{route('contact')}}" class="relative group">
                                 <span :class="atTop && 'hover:!text-primary' ">Contact Us</span>
                                 <span class="menu-interaction" :class="atTop && '!bg-primary' "></span>
                             </a>

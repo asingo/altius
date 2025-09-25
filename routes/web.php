@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\Pages\AboutController;
 use App\Http\Controllers\Pages\CareerController;
+use App\Http\Controllers\Pages\ContactController;
 use App\Http\Controllers\Pages\DoctorController;
 use App\Http\Controllers\Pages\HomeController;
 
@@ -29,3 +30,4 @@ Route::controller(CareerController::class)->group(function () {
 Route::controller(ScreeningController::class)->group(function () {
     Route::get('/health-screening', 'screening')->name('screening');
 });
+Route::get('/contact-us', [ContactController::class, 'contact'])->name('contact');
