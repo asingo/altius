@@ -17,13 +17,15 @@ class Slider extends Component
     public $arrow;
     public $centered;
     public $class;
+    public $autoplay;
     public $items_mobile;
-    public function __construct($id, $items = '1', $class = '', $mobile = null, $arrow = null, $infinity = 'false', $centered = 'true')
+    public function __construct($id, $autoplay = 'true' , $items = '1', $class = '', $mobile = null, $arrow = null, $infinity = 'false', $centered = 'true')
     {
         $this->infinity = $infinity;
         $this->class = $class;
         $this->items = $items;
         $this->arrow = $arrow;
+        $this->autoplay = $autoplay;
         $this->id = $id;
         $this->centered = $centered;
         $this->items_mobile = $mobile;

@@ -1,4 +1,4 @@
-@props(['id' => '', 'items' => '', 'items_mobile' => '', 'centered' => '', 'infinity' => '', 'arrow' => '', 'class' => ''])
+@props(['id' => '', 'items' => '', 'items_mobile' => '', 'centered' => '', 'infinity' => '', 'arrow' => '', 'class' => '', 'autoplay' => ''])
 <style>
     /*.slider-container {*/
     /*    position: relative;*/
@@ -26,31 +26,31 @@
     }
 
     {{--    @if($arrow == 'bottom-right')--}}
-{{--    {{'.slider-'.$id}} .swiper-navigation{--}}
-{{--        position:relative;--}}
-{{--        right: 0;--}}
-{{--        bottom: 0px;--}}
-{{--        /*height: 100%;*/--}}
-{{--        /*display: flex;*/--}}
-{{--        /*margin-top: 20px;*/--}}
-{{--        /*gap: 10px;*/--}}
-{{--        /*justify-content: right;*/--}}
-{{--    }--}}
-{{--    {{'.slider-'.$id}} .swiper-button-next{--}}
-{{--        right: 0px !important;--}}
-{{--        left: unset;--}}
-{{--    }--}}
-{{--    {{'.slider-'.$id}} .swiper-button-prev{--}}
-{{--        right: 60px !important;--}}
-{{--        left: unset;--}}
-{{--    }--}}
-{{--    @endif--}}
+    {{--    {{'.slider-'.$id}} .swiper-navigation{--}}
+    {{--        position:relative;--}}
+    {{--        right: 0;--}}
+    {{--        bottom: 0px;--}}
+    {{--        /*height: 100%;*/--}}
+    {{--        /*display: flex;*/--}}
+    {{--        /*margin-top: 20px;*/--}}
+    {{--        /*gap: 10px;*/--}}
+    {{--        /*justify-content: right;*/--}}
+    {{--    }--}}
+    {{--    {{'.slider-'.$id}} .swiper-button-next{--}}
+    {{--        right: 0px !important;--}}
+    {{--        left: unset;--}}
+    {{--    }--}}
+    {{--    {{'.slider-'.$id}} .swiper-button-prev{--}}
+    {{--        right: 60px !important;--}}
+    {{--        left: unset;--}}
+    {{--    }--}}
+    {{--    @endif--}}
 
 
-{{--    {{'.slider-'.$id}} .swiper-button-next:after,--}}
-{{--    {{'.slider-'.$id}} .swiper-button-prev:after {--}}
-{{--        font-size: 20px;--}}
-{{--    }--}}
+    {{--    {{'.slider-'.$id}} .swiper-button-next:after,--}}
+    {{--    {{'.slider-'.$id}} .swiper-button-prev:after {--}}
+    {{--        font-size: 20px;--}}
+    {{--    }--}}
 </style>
 
 <div class="slider-container slider-{{$id}} relative">
@@ -68,31 +68,34 @@ lg:!right-[unset]'}}"></div>
             class="swiper-button-next after:!text-[16px] sm:after:!text-[20px] !p-4.5 !w-[36px] !h-[36px] xs:!w-[48px] xs:!h-[48px] {{$arrow == 'bottom-right' ? '!right-0 left-[unset]' : '!relative lg:!absolute lg:!right-0'}}"></div>
     </div>
 </div>
-
 <script>
     var swiper{{$id}} = new Swiper(".slider-{{$id}} .swiper", {
         spaceBetween: 30,
-        speed: 1500,
         slidesPerView: {{$items != null && $items_mobile != null ? $items_mobile : $items}},
+        @if($autoplay == "true")
+        speed: 1500,
         centeredSlides: {{$centered}},
         loop: {{$infinity}},
         autoplay: {
             delay: 4500,
             disableOnInteraction: false,
         },
+        @endif
         navigation: {
             nextEl: ".swiper-button-next",
             prevEl: ".swiper-button-prev",
         },
         @if($items != null && $items_mobile != null)
-            breakpoints: {
-                '600' : {
-                    slidesPerView: 2
-                }, '1024' : {
-                    slidesPerView: {{$items}}
-                }
+        breakpoints: {
+            '600': {
+                slidesPerView: 2
+            }, '1024': {
+                slidesPerView: {{$items}}
+            }
         },
         @endif
-
     });
+    @if($autoplay == 'false')
+swiper{{$id}}.running = false;
+    @endif
 </script>

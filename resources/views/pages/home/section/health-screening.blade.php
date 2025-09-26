@@ -3,7 +3,7 @@
         <x-typography.subheading location="section">Your Health, Your Priority</x-typography.subheading>
         <x-typography.heading>Discover Our Health Screening Package</x-typography.heading>
     </div>
-    <x-slider id="screeningSlider" class="mb-12" arrow="bottom-right" items="4" mobile="1" infinity="true" centered="true">
+    <x-slider autoplay="false" id="screeningSlider" class="mb-12" arrow="bottom-right" items="4" mobile="1" infinity="true" centered="true">
         <x-slider.slider-item>
             <x-grid.basic
                 image="{{asset('asset/ScreeningPackage/cover-1.jpg')}}"
