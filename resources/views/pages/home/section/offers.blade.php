@@ -58,6 +58,6 @@
             />
         </x-slider.slider-item>
     </x-slider>
-    <x-button.link href="#" class="-mt-2.5">Discovers More Offers</x-button.link>
+    <x-button.link href="{{route('offers')}}" class="-mt-2.5">Discovers More Offers</x-button.link>
 
 </div>

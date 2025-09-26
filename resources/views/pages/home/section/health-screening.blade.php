@@ -78,6 +78,6 @@
             />
         </x-slider.slider-item>
     </x-slider>
-    <x-button.link href="#" class="-mt-2.5">More Health Screening Package</x-button.link>
+    <x-button.link href="{{route('screening')}}" class="-mt-2.5">More Health Screening Package</x-button.link>
 
 </div>

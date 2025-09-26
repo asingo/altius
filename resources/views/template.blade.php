@@ -105,7 +105,7 @@
                     x-transition
                     class="absolute right-0 mt-2 w-[100px] bg-white rounded-lg shadow-lg z-50"
                 >
-                    <ul class="py-2">
+                    <ul class="py-2 menu-list">
                         <li>
                             <a href="#"
                                @click.prevent="selected = 'EN'; open = false"
@@ -145,33 +145,33 @@
                 >
                     <ul class="menu-list flex flex-col gap-5 mx-6 mt-4 pt-4 border-t">
                         <li>
-                            <a href="{{route('about')}}" class="relative group">
-                                <span :class="atTop && 'hover:!text-primary' ">About Us</span>
-                                <span class="menu-interaction" :class="atTop && '!bg-primary' "></span>
+                            <a href="{{route('about')}}" class="relative group w-full">
+                                <span :class="[atTop && 'hover:!text-primary', slug == 'about' ? '!text-primary' : '']">About Us</span>
+                                <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'about' ? '!bg-primary !scale-x-100' :'']"></span>
                             </a>
                         </li>
                         <li>
                             <a href="{{route('location')}}" class="relative group">
-                                <span :class="atTop && 'hover:!text-primary' ">Location</span>
-                                <span class="menu-interaction" :class="atTop && '!bg-primary' "></span>
+                                <span :class="[atTop && 'hover:!text-primary', slug == 'location' ? '!text-primary' : '']">Location</span>
+                                <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'location' ? '!bg-primary !scale-x-100' :'']"></span>
                             </a>
                         </li>
                         <li>
                             <a href="{{route('doctor')}}" class="relative group">
-                                <span :class="atTop && 'hover:!text-primary' ">Medical Professionals</span>
-                                <span class="menu-interaction" :class="atTop && '!bg-primary' "></span>
+                                <span :class="[atTop && 'hover:!text-primary', slug == 'medical-professional' ? '!text-primary' : '']">Medical Professionals</span>
+                                <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'medical-professional' ? '!bg-primary !scale-x-100' :'']"></span>
                             </a>
                         </li>
                         <li>
                             <a href="{{route('screening')}}" class="relative group">
-                                <span :class="atTop && 'hover:!text-primary' ">Health Screening</span>
-                                <span class="menu-interaction" :class="atTop && '!bg-primary' "></span>
+                                <span :class="[atTop && 'hover:!text-primary', slug == 'health-screening' ? '!text-primary' : '']">Health Screening</span>
+                                <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'health-screening' ? '!bg-primary !scale-x-100' :'']"></span>
                             </a>
                         </li>
                         <li>
                             <a href="{{route('contact')}}" class="relative group">
-                                <span :class="atTop && 'hover:!text-primary' ">Contact Us</span>
-                                <span class="menu-interaction" :class="atTop && '!bg-primary' "></span>
+                                <span :class="[atTop && 'hover:!text-primary', slug == 'contact-us' ? '!text-primary' : '']">Contact Us</span>
+                                <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'contact-us' ? '!bg-primary !scale-x-100' :'']"></span>
                             </a>
                         </li>
                         <li>

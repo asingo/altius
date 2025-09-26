@@ -10,7 +10,7 @@
         <div class="flex flex-col-reverse md:grid md:grid-cols-5 mt-10 gap-12 md:gap-24">
             <div class="col-span-3 border-b-2 pb-12 border-slate-300">
                 <div class="flex gap-2.5 items-center mb-6">
-                    <x-button.link class="!bg-texthead rounded-xl">Overview</x-button.link>
+                    <x-button.link href="#" class="!bg-texthead rounded-xl">Overview</x-button.link>
                     <x-button.link href="#pub" class="!bg-shade rounded-xl !text-primary">Publication</x-button.link>
                 </div>
                 @livewire('frontend.doctor.detail.location-select', ['data' => $data['location']])
