@@ -25,7 +25,7 @@ class SpecialityDoctor extends Component implements HasForms
         'Thoracic and Cardiovascular Surgery'
     ];
 
-    public $speciality;
+    public $speciality = 'All';
 
     public function specialityChanged()
     {

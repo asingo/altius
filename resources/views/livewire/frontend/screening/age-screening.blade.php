@@ -10,7 +10,7 @@
                     class="flex items-center justify-between gap-2 cursor-pointer border-b-[1.5px] py-2 border-slate-300 w-full"
                 >
     <span class="text-lg flex-wrap">
-        {{ $d['name'] }}: <small>{{ $d['meta'] }}</small>
+        {{ ucwords($d['name']) }}{{$d['meta'] == '' ? '' : ':'}} <small>{{ $d['meta'] }}</small>
     </span>
                     <input
                         type="radio"

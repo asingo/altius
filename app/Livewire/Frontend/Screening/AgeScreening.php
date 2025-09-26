@@ -7,7 +7,7 @@ use Livewire\Component;
 class AgeScreening extends Component
 {
     public $data;
-    public $age;
+    public $age = 'all';
 
     public function ageChanged()
     {
@@ -17,6 +17,10 @@ class AgeScreening extends Component
     public function mount()
     {
         $this->data = [
+            [
+              'name' => 'all',
+              'meta' => ''
+            ],
             [
                 'name' => 'Children',
                 'meta' => '<10 yo'

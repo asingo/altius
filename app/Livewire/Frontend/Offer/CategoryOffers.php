@@ -7,7 +7,7 @@ use Livewire\Component;
 class CategoryOffers extends Component
 {
     public $data;
-    public $category;
+    public $category = 'All';
 
     public function categoryChanged()
     {
@@ -17,6 +17,7 @@ class CategoryOffers extends Component
     public function mount()
     {
         $this->data = [
+            'All',
             'Promo',
             'Event',
             'Classes'

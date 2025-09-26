@@ -6,7 +6,11 @@ use Livewire\Component;
 
 class CategoryScreening extends Component
 {
-    public $schema =  [
+    public $schema = [
+        [
+            "name" => "all",
+            'icon' => ""
+        ],
         [
             "name" => "Vaccine",
             "icon" => "asset/HealthScreening/Icon/Health/Vaccine.svg"
@@ -26,7 +30,9 @@ class CategoryScreening extends Component
     ];
 
     public $selected;
-    public function mount(){
+
+    public function mount()
+    {
         $this->selected = $this->schema[0];
         $this->dispatch('handleCategoryFilter', $this->selected);
     }

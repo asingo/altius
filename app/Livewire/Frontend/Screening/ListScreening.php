@@ -39,7 +39,7 @@ class ListScreening extends Component
 
     public function handleCategoryFilter($data)
     {
-        $this->category = $data;
+        $this->category = $data['name'];
         $this->applyFilter();
         $this->page = 1;
     }
@@ -63,7 +63,7 @@ class ListScreening extends Component
     {
 
         $this->filteredData = $this->data->filter(function ($screening) {
-            $matchesCategory = $this->category === null || $this->category == 'all' || strtolower($this->category['name']) === strtolower($screening['category']);
+            $matchesCategory =  $this->category === 'all' || strtolower($this->category['name']) === strtolower($screening['category']);
             $matchesLocation =  $this->location === 'all' || collect($screening['location'])->contains(function ($location) {
                 return str_contains(strtolower($location), strtolower($this->location));
                 });

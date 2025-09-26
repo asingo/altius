@@ -7,7 +7,7 @@ use Livewire\Component;
 class GenderScreening extends Component
 {
     public $data;
-    public $gender;
+    public $gender = 'all';
 
     public function genderChanged()
     {
@@ -17,6 +17,7 @@ class GenderScreening extends Component
     public function mount()
     {
         $this->data = [
+            'all',
             'Male',
             'Female'
         ];

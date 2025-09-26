@@ -7,7 +7,7 @@ use Livewire\Component;
 class LocationDoctor extends Component
 {
     public $data;
-    public $location;
+    public $location = 'all';
 
     public function locationChanged()
     {
@@ -17,6 +17,7 @@ class LocationDoctor extends Component
     public function mount()
     {
         $this->data = [
+            'all',
             'Altius Hospitals Harapan Indah',
             'Altius Hospitals Puri Indah'
         ];

@@ -7,11 +7,12 @@ use Livewire\Component;
 class TypeCareer extends Component
 {
     public $data = [
+        'All',
         'Medical',
         'Non Medical'
     ];
 
-    public $type;
+    public $type = 'All';
 
     public function typeChanged(){
         $this->dispatch('handleTypeFilter', $this->type);

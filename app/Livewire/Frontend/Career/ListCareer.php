@@ -12,7 +12,7 @@ class ListCareer extends Component
     public $perPage = 5;
     public $search = '';
     public $department = 'All Department';
-    public $type = '';
+    public $type = 'All';
     protected $listeners = [
         'handleTypeFilter' => 'handleTypeFilter',
         'handleDepartmentFilter' => 'handleDepartmentFilter',
@@ -59,7 +59,7 @@ class ListCareer extends Component
         $this->filteredData = $this->data->filter(function ($career) {
             $matchesSearch = $this->search === '' ||
                 str_contains(strtolower($career['title']), strtolower($this->search));
-            $matchesType = $this->type === ''
+            $matchesType = $this->type === 'All'
                 || strtolower($career['type']) == strtolower($this->type);
             $matchesDepartment = $this->department === 'All Department' || strtolower($career['departement']) == strtolower($this->department);
             return $matchesSearch && $matchesType && $matchesDepartment;

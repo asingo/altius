@@ -25,7 +25,7 @@ class DateDoctor extends Component implements HasForms
         'Sunday',
     ];
 
-    public $date;
+    public $date = 'All';
 
     public function dateChanged(){
         $this->dispatch('handleDateFilter', $this->date);

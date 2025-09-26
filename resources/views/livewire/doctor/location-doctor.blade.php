@@ -10,8 +10,9 @@
                     class="flex items-center justify-between cursor-pointer border-b-[1.5px] py-2 rounded"
                     @click="location = '{{$d}}'" wire:click="locationChanged"
                 >
-                    <label for="{{Str::slug($d)}}"  class="text-lg">{{$d}}</label>
-                    <input type="radio" name="location" id="{{Str::slug($d)}}" value="{{$d}}" x-model="location" class="mr-2">
+                    <label for="{{Str::slug($d)}}" class="text-lg">{{ucwords($d)}}</label>
+                    <input type="radio" name="location" id="{{Str::slug($d)}}" value="{{$d}}" x-model="location"
+                           class="mr-2">
                 </div>
             @endforeach
         </div>

@@ -10,7 +10,7 @@
                     class="flex items-center justify-between gap-2 cursor-pointer border-b-[1.5px] py-2 border-slate-300"
                     @click="gender = '{{$d}}'" wire:click="genderChanged"
                 >
-                    <label for="{{Str::slug($d)}}"  class="text-lg flex-wrap">{{$d}}</label>
+                    <label for="{{Str::slug($d)}}"  class="text-lg flex-wrap">{{ucwords($d)}}</label>
                     <input type="radio" name="gender" id="{{Str::slug($d)}}" value="{{$d}}" x-model="gender" class="mr-2">
                 </div>
             @endforeach

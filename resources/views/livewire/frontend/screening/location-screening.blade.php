@@ -9,7 +9,7 @@
                 <label
                     class="flex items-center justify-between gap-2 cursor-pointer border-b-[1.5px] py-2 border-slate-300 w-full"
                 >
-                    <span class="text-lg flex-1">{{ $d }}</span>
+                    <span class="text-lg flex-1">{{ ucwords($d) }}</span>
                     <input
                         type="radio"
                         name="location"
