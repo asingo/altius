@@ -13,15 +13,23 @@
     </div>
     <div class="max-w-screen-2xl mx-auto py-16 px-6 2xl:px-0">
         <x-breadcrumb parent="Home" child="Medical Professionals"/>
-            <div class="mt-10">
-                <div class="grid lg:grid-cols-3 lg:gap-24 gap-10">
+            <div class="md:mt-10">
+                <div  x-data="{ open: false }" class="grid lg:grid-cols-3 lg:gap-24 gap-10">
                     <div
-                        x-data="{ open: false }"
                         class="lg:col-span-1 space-y-6"
                     >
+                        <div class="space-y-6 hidden lg:block">
+                            @livewire('frontend.doctor.location-doctor')
+                            @livewire('frontend.doctor.speciality-doctor')
+                            @livewire('frontend.doctor.date-doctor')
+                        </div>
+                    </div>
+
+                    <div class="lg:col-span-2">
+                        @livewire('frontend.doctor.search-doctor')
                         <!-- Header -->
                         <div
-                            class="flex justify-between items-center lg:hidden"
+                            class="flex justify-between items-center lg:hidden mt-6"
                             @click="open = !open"
                         >
                             <span class="text-2xl font-semibold">Filter Doctor</span>
@@ -45,17 +53,6 @@
                             @livewire('frontend.doctor.speciality-doctor')
                             @livewire('frontend.doctor.date-doctor')
                         </div>
-
-                        <!-- Always visible on desktop -->
-                        <div class="space-y-6 hidden lg:block">
-                            @livewire('frontend.doctor.location-doctor')
-                            @livewire('frontend.doctor.speciality-doctor')
-                            @livewire('frontend.doctor.date-doctor')
-                        </div>
-                    </div>
-
-                    <div class="lg:col-span-2">
-                        @livewire('frontend.doctor.search-doctor')
                         @livewire('frontend.doctor.list-doctors', ['data' => $data])
                     </div>
                 </div>

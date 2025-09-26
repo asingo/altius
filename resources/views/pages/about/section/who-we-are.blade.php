@@ -24,7 +24,7 @@
 
 
     </div>
-    <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center py-24">
+    <div class="flex flex-col-reverse md:grid md:grid-cols-2 gap-10 items-center py-24" >
         <div>
             <x-typography.subheading location="page">Who we are</x-typography.subheading>
             <h3 class="font-heading text-3xl mt-3">The Genesis of

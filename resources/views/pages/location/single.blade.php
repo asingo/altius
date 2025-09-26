@@ -10,7 +10,7 @@
         <div class="mt-8">
             <img alt="image" class="rounded-2xl w-full object-cover" src="{{asset($view['image'])}}">
             <div class="grid md:grid-cols-2 mt-12 mb-24">
-                <div class="space-y-6">
+                <div class="space-y-4 mb-6 md:space-y-6">
                     <h3 class="font-heading text-2xl md:text-3xl">When Your Health Is Our Priority</h3>
                     <p>{{$view['meta']}}</p>
                     <x-button.link href="#">Learn More About Us</x-button.link>

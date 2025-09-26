@@ -1,12 +1,12 @@
-<div class="grid grid-cols-1 gap-6 mt-10">
+<div class="grid grid-cols-1 gap-6 mt-6 md:mt-10">
 
     @foreach($doctors as $d)
-        <div class="shadow-grid p-5 flex gap-5 rounded">
+        <div class="shadow-grid p-5 flex md:flex-row flex-col gap-5 rounded">
             <div class="flex md:w-1/6 w-1/2 ">
                 <img src="{{asset($d['profile'] ?? 'asset/doctor/image-doctor.jpg')}}" class="w-full object-cover"
                      alt="doctor">
             </div>
-            <div class="flex flex-col gap-6 w-1/2 md:w-5/6">
+            <div class="flex flex-col gap-2 md:gap-6 w-full md:w-5/6">
                 <a class="text-primary text-xl font-semibold underline hover:text-accent"
                    href="medical-professional/{{$d['slug']}}">{{$d['name']}}</a>
                 <span class="font-semibold text-xl">{{$d['speciality']}}</span>
