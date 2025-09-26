@@ -6,13 +6,19 @@
             class="space-y-2"
         >
             @foreach($data as $d)
-                <div
-                    class="flex items-center justify-between gap-2 cursor-pointer border-b-[1.5px] py-2 border-slate-300"
-                    @click="location = '{{$d}}'" wire:click="locationChanged"
+                <label
+                    class="flex items-center justify-between gap-2 cursor-pointer border-b-[1.5px] py-2 border-slate-300 w-full"
                 >
-                    <label for="{{Str::slug($d)}}"  class="text-lg flex-wrap">{{$d}}</label>
-                    <input type="radio" name="location" id="{{Str::slug($d)}}" value="{{$d}}" x-model="location" class="mr-2">
-                </div>
+                    <span class="text-lg flex-1">{{ $d }}</span>
+                    <input
+                        type="radio"
+                        name="location"
+                        value="{{ $d }}"
+                        x-model="location"
+                        @change="$wire.locationChanged()"
+                        class="mr-2 cursor-pointer"
+                    >
+                </label>
             @endforeach
         </div>
 
