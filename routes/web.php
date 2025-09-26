@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\OffersController;
 use App\Http\Controllers\Pages\AboutController;
 use App\Http\Controllers\Pages\CareerController;
 use App\Http\Controllers\Pages\ContactController;
@@ -35,4 +36,7 @@ Route::get('/contact-us', [ContactController::class, 'contact'])->name('contact'
 Route::controller(NewsController::class)->group(function () {
     Route::get('/news', 'news')->name('news');
     Route::get('/news/{slug}', 'newsDetail')->name('newsDetail');
+});
+Route::controller(OffersController::class)->group(function () {
+   Route::get('/offers', 'offers')->name('offers');
 });
