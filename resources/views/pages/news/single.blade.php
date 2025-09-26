@@ -16,7 +16,7 @@
         <div class="mt-8">
             <img src="{{asset($data['image'])}}" alt="" class="w-full h-auto rounded-xl">
         </div>
-        <div class="mt-8 post-content">
+        <div class="mt-8 post-content max-w-screen-lg mx-auto">
             {!! $data['content'] !!}
         </div>
 
