@@ -54,6 +54,18 @@ p, ol, ul:not(.menu-list) li{
     @apply text-lg font-normal;
 }
 
+.post-content h3{
+    @apply text-2xl font-medium mb-6;
+}
+
+.post-content p{
+    @apply mb-4;
+}
+
+.post-content img{
+    @apply rounded-xl;
+}
+
 .careerForm .filepond--drop-label label{
     @apply text-lg text-slate-400;
 }

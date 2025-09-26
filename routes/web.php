@@ -7,6 +7,7 @@ use App\Http\Controllers\Pages\DoctorController;
 use App\Http\Controllers\Pages\HomeController;
 
 use App\Http\Controllers\Pages\LocationController;
+use App\Http\Controllers\Pages\NewsController;
 use App\Http\Controllers\Pages\ScreeningController;
 use Illuminate\Support\Facades\Route;
 
@@ -31,3 +32,7 @@ Route::controller(ScreeningController::class)->group(function () {
     Route::get('/health-screening', 'screening')->name('screening');
 });
 Route::get('/contact-us', [ContactController::class, 'contact'])->name('contact');
+Route::controller(NewsController::class)->group(function () {
+    Route::get('/news', 'news')->name('news');
+    Route::get('/news/{slug}', 'newsDetail')->name('newsDetail');
+});

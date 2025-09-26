@@ -293,7 +293,7 @@
                                 </a>
                             </li>
                             <li>
-                                <a href="{{route('home')}}" class="relative group">
+                                <a href="{{route('news')}}" class="relative group">
                                     <span>News</span>
                                     <span class="menu-interaction"></span>
                                 </a>
