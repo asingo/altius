@@ -82,8 +82,8 @@ lg:!right-[unset]'}}"></div>
         },
         @endif
         navigation: {
-            nextEl: ".swiper-button-next",
-            prevEl: ".swiper-button-prev",
+            nextEl: ".slider-{{$id}} .swiper-button-next",
+            prevEl: ".slider-{{$id}} .swiper-button-prev",
         },
         @if($items != null && $items_mobile != null)
         breakpoints: {
