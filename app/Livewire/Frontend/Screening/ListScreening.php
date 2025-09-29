@@ -63,7 +63,7 @@ class ListScreening extends Component
     {
 
         $this->filteredData = $this->data->filter(function ($screening) {
-            $matchesCategory =  $this->category === 'all' || strtolower($this->category['name']) === strtolower($screening['category']);
+            $matchesCategory =  $this->category === 'all' || strtolower($this->category) === strtolower($screening['category']);
             $matchesLocation =  $this->location === 'all' || collect($screening['location'])->contains(function ($location) {
                 return str_contains(strtolower($location), strtolower($this->location));
                 });

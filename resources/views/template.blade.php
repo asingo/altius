@@ -325,5 +325,15 @@
         </div>
     </div>
 </footer>
+<div class="fixed bottom-0 right-0 w-40 h-40 overflow-hidden">
+    <div class="absolute bottom-0 rotate-180 right-0 w-full z-[99] h-full border-b-[160px] border-l-[160px] border-transparent border-l-primary">
+    <span class="text-white text-xl top-10 rotate-[135deg] absolute z-99 right-14 font-semibold">
+      Feedback
+    </span>
+    </div>
+</div>
+<div>
+
+</div>
 </body>
 </html>

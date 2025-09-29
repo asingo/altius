@@ -9,7 +9,7 @@ class CategoryScreening extends Component
     public $schema = [
         [
             "name" => "all",
-            'icon' => ""
+            'icon' => "asset/HealthScreening/Icon/Health/service-all.svg"
         ],
         [
             "name" => "Vaccine",
