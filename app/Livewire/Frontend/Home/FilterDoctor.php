@@ -14,6 +14,7 @@ class FilterDoctor extends Component implements HasForms
     use InteractsWithForms;
 
     public ?array $data = [];
+
     public function mount(): void
     {
         $this->form->fill();
@@ -31,9 +32,18 @@ class FilterDoctor extends Component implements HasForms
             Select::make('speciality_id')->label('Speciality')->placeholder('Select Speciality')->options([
                 1 => 'Urology',
             ])->native(false)->searchable()->prefixIcon('heroicon-o-magnifying-glass')->preload(),
-            DatePicker::make('date')->label('Date')->placeholder('Pick a Date')->format('Y-m-d')
-                ->native(false)
-                ->prefixIcon('heroicon-o-calendar'),
+            Select::make('day')->label('Preffered Day')->options([
+                1 => 'Monday',
+                2 => 'Tuesday',
+                3 => 'Wednesday',
+                4 => 'Thursday',
+                5 => 'Friday',
+                6 => 'Saturday',
+                7 => 'Sunday',
+            ])->native(false)->prefixIcon('heroicon-o-calendar'),
+//            DatePicker::make('date')->label('Date')->placeholder('Pick a Date')->format('Y-m-d')
+//                ->native(false)
+//                ->prefixIcon('heroicon-o-calendar'),
         ])->statePath('data')->columns(4);
     }
 
