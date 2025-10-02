@@ -93,3 +93,7 @@ ul:not(.menu-list){
 .careerForm .fi-fo-field-wrp-label span{
     @apply text-xl font-normal text-textsub;
 }
+
+.doctor-filter div.choices__list.choices__list--dropdown{
+    @apply !hidden;
+}
