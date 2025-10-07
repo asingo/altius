@@ -1,0 +1,10 @@
+INSERT INTO specialities (id, location_id, title, created_at, updated_at) VALUES (1, null, 'Pediatric', '2025-10-06 07:41:28', '2025-10-06 07:41:28');
+INSERT INTO specialities (id, location_id, title, created_at, updated_at) VALUES (2, null, 'Cardiology', '2025-10-06 07:41:36', '2025-10-06 07:41:36');
+INSERT INTO specialities (id, location_id, title, created_at, updated_at) VALUES (3, null, 'Orthopaedic', '2025-10-06 07:42:52', '2025-10-06 07:42:52');
+INSERT INTO specialities (id, location_id, title, created_at, updated_at) VALUES (4, null, 'General Surgery', '2025-10-06 07:48:33', '2025-10-06 07:48:33');
+INSERT INTO specialities (id, location_id, title, created_at, updated_at) VALUES (5, null, 'Obstetrics & Gynaecology (Obgyn)', '2025-10-06 07:49:02', '2025-10-06 07:49:02');
+INSERT INTO specialities (id, location_id, title, created_at, updated_at) VALUES (6, null, 'ENT Specialist', '2025-10-06 07:49:39', '2025-10-06 07:49:39');
+INSERT INTO specialities (id, location_id, title, created_at, updated_at) VALUES (7, null, 'Urology', '2025-10-06 07:50:10', '2025-10-06 07:50:10');
+INSERT INTO specialities (id, location_id, title, created_at, updated_at) VALUES (8, null, 'Anesthesiologist', '2025-10-06 07:50:19', '2025-10-06 07:50:19');
+INSERT INTO specialities (id, location_id, title, created_at, updated_at) VALUES (9, null, 'Pulmonologist', '2025-10-06 07:50:28', '2025-10-06 07:50:28');
+INSERT INTO specialities (id, location_id, title, created_at, updated_at) VALUES (10, null, 'Internist', '2025-10-06 07:52:37', '2025-10-06 07:52:37');

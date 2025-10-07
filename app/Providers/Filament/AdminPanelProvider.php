@@ -10,6 +10,7 @@ use Filament\Http\Middleware\DispatchServingFilamentEvent;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
+use Filament\SpatieLaravelTranslatablePlugin;
 use Filament\Support\Colors\Color;
 use Filament\Widgets;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
@@ -66,8 +67,8 @@ class AdminPanelProvider extends PanelProvider
                     ->navigationSort(3)
                     ->navigationCountBadge()
                     ->registerNavigation(true)
-                    ->defaultListView('grid' || 'list')
-//                    ->resource(\App\Filament\Resources\MediaResource::class)
+                    ->defaultListView('grid' || 'list'),
+                SpatieLaravelTranslatablePlugin::make()->defaultLocales(['en', 'id'])
             ]);
     }
 }
