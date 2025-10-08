@@ -39,4 +39,8 @@ class Location extends Model
     {
         return $this->hasMany(LocationHasCoe::class);
     }
+
+    public function service(): HasMany{
+        return $this->hasMany(Service::class);
+    }
 }

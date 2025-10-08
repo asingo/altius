@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
+use App\Models\Location;
 use Illuminate\Http\Request;
 use stdClass;
 use function Laravel\Prompts\error;
@@ -164,17 +165,13 @@ We have three main clinical departments: Obstetrics and Gynecology + Pediatrics,
         $isHeaderOverlay = false;
         $title = 'Our Locations';
         $slug = 'location';
-        $data = json_decode(json_encode($this->schema()));
+        $data = Location::all();
         return view('pages.location.index', compact('isHeaderOverlay', 'title', 'slug', 'data'));
     }
 
     public function locationDetail($slug)
     {
-        $data = collect($this->schema());
-        if (!in_array($slug, $data->pluck('slug')->toArray())) {
-            abort(404);
-        }
-        $view = $data->firstWhere('slug', $slug);
+        $view = Location::with('hasService')->where('slug->en', $slug)->first();
         $isHeaderOverlay = false;
         $slug = 'location';
         $title = $view['title'];
