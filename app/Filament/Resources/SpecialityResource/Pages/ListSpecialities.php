@@ -5,11 +5,11 @@ namespace App\Filament\Resources\SpecialityResource\Pages;
 use App\Filament\Resources\SpecialityResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
-use Filament\Resources\Pages\ViewRecord\Concerns\Translatable;
+
 
 class ListSpecialities extends ListRecords
 {
-    use Translatable;
+    use ListRecords\Concerns\Translatable;
     protected static string $resource = SpecialityResource::class;
 
     protected function getHeaderActions(): array

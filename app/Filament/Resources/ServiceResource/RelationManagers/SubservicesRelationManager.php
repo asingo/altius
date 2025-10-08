@@ -2,10 +2,14 @@
 
 namespace App\Filament\Resources\ServiceResource\RelationManagers;
 
+use App\Models\Location;
+use App\Models\LocationHasSubservice;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Filament\Forms;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
+use Filament\Notifications\Notification;
+use Filament\Resources\RelationManagers\Concerns\Translatable;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
@@ -15,7 +19,9 @@ use Illuminate\Support\Str;
 
 class SubservicesRelationManager extends RelationManager
 {
+    use Translatable;
     protected static string $relationship = 'subservices';
+
 
     public function form(Form $form): Form
     {
@@ -29,6 +35,10 @@ class SubservicesRelationManager extends RelationManager
                             })
                             ->live(onBlur: true)
                             ->required(),
+                        Forms\Components\Select::make('location')->label('Location')
+                            ->options(fn() => Location::all()->pluck('title', 'id'))
+                            ->multiple()
+                        ->native(false),
                         Forms\Components\RichEditor::make('content')->label('Content'),
                     ])->columnSpan(3),
                     Forms\Components\Grid::make(1)->schema([
@@ -55,10 +65,37 @@ class SubservicesRelationManager extends RelationManager
                 //
             ])
             ->headerActions([
+                Tables\Actions\LocaleSwitcher::make(),
                 Tables\Actions\CreateAction::make(),
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\EditAction::make()
+                    ->fillForm(function($record){
+                        return [
+                            'title' => $record->title,
+                            'slug' => $record->slug,
+                            'location' => $record->hasLocation()->get()->pluck('location_id'),
+                            'content' => $record->content,
+                            'image' => $record->image,
+                        ];
+
+                    })
+                    ->action(function ($record, $data) {
+                        $location = $data['location'];
+                        unset($data['location']);
+                        $record->update($data);
+
+                        LocationHasSubservice::where('subservice_id', $record->id)->delete();
+                        foreach ($location as $l) {
+                            LocationHasSubservice::create([
+                                'location_id' => $l,
+                                'subservice_id' => $record->id,
+                                'service_id' => $record->service_id,
+                            ]);
+                        }
+
+                        return Notification::make()->success()->title('Berhasil')->body('Data berhasil diubah')->send();
+                    }),
                 Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([

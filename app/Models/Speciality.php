@@ -12,7 +12,15 @@ class Speciality extends Model
 
     public array $translatable = [
         'title',
+        'image',
+        'slug',
+        'content'
     ];
+
+    protected $casts = [
+        'location' => 'array'
+    ];
+
     public function hasLocation(): HasMany
     {
         return $this->hasMany(LocationHasSpeciality::class);

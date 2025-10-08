@@ -34,4 +34,9 @@ class Location extends Model
     {
         return $this->hasMany(LocationHasSpeciality::class);
     }
+
+    public function hasCoe(): HasMany
+    {
+        return $this->hasMany(LocationHasCoe::class);
+    }
 }

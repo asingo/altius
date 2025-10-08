@@ -31,18 +31,18 @@ class CreateLocation extends CreateRecord
     {
         $data['is_published'] = true;
         $data['index'] = Location::all()->count() + 1;
-        $this->speciality = $data['about_speciality'] ?? [];
-        unset($data['about_speciality']);
+//        $this->speciality = $data['about_speciality'] ?? [];
+//        unset($data['about_speciality']);
         return $data;
     }
 
-    protected function afterCreate()
-    {
-        foreach ($this->speciality as $speciality) {
-            LocationHasSpeciality::create([
-                'location_id' => $this->record->id,
-                'speciality_id' => $speciality,
-            ]);
-        }
-    }
+//    protected function afterCreate()
+//    {
+//        foreach ($this->speciality as $speciality) {
+//            LocationHasSpeciality::create([
+//                'location_id' => $this->record->id,
+//                'speciality_id' => $speciality,
+//            ]);
+//        }
+//    }
 }

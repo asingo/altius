@@ -22,27 +22,27 @@ class EditLocation extends EditRecord
         ];
     }
 
-    protected function mutateFormDataBeforeFill(array $data): array
-    {
-        $data['about_speciality'] = $this->record->hasSpeciality->map(fn ($speciality) => $speciality->speciality_id)->toArray();
-       return $data;
-    }
+//    protected function mutateFormDataBeforeFill(array $data): array
+//    {
+//        $data['about_speciality'] = $this->record->hasSpeciality->map(fn ($speciality) => $speciality->speciality_id)->toArray();
+//       return $data;
+//    }
+//
+//    protected function mutateFormDataBeforeSave(array $data): array
+//    {
+//        $this->speciality = $data['about_speciality'] ?? [];
+//        unset($data['about_speciality']);
+//        return $data;
+//    }
 
-    protected function mutateFormDataBeforeSave(array $data): array
-    {
-        $this->speciality = $data['about_speciality'] ?? [];
-        unset($data['about_speciality']);
-        return $data;
-    }
-
-    protected function afterSave()
-    {
-        LocationHasSpeciality::where('location_id', $this->record->id)->delete();
-        foreach ($this->speciality as $speciality) {
-            LocationHasSpeciality::create([
-                'location_id' => $this->record->id,
-                'speciality_id' => $speciality,
-            ]);
-        }
-    }
+//    protected function afterSave()
+//    {
+//        LocationHasSpeciality::where('location_id', $this->record->id)->delete();
+//        foreach ($this->speciality as $speciality) {
+//            LocationHasSpeciality::create([
+//                'location_id' => $this->record->id,
+//                'speciality_id' => $speciality,
+//            ]);
+//        }
+//    }
 }

@@ -4,10 +4,12 @@ namespace App\Filament\Resources;
 
 use App\Filament\Resources\SpecialityResource\Pages;
 use App\Filament\Resources\SpecialityResource\RelationManagers;
+use App\Models\Location;
 use App\Models\Speciality;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Faker\Provider\Text;
 use Filament\Forms;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -40,7 +42,11 @@ class SpecialityResource extends Resource
                             })
                             ->live(onBlur: true)
                             ->required(),
-                        Forms\Components\Select::make('location_id')->label('Location'),
+                        Select::make('location')
+                            ->options(fn() => Location::all()->pluck('title', 'id'))
+                            ->native(false)
+                            ->multiple()
+                            ->label('Location'),
                         Forms\Components\RichEditor::make('content')->label('Content'),
                     ])->columnSpan(3),
                     Forms\Components\Grid::make(1)->schema([

@@ -8,5 +8,18 @@ use Filament\Resources\Pages\CreateRecord;
 
 class CreateService extends CreateRecord
 {
+    use CreateRecord\Concerns\Translatable;
     protected static string $resource = ServiceResource::class;
+
+    protected function getRedirectUrl(): string
+    {
+        return route('filament.admin.resources.services.index');
+    }
+
+    public function getHeaderActions(): array
+    {
+        return [
+            Actions\LocaleSwitcher::make(),
+        ];
+    }
 }
