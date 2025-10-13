@@ -38,7 +38,7 @@
             <div class="flex gap-2 md:gap-6 mt-2 border-b border-slate-300 flex-wrap pb-8">
                 @foreach($data as $d)
                     <div @click="scrollTo('location{{$d['id']}}')" class="flex flex-shrink-0 items-center gap-2 text-primary hover:text-accent cursor-pointer">
-                        <span class="text-xl">{{$d['title']}}</span>
+                        <span class="text-xl">{{$d->title}}</span>
                         <x-heroicon-o-arrow-down class="w-5"/>
                     </div>
                 @endforeach
@@ -47,8 +47,8 @@
                 @foreach($data as $d)
                     <div id="location{{$d['id']}}">
                         <div class="flex flex-col md:w-5/12 gap-4">
-                            <h3 class="text-3xl font-bold">{{$d['title']}}</h3>
-                            <p>{{$d['address']}}</p>
+                            <h3 class="text-3xl font-bold">{{$d->title}}</h3>
+                            <p>{{$d->address}}</p>
                         </div>
                         <div class="grid grid-rows-3 items-center mt-6">
                             <div class="grid-cols-2 grid py-2 items-center border-textsub border-b-2">
@@ -64,7 +64,7 @@
                                     <span class="text-lg text-textsub">General Number</span>
                                 </div>
                                 <div>
-                                    <span class="text-lg text-textsub">{{$d['contact']['general']}}</span>
+                                    <span class="text-lg text-textsub">{{$d->general_number}}</span>
                                 </div>
                             </div>
                             <div class="grid-cols-2 grid border-slate-300 border-b  py-2 items-center">
@@ -72,7 +72,7 @@
                                     <span class="text-lg text-textsub">Customer Care</span>
                                 </div>
                                 <div>
-                                    <span class="text-lg text-textsub">{{$d['contact']['customer']}}</span>
+                                    <span class="text-lg text-textsub">{{$d->customer_care}}</span>
                                 </div>
                             </div>
 
