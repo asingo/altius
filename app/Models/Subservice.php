@@ -25,4 +25,10 @@ class Subservice extends Model
     public function service(): BelongsTo{
         return $this->belongsTo(Service::class);
     }
+
+//    public function location()
+//    {
+//        return $this->belongsToMany(Location::class, 'location_has_subservices')
+//            ->withPivot('service_id');
+//    }
 }

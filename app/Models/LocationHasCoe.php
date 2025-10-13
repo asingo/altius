@@ -14,6 +14,6 @@ class LocationHasCoe extends Model
 
     public function coe(): BelongsTo
     {
-        return $this->belongsTo(Coe::class);
+        return $this->belongsTo(Coe::class, 'coe_id');
     }
 }

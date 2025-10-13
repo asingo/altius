@@ -9,7 +9,6 @@
             </x-typography.heading>
         </div>
         <div class="flex flex-col gap-10 mt-8 md:mt-14">
-            @dump($data)
             @foreach($data as $v)
                 <div class="grid grid-cols-1 md:grid-cols-2 md:gap-10 gap-3">
                     <div>

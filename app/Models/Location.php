@@ -40,7 +40,17 @@ class Location extends Model
         return $this->hasMany(LocationHasCoe::class);
     }
 
-    public function service(): HasMany{
-        return $this->hasMany(Service::class);
+    public function service()
+    {
+        return $this->belongsToMany(Service::class, 'location_has_subservices')
+            ->withPivot('subservice_id');
     }
+
+    public function hasSubservice()
+    {
+        return $this->hasMany(LocationHasSubservice::class);
+    }
+//    public function service(): HasMany{
+//        return $this->hasMany(Service::class);
+//    }
 }

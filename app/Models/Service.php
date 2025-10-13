@@ -15,7 +15,20 @@ class Service extends Model
       'slug'
     ];
 
-    public function subservices():  HasMany{
+    public function subservice(){
+        return $this->belongsToMany(Subservice::class, 'location_has_subservices')
+            ->withPivot('location_id')
+            ->distinct();
+    }
+
+    public function subservices()
+    {
         return $this->hasMany(Subservice::class);
     }
+
+//    public function location()
+//    {
+//        return $this->belongsToMany(Location::class, 'location_has_subservices')
+//            ->withPivot('subservice_id');
+//    }
 }

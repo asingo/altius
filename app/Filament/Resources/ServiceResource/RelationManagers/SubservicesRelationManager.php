@@ -60,6 +60,7 @@ class SubservicesRelationManager extends RelationManager
             ->recordTitleAttribute('title')
             ->columns([
                 Tables\Columns\TextColumn::make('title'),
+                Tables\Columns\TextColumn::make('hasLocation.location.title')->label('Location')
             ])
             ->filters([
                 //
