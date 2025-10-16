@@ -16,6 +16,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use FilamentTiptapEditor\TiptapEditor;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
@@ -49,7 +50,7 @@ class CoeResource extends Resource
                             ->native(false)
                             ->multiple()
                             ->label('Location'),
-                        Forms\Components\RichEditor::make('content')->label('Content'),
+                        TiptapEditor::make('content')->label('Content'),
                     ])->columnSpan(3),
                     Forms\Components\Grid::make(1)->schema([
                         Forms\Components\Section::make('Page Details')

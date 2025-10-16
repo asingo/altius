@@ -16,6 +16,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use FilamentTiptapEditor\TiptapEditor;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
@@ -47,7 +48,7 @@ class LocationResource extends Resource
                             Forms\Components\Select::make('about_speciality')->label('Speciality')->options(
                                 fn() => Speciality::all()->pluck('title', 'id')->toArray()
                             )->searchable()->multiple()->native(false)->required(),
-                            Forms\Components\RichEditor::make('about_description')->required()->label('Description')
+                            TiptapEditor::make('about_description')->required()->label('Description')
                         ])->collapsible(),
                         Forms\Components\Section::make('Contact Us')->schema([
                             Textarea::make('address')->label('Address')->required()->columnSpanFull(),
@@ -93,6 +94,7 @@ class LocationResource extends Resource
             ])
             ->actions([
                 Tables\Actions\EditAction::make(),
+                Tables\Actions\DeleteAction::make(),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([

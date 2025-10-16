@@ -9,7 +9,7 @@
                     <div class="grid md:grid-cols-4 w-full">
                         <div class="text-textsub text-lg flex gap-1.5 items-center">
                             <x-heroicon-o-map-pin class="w-5 h-5"/>
-                            <span>{{$c['location']}}</span>
+                            <span>{{$c->location->title}}</span>
                         </div>
                         <div class="text-textsub text-lg flex gap-1.5 items-center">
                             <x-heroicon-o-clock class="w-5 h-5"/>

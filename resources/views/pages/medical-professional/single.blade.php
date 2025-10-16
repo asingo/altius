@@ -16,7 +16,7 @@
                 @livewire('frontend.doctor.detail.location-select', ['data' => $data['location']])
             </div>
             <div class="md:col-span-2 md:mr-24 md:border-b-2 md:border-slate-300 w-full">
-                <img src="{{asset($data['profile'])}}" alt="image" class="rounded-2xl w-full">
+                <img src="{{asset($data['profile'] ?? 'asset/doctor/image-doctor.jpg')}}" alt="image" class="rounded-2xl w-full">
             </div>
         </div>
         <div

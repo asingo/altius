@@ -14,6 +14,7 @@ use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
+use FilamentTiptapEditor\TiptapEditor;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\HtmlString;
@@ -52,7 +53,7 @@ class PagesResource extends Resource
                                      Forms\Components\Grid::make(1)->schema([
                                          TextInput::make('title'),
                                          TextInput::make('heading'),
-                                         Forms\Components\RichEditor::make('content'),
+                                         TiptapEditor::make('content'),
                                      ])
                                 ])
                             ])->statePath('about_us'),

@@ -55,7 +55,7 @@ return [
         'navigation_count_badge' => false,
         'resource' => \Awcodes\Curator\Resources\MediaResource::class,
     ],
-    'should_preserve_filenames' => false,
+    'should_preserve_filenames' => true,
     'should_register_navigation' => true,
     'should_check_exists' => true,
     'visibility' => 'public',

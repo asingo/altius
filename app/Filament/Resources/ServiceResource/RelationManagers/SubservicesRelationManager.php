@@ -13,6 +13,7 @@ use Filament\Resources\RelationManagers\Concerns\Translatable;
 use Filament\Resources\RelationManagers\RelationManager;
 use Filament\Tables;
 use Filament\Tables\Table;
+use FilamentTiptapEditor\TiptapEditor;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
@@ -39,7 +40,7 @@ class SubservicesRelationManager extends RelationManager
                             ->options(fn() => Location::all()->pluck('title', 'id'))
                             ->multiple()
                         ->native(false),
-                        Forms\Components\RichEditor::make('content')->label('Content'),
+                        TiptapEditor::make('content')->label('Content'),
                     ])->columnSpan(3),
                     Forms\Components\Grid::make(1)->schema([
                         Forms\Components\Section::make('Page Details')

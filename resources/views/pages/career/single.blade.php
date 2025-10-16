@@ -24,7 +24,7 @@
                 </div> <div>
                     <h3 class="text-2xl font-medium">Location</h3>
                     <div class="mt-4">
-                        <p>{{ $view['location']}}</p>
+                        <p>{{ $view->location->title}}</p>
                     </div>
                 </div>
             </div>

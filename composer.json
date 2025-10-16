@@ -8,6 +8,7 @@
     "require": {
         "php": "^8.2",
         "awcodes/filament-curator": "^3.7",
+        "awcodes/filament-tiptap-editor": "^3.0",
         "calebporzio/sushi": "^2.5",
         "filament/filament": "^3.3",
         "filament/spatie-laravel-translatable-plugin": "^3.2",
