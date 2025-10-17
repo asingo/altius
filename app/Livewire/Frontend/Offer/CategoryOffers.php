@@ -2,12 +2,14 @@
 
 namespace App\Livewire\Frontend\Offer;
 
+use App\Models\Offer;
+use App\Models\Offers\OffersCategory;
 use Livewire\Component;
 
 class CategoryOffers extends Component
 {
     public $data;
-    public $category = 'All';
+    public $category = 'all';
 
     public function categoryChanged()
     {
@@ -16,12 +18,10 @@ class CategoryOffers extends Component
 
     public function mount()
     {
+        $categories = OffersCategory::get()->pluck('title', 'id')->toArray();
         $this->data = [
-            'All',
-            'Promo',
-            'Event',
-            'Classes'
-        ];
+            'all'=> 'All',
+            ] + $categories;
     }
 
     public function render()

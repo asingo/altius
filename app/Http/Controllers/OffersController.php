@@ -2,13 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Offer;
 use Illuminate\Http\Request;
 
 class OffersController extends Controller
 {
     public function offers()
     {
-        $data = json_decode(file_get_contents(base_path('database/schema/offers-altius.json')), true);
+        $data = Offer::with(['category', 'hasLocation'])->get();
         $isHeaderOverlay = false;
         $title = 'Offers';
         $slug = 'offers';

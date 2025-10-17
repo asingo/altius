@@ -11,7 +11,7 @@ class ListOffers extends Component
     public $location = 'all';
     public $page = 1;
     public $perPage = 6;
-    public $category = 'All';
+    public $category = 'all';
 
     protected $listeners = [
         'handleCategoryFilter' => 'handleCategoryFilter',
@@ -34,8 +34,8 @@ class ListOffers extends Component
 
     public function applyFilter(){
         $this->filteredData = $this->data->filter(function($item) {
-           $matchesLocation = $this->location === 'all' || strtolower($item['location']) === strtolower($this->location);
-           $matchesCategory = $this->category === 'All' || strtolower($item['category']) === strtolower($this->category);
+           $matchesLocation = $this->location === 'all' || $item->hasLocation()->where('location_id', $this->location)->exists();
+           $matchesCategory = $this->category === 'all' || $item->offers_category_id == $this->category;
            return $matchesLocation && $matchesCategory;
         });
     }
