@@ -14,6 +14,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
+use FilamentTiptapEditor\TiptapEditor;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Psy\Util\Str;
@@ -46,7 +47,7 @@ class OfferResource extends Resource
                         Forms\Components\Select::make('offers_category_id')
                             ->relationship('category', 'title')
                             ->native(false)->label('Category'),
-                        Forms\Components\Textarea::make('content')->label('Content'),
+                       TiptapEditor::make('content')->label('Content'),
                     ])->columnSpan(3),
                     Forms\Components\Grid::make(1)->schema([
                         Forms\Components\Section::make('Page Details')

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Frontend\Doctor;
 
+use App\Models\Speciality;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
@@ -14,18 +15,15 @@ class SpecialityDoctor extends Component implements HasForms
 
     public $filterSpeciality;
 
-    public $schema = [
-        'All',
-        'Orthopedic',
-        'Surgery',
-        'Obstetrics & Gynecology',
-        'ENT (Ear, Nose, and Throat)',
-        'Urology',
-        'Heart',
-        'Thoracic and Cardiovascular Surgery'
-    ];
+    public $schema;
 
-    public $speciality = 'All';
+    public $speciality = 'all';
+
+    public function mount(): void
+    {
+        $speciality = Speciality::get()->pluck('title', 'id')->toArray();
+        $this->schema = ['all' => 'All'] + $speciality;
+    }
 
     public function specialityChanged()
     {
@@ -48,7 +46,7 @@ class SpecialityDoctor extends Component implements HasForms
         $data = collect($this->schema)->filter(function($data){
             return $this->filterSpeciality === ''
                 || str_contains(strtolower($data), strtolower($this->filterSpeciality));
-        })->values();
+        });
         return view('livewire.doctor.speciality-doctor', compact('data'));
     }
 }

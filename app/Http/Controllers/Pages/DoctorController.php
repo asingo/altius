@@ -9,7 +9,7 @@ class DoctorController extends Controller
 {
     public function doctor()
     {
-        $data = json_decode(file_get_contents(base_path('database/schema/doctor-altius.json')), true);
+        $data = Doctor::with(['speciality', 'hasLocation'])->get();
         $isHeaderOverlay = true;
         $title = 'Medical Professional';
         $slug = 'medical-professional';

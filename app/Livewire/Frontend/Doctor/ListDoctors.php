@@ -61,25 +61,39 @@ class ListDoctors extends Component
     protected function applyFilter()
     {
         $this->filteredData = $this->data->filter(function ($doctor) {
+
             $matchesSearch = $this->search === ''
                 || str_contains(strtolower($doctor['name']), strtolower($this->search));
 
             $matchesSpeciality = $this->speciality === '' || strtolower($this->speciality) === 'all'
-                || str_contains(strtolower($doctor['speciality']), strtolower($this->speciality));
+                || $doctor->speciality_id == $this->speciality;
 
             $matchesLocation = $this->location === '' || strtolower($this->location) === 'all'
-                || collect($doctor['location'])->contains(function ($location) {
-                    return str_contains(strtolower($location['name']), strtolower($this->location));
-                });
+                ||  $doctor->hasLocation()->where('location_id', $this->location)->exists();
 
-            $matchesDate = $this->date === ''
-                || strtolower($this->date) === 'all'
-                || collect($doctor['location'])->contains(function ($location) {
-                    $day = strtolower($this->date);
+//            $matchesDate = $this->date === ''
+//                || strtolower($this->date) === 'all'
+//                || collect($doctor->hasLocation)->contains(function ($location) {
+//                    $day = strtolower($this->date);;
+//                    return isset($location['schedule'][$day])
+//                        && $location['schedule'][$day] !== '-';
+//                });
+            $matchesDate = true; // default true if no filter
+            if (!empty($this->date) && strtolower($this->date) !== 'all') {
+                if ($this->date) {
+                    $matchesDate = $doctor->hasLocation->contains(function ($location) {
+                        if (empty($location->schedule) || !is_array($location->schedule)) {
+                            return false;
+                        }
 
-                    return isset($location['schedule'][$day])
-                        && $location['schedule'][$day] !== '-';
-                });
+                        $schedule = $location->schedule[$this->date] ?? null;
+
+                        return $schedule !== null && trim($schedule) !== '' && trim($schedule) !== '-';
+                    });
+                } else {
+                    $matchesDate = false;
+                }
+            }
 
             return $matchesSearch && $matchesLocation && $matchesSpeciality && $matchesDate;
         })->values();

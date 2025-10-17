@@ -15,19 +15,20 @@ class DateDoctor extends Component implements HasForms
     public $filterDate;
 
     public $schema = [
-        'All',
-        'Monday',
-        'Tuesday',
-        'Wednesday',
-        'Thursday',
-        'Friday',
-        'Saturday',
-        'Sunday',
+        'all' => 'All',
+        'monday' => 'Monday',
+        'tuesday' => 'Tuesday',
+        'wednesday' => 'Wednesday',
+        'thursday' => 'Thursday',
+        'friday' => 'Friday',
+        'saturday' => 'Saturday',
+        'sunday' => 'Sunday',
     ];
 
-    public $date = 'All';
+    public $date = 'all';
 
-    public function dateChanged(){
+    public function dateChanged()
+    {
         $this->dispatch('handleDateFilter', $this->date);
     }
 
@@ -44,10 +45,10 @@ class DateDoctor extends Component implements HasForms
 
     public function render()
     {
-        $data = collect($this->schema)->filter(function($data){
+        $data = collect($this->schema)->filter(function ($data) {
             return $this->filterDate === ''
                 || str_contains(strtolower($data), strtolower($this->filterDate));
-        })->values();
+        });
         return view('livewire.doctor.date-doctor', compact('data'));
     }
 }

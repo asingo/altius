@@ -6,13 +6,13 @@
             x-data="{ speciality: @entangle('speciality') }"
             class="space-y-2 mt-4"
         >
-            @foreach($data as $d)
+            @foreach($data as $k => $d)
                 <div
                     class="flex items-center justify-between cursor-pointer border-b-[1.5px] py-2 rounded"
-                    @click="speciality = '{{$d}}'" wire:click="specialityChanged"
+                    @click="speciality = '{{$k}}'" wire:click="specialityChanged"
                 >
-                    <label for="{{Str::slug($d)}}"  class="text-lg">{{$d}}</label>
-                    <input type="radio" name="speciality" id="{{Str::slug($d)}}" value="{{$d}}" x-model="speciality" class="mr-2">
+                    <label for="speciality-{{$this->getId()}}-{{$k}}"  class="text-lg">{{$d}}</label>
+                    <input type="radio" name="speciality" id="speciality-{{$this->getId()}}-{{$k}}" value="{{$k}}" x-model="speciality" class="mr-2">
                 </div>
             @endforeach
         </div>

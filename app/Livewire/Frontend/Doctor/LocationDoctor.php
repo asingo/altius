@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Frontend\Doctor;
 
+use App\Models\Location;
 use Livewire\Component;
 
 class LocationDoctor extends Component
@@ -16,11 +17,9 @@ class LocationDoctor extends Component
 
     public function mount()
     {
-        $this->data = [
-            'all',
-            'Altius Hospitals Harapan Indah',
-            'Altius Hospitals Puri Indah'
-        ];
+        $location = Location::get()->pluck('title', 'id')->toArray();
+        $all = ['all' => 'All'];
+        $this->data = $all + $location;
     }
 
     public function render()
