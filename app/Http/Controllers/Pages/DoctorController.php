@@ -17,15 +17,16 @@ class DoctorController extends Controller
     }
 
     public function doctorDetail($slug){
-        $schema  = json_decode(file_get_contents(base_path('database/schema/doctor-altius.json')), true);
-        $data = collect($schema)->filter(function ($item) use ($slug) {
-            return $item['slug'] === $slug;
-        })->first();
+        $data  = Doctor::with(['speciality', 'hasLocation'])->where('slug', $slug)->first();
         if($data == null){
             abort(404);
         }
+        $location = $data->hasLocation()->get()->map(function ($item) {
+            $item['location_name'] = $item->location->title;
+            return $item;
+        });
         $isHeaderOverlay = false;
         $title = $data['name'];
-        return view('pages.medical-professional.single', compact('data', 'isHeaderOverlay', 'title', 'slug'));
+        return view('pages.medical-professional.single', compact('data', 'isHeaderOverlay','location', 'title', 'slug'));
     }
 }
