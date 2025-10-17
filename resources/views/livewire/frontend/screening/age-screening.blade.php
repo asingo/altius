@@ -7,16 +7,16 @@
         >
             @foreach($data as $d)
                 <label
-                    class="flex items-center justify-between gap-2 cursor-pointer border-b-[1.5px] py-2 border-slate-300 w-full"
+                    class="flex items-center justify-between gap-2 cursor-pointer border-b-[1.5px] py-2 border-slate-300 w-full" for="age-{{$this->getId()}}-{{$d['id']}}"
                 >
     <span class="text-lg flex-wrap">
-        {{ ucwords($d['name']) }}{{$d['meta'] == '' ? '' : ':'}} <small>{{ $d['meta'] }}</small>
+        {{ ucwords($d['name']) }}{{$d['age'] == '' ? '' : ':'}} <small>{{ $d['age'] }}</small>
     </span>
                     <input
                         type="radio"
                         name="age"
-                        id="{{ Str::slug($d['name']) }}"
-                        value="{{ $d['name'] }}"
+                        id="age-{{$this->getId()}}-{{$d['id']}}"
+                        value="{{ $d['id'] }}"
                         x-model="age"
                         @change="$wire.ageChanged()"
                         class="mr-2 cursor-pointer"

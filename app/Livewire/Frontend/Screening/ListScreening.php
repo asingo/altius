@@ -39,7 +39,7 @@ class ListScreening extends Component
 
     public function handleCategoryFilter($data)
     {
-        $this->category = $data['name'];
+        $this->category = $data;
         $this->applyFilter();
         $this->page = 1;
     }
@@ -61,15 +61,11 @@ class ListScreening extends Component
 
     public function applyFilter()
     {
-
         $this->filteredData = $this->data->filter(function ($screening) {
-            $matchesCategory =  $this->category === 'all' || strtolower($this->category) === strtolower($screening['category']);
-            $matchesLocation =  $this->location === 'all' || collect($screening['location'])->contains(function ($location) {
-                return str_contains(strtolower($location), strtolower($this->location));
-                });
-            $matchesAge = $this->age === 'all' || collect($screening['age'])->contains(function ($age) {
-                    return str_contains(strtolower($age), strtolower($this->age));
-                });
+            $matchesCategory = $this->category === 'all' || is_null($screening->health_screening_category_id)
+                || $screening->health_screening_category_id == $this->category;
+            $matchesLocation = $this->location === 'all' || $screening->hasLocation()->where('location_id', $this->location)->exists();
+            $matchesAge = $this->age === 'all' || $screening->hasAge()->where('age_id', $this->age)->exists();
             $matchesGender = $this->gender === 'all' || strtolower($this->gender) === strtolower($screening['gender']);
             return $matchesCategory && $matchesLocation && $matchesAge && $matchesGender;
         });

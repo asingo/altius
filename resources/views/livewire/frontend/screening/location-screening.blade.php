@@ -5,7 +5,7 @@
             x-data="{ location: @entangle('location') }"
             class="space-y-2"
         >
-            @foreach($data as $d)
+            @foreach($data as $k=>$d)
                 <label
                     class="flex items-center justify-between gap-2 cursor-pointer border-b-[1.5px] py-2 border-slate-300 w-full"
                 >
@@ -13,7 +13,7 @@
                     <input
                         type="radio"
                         name="location"
-                        value="{{ $d }}"
+                        value="{{ $k }}"
                         x-model="location"
                         @change="$wire.locationChanged()"
                         class="mr-2 cursor-pointer"

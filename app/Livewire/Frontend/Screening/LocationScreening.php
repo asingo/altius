@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Frontend\Screening;
 
+use App\Models\Location;
 use Livewire\Component;
 
 class LocationScreening extends Component
@@ -16,11 +17,9 @@ class LocationScreening extends Component
 
     public function mount()
     {
-        $this->data = [
-            'all',
-            'Altius Hospitals Harapan Indah',
-            'Altius Hospitals Puri Indah'
-        ];
+        $location = Location::get()->pluck('title', 'id')->toArray();
+        $all = ['all' => 'All'];
+        $this->data = $all + $location;
     }
 
     public function render()

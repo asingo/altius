@@ -1,6 +1,6 @@
 <div class="flex flex-col gap-6">
     @foreach ($data as $n)
-        <x-grid.news-grid title="{{$n['title']}}" slug="{{$n['slug']}}" category="{{$n['category']}}" date="{{$n['created_at']}}"/>
+        <x-grid.news-grid title="{{$n['title']}}" slug="{{$n['slug']}}" category="{{$n->category->title}}" date="{{$n['created_at']}}"/>
     @endforeach
     @if($data->count() < $rawData->count())
         <div class="text-center mt-4 flex items-center justify-center gap-2">

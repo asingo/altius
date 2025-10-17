@@ -2,44 +2,47 @@
 
 namespace App\Livewire\Frontend\Screening;
 
+use App\Models\HealthScreening\HealthScreeningCategory;
+use Awcodes\Curator\Models\Media;
 use Livewire\Component;
 
 class CategoryScreening extends Component
 {
-    public $schema = [
-        [
-            "name" => "all",
-            'icon' => "asset/HealthScreening/Icon/Health/service-all.svg"
-        ],
-        [
-            "name" => "Vaccine",
-            "icon" => "asset/HealthScreening/Icon/Health/Vaccine.svg"
-        ], [
-            "name" => "Lite Check Up",
-            "icon" => "asset/HealthScreening/Icon/Health/lite-checkup.svg"
-        ], [
-            "name" => "Heart Screening",
-            "icon" => "asset/HealthScreening/Icon/Health/heart-screening.svg"
-        ], [
-            "name" => "General Check Up",
-            "icon" => "asset/HealthScreening/Icon/Health/general-checkup.svg"
-        ], [
-            "name" => "Others",
-            "icon" => "asset/HealthScreening/Icon/Line/list.svg"
-        ]
-    ];
+    public $schema;
 
     public $selected;
 
     public function mount()
     {
-        $this->selected = $this->schema[0];
+        $data =  HealthScreeningCategory::get()->map(function ($item) {
+            return [
+                'id' => $item->id,
+                'title' => $item->title,
+                'icon' => Media::find($item->icon)?->url
+            ];
+
+        });
+        $all = [
+            'id' => "all",
+            'title' => "All",
+            'icon' => "asset/HealthScreening/Icon/Health/service-all.svg",
+            ];
+        $others = [
+            'id' => "others",
+            'title' => "Others",
+            'icon' => "asset/HealthScreening/Icon/Line/list.svg",
+        ];
+
+        $this->schema = collect([$all])->merge($data)->merge([$others]);
+
+        $this->selected = $this->schema->first()['id'];
+
         $this->dispatch('handleCategoryFilter', $this->selected);
     }
 
     public function changeFilter($data)
     {
-        $this->selected = $this->schema[$data];
+        $this->selected = $data;
         $this->dispatch('handleCategoryFilter', $this->selected);
     }
 

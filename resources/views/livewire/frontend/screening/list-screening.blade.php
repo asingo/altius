@@ -3,7 +3,7 @@
         @foreach($screening as $d)
             <div class="flex flex-col h-full">
                 <div class="rounded-2xl">
-                    <img src="{{$d['image']}}" alt="image" class="w-full object-cover rounded-2xl"/>
+                    <img src="{{\Awcodes\Curator\Models\Media::find($d['image'])->url}}" alt="image" class="w-full object-cover rounded-2xl"/>
                 </div>
                 <div class="mt-4 flex flex-col h-full justify-stretch">
                     <h3 class="text-2xl font-medium flex-grow">{{$d['title']}}</h3>
@@ -43,4 +43,3 @@
         </button>
     </div>
 </div>
-

@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Frontend\Screening;
 
+use App\Models\HealthScreening\CategoryAge;
 use Livewire\Component;
 
 class AgeScreening extends Component
@@ -16,33 +17,19 @@ class AgeScreening extends Component
 
     public function mount()
     {
-        $this->data = [
-            [
-              'name' => 'all',
-              'meta' => ''
-            ],
-            [
-                'name' => 'Children',
-                'meta' => '<10 yo'
-            ],
-            [
-                'name' => 'Teenager',
-                'meta' => '10-19 yo'
-            ],
-            [
-                'name' => 'Young Adult',
-                'meta' => '20-40 yo'
-            ],
-            [
-                'name' => 'Adult',
-                'meta' => '40-64 yo'
-            ],
-            [
-                'name' => 'Senior Adult',
-                'meta' => '>65 yo'
-            ]
-
+        $schema = CategoryAge::get()->map(function ($categoryAge) {
+            return [
+                'id' => $categoryAge->id,
+                'name' => $categoryAge->title,
+                'age' => $categoryAge->age,
+            ];
+        });
+        $all = [
+            'id' => 'all',
+            'name' => 'All',
+            'age' => ''
         ];
+        $this->data = collect([$all])->merge($schema);
     }
 
     public function render()
