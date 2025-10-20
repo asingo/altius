@@ -22,7 +22,10 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class SliderResource extends Resource
 {
     use Translatable;
+
     protected static ?string $model = Slider::class;
+
+    protected static ?string $navigationGroup = 'Slider';
 
     protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
@@ -32,7 +35,8 @@ class SliderResource extends Resource
             ->schema([
                 TextInput::make('title')->label('Heading')->columnSpanFull()->required(),
                 TextInput::make('description')->label('Description')->columnSpanFull()->required(),
-                CuratorPicker::make('image')->label('Image')->columnSpanFull()->required(),
+                CuratorPicker::make('image')->label('Image')->columnSpanFull()->required()
+                    ->acceptedFileTypes(['image/png', 'image/jpeg', 'image/gif', 'image/webp']),
             ]);
     }
 
@@ -51,6 +55,7 @@ class SliderResource extends Resource
                 Tables\Actions\EditAction::make(),
                 Tables\Actions\DeleteAction::make(),
             ])
+            ->defaultSort('index')
             ->reorderable('index')
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
