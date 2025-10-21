@@ -3,8 +3,8 @@
     <div class="max-w-screen-2xl mx-auto py-24 px-6 2xl:px-0 mt-6">
         <x-breadcrumb parent="Home" child="{{$title}}" />
         <div class="mt-8">
-            <x-typography.subheading location="page">{{$title}}</x-typography.subheading>
-            <x-typography.heading location="page" class="mt-4">Your Health in Your Hands
+            <x-typography.subheading location="page">{{$page->content['section']['title']}}</x-typography.subheading>
+            <x-typography.heading location="page" class="mt-4">{{$page->content['section']['heading']}}
             </x-typography.heading>
         </div>
         <div class="mt-6">

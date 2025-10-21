@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
 use App\Models\News;
+use App\Models\Pages;
 use Illuminate\Http\Request;
 
 class NewsController extends Controller
@@ -13,9 +14,14 @@ class NewsController extends Controller
     {
         $data = News::with('category')->get();
         $isHeaderOverlay = true;
-        $title = 'News';
-        $slug = 'news';
-        return view('pages.news.index', compact('data', 'isHeaderOverlay', 'title', 'slug'));
+        $view = 'pages.news.index';
+        $page = Pages::where('view', $view)->first();
+        if($page == null){
+            abort(404);
+        }
+        $title = $page->title;
+        $slug = $page->slug;
+        return view('pages.news.index', compact('data','page', 'isHeaderOverlay', 'title', 'slug'));
     }
 
     public function newsDetail($slug)

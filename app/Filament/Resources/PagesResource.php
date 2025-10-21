@@ -49,8 +49,11 @@ class PagesResource extends Resource
                         if($get('view') == 'pages.location.index'||$get('view') == 'pages.health-screening.index'||$get('view') == 'pages.offers.index'){
                             $schema = FormSchema::general();
                         }
-                        if($get('view') == 'pages.medical-professional.index'||$get('view') == 'pages.news.index'){
+                        if($get('view') == 'pages.medical-professional.index'){
                             $schema = FormSchema::withHero();
+                        }
+                        if($get('view') == 'pages.news.index'){
+                            $schema = FormSchema::withHeroAndBody();
                         }
 
                         return [

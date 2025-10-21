@@ -144,10 +144,30 @@ class FormSchema
                 ])->statePath('section'),
             ])->hidden(fn ($get) => match ($get('view')) {
                 'pages.medical-professional.index' => false,
-                'pages.news.index' => false,
                 default => true
             })->dehydrated(fn ($get) => match ($get('view')) {
                 'pages.medical-professional.index' => true,
+                default => false
+            })->statePath('content')
+        ];
+    }
+
+    public static function withHeroAndBody(): array
+    {
+        return [
+            Grid::make(1)->schema([
+                Section::make('Section')->schema([
+                    TextInput::make('heading'),
+                    TextInput::make('subheading'),
+                ])->statePath('section'),
+                Section::make('Body')->schema([
+                    TextInput::make('heading'),
+                    TextInput::make('subheading'),
+                ])->statePath('body'),
+            ])->hidden(fn ($get) => match ($get('view')) {
+                'pages.news.index' => false,
+                default => true
+            })->dehydrated(fn ($get) => match ($get('view')) {
                 'pages.news.index' => true,
                 default => false
             })->statePath('content')

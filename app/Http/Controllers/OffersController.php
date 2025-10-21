@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Models\Offer;
+use App\Models\Pages;
 use Illuminate\Http\Request;
 
 class OffersController extends Controller
@@ -11,8 +12,13 @@ class OffersController extends Controller
     {
         $data = Offer::with(['category', 'hasLocation'])->get();
         $isHeaderOverlay = false;
-        $title = 'Offers';
-        $slug = 'offers';
-        return view('pages.offers.index', compact('data', 'isHeaderOverlay', 'title', 'slug'));
+        $view = 'pages.offers.index';
+        $page = Pages::where('view', $view)->first();
+        if($page == null){
+            abort(404);
+        }
+        $title = $page->title;
+        $slug = $page->slug;
+        return view($view, compact('data','page', 'isHeaderOverlay', 'title', 'slug'));
     }
 }

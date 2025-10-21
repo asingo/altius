@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
 use App\Models\Doctor;
+use App\Models\Pages;
 
 class DoctorController extends Controller
 {
@@ -11,9 +12,14 @@ class DoctorController extends Controller
     {
         $data = Doctor::with(['speciality', 'hasLocation'])->get();
         $isHeaderOverlay = true;
-        $title = 'Medical Professional';
-        $slug = 'medical-professional';
-        return view('pages.medical-professional.index', compact('data', 'isHeaderOverlay', 'title', 'slug'));
+        $view = 'pages.medical-professional.index';
+        $page = Pages::where('view', $view)->first();
+        if($page == null){
+            abort(404);
+        }
+        $title = $page->title;
+        $slug = $page->slug;
+        return view($view, compact('data','page', 'isHeaderOverlay', 'title', 'slug'));
     }
 
     public function doctorDetail($slug){

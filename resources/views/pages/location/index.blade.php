@@ -3,10 +3,9 @@
 @section('content')
     <div class="max-w-screen-2xl mx-auto py-24 px-6 2xl:px-0 mt-6">
         <x-breadcrumb parent="Home" child="{{$title}}" />
-        @dump($page->content)
         <div class="mt-8">
-            <x-typography.subheading location="page"></x-typography.subheading>
-            <x-typography.heading location="page">Find an Altius Hospital near you
+            <x-typography.subheading location="page">{{$page->content['section']['title']}}</x-typography.subheading>
+            <x-typography.heading location="page">{{$page->content['section']['heading']}}
             </x-typography.heading>
         </div>
         <div class="flex flex-col gap-10 mt-8 md:mt-14">

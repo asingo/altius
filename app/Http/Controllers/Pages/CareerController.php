@@ -4,17 +4,22 @@ namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
 use App\Models\Career;
+use App\Models\Pages;
 use Illuminate\Http\Request;
 
 class CareerController extends Controller
 {
-
     public function career(){
         $data = Career::all();
         $isHeaderOverlay = true;
-        $title = 'Career';
-        $slug = 'career';
-        return view('pages.career.index', compact('data', 'isHeaderOverlay', 'title', 'slug'));
+        $view = 'pages.career.index';
+        $page = Pages::where('view', $view)->first();
+        if($page == null){
+            abort(404);
+        }
+        $title = $page->title;
+        $slug = $page->slug;
+        return view($view, compact('data', 'page', 'isHeaderOverlay', 'title', 'slug'));
     }
 
     public function careerDetail($slug)

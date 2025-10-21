@@ -4,6 +4,7 @@ namespace App\Providers;
 
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\ServiceProvider;
+use Spatie\Translatable\Translatable;
 
 class AppServiceProvider extends ServiceProvider
 {
@@ -21,8 +22,8 @@ class AppServiceProvider extends ServiceProvider
     public function boot(): void
     {
         Model::unguard();
-//        if($this->app->environment('production')) {
-            \URL::forceScheme('https');
-//        }
+        \URL::forceScheme('https');
+        \Spatie\Translatable\Facades\Translatable::fallback('en');
+
     }
 }

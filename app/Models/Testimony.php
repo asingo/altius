@@ -9,4 +9,5 @@ class Testimony extends Model
 {
     use HasTranslations;
     public array $translatable = ['name', 'content', 'title'];
+
 }
