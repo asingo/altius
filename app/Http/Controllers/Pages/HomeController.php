@@ -3,8 +3,11 @@
 namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
+use App\Models\HealthScreening;
+use App\Models\Offer;
 use App\Models\Setting;
 use App\Models\Slider;
+use App\Models\Testimony;
 
 class HomeController extends Controller
 {
@@ -16,6 +19,10 @@ class HomeController extends Controller
 
         $slider = Slider::orderBy('index', 'asc')->get();
         $sliderSetting = Setting::where('name', 'slider')->first();
-        return view('pages.home.index', compact('isHeaderOverlay', 'sliderSetting', 'title', 'slider', 'slug'));
+        $testimonies = Testimony::all();
+        $healthScreening = HealthScreening::all()->take(9);
+        $offers = Offer::all()->take(9);
+        return view('pages.home.index', compact('isHeaderOverlay','testimonies',
+            'sliderSetting', 'title', 'slider', 'slug','healthScreening', 'offers'));
     }
 }

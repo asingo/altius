@@ -4,59 +4,14 @@
         <x-typography.heading>Latest Offers</x-typography.heading>
     </div>
     <x-slider autoplay="false" id="offersSlider" class="mb-12" arrow="bottom-right" items="4" mobile="1" infinity="true" centered="true">
-        <x-slider.slider-item>
-            <x-grid.basic
-                image="{{asset('asset/Offers/cover-01.jpg')}}"
-                heading="General Health Screening Package"
-            />
-        </x-slider.slider-item>
-        <x-slider.slider-item>
-            <x-grid.basic
-                image="{{asset('asset/Offers/cover-01.jpg')}}"
-                heading="General Health Screening Package"
-            />
-        </x-slider.slider-item>
-        <x-slider.slider-item>
-            <x-grid.basic
-                image="{{asset('asset/Offers/cover-02.jpg')}}"
-                heading="General Health Screening Package"
-            />
-        </x-slider.slider-item>
-        <x-slider.slider-item>
-            <x-grid.basic
-                image="{{asset('asset/Offers/cover-03.jpg')}}"
-                heading="General Health Screening Package"
-            />
-        </x-slider.slider-item>
-        <x-slider.slider-item>
-            <x-grid.basic
-                image="{{asset('asset/Offers/cover-04.jpg')}}"
-                heading="General Health Screening Package"
-            />
-        </x-slider.slider-item> <x-slider.slider-item>
-            <x-grid.basic
-                image="{{asset('asset/Offers/cover-05.jpg')}}"
-                heading="General Health Screening Package"
-            />
-        </x-slider.slider-item>
-        <x-slider.slider-item>
-            <x-grid.basic
-                image="{{asset('asset/Offers/cover-01.jpg')}}"
-                heading="General Health Screening Package"
-            />
-        </x-slider.slider-item>
-        <x-slider.slider-item>
-            <x-grid.basic
-                image="{{asset('asset/Offers/cover-01.jpg')}}"
-                heading="General Health Screening Package"
-            />
-        </x-slider.slider-item>
-        <x-slider.slider-item>
-            <x-grid.basic
-                image="{{asset('asset/Offers/cover-01.jpg')}}"
-                heading="General Health Screening Package"
-            />
-        </x-slider.slider-item>
+        @foreach($offers  as $o)
+            <x-slider.slider-item>
+                <x-grid.basic
+                    image="{{\Awcodes\Curator\Models\Media::find($o->image)->url}}"
+                    heading="{!! $o->title !!}"
+                />
+            </x-slider.slider-item>
+        @endforeach
     </x-slider>
     <x-button.link href="{{route('offers')}}" class="-mt-2.5">Discovers More Offers</x-button.link>
 

@@ -35,7 +35,9 @@ class TestimonyResource extends Resource
                             ->required(),
                         Forms\Components\TextInput::make('name')->label('Patient Name')
                             ->required(),
-                        Forms\Components\TextInput::make('video')->label('Link Video'),
+                        CuratorPicker::make('video')->label('Video Testimony')
+                            ->helperText('Maximum File Size is 50 MB')
+                            ->acceptedFileTypes(['video/*'])->maxSize(50000),
                         TiptapEditor::make('content')->label('Content'),
                     ])->columnSpan(3),
                     Forms\Components\Grid::make(1)->schema([
