@@ -2,11 +2,13 @@
 
 namespace App\Filament\Resources;
 
+use App\Filament\Resources\PagesResource\FormSchema;
 use App\Filament\Resources\PagesResource\Pages;
 use App\Filament\Resources\PagesResource\RelationManagers;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Filament\Actions\LocaleSwitcher;
 use Filament\Forms;
+use Filament\Forms\Components\Grid;
 use Filament\Forms\Components\Textarea;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -33,54 +35,35 @@ class PagesResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Grid::make(4)->schema([
-                    Forms\Components\Grid::make(1)->schema([
-                        Forms\Components\TextInput::make('title')
-                            ->afterStateUpdated(function ($set, $state) {
-                                $set('slug', Str::slug($state));
-                            })
-                            ->live(onBlur: true),
-                        //---section about
-                        Forms\Components\Grid::make(1)->schema([
-                            Forms\Components\Section::make('Heading')->schema([
-                                TextInput::make('heading'),
-                                TextInput::make('colored_heading'),
-                            ])->statePath('heading')->columns(2),
-                            Forms\Components\Section::make('About Us')->schema([
-                                Forms\Components\Split::make([
-                                    Forms\Components\Grid::make(1)->schema([
-                                        CuratorPicker::make('image'),
-                                    ]),
-                                     Forms\Components\Grid::make(1)->schema([
-                                         TextInput::make('title'),
-                                         TextInput::make('heading'),
-                                         TiptapEditor::make('content'),
-                                     ])
-                                ])
-                            ])->statePath('about_us'),
-                            Forms\Components\Section::make('Vision & Mission')->schema([
-                                Forms\Components\Split::make([
-                                    Forms\Components\Grid::make(1)->schema([
-                                        Forms\Components\Textarea::make('vision'),
-                                        CuratorPicker::make('vision_image'),
-                                    ]),
-                                     Forms\Components\Grid::make(1)->schema([
-                                         Forms\Components\Textarea::make('mission'),
-                                         CuratorPicker::make('mission_image'),
-                                     ])
-                                ]),
-                                Forms\Components\Textarea::make('quote')
-                            ])->statePath('vision'),
-                            Forms\Components\Section::make('More About Altius')->schema([
-                                Forms\Components\Repeater::make('grid')->label('')
-                                ->schema([
-                                    CuratorPicker::make('icon'),
-                                    TextInput::make('title'),
-                                    Textarea::make('content')->columnSpanFull(),
-                                ])->columns(2)
-                            ])->statePath('more_about')
-                        ])->visible(fn ($get) => $get('view') == 'pages.about.index')->statePath('content')
+                    Forms\Components\Grid::make(1)->schema(function ($get) {
+                        $schema = [];
+                        if ($get('view') == 'pages.about.index') {
+                            $schema = FormSchema::about();
+                        }
+                        if($get('view') == 'pages.home.index'){
+                            $schema = FormSchema::home();
+                        }
+                        if($get('view') == 'pages.career.index'){
+                            $schema = FormSchema::career();
+                        }
+                        if($get('view') == 'pages.location.index'||$get('view') == 'pages.health-screening.index'||$get('view') == 'pages.offers.index'){
+                            $schema = FormSchema::general();
+                        }
+                        if($get('view') == 'pages.medical-professional.index'||$get('view') == 'pages.news.index'){
+                            $schema = FormSchema::withHero();
+                        }
 
-                    ])->columnSpan(3),
+                        return [
+                            Forms\Components\TextInput::make('title')
+                                ->afterStateUpdated(function ($set, $state) {
+                                    $set('slug', Str::slug($state));
+                                })
+                                ->live(onBlur: true),
+                            ...$schema
+                            ,
+
+                        ];
+                    })->columnSpan(3),
                     Forms\Components\Grid::make(1)->schema([
                         Forms\Components\Section::make('Page Details')
                             ->schema([
@@ -114,7 +97,8 @@ class PagesResource extends Resource
     {
         return $table
             ->columns([
-                //
+                Tables\Columns\TextColumn::make('title'),
+                Tables\Columns\TextColumn::make('created_at'),
             ])
             ->filters([
                 //

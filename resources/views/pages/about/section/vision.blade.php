@@ -20,13 +20,11 @@
             </div>
             <div>
                 <p>
-                    Our objective is to cultivate an optimal work environment that empowers our staff to excel, feel esteemed, find satisfaction
-                    in their roles, and consistently deliver
-                    compassionate, world-class healthcare and patient experiences
+                  {{$page->content['vision']['vision']}}
                 </p>
             </div>
             <div class="mt-auto pt-6">
-                <img src="{{ asset('asset/Image-visi.jpg') }}" alt="vision" class="w-full rounded-2xl">
+                <img src="{{ \Awcodes\Curator\Models\Media::find($page->content['vision']['vision_image'])->url }}" alt="vision" class="w-full rounded-2xl">
             </div>
         </div>
 
@@ -46,16 +44,15 @@
             </div>
             <div>
                 <p>
-                    A relentless pursuit to offer Indonesian communities medical services that embody integrity, reliability, high quality, innovation, and pioneering advancement
+                   {{$page->content['vision']['mission']}}
                 </p>
             </div>
             <div class="mt-auto pt-6">
-                <img src="{{ asset('asset/Image-visi.jpg') }}" alt="mission" class="w-full rounded-2xl">
+                <img src="{{ \Awcodes\Curator\Models\Media::find($page->content['vision']['mission_image'])->url }}" alt="mission" class="w-full rounded-2xl">
             </div>
         </div>
     </div>
 </div>
 <div class="max-w-screen-md mx-auto py-24">
-    <span class="font-heading text-2xl">"Doctors established Altius Hospitals, building it around
-the principles of best medical practice"</span>
+    <span class="font-heading text-2xl">"{{$page->content['vision']['quote']}}"</span>
 </div>

@@ -19,8 +19,13 @@ class CreatePages extends CreateRecord
         ];
     }
 
+    protected function getRedirectUrl(): string
+    {
+        return route('filament.admin.resources.pages.index');
+    }
+
 //    protected function mutateFormDataBeforeCreate(array $data): array
 //    {
-////        dd($data);
+//        dd($data);
 //    }
 }

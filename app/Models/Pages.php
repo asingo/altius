@@ -15,4 +15,8 @@ class Pages extends Model
         'image',
         'content'
     ];
+
+    protected $casts = [
+        'content' => 'array'
+    ];
 }
