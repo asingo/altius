@@ -19,7 +19,7 @@ class HomeController extends Controller
 
         $slider = Slider::orderBy('index', 'asc')->get();
         $sliderSetting = Setting::where('name', 'slider')->first();
-        $testimonies = Testimony::all();
+        $testimonies = Testimony::get();
         $healthScreening = HealthScreening::all()->take(9);
         $offers = Offer::all()->take(9);
         return view('pages.home.index', compact('isHeaderOverlay','testimonies',

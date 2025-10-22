@@ -21,7 +21,7 @@
                 date="{{$t->created_at->format('d F Y')}}"
                 title="{{$t->title}}"
             >
-               {!! $t->content !!}
+               {!! tiptap_converter()->asHTML($t->content) !!}
             </x-slider.slider-testimony>
         </x-slider.slider-item>
         @endforeach
