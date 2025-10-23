@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 class CareerController extends Controller
 {
     public function career(){
-        $data = Career::all();
+        $data = Career::get();
         $isHeaderOverlay = true;
         $view = 'pages.career.index';
         $page = Pages::where('view', $view)->first();

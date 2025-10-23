@@ -11,32 +11,36 @@ use App\Http\Controllers\Pages\LocationController;
 use App\Http\Controllers\Pages\NewsController;
 use App\Http\Controllers\Pages\ScreeningController;
 use Illuminate\Support\Facades\Route;
-
-Route::controller(HomeController::class)->group(function () {
-    Route::get('/', 'home')->name('home');
+$locales = ['en' => '', 'id' => 'id'];
+foreach ($locales as $key => $value) {
+    Route::prefix($value)->middleware('locale')->group(function () {
+        Route::controller(HomeController::class)->group(function () {
+            Route::get('/', 'home')->name('home');
+        }
+        );
+        Route::get('/about', [AboutController::class, 'about'])->name('about');
+        Route::controller(LocationController::class)->group(function () {
+            Route::get('/location', 'location')->name('location');
+            Route::get('/location/{slug}', 'locationDetail')->name('locationDetail');
+        });
+        Route::controller(DoctorController::class)->group(function () {
+            Route::get('/medical-professional', 'doctor')->name('doctor');
+            Route::get('/medical-professional/{slug}', 'doctorDetail')->name('doctorDetail');
+        });
+        Route::controller(CareerController::class)->group(function () {
+            Route::get('/career', 'career')->name('career');
+            Route::get('/career/{slug}', 'careerDetail')->name('careerDetail');
+        });
+        Route::controller(ScreeningController::class)->group(function () {
+            Route::get('/health-screening', 'screening')->name('screening');
+        });
+        Route::get('/contact-us', [ContactController::class, 'contact'])->name('contact');
+        Route::controller(NewsController::class)->group(function () {
+            Route::get('/news', 'news')->name('news');
+            Route::get('/news/{slug}', 'newsDetail')->name('newsDetail');
+        });
+        Route::controller(OffersController::class)->group(function () {
+            Route::get('/offers', 'offers')->name('offers');
+        });
+    });
 }
-);
-Route::get('/about', [AboutController::class, 'about'])->name('about');
-Route::controller(LocationController::class)->group(function () {
-    Route::get('/location', 'location')->name('location');
-    Route::get('/location/{slug}', 'locationDetail')->name('locationDetail');
-});
-Route::controller(DoctorController::class)->group(function () {
-    Route::get('/medical-professional', 'doctor')->name('doctor');
-    Route::get('/medical-professional/{slug}', 'doctorDetail')->name('doctorDetail');
-});
-Route::controller(CareerController::class)->group(function () {
-   Route::get('/career', 'career')->name('career');
-   Route::get('/career/{slug}', 'careerDetail')->name('careerDetail');
-});
-Route::controller(ScreeningController::class)->group(function () {
-    Route::get('/health-screening', 'screening')->name('screening');
-});
-Route::get('/contact-us', [ContactController::class, 'contact'])->name('contact');
-Route::controller(NewsController::class)->group(function () {
-    Route::get('/news', 'news')->name('news');
-    Route::get('/news/{slug}', 'newsDetail')->name('newsDetail');
-});
-Route::controller(OffersController::class)->group(function () {
-   Route::get('/offers', 'offers')->name('offers');
-});

@@ -7,8 +7,8 @@
      x-init="$watch('open', value => { if (!value) $refs.video.src = '' })"
 >
     <div class="flex flex-col items-center mb-8">
-        <x-typography.subheading location="section">Medical Testimony</x-typography.subheading>
-        <x-typography.heading class="text-center">Experience trusted Healthcare</x-typography.heading>
+        <x-typography.subheading location="section">{{$page->content['testimony']['title']}}</x-typography.subheading>
+        <x-typography.heading class="text-center">{{$page->content['testimony']['heading']}}</x-typography.heading>
     </div>
     <x-slider id="testimonySlider">
         @foreach($testimonies as $t)

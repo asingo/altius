@@ -12,7 +12,6 @@ class Pages extends Model
     public array $translatable = [
         'title',
         'slug',
-        'image',
         'content'
     ];
 

@@ -28,7 +28,7 @@
 >
     <div class="flex items-center justify-between max-w-screen-2xl mx-auto border-b border-white pb-4">
         <div class="header-left">
-            <a href="/">
+            <a href="{{localized_route('home')}}">
                 <img :class="!atTop && 'brightness-0 invert' " class="w-[150px] lg:w-[220px]"
                      src="{{asset('asset/logo.png')}}" alt="">
             </a>
@@ -37,37 +37,37 @@
             <ul class="menu-list flex items-center gap-6 {{!$isHeaderOverlay ?'!text-[#171717]' : 'text-white'}}"
                 :class="atTop && '!text-[#171717]' ">
                 <li>
-                    <a href="{{route('about')}}" class="relative group">
+                    <a href="{{localized_route('about')}}" class="relative group">
                         <span :class="[atTop && 'hover:!text-primary', slug == 'about' ? '!text-primary' : ''] ">About Us</span>
                         <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'about' ? '!bg-primary !scale-x-100' :'']"></span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('location')}}" class="relative group">
+                    <a href="{{localized_route('location')}}" class="relative group">
                         <span :class="[atTop && 'hover:!text-primary', slug == 'location' ? '!text-primary' : ''] ">Location</span>
                         <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'location' ? '!bg-primary !scale-x-100' :'']"></span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('doctor')}}" class="relative group">
+                    <a href="{{localized_route('doctor')}}" class="relative group">
                         <span :class="[atTop && 'hover:!text-primary', slug == 'medical-professional' ? '!text-primary' : ''] ">Medical Professionals</span>
                         <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'medical-professional' ? '!bg-primary !scale-x-100' :''] "></span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('screening')}}" class="relative group">
+                    <a href="{{localized_route('screening')}}" class="relative group">
                         <span :class="[atTop && 'hover:!text-primary', slug == 'health-screening' ? '!text-primary' : ''] ">Health Screening</span>
                         <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'health-screening' ? '!bg-primary !scale-x-100' :''] "></span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('contact')}}" class="relative group">
+                    <a href="{{localized_route('contact')}}" class="relative group">
                         <span :class="[atTop && 'hover:!text-primary', slug == 'contact-us' ? '!text-primary' : ''] ">Contact Us</span>
                         <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'contact-us' ? '!bg-primary !scale-x-100' :''] "></span>
                     </a>
                 </li>
                 <li>
-                    <a href="{{route('home')}}" class="relative group">
+                    <a href="{{localized_route('home')}}" class="relative group">
                         <span class="flex gap-2 items-center" :class="atTop && 'hover:!text-primary' ">
                             <svg width="20" height="20" viewBox="0 0 20 20" class="fill-white"
                                  :class="atTop && '!fill-red-500' "
@@ -84,45 +84,7 @@
             </ul>
         </nav>
         <div class="header-right flex items-center gap-2 sm:gap-4">
-            <div x-data="{ open: false, selected: 'EN' }" class="relative inline-block text-left">
-                <!-- Trigger Button -->
-                <button
-                    @click="open = !open"
-                    class="flex items-center gap-1.5 sm:px-4 py-2 text-white text-sm sm:text-[16px]"
-                    :class="atTop && '!text-[#171717]' "
-                >
-                    <span x-text="selected"></span>
-                    <svg :class="{'rotate-180': open}" class="w-5 h-5 stroke-1.5 transform transition-transform"
-                         xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"/>
-                    </svg>
-                </button>
-
-                <!-- Dropdown Menu -->
-                <div
-                    x-show="open"
-                    @click.outside="open = false"
-                    x-transition
-                    class="absolute right-0 mt-2 w-[100px] bg-white rounded-lg shadow-lg z-50"
-                >
-                    <ul class="py-2 menu-list">
-                        <li>
-                            <a href="#"
-                               @click.prevent="selected = 'EN'; open = false"
-                               class="block px-4 py-2 hover:bg-gray-100">
-                                EN
-                            </a>
-                        </li>
-                        <li>
-                            <a href="#"
-                               @click.prevent="selected = 'ID'; open = false"
-                               class="block px-4 py-2 hover:bg-gray-100">
-                                ID
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
+            @livewire('language-switcher')
             <a href="#" class="btn-outline text-sm sm:text-[16px]" :class="atTop && 'btn-outline-alt' ">
                 <x-heroicon-o-user-circle class="w-5 h-5"/>
                 Login
@@ -145,37 +107,37 @@
                 >
                     <ul class="menu-list flex flex-col gap-5 mx-6 mt-4 pt-4 border-t">
                         <li>
-                            <a href="{{route('about')}}" class="relative group w-full">
+                            <a href="{{localized_route('about')}}" class="relative group w-full">
                                 <span :class="[atTop && 'hover:!text-primary', slug == 'about' ? '!text-primary' : '']">About Us</span>
                                 <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'about' ? '!bg-primary !scale-x-100' :'']"></span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('location')}}" class="relative group">
+                            <a href="{{localized_route('location')}}" class="relative group">
                                 <span :class="[atTop && 'hover:!text-primary', slug == 'location' ? '!text-primary' : '']">Location</span>
                                 <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'location' ? '!bg-primary !scale-x-100' :'']"></span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('doctor')}}" class="relative group">
+                            <a href="{{localized_route('doctor')}}" class="relative group">
                                 <span :class="[atTop && 'hover:!text-primary', slug == 'medical-professional' ? '!text-primary' : '']">Medical Professionals</span>
                                 <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'medical-professional' ? '!bg-primary !scale-x-100' :'']"></span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('screening')}}" class="relative group">
+                            <a href="{{localized_route('screening')}}" class="relative group">
                                 <span :class="[atTop && 'hover:!text-primary', slug == 'health-screening' ? '!text-primary' : '']">Health Screening</span>
                                 <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'health-screening' ? '!bg-primary !scale-x-100' :'']"></span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('contact')}}" class="relative group">
+                            <a href="{{localized_route('contact')}}" class="relative group">
                                 <span :class="[atTop && 'hover:!text-primary', slug == 'contact-us' ? '!text-primary' : '']">Contact Us</span>
                                 <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'contact-us' ? '!bg-primary !scale-x-100' :'']"></span>
                             </a>
                         </li>
                         <li>
-                            <a href="{{route('home')}}" class="relative group">
+                            <a href="{{localized_route('home')}}" class="relative group">
                         <span class="flex gap-2 items-center" :class="atTop && 'hover:!text-primary' ">
                             <svg width="20" height="20" viewBox="0 0 20 20" class="fill-white"
                                  :class="atTop && '!fill-red-500' "
@@ -275,31 +237,31 @@
                     <nav class="menu-footer mt-4">
                         <ul class="menu-list flex md:h-12 text-lg items-center md:flex-row flex-col gap-6 text-white">
                             <li>
-                                <a href="{{route('doctor')}}" class="relative group">
+                                <a href="{{localized_route('doctor')}}" class="relative group">
                                     <span>Medical Professionals</span>
                                     <span class="menu-interaction"></span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{route('screening')}}" class="relative group">
+                                <a href="{{localized_route('screening')}}" class="relative group">
                                     <span>Health Screening</span>
                                     <span class="menu-interaction"></span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{route('career')}}" class="relative group">
+                                <a href="{{localized_route('career')}}" class="relative group">
                                     <span>Careers</span>
                                     <span class="menu-interaction"></span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{route('news')}}" class="relative group">
+                                <a href="{{localized_route('news')}}" class="relative group">
                                     <span>News</span>
                                     <span class="menu-interaction"></span>
                                 </a>
                             </li>
                             <li>
-                                <a href="{{route('offers')}}" class="relative group">
+                                <a href="{{localized_route('offers')}}" class="relative group">
                                     <span>Offers</span>
                                     <span class="menu-interaction"></span>
                                 </a>

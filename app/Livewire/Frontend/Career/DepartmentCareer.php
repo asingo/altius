@@ -13,28 +13,18 @@ class DepartmentCareer extends Component implements HasForms
 {
     use InteractsWithForms;
 
-    public $department = 'All Department';
+    public $department = 'all';
 
-    public $data = [
-        'All Department',
-        'Health Information Management',
-        'Nurse',
-        'Administration',
-        'Sales',
-        'Manager',
-        'Radiographer'
-    ];
 
     public function form(Form $form): Form
     {
-        $locale = 'en';
-        $department = Department::get()->mapWithKeys(fn ($item) => [$item->id => $item->getTranslation('title', $locale)])->toArray();
+        $department = Department::get()->mapWithKeys(fn ($item) => [$item->id => $item->title])->toArray();
         return $form->schema([
             Select::make('department')->label('')->placeholder('')
                 ->native(false)
                 ->live()
                 ->afterStateUpdated(fn ($state) => $this->dispatch('handleDepartmentFilter', $state))
-                ->options(fn () => ['All Department', ...$department])
+                ->options(fn () => ['all' => 'All Department', ...$department])
         ]);
     }
 
