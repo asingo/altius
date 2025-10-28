@@ -94,6 +94,6 @@ ul:not(.menu-list){
     @apply text-xl font-normal text-textsub;
 }
 
-.doctor-filter div.choices__list.choices__list--dropdown{
-    @apply !hidden;
-}
+/*.doctor-filter div.choices__list.choices__list--dropdown{*/
+/*    @apply !hidden;*/
+/*}*/

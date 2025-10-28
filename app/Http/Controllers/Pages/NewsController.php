@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Models\News;
 use App\Models\Pages;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class NewsController extends Controller
 {
@@ -26,7 +27,7 @@ class NewsController extends Controller
 
     public function newsDetail($slug)
     {
-        $locale = 'en';
+        $locale = app()->getLocale();
         $data = News::with('category')->where('slug->'.$locale, $slug)->first();
         if($data == null){
             abort(404);
@@ -34,6 +35,7 @@ class NewsController extends Controller
         $others = News::with('category')->whereNot('slug->'.$locale, $slug)->get()->take(3);
         $isHeaderOverlay = false;
         $title = $data['title'];
+       Session::flash('single_content', $data->toArray());
         return view('pages.news.single', compact('data', 'isHeaderOverlay', 'title', 'slug', 'others'));
 
     }

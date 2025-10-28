@@ -14,7 +14,7 @@ class CategoryScreening extends Component
 
     public function mount()
     {
-        $data =  HealthScreeningCategory::get()->map(function ($item) {
+        $data = HealthScreeningCategory::get()->map(function ($item) {
             return [
                 'id' => $item->id,
                 'title' => $item->title,
@@ -22,15 +22,17 @@ class CategoryScreening extends Component
             ];
 
         });
+        $appUrl = env('APP_URL');
+
         $all = [
             'id' => "all",
             'title' => "All",
-            'icon' => "asset/HealthScreening/Icon/Health/service-all.svg",
-            ];
+            'icon' => $appUrl . "/asset/HealthScreening/Icon/Health/service-all.svg",
+        ];
         $others = [
             'id' => "others",
             'title' => "Others",
-            'icon' => "asset/HealthScreening/Icon/Line/list.svg",
+            'icon' => $appUrl . "/asset/HealthScreening/Icon/Line/list.svg",
         ];
 
         $this->schema = collect([$all])->merge($data)->merge([$others]);

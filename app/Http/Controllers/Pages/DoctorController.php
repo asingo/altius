@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Pages;
 use App\Http\Controllers\Controller;
 use App\Models\Doctor;
 use App\Models\Pages;
+use Illuminate\Support\Facades\Session;
 
 class DoctorController extends Controller
 {
@@ -33,6 +34,7 @@ class DoctorController extends Controller
         });
         $isHeaderOverlay = false;
         $title = $data['name'];
+        Session::flash('single_content', $data->toArray());
         return view('pages.medical-professional.single', compact('data', 'isHeaderOverlay','location', 'title', 'slug'));
     }
 }

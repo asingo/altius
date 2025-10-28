@@ -1,7 +1,6 @@
 <?php
 
 namespace App\Http\Controllers\Pages;
-
 use App\Http\Controllers\Controller;
 use App\Models\HealthScreening;
 use App\Models\Offer;

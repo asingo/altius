@@ -3,6 +3,7 @@
 namespace App\Livewire;
 
 use Livewire\Component;
+use Request;
 
 class LanguageSwitcher extends Component
 {
@@ -10,25 +11,43 @@ class LanguageSwitcher extends Component
 
     public $uri;
 
+    public $route;
+
+    public $param = null;
+
     public function mount(): void
     {
-        $locale = app()->getLocale();
-        if($locale != 'id'){
-            $this->locale = 'en';
-        }
-        if($locale != 'en'){
-            $this->locale = 'id';
-        }
-        $uri = \Illuminate\Support\Facades\Request::uri()->path();
+        $route = request()->route();
 
-        $newUri = explode('/',$uri);
-        if($newUri[0] == 'id' || $newUri[0] == 'en'){
-            unset($newUri[0]);
-        }
-        $this->uri = implode('/',$newUri);
-        if($uri == '/'){
+        // Gracefully handle when route is null (e.g., included in shared layout)
+        if (!$route || !$route->getName()) {
+            $this->locale = app()->getLocale() === 'id' ? 'id' : 'en';
             $this->uri = '';
+            $this->route = '';
+            return;
         }
+
+        $locale = app()->getLocale();
+        $this->locale = $locale === 'id' ? 'id' : 'en';
+
+        // Get session if any
+        if ($session = session('single_content')) {
+            $this->param = $session['slug'] ?? null;
+        }
+
+        // Get current URI path (no leading slash)
+        $uri = request()->path();
+
+        // Route base name
+        $this->route = explode('_', $route->getName())[0] ?? '';
+
+        // Remove locale prefix if exists
+        $segments = explode('/', $uri);
+        if (in_array($segments[0], ['id', 'en'])) {
+            array_shift($segments);
+        }
+
+        $this->uri = implode('/', $segments);
     }
 
     public function switchLocale($locale, $href)

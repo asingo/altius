@@ -36,36 +36,16 @@
         <nav class="menu xl:flex hidden">
             <ul class="menu-list flex items-center gap-6 {{!$isHeaderOverlay ?'!text-[#171717]' : 'text-white'}}"
                 :class="atTop && '!text-[#171717]' ">
-                <li>
-                    <a href="{{localized_route('about')}}" class="relative group">
-                        <span :class="[atTop && 'hover:!text-primary', slug == 'about' ? '!text-primary' : ''] ">About Us</span>
-                        <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'about' ? '!bg-primary !scale-x-100' :'']"></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{localized_route('location')}}" class="relative group">
-                        <span :class="[atTop && 'hover:!text-primary', slug == 'location' ? '!text-primary' : ''] ">Location</span>
-                        <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'location' ? '!bg-primary !scale-x-100' :'']"></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{localized_route('doctor')}}" class="relative group">
-                        <span :class="[atTop && 'hover:!text-primary', slug == 'medical-professional' ? '!text-primary' : ''] ">Medical Professionals</span>
-                        <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'medical-professional' ? '!bg-primary !scale-x-100' :''] "></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{localized_route('screening')}}" class="relative group">
-                        <span :class="[atTop && 'hover:!text-primary', slug == 'health-screening' ? '!text-primary' : ''] ">Health Screening</span>
-                        <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'health-screening' ? '!bg-primary !scale-x-100' :''] "></span>
-                    </a>
-                </li>
-                <li>
-                    <a href="{{localized_route('contact')}}" class="relative group">
-                        <span :class="[atTop && 'hover:!text-primary', slug == 'contact-us' ? '!text-primary' : ''] ">Contact Us</span>
-                        <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'contact-us' ? '!bg-primary !scale-x-100' :''] "></span>
-                    </a>
-                </li>
+                @foreach(\App\Models\MenuHeader::with('pages')->get() as $menu)
+                    <li>
+                        <a href="{{localized_route($menu->pages->route_name)}}" class="relative group w-full">
+                            <span
+                                :class="[atTop && 'hover:!text-primary', slug == '{{$menu->pages->slug}}' ? '!text-primary' : '']">{{$menu->title}}</span>
+                            <span class="menu-interaction"
+                                  :class="[atTop && '!bg-primary', slug == '{{$menu->pages->slug}}' ? '!bg-primary !scale-x-100' :'']"></span>
+                        </a>
+                    </li>
+                @endforeach
                 <li>
                     <a href="{{localized_route('home')}}" class="relative group">
                         <span class="flex gap-2 items-center" :class="atTop && 'hover:!text-primary' ">
@@ -106,36 +86,46 @@
                     class="absolute bg-white w-screen left-0 h-screen top-14 z-50"
                 >
                     <ul class="menu-list flex flex-col gap-5 mx-6 mt-4 pt-4 border-t">
-                        <li>
-                            <a href="{{localized_route('about')}}" class="relative group w-full">
-                                <span :class="[atTop && 'hover:!text-primary', slug == 'about' ? '!text-primary' : '']">About Us</span>
-                                <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'about' ? '!bg-primary !scale-x-100' :'']"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{localized_route('location')}}" class="relative group">
-                                <span :class="[atTop && 'hover:!text-primary', slug == 'location' ? '!text-primary' : '']">Location</span>
-                                <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'location' ? '!bg-primary !scale-x-100' :'']"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{localized_route('doctor')}}" class="relative group">
-                                <span :class="[atTop && 'hover:!text-primary', slug == 'medical-professional' ? '!text-primary' : '']">Medical Professionals</span>
-                                <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'medical-professional' ? '!bg-primary !scale-x-100' :'']"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{localized_route('screening')}}" class="relative group">
-                                <span :class="[atTop && 'hover:!text-primary', slug == 'health-screening' ? '!text-primary' : '']">Health Screening</span>
-                                <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'health-screening' ? '!bg-primary !scale-x-100' :'']"></span>
-                            </a>
-                        </li>
-                        <li>
-                            <a href="{{localized_route('contact')}}" class="relative group">
-                                <span :class="[atTop && 'hover:!text-primary', slug == 'contact-us' ? '!text-primary' : '']">Contact Us</span>
-                                <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'contact-us' ? '!bg-primary !scale-x-100' :'']"></span>
-                            </a>
-                        </li>
+                        @foreach(\App\Models\MenuHeader::with('pages')->get() as $menu)
+                            <li>
+                                <a href="{{localized_route($menu->pages->route_name)}}" class="relative group w-full">
+                                    <span
+                                        :class="[atTop && 'hover:!text-primary', slug == '{{$menu->pages->slug}}' ? '!text-primary' : '']">{{$menu->title}}</span>
+                                    <span class="menu-interaction"
+                                          :class="[atTop && '!bg-primary', slug == '{{$menu->pages->slug}}' ? '!bg-primary !scale-x-100' :'']"></span>
+                                </a>
+                            </li>
+                        @endforeach
+                        {{--                        <li>--}}
+                        {{--                            <a href="{{localized_route('about')}}" class="relative group w-full">--}}
+                        {{--                                <span :class="[atTop && 'hover:!text-primary', slug == 'about' ? '!text-primary' : '']">About Us</span>--}}
+                        {{--                                <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'about' ? '!bg-primary !scale-x-100' :'']"></span>--}}
+                        {{--                            </a>--}}
+                        {{--                        </li>--}}
+                        {{--                        <li>--}}
+                        {{--                            <a href="{{localized_route('location')}}" class="relative group">--}}
+                        {{--                                <span :class="[atTop && 'hover:!text-primary', slug == 'location' ? '!text-primary' : '']">Location</span>--}}
+                        {{--                                <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'location' ? '!bg-primary !scale-x-100' :'']"></span>--}}
+                        {{--                            </a>--}}
+                        {{--                        </li>--}}
+                        {{--                        <li>--}}
+                        {{--                            <a href="{{localized_route('doctor')}}" class="relative group">--}}
+                        {{--                                <span :class="[atTop && 'hover:!text-primary', slug == 'medical-professional' ? '!text-primary' : '']">Medical Professionals</span>--}}
+                        {{--                                <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'medical-professional' ? '!bg-primary !scale-x-100' :'']"></span>--}}
+                        {{--                            </a>--}}
+                        {{--                        </li>--}}
+                        {{--                        <li>--}}
+                        {{--                            <a href="{{localized_route('screening')}}" class="relative group">--}}
+                        {{--                                <span :class="[atTop && 'hover:!text-primary', slug == 'health-screening' ? '!text-primary' : '']">Health Screening</span>--}}
+                        {{--                                <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'health-screening' ? '!bg-primary !scale-x-100' :'']"></span>--}}
+                        {{--                            </a>--}}
+                        {{--                        </li>--}}
+                        {{--                        <li>--}}
+                        {{--                            <a href="{{localized_route('contact')}}" class="relative group">--}}
+                        {{--                                <span :class="[atTop && 'hover:!text-primary', slug == 'contact-us' ? '!text-primary' : '']">Contact Us</span>--}}
+                        {{--                                <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'contact-us' ? '!bg-primary !scale-x-100' :'']"></span>--}}
+                        {{--                            </a>--}}
+                        {{--                        </li>--}}
                         <li>
                             <a href="{{localized_route('home')}}" class="relative group">
                         <span class="flex gap-2 items-center" :class="atTop && 'hover:!text-primary' ">
@@ -160,6 +150,9 @@
     </div>
 </header>
 @yield('content')
+@php
+    $generalSetting = \App\Models\Setting::where('name', 'general')->first()?->value ?? false;
+@endphp
 <footer>
     <div class="bg-[#012D61] py-16 px-6 2xl:px-0">
         <div
@@ -171,7 +164,8 @@
                     <x-heroicon-s-envelope class="w-10 h-10 fill-white"/>
                 </div>
                 <span class="text-[24px]">Contact Us</span>
-                <span class="text-[20px]">care@altiushospitals.id</span>
+                <span
+                    class="text-[20px]">{{$generalSetting ? $generalSetting['contact']['email'] : 'care@altiushospitals.id'}}</span>
             </div>
 
             <!-- Call Us -->
@@ -180,7 +174,7 @@
                     <x-heroicon-s-phone class="w-10 h-10 fill-white"/>
                 </div>
                 <span class="text-[24px]">Call Us</span>
-                <span class="text-[20px]">021 - 3000 8877 Available 24/7</span>
+                <span class="text-[20px]">{{$generalSetting ? $generalSetting['contact']['phone'] : '021 - 3000 8877'}} Available 24/7</span>
             </div>
 
             <!-- Whatsapp -->
@@ -202,7 +196,7 @@
 </svg>
                 </div>
                 <span class="text-[24px]">WhatsApp</span>
-                <span class="text-[20px]">0857 8877 8877 Available 24/7</span>
+                <span class="text-[20px]">{{$generalSetting ? $generalSetting['contact']['whatsapp'] : '0857 8877 8877'}} Available 24/7</span>
             </div>
 
             <!-- Visit -->
@@ -211,7 +205,8 @@
                     <x-heroicon-s-map-pin class="w-10 h-10 fill-white"/>
                 </div>
                 <span class="text-[24px]">Visit our Hospitals</span>
-                <x-button.link href="#" outlined="true" class="text-sm !font-normal !py-2 !px-4">Get Directions
+                <x-button.link href="{{$generalSetting ? $generalSetting['contact']['link_maps'] : '#'}}"
+                               outlined="true" class="text-sm !font-normal !py-2 !px-4">Get Directions
                 </x-button.link>
             </div>
 
@@ -221,51 +216,63 @@
                 <div class="flex items-center md:items-start flex-col">
                     <span class="text-[24px] text-white font-semibold ">Follow Altius Hospitals</span>
                     <div class="flex gap-2 h-12 mt-4 items-center">
-                        <div class="border w-12 h-12 border-white p-2.5 rounded-full">
-                            <img src="{{asset('asset/Icon/instagram.svg')}}">
-                        </div>
-                        <div class="border w-12 h-12 border-white p-2.5 rounded-full">
-                            <img src="{{asset('asset/Icon/youtube.svg')}}">
-                        </div>
-                        <div class="border w-12 h-12 border-white p-2.5 rounded-full">
-                            <img src="{{asset('asset/Icon/tiktok.svg')}}">
-                        </div>
+                        @foreach($generalSetting['contact']['social_media'] as $socmed)
+                            <a href="{{$socmed['link']}}">
+                                <div class="border w-12 h-12 border-white p-2.5 rounded-full">
+                                    <img src="{{\Awcodes\Curator\Models\Media::find($socmed['icon'])?->url}}">
+                                </div>
+                            </a>
+                        @endforeach
+
+                        {{--                        <a href="#">--}}
+                        {{--                            <div class="border w-12 h-12 border-white p-2.5 rounded-full">--}}
+                        {{--                                <img src="{{asset('asset/Icon/youtube.svg')}}">--}}
+                        {{--                            </div>--}}
+                        {{--                        </a>--}}
+                        {{--                        <a href="#">--}}
+                        {{--                            <div class="border w-12 h-12 border-white p-2.5 rounded-full">--}}
+                        {{--                                <img src="{{asset('asset/Icon/tiktok.svg')}}">--}}
+                        {{--                            </div>--}}
+                        {{--                        </a>--}}
                     </div>
                 </div>
                 <div class="flex items-center md:items-end flex-col">
                     <span class="text-[24px] text-white font-semibold ">About Altius Hospitals</span>
                     <nav class="menu-footer mt-4">
                         <ul class="menu-list flex md:h-12 text-lg items-center md:flex-row flex-col gap-6 text-white">
-                            <li>
-                                <a href="{{localized_route('doctor')}}" class="relative group">
-                                    <span>Medical Professionals</span>
-                                    <span class="menu-interaction"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{localized_route('screening')}}" class="relative group">
-                                    <span>Health Screening</span>
-                                    <span class="menu-interaction"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{localized_route('career')}}" class="relative group">
-                                    <span>Careers</span>
-                                    <span class="menu-interaction"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{localized_route('news')}}" class="relative group">
-                                    <span>News</span>
-                                    <span class="menu-interaction"></span>
-                                </a>
-                            </li>
-                            <li>
-                                <a href="{{localized_route('offers')}}" class="relative group">
-                                    <span>Offers</span>
-                                    <span class="menu-interaction"></span>
-                                </a>
-                            </li>
+                            @foreach(\App\Models\MenuFooter::get() as $menu)
+                                <li>
+                                    <a href="{{localized_route($menu->pages->route_name)}}" class="relative group">
+                                        <span>{{$menu->title}}</span>
+                                        <span class="menu-interaction"></span>
+                                    </a>
+                                </li>
+                            @endforeach
+
+                            {{--                            <li>--}}
+                            {{--                                <a href="{{localized_route('screening')}}" class="relative group">--}}
+                            {{--                                    <span>Health Screening</span>--}}
+                            {{--                                    <span class="menu-interaction"></span>--}}
+                            {{--                                </a>--}}
+                            {{--                            </li>--}}
+                            {{--                            <li>--}}
+                            {{--                                <a href="{{localized_route('career')}}" class="relative group">--}}
+                            {{--                                    <span>Careers</span>--}}
+                            {{--                                    <span class="menu-interaction"></span>--}}
+                            {{--                                </a>--}}
+                            {{--                            </li>--}}
+                            {{--                            <li>--}}
+                            {{--                                <a href="{{localized_route('news')}}" class="relative group">--}}
+                            {{--                                    <span>News</span>--}}
+                            {{--                                    <span class="menu-interaction"></span>--}}
+                            {{--                                </a>--}}
+                            {{--                            </li>--}}
+                            {{--                            <li>--}}
+                            {{--                                <a href="{{localized_route('offers')}}" class="relative group">--}}
+                            {{--                                    <span>Offers</span>--}}
+                            {{--                                    <span class="menu-interaction"></span>--}}
+                            {{--                                </a>--}}
+                            {{--                            </li>--}}
 
                         </ul>
                     </nav>
@@ -280,15 +287,16 @@
                     <span>&copy; {{date('Y')}} Altius Hospitals. All rights reserved</span>
                 </div>
                 <div class="flex gap-8 md:gap-4">
-                    <a href="#">Terms & Conditions</a>
-                    <a href="#">Privacy Policy</a>
+                    <a href="{{localized_route('terms')}}">Terms & Conditions</a>
+                    <a href="{{localized_route('privacy')}}">Privacy Policy</a>
                 </div>
             </div>
         </div>
     </div>
 </footer>
 <div class="fixed bottom-0 right-0 w-40 h-40 overflow-hidden">
-    <div class="absolute bottom-0 rotate-180 right-0 w-full z-[99] h-full border-b-[160px] border-l-[160px] border-transparent border-l-primary">
+    <div
+        class="absolute bottom-0 rotate-180 right-0 w-full z-[99] h-full border-b-[160px] border-l-[160px] border-transparent border-l-primary">
     <span class="text-white text-xl top-10 rotate-[135deg] absolute z-99 right-14 font-semibold">
       Feedback
     </span>

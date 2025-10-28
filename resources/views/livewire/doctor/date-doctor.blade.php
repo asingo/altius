@@ -1,22 +1,36 @@
 <div class="date-filter">
-    <span class="text-2xl font-semibold">Preffered Date</span>
+    <span class="text-2xl font-semibold">Preferred Date</span>
+
     <div class="mt-4">
-        {{$this->form}}
+        {{ $this->form }}
+
         <div
             x-data="{ date: @entangle('date') }"
             class="space-y-2 mt-4"
         >
-            @foreach($data as $k=>$d)
+            @foreach($data as $k => $d)
                 <div
-                    class="flex items-center justify-between cursor-pointer border-b-[1.5px] py-2 rounded"
-                    @click="date = '{{$k}}'" wire:click="dateChanged"
+                    class="flex items-center justify-between cursor-pointer border-b-[1.5px] py-2 rounded transition-colors"
+                    @click="date = '{{ $k }}'; $nextTick(() => $wire.dateChanged())"
                 >
-                    <label for="date-{{$this->getId()}}-{{$k}}" class="text-lg">{{$d}}</label>
-                    <input type="radio" name="date" id="date-{{$this->getId()}}-{{$k}}" value="{{$k}}" x-model="date" class="mr-2">
+                    <label
+                        for="date-{{ $this->getId() }}-{{ $k }}"
+                        class="text-lg flex-1 cursor-pointer"
+                    >
+                        {{ $d }}
+                    </label>
+
+                    <input
+                        type="radio"
+                        name="date-{{ $this->getId() }}" {{-- 👈 unique name per component instance --}}
+                        id="date-{{ $this->getId() }}-{{ $k }}" {{-- 👈 unique id per component instance --}}
+                        value="{{ $k }}"
+                        x-model="date"
+                        @checked($date === $k)
+                        class="mr-2 cursor-pointer"
+                    >
                 </div>
             @endforeach
         </div>
-
     </div>
-
 </div>

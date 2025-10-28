@@ -20,9 +20,10 @@
                         class="lg:col-span-1 space-y-6"
                     >
                         <div class="space-y-6 hidden lg:block">
-                            @livewire('frontend.doctor.location-doctor')
-                            @livewire('frontend.doctor.speciality-doctor')
-                            @livewire('frontend.doctor.date-doctor')
+                            <livewire:frontend.doctor.location-doctor key="desktop"/>
+                            <livewire:frontend.doctor.speciality-doctor key="desktop"/>
+                            <livewire:frontend.doctor.date-doctor key="desktop"/>
+
                         </div>
                     </div>
 
@@ -50,9 +51,9 @@
                             x-transition:leave-end="opacity-0 transform -translate-y-2"
                             class="space-y-6 lg:hidden"
                         >
-                            @livewire('frontend.doctor.location-doctor')
-                            @livewire('frontend.doctor.speciality-doctor')
-                            @livewire('frontend.doctor.date-doctor')
+                            <livewire:frontend.doctor.location-doctor key="mobile"/>
+                            <livewire:frontend.doctor.speciality-doctor key="mobile"/>
+                            <livewire:frontend.doctor.date-doctor key="mobile"/>
                         </div>
                         @livewire('frontend.doctor.list-doctors', ['data' => $data])
                     </div>

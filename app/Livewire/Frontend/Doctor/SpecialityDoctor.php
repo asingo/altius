@@ -7,6 +7,7 @@ use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
+use Illuminate\Http\Request;
 use Livewire\Component;
 
 class SpecialityDoctor extends Component implements HasForms
@@ -19,10 +20,13 @@ class SpecialityDoctor extends Component implements HasForms
 
     public $speciality = 'all';
 
-    public function mount(): void
+    public function mount(Request $request): void
     {
         $speciality = Speciality::get()->pluck('title', 'id')->toArray();
         $this->schema = ['all' => 'All'] + $speciality;
+        if($request->speciality_id){
+            $this->speciality = $request->speciality_id;
+        }
     }
 
     public function specialityChanged()
@@ -43,7 +47,7 @@ class SpecialityDoctor extends Component implements HasForms
 
     public function render()
     {
-        $data = collect($this->schema)->filter(function($data){
+        $data = collect($this->schema)->filter(function ($data) {
             return $this->filterSpeciality === ''
                 || str_contains(strtolower($data), strtolower($this->filterSpeciality));
         });

@@ -14,12 +14,12 @@
                 <div>
                     <h3 class="text-2xl font-medium">Qualification</h3>
                     <div class="mt-4">
-                        {!! $view['qualification'] !!}
+                        {!! tiptap_converter()->asHTML($view['qualification']) !!}
                     </div>
                 </div> <div>
                     <h3 class="text-2xl font-medium">Description</h3>
                     <div class="mt-4">
-                        {!! $view['description'] !!}
+                        {!!tiptap_converter()->asHTML($view['description']) !!}
                     </div>
                 </div> <div>
                     <h3 class="text-2xl font-medium">Location</h3>
@@ -29,7 +29,7 @@
                 </div>
             </div>
             <div class="md:w-1/2 md:px-6 :px-12">
-                @livewire('frontend.career.detail.submit-form')
+                @livewire('frontend.career.detail.submit-form', ['career' => $view->id])
             </div>
         </div>
         <div class="mt-24 max-w-screen-lg mx-auto flex items-center flex-col gap-6 text-primary">

@@ -55,6 +55,12 @@ class PagesResource extends Resource
                         if($get('view') == 'pages.news.index'){
                             $schema = FormSchema::withHeroAndBody();
                         }
+                        if($get('view') == 'pages.contact.index'){
+                            $schema = FormSchema::contact();
+                        }
+                        if($get('view') == 'pages.privacy.index' || $get('view') == 'pages.terms.index'){
+                            $schema = FormSchema::generalAccordion();
+                        }
 
                         return [
                             Forms\Components\TextInput::make('title')
@@ -84,7 +90,56 @@ class PagesResource extends Resource
                                         'pages.medical-professional.index' => 'Medical Professional',
                                         'pages.news.index' => 'News',
                                         'pages.offers.index' => 'Offers',
-                                    ])
+                                        'pages.privacy.index' => 'Privacy Policy',
+                                        'pages.terms.index' => 'Terms & Conditions',
+                                    ])->afterStateUpdated(function ($state, $set) {
+                                        $controller = match ($state) {
+                                            'pages.home.index' => 'App\Http\Controllers\Pages\HomeController',
+                                            'pages.about.index' => 'App\Http\Controllers\Pages\AboutController',
+                                            'pages.location.index' => 'App\Http\Controllers\Pages\LocationController',
+                                            'pages.medical-professional.index' => 'App\Http\Controllers\Pages\DoctorController',
+                                            'pages.career.index' => 'App\Http\Controllers\Pages\CareerController',
+                                            'pages.health-screening.index' => 'App\Http\Controllers\Pages\ScreeningController',
+                                            'pages.contact.index' => 'App\Http\Controllers\Pages\ContactController',
+                                            'pages.news.index' => 'App\Http\Controllers\Pages\NewsController',
+                                            'pages.offers.index' => 'App\Http\Controllers\OffersController',
+                                            'pages.privacy.index' => 'App\Http\Controllers\Pages\PrivacyController',
+                                            'pages.terms.index' => 'App\Http\Controllers\Pages\TermsController',
+                                            default => null
+                                        };
+
+                                        $route_name = match ($state) {
+                                            'pages.home.index' => 'home',
+                                            'pages.about.index' => 'about',
+                                            'pages.location.index' => 'location',
+                                            'pages.medical-professional.index' => 'doctor',
+                                            'pages.career.index' => 'career',
+                                            'pages.health-screening.index' => 'screening',
+                                            'pages.contact.index' => 'contact',
+                                            'pages.news.index' => 'news',
+                                            'pages.offers.index' => 'offers',
+                                            'pages.privacy.index' => 'privacy',
+                                            'pages.terms.index' => 'terms',
+                                            default => null
+
+                                        };
+
+                                        $route_name_detail = match ($state) {
+                                            'pages.location.index' => 'locationDetail',
+                                            'pages.medical-professional.index' => 'doctorDetail',
+                                            'pages.career.index' => 'careerDetail',
+                                            'pages.news.index' => 'newsDetail',
+                                            default => null
+
+                                        };
+
+                                        $set('controller', $controller);
+                                        $set('route_name', $route_name);
+                                        $set('route_name_detail', $route_name_detail);
+                                    }),
+                                Forms\Components\Hidden::make('controller'),
+                                Forms\Components\Hidden::make('route_name'),
+                                Forms\Components\Hidden::make('route_name_detail'),
                             ])->columnSpan(1),
                         Forms\Components\Section::make('Featured Image')->schema([
                             CuratorPicker::make('image')

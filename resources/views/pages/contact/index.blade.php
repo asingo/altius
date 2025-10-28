@@ -4,8 +4,8 @@
         <x-breadcrumb parent="Home" child="{{$title}}" />
         <div class="mt-8">
 
-            <x-typography.heading location="page" class="mt-4">Contact Us</x-typography.heading>
-            <x-typography.heading location="page" >Addresses and Phone Numbers</x-typography.heading>
+            <x-typography.heading location="page" class="mt-4">{{$page->content['section']['heading']}}</x-typography.heading>
+            <x-typography.heading location="page" >{{$page->content['section']['subheading']}}</x-typography.heading>
         </div>
         <div class="mt-8"
              x-data="{
@@ -86,9 +86,10 @@
             </div>
         </div>
         <div class="mt-12">
-            <h3 class="font-heading text-4xl" >Staff phone and email directories</h3>
+            <h3 class="font-heading text-4xl" >{{$page->content['staff']['title']}}</h3>
             <p class="mt-4">
-                Altius Hospitals doesn't have a public directory of staff phone numbers or email addresses. To contact someone, call the general telephone number at a Altius Hospitals location and the operator will connect you.</p>
+                {!! $page->content['staff']['description'] !!}
+            </p>
         </div>
     </div>
 @endsection

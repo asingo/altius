@@ -2,11 +2,14 @@
 
 namespace App\Livewire\Frontend\Doctor;
 
+use App\Models\Speciality;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
+use Illuminate\Http\Request;
 use Livewire\Component;
+use Termwind\Html\InheritStyles;
 
 class DateDoctor extends Component implements HasForms
 {
@@ -27,6 +30,13 @@ class DateDoctor extends Component implements HasForms
 
     public $date = 'all';
 
+    public function mount(Request $request): void
+    {
+        if($request->day){
+            $this->date = $request->day;
+        }
+    }
+
     public function dateChanged()
     {
         $this->dispatch('handleDateFilter', $this->date);
@@ -35,7 +45,7 @@ class DateDoctor extends Component implements HasForms
     public function form(Form $form)
     {
         return $form->schema([
-            TextInput::make('filterDate')
+            TextInput::make('filterDate.' .$this->getId())
                 ->prefixIcon('heroicon-o-magnifying-glass')
                 ->label('')
                 ->placeholder('Type Preffered Date')

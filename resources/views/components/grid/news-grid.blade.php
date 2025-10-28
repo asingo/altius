@@ -1,5 +1,5 @@
 @props(['title', 'slug', 'category', 'date'])
-<a href="/news/{{$slug}}" class="group">
+<a href="{{localized_route('newsDetail',[$slug])}}" class="group">
     <div class="border rounded-xl p-4 space-y-2 border-textsub">
         <div class="flex justify-between w-fit gap-2 items-center text-textsub">
             <span>{{$category}}</span>

@@ -12,6 +12,7 @@ use App\Models\LocationHasSubservice;
 use App\Models\Pages;
 use App\Models\Speciality;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 use stdClass;
 use function Laravel\Prompts\error;
 
@@ -64,6 +65,8 @@ class LocationController extends Controller
 
         $emergencyRecords = LocationHasEmergency::with('emergency')->where('location_id', $view->id)->get();
         $emergency = $emergencyRecords->map(fn ($item) => $item->emergency?->getTranslation('title', $locale))->unique()->values()->toArray();
+
+        Session::flash('single_content', $view->toArray());
 
         return view('pages.location.single', compact('view', 'title', 'services', 'coe', 'meta', 'speciality', 'facilities', 'emergency', 'isHeaderOverlay', 'slug'));
     }

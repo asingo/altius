@@ -1,13 +1,29 @@
-<div class="location-filter"><span class="text-2xl font-semibold">Locations</span>
+<div class="location-filter">
+    <span class="text-2xl font-semibold">Locations</span>
+
     <div class="mt-4">
         <div x-data="{ location: @entangle('location') }" class="space-y-2">
             @foreach($data as $k => $d)
-                <div class="flex items-center justify-between cursor-pointer border-b-[1.5px] py-2 rounded"
-                     @click="location = '{{$k}}'" wire:click="locationChanged">
-                    <label for="location-{{$this->getId()}}-{{$k}}"
-                           class="text-lg">{{ucwords($d)}}</label>
-                    <input type="radio" name="location" id="location-{{$this->getId()}}-{{$k}}" value="{{$k}}" x-model="location"
-                           class="mr-2">
+                <div
+                    class="flex items-center justify-between cursor-pointer border-b-[1.5px] py-2 rounded transition-colors"
+                    @click="location = '{{ $k }}'; $nextTick(() => $wire.locationChanged())"
+                >
+                    <label
+                        for="location-{{ $this->getId() }}-{{ $k }}"
+                        class="text-lg flex-1 cursor-pointer"
+                    >
+                        {{ ucwords($d) }}
+                    </label>
+
+                    <input
+                        type="radio"
+                        name="location-{{ $this->getId() }}" {{-- 👈 unique per component instance --}}
+                        id="location-{{ $this->getId() }}-{{ $k }}" {{-- 👈 unique id --}}
+                        value="{{ $k }}"
+                        x-model="location"
+                        @checked($location === $k) {{-- 👈 ensure pre-selected radio --}}
+                        class="mr-2 cursor-pointer"
+                    >
                 </div>
             @endforeach
         </div>

@@ -7,7 +7,7 @@
             <x-typography.subheading location="section">{{$page->content['about']['title']}}</x-typography.subheading>
             <h2 class="text-primary text-3xl font-medium my-2">{{$page->content['about']['heading']}}</h2>
           {!! tiptap_converter()->asHTML($page->content['about']['content'])!!}
-            <x-button.link href="{{route('about')}}" class="mt-6">{{$page->content['about']['button_label']}}</x-button.link>
+            <x-button.link href="{{localized_route('about')}}" class="mt-6">{{$page->content['about']['button_label']}}</x-button.link>
         </div>
     </div>
 

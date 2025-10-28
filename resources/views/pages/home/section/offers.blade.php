@@ -13,6 +13,6 @@
             </x-slider.slider-item>
         @endforeach
     </x-slider>
-    <x-button.link href="{{route('offers')}}" class="-mt-2.5">{{$page->content['offer']['button_label']}}</x-button.link>
+    <x-button.link href="{{localized_route('offers')}}" class="-mt-2.5">{{$page->content['offer']['button_label']}}</x-button.link>
 
 </div>

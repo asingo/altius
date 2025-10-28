@@ -17,6 +17,6 @@
     @endif
 
     <div class="flex items-center text-lg !text-primary font-bold">
-      {{$child}}
+      {!! $child !!}
    </div>
 </div>

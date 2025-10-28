@@ -2,6 +2,8 @@
 
 namespace App\Livewire\Frontend\Doctor;
 
+use App\Models\Doctor;
+use Illuminate\Http\Request;
 use Livewire\Component;
 
 class ListDoctors extends Component
@@ -22,10 +24,26 @@ class ListDoctors extends Component
         'handleDateFilter' => 'handleDateFilter',
     ];
 
-    public function mount($data): void
+    public function mount($data, Request $request): void
     {
         $this->data = collect($data);
         $this->filteredData = $this->data;
+        if ($request->speciality_id) {
+            $this->speciality = $request->speciality_id;
+        }
+        if ($request->hospital_id) {
+            $this->location = $request->hospital_id;
+        }
+        if ($request->day) {
+            $this->date = $request->day;
+        }
+        if ($request->doctor_id) {
+            $this->search = Doctor::find($request->doctor_id)->name;
+        }
+        if($request->speciality_id){
+            $this->speciality = $request->speciality_id;
+        }
+        $this->applyFilter();
     }
 
     public function handleLocationFilter($data)
@@ -57,7 +75,6 @@ class ListDoctors extends Component
     }
 
 
-
     protected function applyFilter()
     {
         $this->filteredData = $this->data->filter(function ($doctor) {
@@ -69,7 +86,7 @@ class ListDoctors extends Component
                 || $doctor->speciality_id == $this->speciality;
 
             $matchesLocation = $this->location === '' || strtolower($this->location) === 'all'
-                ||  $doctor->hasLocation()->where('location_id', $this->location)->exists();
+                || $doctor->hasLocation()->where('location_id', $this->location)->exists();
 
 //            $matchesDate = $this->date === ''
 //                || strtolower($this->date) === 'all'

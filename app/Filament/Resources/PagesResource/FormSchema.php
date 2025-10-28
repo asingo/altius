@@ -174,6 +174,28 @@ class FormSchema
         ];
     }
 
+    public static function contact(): array
+    {
+        return [
+            Grid::make(1)->schema([
+                Section::make('Section')->schema([
+                    TextInput::make('heading'),
+                    TextInput::make('subheading'),
+                ])->statePath('section'),
+                Section::make('Staff Phone and Email')->schema([
+                    TextInput::make('title'),
+                    Textarea::make('description')->rows(6),
+                ])->statePath('staff'),
+            ])->hidden(fn ($get) => match ($get('view')) {
+                'pages.contact.index' => false,
+                default => true
+            })->dehydrated(fn ($get) => match ($get('view')) {
+                'pages.contact.index' => true,
+                default => false
+            })->statePath('content')
+        ];
+    }
+
     public static function career(): array
     {
         return [
@@ -192,6 +214,34 @@ class FormSchema
                 ])->statePath('warning'),
             ])->hidden(fn ($get) => $get('view') !== 'pages.career.index')
                 ->dehydrated(fn ($get) => $get('view') == 'pages.career.index')->statePath('content')
+        ];
+    }
+
+    public static function generalAccordion()
+    {
+        return [
+            Grid::make(1)->schema([
+                Section::make('Content')->schema([
+                    TiptapEditor::make('content')->label('')
+                ]),
+                Section::make('FAQ')->schema([
+                    Repeater::make('faq')->label('')
+                        ->schema([
+                            TextInput::make('title')->label('Title'),
+                            TiptapEditor::make('content')->label('Content'),
+                        ])->itemLabel(fn($state) => $state['title'])->live()
+                        ->collapsible()
+                ])
+            ])->hidden(fn ($get) => match ($get('view')) {
+                'pages.privacy.index' => false,
+                'pages.terms.index' => false,
+                default => true
+            })->dehydrated(fn ($get) => match ($get('view')) {
+                'pages.privacy.index' => true,
+                'pages.terms.index' => true,
+                default => false
+            })->statePath('content')
+
         ];
     }
 }
