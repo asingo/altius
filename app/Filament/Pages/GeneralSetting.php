@@ -10,6 +10,7 @@ use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Split;
 use Filament\Forms\Components\TextInput;
+use Filament\Forms\Components\Toggle;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
@@ -36,7 +37,9 @@ class GeneralSetting extends Page implements HasForms
         $this->form->fill();
         if ($setting) {
             $this->general = $setting;
-//
+            $this->general['site']['logo_primary'] = [Media::find($setting['site']['logo_primary'])];
+            $this->general['site']['logo_alternative'] = [Media::find($setting['site']['logo_alternative'])];
+            $this->general['site']['favicon'] = [Media::find($setting['site']['favicon'])];
             $this->general['contact']['social_media'] = collect($setting['contact']['social_media'])->map(function ($item) {
                 $item['icon'] = [Media::find($item['icon'])];
                 return $item;
@@ -63,6 +66,12 @@ class GeneralSetting extends Page implements HasForms
     public function form(Form $form): Form
     {
         return $form->schema([
+            Section::make('Site Information')->schema([
+                CuratorPicker::make('logo_primary'),
+                CuratorPicker::make('logo_alternative'),
+                CuratorPicker::make('favicon'),
+                Toggle::make('is_no_robots')->label('Disable Search Engine Tracking for this site'),
+            ])->columns(3)->statePath('site'),
             Section::make('Contact & Social Media')->schema([
                 Split::make([
                     \Filament\Forms\Components\Grid::make(1)->schema([

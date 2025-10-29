@@ -30,10 +30,13 @@ class LanguageSwitcher extends Component
         $locale = app()->getLocale();
         $this->locale = $locale === 'id' ? 'id' : 'en';
 
+        $session = session('single_content');
+
         // Get session if any
-        if ($session = session('single_content')) {
+        if (isset($session)) {
             $this->param = $session['slug'] ?? null;
         }
+
 
         // Get current URI path (no leading slash)
         $uri = request()->path();

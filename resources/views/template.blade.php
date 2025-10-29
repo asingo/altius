@@ -1,14 +1,22 @@
-<!doctype html>
-<html lang="en">
+@php
+    $setting = \App\Models\Setting::where('name','general')->first()?->value;
+@endphp
+    <!doctype html>
+<html lang="{{app()->getLocale()}}">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport"
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    @if($setting['site']['is_no_robots'])
+        <meta name="robots" content="noindex, nofollow">
+    @endif
+    <link rel="icon" href="{{ \Awcodes\Curator\Models\Media::find($setting['site']['favicon'])?->url }}"
+          type="image/x-icon">
     <title>{{$title}} - {{env('APP_NAME')}}</title>
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
-<body>
+<body x-data="{openFeedback: false}">
 
 <header x-data="{ atTop: @js(!$isHeaderOverlay), slug: '{{$slug}}',topStatus: null,
         openMobile: false}"
@@ -30,7 +38,7 @@
         <div class="header-left">
             <a href="{{localized_route('home')}}">
                 <img :class="!atTop && 'brightness-0 invert' " class="w-[150px] lg:w-[220px]"
-                     src="{{asset('asset/logo.png')}}" alt="">
+                     src="{{\Awcodes\Curator\Models\Media::find($setting['site']['logo_primary'])?->url}}" alt="">
             </a>
         </div>
         <nav class="menu xl:flex hidden">
@@ -295,15 +303,21 @@
     </div>
 </footer>
 <div class="fixed bottom-0 right-0 w-40 h-40 overflow-hidden">
-    <div
-        class="absolute bottom-0 rotate-180 right-0 w-full z-[99] h-full border-b-[160px] border-l-[160px] border-transparent border-l-primary">
+    <div @click="openFeedback = true"
+        class="absolute bottom-0 rotate-180 cursor-pointer right-0 w-full z-[99] h-full border-b-[160px] border-l-[160px] border-transparent border-l-primary">
     <span class="text-white text-xl top-10 rotate-[135deg] absolute z-99 right-14 font-semibold">
       Feedback
     </span>
     </div>
 </div>
-<div>
+<div x-show="openFeedback" class="bg-black/50 fixed inset-0 z-[9999]">
 
+    <div class="bg-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg p-6">
+        <div>
+            <x-heroicon-o-x-mark class="text-white absolute -top-10 -right-10 w-10 h-10 cursor-pointer" @click="openFeedback = false"/>
+        </div>
+        asdasd
+    </div>
 </div>
 </body>
 </html>

@@ -21,14 +21,22 @@
     >
         <ul class="py-2 menu-list">
             @php
-
                 // Safely generate route or fallback
-                $paramId = $param['en'] ?? [];
-                if(isset($param['id'])){
-                    $paramId = $param['id'];
-                }
-                $enRoute = $route ? route($route . '_en', $param['en'] ?? []) : '/';
+
+                if(is_array($param)){
+                     $paramId = $param['en'] ?? [];
+                     if(isset($param['id'])){
+                        $paramId = $param['id'];
+                    }
+                      $enRoute = $route ? route($route . '_en', $param['en'] ?? []) : '/';
                 $idRoute = $route ? route($route . '_id', $paramId ?? []) : '/';
+                }else{
+                     $enRoute = $route ? route($route . '_en', $param) : '/';
+                $idRoute = $route ? route($route . '_id', $param) : '/';
+                }
+
+
+
             @endphp
 
             <li>
