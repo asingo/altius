@@ -90,6 +90,14 @@ ul:not(.menu-list){
     @apply list-disc text-lg ml-5;
 }
 
+.fi-fo-repeater ul{
+    @apply list-none ml-0;
+}
+
+.fi-fo-field-wrp-label span{
+    @apply text-lg font-normal text-textsub;
+}
+
 .careerForm .fi-fo-field-wrp-label span{
     @apply text-xl font-normal text-textsub;
 }

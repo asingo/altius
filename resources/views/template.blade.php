@@ -311,13 +311,25 @@
     </div>
 </div>
 <div x-show="openFeedback" class="bg-black/50 fixed inset-0 z-[9999]">
+    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[80%]">
+        <div class="absolute cursor-pointer -top-10 -right-10"  @click="openFeedback = false">
+            <x-heroicon-o-x-mark
+                class="text-white w-10 h-10"
 
-    <div class="bg-white absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 rounded-lg p-6">
-        <div>
-            <x-heroicon-o-x-mark class="text-white absolute -top-10 -right-10 w-10 h-10 cursor-pointer" @click="openFeedback = false"/>
+            />
         </div>
-        asdasd
+        <div
+            class="bg-white rounded-2xl h-full overflow-y-auto"
+        >
+            <!-- Scrollable inner content -->
+            <div class="h-full p-6 ">
+                <img src="{{\Awcodes\Curator\Models\Media::find($setting['site']['logo_primary'])?->url}}" alt="logo" class="mx-auto h-8 mt-4"/>
+                <div class="text-center text-2xl mt-4 font-semibold">We'd love your feedback! </div>
+                @livewire('frontend.feedback')
+            </div>
+        </div>
     </div>
+
 </div>
 </body>
 </html>
