@@ -14,6 +14,7 @@
     <link rel="icon" href="{{ \Awcodes\Curator\Models\Media::find($setting['site']['favicon'])?->url }}"
           type="image/x-icon">
     <title>{{$title}} - {{env('APP_NAME')}}</title>
+    @filamentStyles()
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body x-data="{openFeedback: false}">
@@ -302,15 +303,15 @@
         </div>
     </div>
 </footer>
-<div class="fixed bottom-0 right-0 w-40 h-40 overflow-hidden">
+<div class="fixed bottom-0 right-0 w-32 h-32 overflow-hidden z-[99]">
     <div @click="openFeedback = true"
-        class="absolute bottom-0 rotate-180 cursor-pointer right-0 w-full z-[99] h-full border-b-[160px] border-l-[160px] border-transparent border-l-primary">
-    <span class="text-white text-xl top-10 rotate-[135deg] absolute z-99 right-14 font-semibold">
+        class="absolute bottom-0 rotate-180 cursor-pointer right-0 w-full  h-full border-b-[128px] border-l-[128px] border-transparent border-l-primary">
+    <span class="text-white text-xl top-7 rotate-[135deg] absolute z-99 right-10 font-semibold">
       Feedback
     </span>
     </div>
 </div>
-<div x-show="openFeedback" class="bg-black/50 fixed inset-0 z-[9999]">
+<div x-show="openFeedback" x-cloak class="bg-black/50 fixed inset-0 z-[9999]" :class="openFeedback ? 'block' : 'hidden'">
     <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[80%]">
         <div class="absolute cursor-pointer -top-10 -right-10"  @click="openFeedback = false">
             <x-heroicon-o-x-mark
@@ -319,10 +320,10 @@
             />
         </div>
         <div
-            class="bg-white rounded-2xl h-full overflow-y-auto"
+            class="bg-white rounded-2xl  p-6  h-full"
         >
             <!-- Scrollable inner content -->
-            <div class="h-full p-6 ">
+            <div class="h-full overflow-y-auto">
                 <img src="{{\Awcodes\Curator\Models\Media::find($setting['site']['logo_primary'])?->url}}" alt="logo" class="mx-auto h-8 mt-4"/>
                 <div class="text-center text-2xl mt-4 font-semibold">We'd love your feedback! </div>
                 @livewire('frontend.feedback')
@@ -331,5 +332,6 @@
     </div>
 
 </div>
+@filamentScripts()
 </body>
 </html>

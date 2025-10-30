@@ -37,7 +37,7 @@ p, ol, ul:not(.menu-list) li{
 }
 
 .filter-doctor .fi-fo-field-wrp-label span{
-    @apply text-[16px] text-primary;
+    @apply text-[16px] text-primary font-medium;
 }
 .filter-doctor .fi-input-wrp-prefix, .doctor-search .fi-input-wrp-prefix, .speciality-filter .fi-input-wrp-prefix, .date-filter .fi-input-wrp-prefix {
     @apply border-none pe-0;
@@ -95,13 +95,16 @@ ul:not(.menu-list){
 }
 
 .fi-fo-field-wrp-label span{
-    @apply text-lg font-normal text-textsub;
+    @apply text-lg font-normal;
 }
 
 .careerForm .fi-fo-field-wrp-label span{
     @apply text-xl font-normal text-textsub;
 }
 
+.filepond--label-action{
+    @apply !text-primary;
+}
 /*.doctor-filter div.choices__list.choices__list--dropdown{*/
 /*    @apply !hidden;*/
 /*}*/

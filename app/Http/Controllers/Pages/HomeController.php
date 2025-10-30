@@ -30,4 +30,21 @@ class HomeController extends Controller
         return view($view, compact('isHeaderOverlay','page','testimonies',
             'sliderSetting', 'title', 'slider', 'slug','healthScreening', 'offers'));
     }
+
+    public function successFeedback()
+    {
+        $locale = app()->getLocale();
+        $title = 'Feedback Submission';
+        $isHeaderOverlay = false;
+        $slug = 'thank-you-feedback';
+        $heading = 'Your Feedback has been submitted!';
+        $buttonLabel = 'Back to Home';
+        $description = '<p>We love hearing from you!</p><p>Thank you for your valuable feedback</p>';
+        if($locale == 'id'){
+            $heading = 'Saran dan Masukan anda telah dikirim!';
+            $buttonLabel = 'Kembali ke Beranda';
+            $description = '<p>Terima kasih atas saran dan masukan yang diberikan.</p><p>Saran dan masukan yang dikirimkan sangat berarti bagi kami.</p>';
+        }
+        return view('typ', compact('title', 'isHeaderOverlay', 'slug', 'heading', 'description', 'buttonLabel'));
+    }
 }

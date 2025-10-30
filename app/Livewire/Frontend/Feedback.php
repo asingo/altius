@@ -3,6 +3,7 @@
 namespace App\Livewire\Frontend;
 
 use App\Forms\Components\RangePicker;
+use App\Models\FeedbackResponse;
 use App\Models\Setting;
 use Filament\Forms\Components\FileUpload;
 use Filament\Forms\Components\Repeater;
@@ -19,7 +20,7 @@ class Feedback extends Component implements HasForms
     use InteractsWithForms;
 
     public $feedback;
-    public $response;
+    public $responses;
 
     public function mount(): void
     {
@@ -31,8 +32,10 @@ class Feedback extends Component implements HasForms
         });
         $this->feedback = $feedback->toArray();
         foreach ($this->feedback as $key => $item) {
-            $this->response[$key] = null;
+            $this->responses[$key] = null;
         }
+//        dd($this->response);
+        $this->form->fill(['responses' => $this->responses]);
     }
 
     public function form(Form $form): Form
@@ -71,7 +74,19 @@ class Feedback extends Component implements HasForms
 
     public function submit()
     {
-        dd(request()->all());
+//        dd($this->form->getState(), $this->feedback);
+        $form = $this->form->getState();
+        $feedbackData = [];
+        foreach($form['responses'] as $key => $response) {
+
+            FeedbackResponse::create([
+                'question' => $this->feedback[$key]['question'],
+                'type' => $this->feedback[$key]['type'],
+                'response' => $response,
+            ]);
+        }
+        return redirect()->route('successFeedback_'.app()->getLocale());
+
     }
 
 

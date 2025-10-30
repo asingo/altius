@@ -27,6 +27,7 @@ foreach ($locales as $key => $prefix) {
             });
         }
         Route::get('/thank-you', [CareerController::class, 'successSubmission'])->name('successSubmission_'.$key);
+        Route::get('/thank-you-feedback', [HomeController::class, 'successFeedback'])->name('successFeedback_'.$key);
     });
 }
 
