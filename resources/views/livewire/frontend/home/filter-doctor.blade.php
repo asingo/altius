@@ -6,7 +6,8 @@
             <div class="col-span-4 lg:col-span-1">
                 <div class="grid grid-cols-2 gap-4">
                     <button wire:click.prevent="resetForm" class="text-primary font-medium border border-primary rounded-xl px-4 py-2"><span>Reset</span></button>
-                    <button type="submit" class="bg-primary font-medium text-white border border-primary rounded-xl px-4 py-2">Find a Doctor</button>
+                    <button type="submit" class="bg-primary font-medium text-white border border-primary rounded-xl px-4 py-2">
+                        {{__('find.doctor')}}</button>
                 </div>
             </div>
         </div>

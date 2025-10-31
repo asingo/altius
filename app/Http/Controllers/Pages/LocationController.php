@@ -35,9 +35,14 @@ class LocationController extends Controller
 
     public function locationDetail($slug)
     {
-        $view = Location::with('service')->where('slug->en', $slug)->first();
+        $locale = app()->getLocale();
+        $data = Location::with('service')->where('slug->'.$locale, $slug);
+        if(!$data->exists()){
+            $locale = app()->getLocale() === 'id' ? 'en' : 'id';
+            $data = Location::with('service')->where('slug->'.$locale, $slug);
+        }
+        $view = $data->first();
 
-        $locale = 'en';
         $isHeaderOverlay = false;
         $slug = 'location';
         $records = LocationHasSubservice::with(['service', 'subservice'])

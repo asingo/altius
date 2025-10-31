@@ -21,14 +21,14 @@
                         <div class="text-textsub text-lg md:text-xl">{{$v->meta}}</div>
                         <a href="{{$v->link_maps}}" class="text-primary hover:text-accent gap-2 items-center text-lg flex">
                             <x-heroicon-s-map-pin class="w-7 h-7"/>
-                            <span>Building & Maps</span>
+                            <span>{{__('building.maps')}}</span>
                             <x-heroicon-o-chevron-right class="w-7 h-7"/>
                         </a> <a href="tel:{{filter_var($v->general_number, FILTER_SANITIZE_NUMBER_INT)}}" class="text-primary hover:text-accent gap-2 items-center text-lg flex">
                             <x-heroicon-s-phone class="w-7 h-7"/>
-                            <span>Contact Us</span>
+                            <span>{{__('contact.us')}}</span>
                             <x-heroicon-o-chevron-right class="w-7 h-7"/>
                         </a>
-                        <x-button.link class="mt-2" href="{{request()->url().'/'.$v->slug}}">See Location</x-button.link>
+                        <x-button.link class="mt-2" href="{{request()->url().'/'.$v->slug}}">{{__('location')}}</x-button.link>
                     </div>
                 </div>
             @endforeach

@@ -56,7 +56,7 @@
                     </li>
                 @endforeach
                 <li>
-                    <a href="{{localized_route('home')}}" class="relative group">
+                    <a href="tel:021{{$setting['contact']['emergency']}}" class="relative group">
                         <span class="flex gap-2 items-center" :class="atTop && 'hover:!text-primary' ">
                             <svg width="20" height="20" viewBox="0 0 20 20" class="fill-white"
                                  :class="atTop && '!fill-red-500' "
@@ -66,7 +66,7 @@
 />
 </svg>
 
-                            Emergency 564 123</span>
+                            Emergency {{$setting['contact']['emergency']}}</span>
                         <span class="menu-interaction" :class="atTop && '!bg-primary' "></span>
                     </a>
                 </li>
@@ -76,7 +76,7 @@
             @livewire('language-switcher')
             <a href="#" class="btn-outline text-sm sm:text-[16px]" :class="atTop && 'btn-outline-alt' ">
                 <x-heroicon-o-user-circle class="w-5 h-5"/>
-                Login
+                {{__('login')}}
             </a>
             <div class="flex xl:hidden items-center">
                 <button class="text-white" :class="atTop && '!text-[#171717]'" @click="openMobile = !openMobile">
@@ -136,7 +136,7 @@
                         {{--                            </a>--}}
                         {{--                        </li>--}}
                         <li>
-                            <a href="{{localized_route('home')}}" class="relative group">
+                            <a href="tel:021{{$setting['contact']['emergency']}}" class="relative group">
                         <span class="flex gap-2 items-center" :class="atTop && 'hover:!text-primary' ">
                             <svg width="20" height="20" viewBox="0 0 20 20" class="fill-white"
                                  :class="atTop && '!fill-red-500' "
@@ -146,7 +146,7 @@
 />
 </svg>
 
-                            Emergency 564 123</span>
+                            Emergency {{$setting['contact']['emergency']}}</span>
                                 <span class="menu-interaction" :class="atTop && '!bg-primary' "></span>
                             </a>
                         </li>
@@ -172,7 +172,7 @@
                 <div class="">
                     <x-heroicon-s-envelope class="w-10 h-10 fill-white"/>
                 </div>
-                <span class="text-[24px]">Contact Us</span>
+                <span class="text-[24px]">{{__('footer.contact')}}</span>
                 <span
                     class="text-[20px]">{{$generalSetting ? $generalSetting['contact']['email'] : 'care@altiushospitals.id'}}</span>
             </div>
@@ -182,7 +182,7 @@
                 <div>
                     <x-heroicon-s-phone class="w-10 h-10 fill-white"/>
                 </div>
-                <span class="text-[24px]">Call Us</span>
+                <span class="text-[24px]">{{__('footer.call')}}</span>
                 <span class="text-[20px]">{{$generalSetting ? $generalSetting['contact']['phone'] : '021 - 3000 8877'}} Available 24/7</span>
             </div>
 
@@ -213,9 +213,9 @@
                 <div>
                     <x-heroicon-s-map-pin class="w-10 h-10 fill-white"/>
                 </div>
-                <span class="text-[24px]">Visit our Hospitals</span>
+                <span class="text-[24px]">{{__('visit.hospitals')}}</span>
                 <x-button.link href="{{$generalSetting ? $generalSetting['contact']['link_maps'] : '#'}}"
-                               outlined="true" class="text-sm !font-normal !py-2 !px-4">Get Directions
+                               outlined="true" class="text-sm !font-normal !py-2 !px-4">{{__('get.directions')}}
                 </x-button.link>
             </div>
 
@@ -223,7 +223,7 @@
         <div class="max-w-screen-2xl mx-auto mt-6">
             <div class="flex justify-between md:flex-row flex-col gap-6 items-center">
                 <div class="flex items-center md:items-start flex-col">
-                    <span class="text-[24px] text-white font-semibold ">Follow Altius Hospitals</span>
+                    <span class="text-[24px] text-white font-semibold ">{{__('follow.altius')}}</span>
                     <div class="flex gap-2 h-12 mt-4 items-center">
                         @foreach($generalSetting['contact']['social_media'] as $socmed)
                             <a href="{{$socmed['link']}}">
@@ -246,7 +246,7 @@
                     </div>
                 </div>
                 <div class="flex items-center md:items-end flex-col">
-                    <span class="text-[24px] text-white font-semibold ">About Altius Hospitals</span>
+                    <span class="text-[24px] text-white font-semibold ">{{__('about.altius')}}</span>
                     <nav class="menu-footer mt-4">
                         <ul class="menu-list flex md:h-12 text-lg items-center md:flex-row flex-col gap-6 text-white">
                             @foreach(\App\Models\MenuFooter::get() as $menu)
@@ -296,8 +296,8 @@
                     <span>&copy; {{date('Y')}} Altius Hospitals. All rights reserved</span>
                 </div>
                 <div class="flex gap-8 md:gap-4">
-                    <a href="{{localized_route('terms')}}">Terms & Conditions</a>
-                    <a href="{{localized_route('privacy')}}">Privacy Policy</a>
+                    <a href="{{localized_route('terms')}}">{{__('terms.conditions')}}</a>
+                    <a href="{{localized_route('privacy')}}">{{__('privacy.policy')}}</a>
                 </div>
             </div>
         </div>
