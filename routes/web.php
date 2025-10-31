@@ -9,6 +9,8 @@ use App\Http\Controllers\Pages\HomeController;
 use App\Http\Controllers\Pages\LocationController;
 use App\Http\Controllers\Pages\NewsController;
 use App\Http\Controllers\Pages\ScreeningController;
+use App\Livewire\Auth\CreateAccount;
+use App\Livewire\Auth\Login;
 use Illuminate\Support\Facades\Route;
 
 $locales = ['en' => '', 'id' => 'id'];
@@ -30,6 +32,9 @@ foreach ($locales as $key => $prefix) {
         Route::get('/thank-you-feedback', [HomeController::class, 'successFeedback'])->name('successFeedback_'.$key);
     });
 }
+
+Route::get('/login', Login::class)->name('login');
+Route::get('/register', CreateAccount::class)->name('register');
 
 //);
 //Route::get('/about', [AboutController::class, 'about'])->name('about');
