@@ -6,6 +6,7 @@
           content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Login | Altius Hospitals</title>
+    @filamentStyles()
     @vite(['resources/css/app.css', 'resources/js/app.js'])
 </head>
 <body class="h-screen flex flex-col justify-between">
@@ -54,6 +55,7 @@
         </div>
     </div>
 </footer>
+@filamentScripts()
 <script>
     window.addEventListener('livewire:navigated', () => {
         console.log('navigated');

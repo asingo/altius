@@ -23,10 +23,30 @@ p, ol, ul:not(.menu-list) li{
     color: #525252;
 }
 
+.create-account-form .fi-fo-wizard-header{
+    @apply hidden;
+}
+
+.create-account-form .fi-fo-wizard{
+    @apply ring-0;
+}
+
+.create-account-form .fi-fo-wizard > div:nth-child(5) span:nth-child(3) button,
+.create-account-form .fi-fo-wizard > div:nth-child(5) span:nth-child(4) button{
+    @apply py-3 px-6 border text-white bg-primary w-full rounded-xl flex items-center justify-center gap-2;
+}
+.create-account-form .fi-fo-wizard > div:nth-child(5) span:nth-child(1) button{
+    @apply py-3 px-6 border w-full rounded-xl flex items-center justify-center gap-2;
+}
+
 .menu-interaction {
     @apply absolute -left-0.5 -bottom-1 h-[1.5px] w-full bg-white
     origin-center scale-x-0 transition-transform duration-300 ease-in-out
     group-hover:scale-x-100;
+}
+
+sup{
+    @apply !text-red-600;
 }
 
 .btn-outline {
@@ -52,6 +72,22 @@ p, ol, ul:not(.menu-list) li{
 
 .location-filter > div span, .department-filter .fi-fo-select .choices__item, .careerForm .fi-fo-select .choices__item {
     @apply text-lg font-normal;
+}
+
+.create-account-form input{
+    @apply text-lg px-4 py-2 placeholder:text-slate-400;
+}
+
+.create-account-form .fi-input-wrp{
+    @apply border border-slate-400 rounded-xl focus-within:border-primary focus-within:border-2;
+}
+
+.create-account-form .fi-icon-btn-icon{
+    @apply fill-primary;
+}
+
+.create-account-form .fi-input-wrp-suffix{
+    @apply border-slate-400;
 }
 
 .post-content h3{
