@@ -2,16 +2,17 @@
 
 namespace App\Providers\Filament;
 
+use App\Filament\Auth\Login;
 use Filament\Enums\ThemeMode;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\NavigationGroup;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
 use Filament\SpatieLaravelTranslatablePlugin;
-use Filament\Support\Colors\Color;
 use Filament\Widgets;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -28,9 +29,10 @@ class AdminPanelProvider extends PanelProvider
             ->default()
             ->id('admin')
             ->path('admin')
-            ->login()
+            ->login(\App\Filament\Pages\Login::class)
+            ->brandLogo(asset('asset/logo.png'))
             ->colors([
-                'primary' => Color::Blue,
+                'primary' => '#225CA8',
             ])
             ->defaultThemeMode(ThemeMode::Light)
             ->darkMode(false)
@@ -56,6 +58,7 @@ class AdminPanelProvider extends PanelProvider
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
             ])
+            ->sidebarCollapsibleOnDesktop()
             ->authMiddleware([
                 Authenticate::class,
             ])
@@ -69,6 +72,15 @@ class AdminPanelProvider extends PanelProvider
                     ->registerNavigation(true)
                     ->defaultListView('grid' || 'list'),
                 SpatieLaravelTranslatablePlugin::make()->defaultLocales(['en', 'id'])
+            ])
+            ->navigationGroups([
+                NavigationGroup::make('Feedback')->icon('icon-feedback'),
+                NavigationGroup::make('Slider')->icon('icon-slider'),
+                NavigationGroup::make('Service & Facility')->icon('icon-services'),
+                NavigationGroup::make('News')->icon('icon-news'),
+                NavigationGroup::make('Career')->icon('icon-careers'),
+                NavigationGroup::make('Offers')->icon('icon-offers'),
+                NavigationGroup::make('Health Screening')->icon('icon-healthscreening'),
             ]);
     }
 }

@@ -8,6 +8,7 @@ use App\Models\Doctor;
 use App\Models\Location;
 use App\View\Components\Grid;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
+use Blade;
 use Filament\Forms;
 use Filament\Forms\Components\TextInput;
 use Filament\Forms\Form;
@@ -17,6 +18,7 @@ use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use FilamentTiptapEditor\TiptapEditor;
+use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
@@ -27,7 +29,7 @@ class DoctorResource extends Resource
 
     protected static ?string $model = Doctor::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+  protected static ?string $navigationIcon = 'icon-doctor';
 
     public static function form(Form $form): Form
     {

@@ -1,7 +1,7 @@
 <div class="max-w-screen-xl mx-auto">
     <div class="grid grid-cols-1 md:grid-cols-2 gap-10 items-center pt-12 md:pt-24">
         <div>
-            <img src="{{ \Awcodes\Curator\Models\Media::find($page->content['about_us']['image'])->url }}" alt="who we are" class="w-full h-auto rounded-2xl">
+            <img src="{{ \Awcodes\Curator\Models\Media::find($page->content['about_us']['image'])?->url }}" alt="who we are" class="w-full h-auto rounded-2xl">
         </div>
         <div>
             <x-typography.subheading location="page">{{$page->content['about_us']['title']}}</x-typography.subheading>
@@ -22,7 +22,7 @@
             </div>
         </div>
         <div>
-            <img src="{{ \Awcodes\Curator\Models\Media::find($page->content['about_us_2']['image'])->url }}" alt="who we are" class="w-full h-auto rounded-2xl">
+            <img src="{{ \Awcodes\Curator\Models\Media::find($page->content['about_us_2']['image'])?->url }}" alt="who we are" class="w-full h-auto rounded-2xl">
         </div>
 
 

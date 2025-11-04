@@ -28,7 +28,7 @@ class PagesResource extends Resource
 
     protected static ?string $model = \App\Models\Pages::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?string $navigationIcon = 'icon-pages';
 
     public static function form(Form $form): Form
     {

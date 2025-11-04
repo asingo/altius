@@ -12,28 +12,83 @@
 
 @config 'tailwind.config.js';
 
-.fi-sidebar-group:not(:first-of-type) .fi-sidebar-group-items {
-    display: flex !important;
-    max-height: 0;
-    opacity: 0;
-    height: auto!important;
-    overflow: hidden;
-    transform: translateY(-6px);
-    transition-delay: 0.1s;
-    transition:
-        max-height 0.45s cubic-bezier(0.25, 0.1, 0.25, 1),
-        opacity 0.3s ease,
-        transform 0.4s ease;
+/*.fi-sidebar-group:not(:first-of-type) .fi-sidebar-group-items:not(.fi-active) {*/
+/*    display: flex !important;*/
+/*    max-height: 0;*/
+/*    opacity: 0;*/
+/*    height: auto!important;*/
+/*    overflow: hidden;*/
+/*    transform: translateY(-6px);*/
+/*    transition-delay: 0.1s;*/
+/*    transition:*/
+/*        max-height 0.45s cubic-bezier(0.25, 0.1, 0.25, 1),*/
+/*        opacity 0.3s ease,*/
+/*        transform 0.4s ease;*/
+/*}*/
+
+.fi-simple-main{
+    @apply p-0 m-0 max-w-full min-h-screen bg-transparent;
 }
 
-.fi-sidebar-group:hover .fi-sidebar-group-items {
-    max-height: 500px; /* Adjust based on expected content height */
-    opacity: 1;
-    transition-delay: 0s;
-    overflow: visible;
-    transform: translateY(0);
-    transition:
-        max-height 0.55s cubic-bezier(0.19, 1, 0.22, 1),
-        opacity 0.35s ease-out,
-        transform 0.45s ease-out;
+.fi-main{
+    @apply px-0;
+}
+
+.fi-sidebar-item.fi-active a{
+    @apply bg-[#EAF1FB];
+}
+.fi-sidebar-item.fi-active .fi-sidebar-item-icon{
+    @apply !stroke-[#225CA8];
+}
+
+.fi-main section > div, .fi-header{
+    @apply px-4 md:px-6 lg:px-8;
+}
+
+.fi-main section{
+    @apply pt-0;
+}
+
+.fi-header{
+    @apply bg-white py-3 shadow-sm;
+}
+
+.fi-topbar{
+    @apply hidden;
+}
+
+.fi-header > div{
+    @apply mt-0;
+}
+
+/*.fi-sidebar-group:hover .fi-sidebar-group-items:not(.fi-active) {*/
+/*    max-height: 500px; !* Adjust based on expected content height *!*/
+/*    opacity: 1;*/
+/*    transition-delay: 0s;*/
+/*    overflow: visible;*/
+/*    transform: translateY(0);*/
+/*    transition:*/
+/*        max-height 0.55s cubic-bezier(0.19, 1, 0.22, 1),*/
+/*        opacity 0.35s ease-out,*/
+/*        transform 0.45s ease-out;*/
+/*}*/
+
+.fi-main{
+    @apply !max-w-[100%];
+}
+
+.fi-topbar nav{
+    @apply h-fit shadow-none ring-0;
+}
+
+.fi-sidebar{
+    @apply bg-white;
+}
+
+.fi-sidebar-nav{
+    @apply pt-2;
+}
+
+.fi-sidebar-header{
+    @apply ring-0 shadow-none;
 }

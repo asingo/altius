@@ -11,7 +11,7 @@ class ListDoctors extends ListRecords
     use ListRecords\Concerns\Translatable;
     protected static string $resource = DoctorResource::class;
 
-    protected function getHeaderActions(): array
+    public function getHeaderActions(): array
     {
         return [
             Actions\LocaleSwitcher::make(),
