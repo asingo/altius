@@ -73,6 +73,10 @@
 /*        transform 0.45s ease-out;*/
 /*}*/
 
+.fi-main-ctn{
+    @apply w-full;
+}
+
 .fi-main{
     @apply !max-w-[100%];
 }
