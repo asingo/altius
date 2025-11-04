@@ -134,29 +134,31 @@
                 Alpine.store('sidebarAccordion', {
                     openLabel: localStorage.getItem('openGroup') ?? null,
                     hoveredLabel: null,
+                    hoverTimeout: null,
 
                     toggle(label) {
-                        // Toggle click behavior (accordion)
                         this.openLabel = this.openLabel === label ? null : label
                         localStorage.setItem('openGroup', this.openLabel ?? '')
                     },
 
                     onHover(label) {
-                        // Only open on hover if not pinned open
-                        if (this.openLabel !== label) {
-                            this.hoveredLabel = label
-                        }
+                        // Cancel any pending collapse
+                        clearTimeout(this.hoverTimeout)
+                        this.hoveredLabel = label
                     },
 
                     onLeave(label) {
-                        // Close hover if not pinned
-                        if (this.openLabel !== label) {
-                            this.hoveredLabel = null
-                        }
+                        // Add small delay before collapsing if not pinned open
+                        clearTimeout(this.hoverTimeout)
+                        this.hoverTimeout = setTimeout(() => {
+                            if (this.openLabel !== label) {
+                                this.hoveredLabel = null
+                            }
+                        }, 200) // <-- delay in ms
                     },
 
                     isOpen(label) {
-                        // Open if either pinned or hovered
+                        // Show if hovered or clicked open
                         return this.openLabel === label || this.hoveredLabel === label
                     },
                 })

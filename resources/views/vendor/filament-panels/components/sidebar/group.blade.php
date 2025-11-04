@@ -164,6 +164,8 @@
         @if (filled($label))
             @if ($sidebarCollapsible)
                 x-show="$store.sidebarAccordion.isOpen(label)"
+        @mouseenter="$store.sidebarAccordion.onHover(label)"
+        @mouseleave="$store.sidebarAccordion.onLeave(label)"
 {{--                x-show="$store.sidebar.isOpen ? ! $store.sidebar.groupIsCollapsed(label) : ! @js($hasDropdown)"--}}
         @else
             x-show="! $store.sidebar.groupIsCollapsed(label)"
