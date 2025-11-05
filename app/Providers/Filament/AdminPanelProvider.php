@@ -81,6 +81,7 @@ class AdminPanelProvider extends PanelProvider
                 NavigationGroup::make('Career')->icon('icon-careers'),
                 NavigationGroup::make('Offers')->icon('icon-offers'),
                 NavigationGroup::make('Health Screening')->icon('icon-healthscreening'),
+                NavigationGroup::make('Settings')->icon('icon-settings'),
             ]);
     }
 }

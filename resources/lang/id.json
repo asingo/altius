@@ -1,6 +1,6 @@
 {
     "doctor.name": "Nama Dokter",
-    "find.doctor.name": "Cari Nama Dokter",
+    "find.doctor.name": "Temukan Dokter",
     "footer.contact": "Hubungi Kami",
     "footer.call": "Telepon Kami",
     "no.call": "Tersedia",
@@ -20,8 +20,8 @@
     "speciality": "Spesialisasi",
     "select.speciality": "Pilih Spesialisasi",
     "preferred.day": "Hari",
-    "find.doctor": "Cari Dokter",
-    "reset": "Atur Ulang",
+    "find.doctor": "Temukan Dokter",
+    "reset": "Reset",
     "home": "Beranda",
     "vision": "Visi",
     "mission": "Misi",

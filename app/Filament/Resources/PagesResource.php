@@ -64,9 +64,11 @@ class PagesResource extends Resource
 
                         return [
                             Forms\Components\TextInput::make('title')
+                                ->label('')->placeholder('Enter a Title')
                                 ->afterStateUpdated(function ($set, $state) {
                                     $set('slug', Str::slug($state));
                                 })
+                                ->extraInputAttributes(['class' => '!text-2xl'])
                                 ->live(onBlur: true),
                             ...$schema
                             ,

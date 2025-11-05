@@ -28,7 +28,6 @@ class FeedbackResponse extends Page
                     ];
                 }
 
-                // For non-range types, return the raw data (or customize)
                 return [
                     'type' => $type,
                     'data' => $items->pluck('response'),
@@ -37,6 +36,12 @@ class FeedbackResponse extends Page
 
         $this->feedback = $data;
     }
+
+    public function showResponse($question)
+    {
+        $this->dispatch('show-response', question: $question);
+    }
+
     protected function getHeaders(): array
     {
         return [

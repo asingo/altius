@@ -37,82 +37,97 @@ class DoctorResource extends Resource
             ->schema([
                 Forms\Components\Grid::make(4)->schema([
                     Forms\Components\Grid::make(1)->schema([
-                        Forms\Components\TextInput::make('name')->label('Name')
-                            ->afterStateUpdated(function ($set, $state) {
-                                $set('slug', Str::slug($state));
-                            })
-                            ->live(onBlur: true)
-                            ->required(),
-                        Forms\Components\Select::make('speciality_id')
-                            ->required()
-                            ->relationship('speciality', 'title')
-                            ->native(false)
-                            ->columnSpanFull()
-                            ->label('Speciality'),
-                        Forms\Components\Select::make('location')
-                            ->options(fn () => Location::all()->pluck('title', 'id'))
-                            ->native(false)
-                            ->required()
-                            ->multiple()
-                            ->afterStateUpdated(function ($set, $get, $state) {
-                                $existing = $get('scheduleRepeater') ?? [];
+                        Forms\Components\Section::make('Detail Information')->schema([
+                            Forms\Components\TextInput::make('name')->label('Name')
+                                ->afterStateUpdated(function ($set, $state) {
+                                    $set('slug', Str::slug($state));
+                                })
+                                ->live(onBlur: true)
+                                ->required(),
+                            Forms\Components\Select::make('speciality_id')
+                                ->required()
+                                ->relationship('speciality', 'title')
+                                ->native(false)
+                                ->columnSpanFull()
+                                ->label('Speciality'),
+                            Forms\Components\Select::make('location')
+                                ->options(fn () => Location::all()->pluck('title', 'id'))
+                                ->native(false)
+                                ->required()
+                                ->multiple()
+                                ->afterStateUpdated(function ($set, $get, $state) {
+                                    $existing = $get('scheduleRepeater') ?? [];
 
-                                $indexed = collect($existing)->keyBy('locationSchedule');
+                                    $indexed = collect($existing)->keyBy('locationSchedule');
 
-                                $newData = [];
+                                    $newData = [];
 
-                                foreach ($state as $locationId) {
-                                    if ($indexed->has($locationId)) {
-                                        $newData[] = $indexed[$locationId];
-                                    } else {
-                                        $newData[] = [
-                                            'locationSchedule' => $locationId,
-                                            'days' => [
-                                                'monday' => '',
-                                                'tuesday' => '',
-                                                'wednesday' => '',
-                                                'thursday' => '',
-                                                'friday' => '',
-                                                'saturday' => '',
-                                                'sunday' => '',
-                                            ],
-                                        ];
+                                    foreach ($state as $locationId) {
+                                        if ($indexed->has($locationId)) {
+                                            $newData[] = $indexed[$locationId];
+                                        } else {
+                                            $newData[] = [
+                                                'locationSchedule' => $locationId,
+                                                'days' => [
+                                                    'monday' => '',
+                                                    'tuesday' => '',
+                                                    'wednesday' => '',
+                                                    'thursday' => '',
+                                                    'friday' => '',
+                                                    'saturday' => '',
+                                                    'sunday' => '',
+                                                ],
+                                            ];
+                                        }
                                     }
-                                }
 
-                                // Set the merged data
-                                $set('scheduleRepeater', array_values($newData));
-                            })
-                            ->live()
-                            ->label('Location'),
-                        Forms\Components\Repeater::make('scheduleRepeater')->label('Schedule')
-                            ->schema([
-                                Forms\Components\Select::make('locationSchedule')
-                                    ->options(fn () => Location::all()->pluck('title', 'id'))
-                                    ->native(false)
-                                    ->columnSpanFull()
-                                    ->disabled()
-                                    ->label('Location'),
-                                Forms\Components\Hidden::make('locationSchedule')->label('Time')->columnSpanFull(),
-                                Forms\Components\Fieldset::make('days')->label('Time Schedule')->schema([
-                                    Forms\Components\TextInput::make('monday')->label('Monday')->inlineLabel(),
-                                    Forms\Components\TextInput::make('tuesday')->label('Tuesday')->inlineLabel(),
-                                    Forms\Components\TextInput::make('wednesday')->label('Wednesday')->inlineLabel(),
-                                    Forms\Components\TextInput::make('thursday')->label('Thursday')->inlineLabel(),
-                                    Forms\Components\TextInput::make('friday')->label('Friday')->inlineLabel(),
-                                    Forms\Components\TextInput::make('saturday')->label('Saturday')->inlineLabel(),
-                                    Forms\Components\TextInput::make('sunday')->label('Sunday')->inlineLabel(),
-                                ])->columns(1)->statePath('days'),
-                            ])
-                            ->live()
-                            ->grid(2)
-                            ->addable(false)
-                            ->orderColumn(false)
-                            ->deletable(false),
-                        TiptapEditor::make('biography')->label('Biography'),
-                        TiptapEditor::make('expertise')->label('Expertise'),
-                        TiptapEditor::make('education')->label('Education'),
-                        TiptapEditor::make('publication')->label('Publication'),
+                                    // Set the merged data
+                                    $set('scheduleRepeater', array_values($newData));
+                                })
+                                ->live()
+                                ->label('Location')
+                        ])
+                      ,
+                        Forms\Components\Section::make('Schedule')->schema([
+                            Forms\Components\Repeater::make('scheduleRepeater')->label('')
+                                ->schema([
+                                    Forms\Components\Select::make('locationSchedule')
+                                        ->options(fn () => Location::all()->pluck('title', 'id'))
+                                        ->native(false)
+                                        ->columnSpanFull()
+                                        ->disabled()
+                                        ->label('Location'),
+                                    Forms\Components\Hidden::make('locationSchedule')->label('Time')->columnSpanFull(),
+                                    Forms\Components\Fieldset::make('days')->label('Time Schedule')->schema([
+                                        Forms\Components\TextInput::make('monday')->label('Monday')->inlineLabel(),
+                                        Forms\Components\TextInput::make('tuesday')->label('Tuesday')->inlineLabel(),
+                                        Forms\Components\TextInput::make('wednesday')->label('Wednesday')->inlineLabel(),
+                                        Forms\Components\TextInput::make('thursday')->label('Thursday')->inlineLabel(),
+                                        Forms\Components\TextInput::make('friday')->label('Friday')->inlineLabel(),
+                                        Forms\Components\TextInput::make('saturday')->label('Saturday')->inlineLabel(),
+                                        Forms\Components\TextInput::make('sunday')->label('Sunday')->inlineLabel(),
+                                    ])->columns(1)->statePath('days'),
+                                ])
+                                ->live()
+                                ->grid(2)
+                                ->addable(false)
+                                ->orderColumn(false)
+                                ->deletable(false)
+                        ])
+                     ,
+                        Forms\Components\Section::make('Biography')->schema([
+                            TiptapEditor::make('biography')->label(''),
+                        ]),
+                        Forms\Components\Section::make('Expertise')->schema([
+                            TiptapEditor::make('expertise')->label(''),
+                        ]),
+                        Forms\Components\Section::make('Education')->schema([
+                            TiptapEditor::make('education')->label(''),
+                        ]),
+                        Forms\Components\Section::make('Publication')->schema([
+                            TiptapEditor::make('publication')->label(''),
+                        ]),
+
                     ])->columnSpan(3),
                     Forms\Components\Grid::make(1)->schema([
                         Forms\Components\Section::make('Page Details')
