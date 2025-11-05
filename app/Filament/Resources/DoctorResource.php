@@ -131,7 +131,7 @@ class DoctorResource extends Resource
     {
         return $table
             ->columns([
-                TextColumn::make('name')->label('Name'),
+                TextColumn::make('name')->label('Name')->searchable(),
                 TextColumn::make('speciality.title')->label('Speciality'),
                 TextColumn::make('hasLocation.location.title')->label('Location')
             ])
