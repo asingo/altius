@@ -20,7 +20,7 @@ class CareerCategoryResource extends Resource
     protected static ?string $navigationGroup = 'Career';
     protected static ?string $model = CareerCategory::class;
     protected static ?string $navigationLabel = 'Category';
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+//    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 protected static ?int $navigationSort = 2;
 
     public static function form(Form $form): Form

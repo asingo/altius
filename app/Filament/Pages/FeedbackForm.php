@@ -16,7 +16,7 @@ use Filament\Pages\Page;
 class FeedbackForm extends Page implements HasForms
 {
     use InteractsWithForms;
-    protected static ?string $navigationIcon = 'heroicon-o-document-text';
+//    protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
     protected static string $view = 'filament.pages.feedback-form';
 

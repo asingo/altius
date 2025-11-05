@@ -27,7 +27,7 @@ class EmergencyResource extends Resource
     use Translatable;
     protected static ?string $model = Emergency::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+//    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected static ?string $navigationGroup = 'Service & Facility';
 

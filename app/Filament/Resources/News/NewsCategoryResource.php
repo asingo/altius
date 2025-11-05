@@ -17,12 +17,14 @@ use Illuminate\Database\Eloquent\SoftDeletingScope;
 class NewsCategoryResource extends Resource
 {
     use Translatable;
+
     protected static ?string $model = \App\Models\NewsCategory::class;
 
     protected static ?string $navigationGroup = 'News';
     protected static ?string $navigationLabel = 'Category';
-protected static ?int $navigationSort = 2;
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+    protected static ?int $navigationSort = 2;
+
+//    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {

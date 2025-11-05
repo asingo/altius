@@ -27,7 +27,7 @@ class CoeResource extends Resource
 
     protected static ?string $model = Coe::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+//    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected static ?string $navigationGroup = 'Service & Facility';
 

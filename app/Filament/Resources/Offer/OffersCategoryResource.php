@@ -23,7 +23,7 @@ class OffersCategoryResource extends Resource
     protected static ?string $navigationLabel = 'Category';
     protected static ?string $model = OffersCategory::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+//    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {

@@ -20,7 +20,7 @@ class CareerSubmissionResource extends Resource
 {
     protected static ?string $model = CareerSubmission::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+//    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected static ?string $navigationGroup = 'Career';
     protected static ?int $navigationSort = 5;

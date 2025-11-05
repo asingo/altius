@@ -28,7 +28,7 @@ class HealthScreeningResource extends Resource
     protected static ?string $navigationGroup = 'Health Screening';
     protected static ?string $model = HealthScreening::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+//    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
     {

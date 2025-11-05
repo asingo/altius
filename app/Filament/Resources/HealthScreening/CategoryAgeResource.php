@@ -20,10 +20,10 @@ class CategoryAgeResource extends Resource
 
     protected static ?string $model = CategoryAge::class;
 
-    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+//    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     protected static ?string $navigationGroup = 'Health Screening';
-protected static ?int $navigationSort = 3;
+    protected static ?int $navigationSort = 3;
     protected static ?string $navigationLabel = 'Age';
 
     public static function form(Form $form): Form
