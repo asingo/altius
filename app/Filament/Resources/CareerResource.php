@@ -35,24 +35,30 @@ protected static ?int $navigationSort = 1;
             ->schema([
                 Forms\Components\Grid::make(4)->schema([
                     Forms\Components\Grid::make(1)->schema([
-                        TextInput::make('title')->label('Name')
-                            ->afterStateUpdated(function ($set, $state) {
-                                $set('slug', Str::slug($state));
-                            })
-                            ->live(onBlur: true)
-                            ->required(),
-                        Forms\Components\Grid::make(2)->schema([
-                            Select::make('location_id')
-                                ->options(fn() => Location::all()->pluck('title', 'id'))
-                                ->native(false)
-                                ->label('Location'),
-                            Select::make('department_id')
-                                ->options(fn() => Career\Department::all()->pluck('title', 'id'))
-                                ->native(false)
-                                ->label('Department'),
+                        Forms\Components\Section::make('Detail Information')->schema([
+                            TextInput::make('title')->label('Name')
+                                ->afterStateUpdated(function ($set, $state) {
+                                    $set('slug', Str::slug($state));
+                                })
+                                ->live(onBlur: true)
+                                ->required(),
+                            Forms\Components\Grid::make(2)->schema([
+                                Select::make('location_id')
+                                    ->options(fn() => Location::all()->pluck('title', 'id'))
+                                    ->native(false)
+                                    ->label('Location'),
+                                Select::make('department_id')
+                                    ->options(fn() => Career\Department::all()->pluck('title', 'id'))
+                                    ->native(false)
+                                    ->label('Department'),
+                            ]),
                         ]),
-                        TiptapEditor::make('qualification')->label('Qualification'),
-                        TiptapEditor::make('description')->label('Description'),
+                        Forms\Components\Section::make('Qualification')->schema([
+                            TiptapEditor::make('qualification')->label(''),
+                        ]),
+                        Forms\Components\Section::make('Description')->schema([
+                            TiptapEditor::make('description')->label(''),
+                        ])
                     ])->columnSpan(3),
                     Forms\Components\Grid::make(1)->schema([
                         Forms\Components\Section::make('Page Details')

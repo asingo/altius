@@ -37,6 +37,10 @@
     @apply ring-0 shadow-none;
 }
 
+.fi-page{
+    @apply relative;
+}
+
 .fi-form .fi-fieldset{
     @apply p-0 border-none;
 }
@@ -112,6 +116,20 @@
 
 .fi-header > div{
     @apply mt-0;
+}
+
+.fi-page .fi-form-actions{
+    @apply fixed right-0 bottom-0 bg-white w-full px-4 md:px-6 lg:px-8 shadow border-t;
+}
+.fi-page:not(.fi-resource-services) .fi-form{
+    @apply mb-20;
+}
+.fi-form-actions .fi-ac{
+    @apply justify-end p-4;
+}
+
+.no-asterisk sup{
+    @apply hidden;
 }
 
 /*.fi-sidebar-group:hover .fi-sidebar-group-items:not(.fi-active) {*/

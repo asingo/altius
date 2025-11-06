@@ -68,6 +68,8 @@ class PagesResource extends Resource
                                 ->afterStateUpdated(function ($set, $state) {
                                     $set('slug', Str::slug($state));
                                 })
+                                ->required()
+                                ->extraFieldWrapperAttributes(['class' => 'no-asterisk'])
                                 ->extraInputAttributes(['class' => '!text-2xl'])
                                 ->live(onBlur: true),
                             ...$schema

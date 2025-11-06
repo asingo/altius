@@ -37,18 +37,22 @@ class EmergencyResource extends Resource
             ->schema([
                 Forms\Components\Grid::make(4)->schema([
                     Forms\Components\Grid::make(1)->schema([
-                        TextInput::make('title')->label('Name')
-                            ->afterStateUpdated(function ($set, $state) {
-                                $set('slug', Str::slug($state));
-                            })
-                            ->live(onBlur: true)
-                            ->required(),
-                        Select::make('location')
-                            ->options(fn() => Location::all()->pluck('title', 'id'))
-                            ->native(false)
-                            ->multiple()
-                            ->label('Location'),
-                        TiptapEditor::make('content')->label('Content'),
+                        Forms\Components\Section::make('Detail Information')->schema([
+                            TextInput::make('title')->label('Name')
+                                ->afterStateUpdated(function ($set, $state) {
+                                    $set('slug', Str::slug($state));
+                                })
+                                ->live(onBlur: true)
+                                ->required(),
+                            Select::make('location')
+                                ->options(fn() => Location::all()->pluck('title', 'id'))
+                                ->native(false)
+                                ->multiple()
+                                ->label('Location'),
+                        ]),
+                        Forms\Components\Section::make('Content')->schema([
+                            TiptapEditor::make('content')->label('Content'),
+                        ])
                     ])->columnSpan(3),
                     Forms\Components\Grid::make(1)->schema([
                         Forms\Components\Section::make('Page Details')

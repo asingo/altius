@@ -34,10 +34,12 @@ class LocationResource extends Resource
             ->schema([
                 Forms\Components\Grid::make(4)->schema([
                     Forms\Components\Grid::make(1)->schema([
-                        Forms\Components\TextInput::make('title')
+                        Forms\Components\TextInput::make('title')->label('')
                             ->afterStateUpdated(function ($set, $state) {
                                 $set('slug', Str::slug($state));
                             })
+                            ->extraFieldWrapperAttributes(['class' => 'no-asterisk'])
+                            ->extraInputAttributes(['class' => '!text-2xl'])
                             ->live(onBlur: true)->required(),
                         Forms\Components\Section::make('Heading Section')->schema([
                             CuratorPicker::make('cover_image')->required(),

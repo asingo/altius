@@ -31,14 +31,21 @@ class TestimonyResource extends Resource
             ->schema([
                 Forms\Components\Grid::make(4)->schema([
                     Forms\Components\Grid::make(1)->schema([
-                        Forms\Components\TextInput::make('title')->label('Title')
-                            ->required(),
-                        Forms\Components\TextInput::make('name')->label('Patient Name')
-                            ->required(),
-                        CuratorPicker::make('video')->label('Video Testimony')
-                            ->helperText('Maximum File Size is 50 MB')
-                            ->acceptedFileTypes(['video/*'])->maxSize(50000),
-                        TiptapEditor::make('content')->label('Content'),
+                        Forms\Components\Section::make('Detail Information')->schema([
+                            Forms\Components\TextInput::make('title')->label('Title')
+                                ->required(),
+                            Forms\Components\TextInput::make('name')->label('Patient Name')
+                                ->required()
+                        ]),
+                        Forms\Components\Section::make('Video Testimony')->schema([
+                            CuratorPicker::make('video')->label('Video Testimony')
+                                ->label('')
+                                ->helperText('Maximum File Size is 50 MB')
+                                ->acceptedFileTypes(['video/*'])->maxSize(50000)
+                        ]),
+                        Forms\Components\Section::make('Content')->schema([
+                            TiptapEditor::make('content')->label(''),
+                        ])
                     ])->columnSpan(3),
                     Forms\Components\Grid::make(1)->schema([
                         Forms\Components\Section::make('Featured Image')->schema([

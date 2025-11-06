@@ -39,4 +39,5 @@ class FeedbackChart extends ChartWidget
     {
         return 'bar';
     }
+
 }

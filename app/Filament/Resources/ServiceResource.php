@@ -32,12 +32,15 @@ class ServiceResource extends Resource
             ->schema([
                 Forms\Components\Grid::make(4)->schema([
                     Forms\Components\Grid::make(1)->schema([
-                        TextInput::make('title')->label('Name')
-                            ->afterStateUpdated(function ($set, $state) {
-                                $set('slug', Str::slug($state));
-                            })
-                            ->live(onBlur: true)
-                            ->required(),
+                        Forms\Components\Section::make('Detail Information')->schema([
+                            TextInput::make('title')->label('Name')
+                                ->afterStateUpdated(function ($set, $state) {
+                                    $set('slug', Str::slug($state));
+                                })
+                                ->live(onBlur: true)
+                                ->required(),
+                        ])
+
                     ])->columnSpan(3),
                     Forms\Components\Grid::make(1)->schema([
                         Forms\Components\Section::make('Page Details')
