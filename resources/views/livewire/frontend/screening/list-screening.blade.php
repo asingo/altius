@@ -1,16 +1,20 @@
 <div>
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12 items-stretch">
         @foreach($screening as $d)
-            <div class="flex flex-col h-full">
-                <div class="rounded-2xl">
-                    <img src="{{\Awcodes\Curator\Models\Media::find($d['image'])->url}}" alt="image" class="w-full object-cover rounded-2xl"/>
+            <a href="{{localized_route('screening')}}/{{$d->slug}}" class="group">
+                <div class="flex flex-col h-full">
+                    <div class="rounded-2xl">
+                        <img src="{{\Awcodes\Curator\Models\Media::find($d['image'])->url}}" alt="image"
+                             class="w-full object-cover rounded-2xl"/>
+                    </div>
+                    <div class="mt-4 flex flex-col h-full justify-stretch">
+                        <h3 class="text-2xl font-medium flex-grow group-hover:text-primary transition ease-in-out duration-150">{{$d['title']}}</h3>
+                        <p class="my-4 mb-6">{{limit_words($d['description'], 10)}}</p>
+                        <span
+                            class="text-primary text-xl font-medium">Rp {{number_format($d['price'], 0, ',','.')}}</span>
+                    </div>
                 </div>
-                <div class="mt-4 flex flex-col h-full justify-stretch">
-                    <h3 class="text-2xl font-medium flex-grow">{{$d['title']}}</h3>
-                    <p class="my-4 mb-6">{{$d['description']}}</p>
-                    <span class="text-primary text-xl font-medium">Rp {{number_format($d['price'], 0, ',','.')}}</span>
-                </div>
-            </div>
+            </a>
         @endforeach
     </div>
     <div class="mt-8 flex items-center gap-2">

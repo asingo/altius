@@ -10,6 +10,7 @@
                 <x-grid.basic
                     image="{{\Awcodes\Curator\Models\Media::find($h->image)->url}}"
                     heading="{{$h->title}}"
+                    slug="{{localized_route('screening')}}/{{$h->slug}}"
                     description="{{$h->description}}"
                 />
             </x-slider.slider-item>

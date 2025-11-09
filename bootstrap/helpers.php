@@ -23,3 +23,17 @@ if (! function_exists('localized_route')) {
         return $url;
     }
 }
+
+if (! function_exists('limit_words')) {
+    function limit_words($string, $words = 10)
+    {
+        $wordsArray = explode(' ', trim($string));
+        if (count($wordsArray) > $words) {
+            $string = implode(' ', array_slice($wordsArray, 0, $words)) . '...';
+        } else {
+            $string = implode(' ', $wordsArray);
+        }
+
+        return $string;
+    }
+}

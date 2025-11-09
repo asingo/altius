@@ -133,6 +133,8 @@ class PagesResource extends Resource
                                             'pages.medical-professional.index' => 'doctorDetail',
                                             'pages.career.index' => 'careerDetail',
                                             'pages.news.index' => 'newsDetail',
+                                            'pages.screening.index' => 'screeningDetail',
+                                            'pages.offers.index' => 'offersDetail',
                                             default => null
 
                                         };

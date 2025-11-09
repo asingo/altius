@@ -11,12 +11,14 @@ class Basic extends Component
     public $image;
     public $heading;
     public $description;
+    public $slug;
     /**
      * Create a new component instance.
      */
-    public function __construct($image, $heading, $description = '')
+    public function __construct($image, $heading, $description = '', $slug = '')
     {
         $this->image = $image;
+        $this->slug = $slug;
         $this->heading = $heading;
        $this->description = $description;
     }

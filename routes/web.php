@@ -21,11 +21,11 @@ foreach ($locales as $key => $prefix) {
             Route::controller('\\' . $page->controller)->group(function () use ($page, $key) {
                 // Clean slug (remove leading/trailing slashes just in case)
                 $slug = ltrim($page->getTranslation('slug', $key), '/');
-
                 Route::get("/{$slug}", $page->route_name)->name("{$page->route_name}_$key");
                 if ($page->route_name_detail != null) {
                     Route::get("/{$slug}/{slug}", $page->route_name_detail)->name("{$page->route_name_detail}_$key");
                 }
+
             });
         }
         Route::get('/thank-you', [CareerController::class, 'successSubmission'])->name('successSubmission_'.$key);

@@ -10,7 +10,6 @@ use Illuminate\Support\Facades\Session;
 
 class NewsController extends Controller
 {
-
     public function news()
     {
         $data = News::with('category')->get();

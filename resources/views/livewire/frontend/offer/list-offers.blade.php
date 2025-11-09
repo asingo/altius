@@ -5,6 +5,7 @@
             <x-grid.basic
                 image="{{\Awcodes\Curator\Models\Media::find($d['image'])?->url}}"
                 heading="{!! $d['title'] !!}"
+                slug="{{localized_route('offers')}}/{{$d['slug']}}"
             />
         @endforeach
     </div>
