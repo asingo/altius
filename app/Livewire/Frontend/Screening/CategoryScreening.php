@@ -26,12 +26,12 @@ class CategoryScreening extends Component
 
         $all = [
             'id' => "all",
-            'title' => "All",
+            'title' => __("all"),
             'icon' => $appUrl . "/asset/HealthScreening/Icon/Health/service-all.svg",
         ];
         $others = [
             'id' => "others",
-            'title' => "Others",
+            'title' => __("Others"),
             'icon' => $appUrl . "/asset/HealthScreening/Icon/Line/list.svg",
         ];
 

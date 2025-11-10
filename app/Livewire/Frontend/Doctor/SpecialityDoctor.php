@@ -23,7 +23,7 @@ class SpecialityDoctor extends Component implements HasForms
     public function mount(Request $request): void
     {
         $speciality = Speciality::get()->pluck('title', 'id')->toArray();
-        $this->schema = ['all' => 'All'] + $speciality;
+        $this->schema = ['all' => __('all')] + $speciality;
         if($request->speciality_id){
             $this->speciality = $request->speciality_id;
         }
@@ -40,7 +40,7 @@ class SpecialityDoctor extends Component implements HasForms
             TextInput::make('filterSpeciality')
                 ->prefixIcon('heroicon-o-magnifying-glass')
                 ->label('')
-                ->placeholder('Type a speciality')
+                ->placeholder(app()->getLocale() == 'en' ? 'Type a speciality' : 'Ketik Spesialis')
                 ->live()
         ]);
     }

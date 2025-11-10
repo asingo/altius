@@ -6,3 +6,4 @@
         width="{{ $media['width'] }}"
         height="{{ $media['height'] }}"
     />
+{{--<x-curator-curation :media="$media" curation="thumbnail" loading="lazy"/>--}}

@@ -1,5 +1,5 @@
 <div class="location-filter">
-    <span class="text-2xl font-semibold">Age</span>
+    <span class="text-2xl font-semibold">{{__('Age')}}</span>
     <div class="mt-4">
         <div
             x-data="{ age: @entangle('age') }"

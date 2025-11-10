@@ -24,14 +24,13 @@ class EditLocation extends EditRecord
 
 //    protected function mutateFormDataBeforeFill(array $data): array
 //    {
-//        $data['about_speciality'] = $this->record->hasSpeciality->map(fn ($speciality) => $speciality->speciality_id)->toArray();
+//        dump($data);
+////        $data['about_speciality'] = $this->record->hasSpeciality->map(fn ($speciality) => $speciality->speciality_id)->toArray();
 //       return $data;
 //    }
 //
 //    protected function mutateFormDataBeforeSave(array $data): array
 //    {
-//        $this->speciality = $data['about_speciality'] ?? [];
-//        unset($data['about_speciality']);
 //        return $data;
 //    }
 

@@ -31,7 +31,7 @@ class SearchDoctor extends Component implements HasForms
                 ->label('')
                 ->live()
                 ->afterStateUpdated(fn ($state, $livewire) => $livewire->dispatch('handleSearch', ['query' => $state]))
-                ->placeholder('Type the doctor\'s name or Speciality'),
+                ->placeholder(__("Type the doctor's name or Speciality")),
         ]);
     }
 

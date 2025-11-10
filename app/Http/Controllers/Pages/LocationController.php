@@ -42,9 +42,9 @@ class LocationController extends Controller
             $data = Location::with('service')->where('slug->'.$locale, $slug);
         }
         $view = $data->first();
-
         $isHeaderOverlay = false;
-        $slug = 'location';
+        $page = Pages::where('view', 'pages.location.index')->first();
+        $slug = $page->slug;
         $records = LocationHasSubservice::with(['service', 'subservice'])
             ->where('location_id', $view->id)
             ->get();

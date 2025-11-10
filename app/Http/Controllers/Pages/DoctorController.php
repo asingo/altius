@@ -34,6 +34,8 @@ class DoctorController extends Controller
         });
         $isHeaderOverlay = false;
         $title = $data['name'];
+        $page = Pages::where('view', 'pages.medical-professional.index')->first();
+        $slug = $page->slug;
         Session::flash('single_content', $data->toArray());
         return view('pages.medical-professional.single', compact('data', 'isHeaderOverlay','location', 'title', 'slug'));
     }

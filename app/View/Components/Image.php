@@ -16,6 +16,9 @@ class Image extends Component
      */
     public function __construct($id, $class = '')
     {
+//        if(is_array($id)){
+//            $id = array_values($id)[0]['id'];
+//        }
         $this->media = Media::find($id);
         $this->class = $class;
     }

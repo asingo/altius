@@ -17,13 +17,13 @@ class Location extends Model
         'heading',
         'about_title',
         'about_description',
-        'image',
+//        'image',
         'address',
         'general_number',
         'customer_care',
         'link_maps',
         'link_embedded',
-        'cover_image'
+//        'cover_image'
     ];
 
     protected $casts = [

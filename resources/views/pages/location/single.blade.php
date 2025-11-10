@@ -1,7 +1,7 @@
 @extends('template')
 @section('content')
     <div class="max-w-screen-2xl mx-auto py-24 px-6 2xl:px-0 mt-6">
-        <x-breadcrumb parent="Home" subparent="Location" subparentlink="/location" child="{{$title}}"/>
+        <x-breadcrumb parent="Home" subparent="{{__('Location')}}" subparentlink="{{localized_route('location')}}" child="{{$title}}"/>
         <div class="mt-8">
             <x-typography.subheading location="page">Altius Hospitals</x-typography.subheading>
             <x-typography.heading location="page">{{$title}}
@@ -13,20 +13,20 @@
                 <div class="space-y-4 mb-6 md:space-y-6">
                     <h3 class="font-heading text-2xl md:text-3xl">{{$view->about_title}}</h3>
                     <p>{{implode(', ',$meta)}}</p>
-                    <x-button.link href="#">Learn More About Us</x-button.link>
+                    <x-button.link href="#">{{__('Learn More About Us')}}</x-button.link>
                 </div>
                 <div class="space-y-6">
                     {!! $view['about_description'] !!}
                 </div>
             </div>
-            <h3 class="font-heading text-2xl md:text-3xl">Services and Facilities</h3>
+            <h3 class="font-heading text-2xl md:text-3xl">{{__('Services and Facilities')}}</h3>
             <div class="mt-12 grid  md:grid-cols-3 gap-10">
                 <div x-data="{ show: true }">
                     <div
                         class="flex justify-between cursor-pointer"
                         x-on:click="show = !show"
                     >
-                        <span class="text-[24px] font-heading">Center Of Excellence</span>
+                        <span class="text-[24px] font-heading">{{__('Center Of Excellence')}}</span>
                         <div class="transform transition-transform duration-300"
                              :class="show ? 'rotate-180' : '-rotate-0' ">
                             <x-heroicon-o-chevron-down
@@ -92,7 +92,7 @@
                         class="flex justify-between cursor-pointer"
                         x-on:click="show = !show"
                     >
-                        <span class="text-[24px] font-heading">Our Specialities</span>
+                        <span class="text-[24px] font-heading">{{__('Our Specialities')}}</span>
                         <div class="transform transition-transform duration-300"
                              :class="show ? 'rotate-180' : '-rotate-0' ">
                             <x-heroicon-o-chevron-down
@@ -123,7 +123,7 @@
                         class="flex justify-between cursor-pointer"
                         x-on:click="show = !show"
                     >
-                        <span class="text-[24px] font-heading">Facilities</span>
+                        <span class="text-[24px] font-heading">{{__('Facilities')}}</span>
                         <div class="transform transition-transform duration-300"
                              :class="show ? 'rotate-180' : '-rotate-0' ">
                             <x-heroicon-o-chevron-down
@@ -154,7 +154,7 @@
                         class="flex justify-between cursor-pointer"
                         x-on:click="show = !show"
                     >
-                        <span class="text-[24px] font-heading">Emergency</span>
+                        <span class="text-[24px] font-heading">{{__('Emergency')}}</span>
                         <div class="transform transition-transform duration-300"
                              :class="show ? 'rotate-180' : '-rotate-0' ">
                             <x-heroicon-o-chevron-down
@@ -184,8 +184,8 @@
             </div>
             <div class="grid md:grid-cols-2 mt-24 mb-12 items-end">
                 <div class="space-y-6">
-                    <h3 class="font-heading text-2xl md:text-3xl">Contact Us</h3>
-                    <p>Addresses and Phone Numbers</p>
+                    <h3 class="font-heading text-2xl md:text-3xl">{{__('contact.us')}}</h3>
+                    <p>{{__('Addresses and Phone Numbers')}}</p>
                 </div>
                 <div class="space-y-6">
                     <p>

@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="max-w-screen-2xl mx-auto py-16 pb-24 px-6 2xl:px-0">
-        <x-breadcrumb parent="Home" child="Career"/>
+        <x-breadcrumb parent="Home" child="{{__('Career')}}"/>
         <div class="mt-10 max-w-screen-lg mx-auto">
             <h2 class="text-3xl font-medium text-center">{{$page->content['body']['title']}}</h2>
             <p class="text-center mt-6">

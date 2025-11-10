@@ -1,6 +1,6 @@
 <div class="flex flex-col gap-8">
     <div class="flex flex-col gap-4">
-        <span class="text-2xl font-semibold">Locations</span>
+        <span class="text-2xl font-semibold">{{__('location')}}</span>
         <div class="flex gap-6" x-data="{location: @entangle('location')}">
 
             @foreach($data as $d)
@@ -28,17 +28,17 @@
         </div>
     </div>
     <div class="flex flex-col gap-4">
-        <span class="text-2xl font-semibold">Regular Schedule</span>
+        <span class="text-2xl font-semibold">{{__('Regular Schedule')}}</span>
         <div class="md:w-2/3">
             <div class="grid grid-cols-[150px_auto] px-3 rounded-xl py-2 bg-shade text-lg text-primary font-semibold">
-                <span>Day</span>
-                <span>Time</span>
+                <span>{{__('Day')}}</span>
+                <span>{{__('Time')}}</span>
             </div>
 
             <!-- Rows -->
             @foreach($schedule as $k => $v)
                 <div class="grid grid-cols-[150px_auto] px-3 text-lg py-2">
-                    <span>{{ ucwords($k) }}</span>
+                    <span>{{ __($k)}}</span>
                     <span>{{ $v }}</span>
                 </div>
             @endforeach

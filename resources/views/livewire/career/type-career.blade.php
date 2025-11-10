@@ -1,5 +1,5 @@
 <div class="location-filter">
-    <span class="text-2xl">Type</span>
+    <span class="text-2xl">{{__('Type')}}</span>
     <div class="mt-4 py-2">
         <div
             x-data="{ type: @entangle('type') }"
@@ -11,7 +11,7 @@
                     @click="type = '{{$d}}'" wire:click="typeChanged"
                 >
                     <input type="radio" name="type" id="{{Str::slug($d)}}" value="{{$d}}" x-model="type">
-                    <label for="{{Str::slug($d)}}"  class="text-lg">{{$d}}</label>
+                    <label for="{{Str::slug($d)}}"  class="text-lg">{{__($d)}}</label>
                 </div>
             @endforeach
         </div>

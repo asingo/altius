@@ -26,7 +26,7 @@ class AgeScreening extends Component
         });
         $all = [
             'id' => 'all',
-            'name' => 'All',
+            'name' => __('all'),
             'age' => ''
         ];
         $this->data = collect([$all])->merge($schema);

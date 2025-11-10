@@ -1,5 +1,5 @@
 <div class="speciality-filter">
-    <span class="text-2xl font-semibold">Speciality</span>
+    <span class="text-2xl font-semibold">{{__('speciality')}}</span>
 
     <div class="mt-4">
         {{ $this->form }}

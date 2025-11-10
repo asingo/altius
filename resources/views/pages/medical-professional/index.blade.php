@@ -13,7 +13,7 @@
         </div>
     </div>
     <div class="max-w-screen-2xl mx-auto py-16 px-6 2xl:px-0">
-        <x-breadcrumb parent="Home" child="Medical Professionals"/>
+        <x-breadcrumb parent="Home" child="{{$page->title}}"/>
             <div class="md:mt-10">
                 <div  x-data="{ open: false }" class="grid lg:grid-cols-3 lg:gap-24 gap-10">
                     <div

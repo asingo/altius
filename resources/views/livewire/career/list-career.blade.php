@@ -5,7 +5,7 @@
             <div class="flex justify-between items-center p-4">
                 <div class="flex flex-col gap-2.5 w-full">
                     <a class="text-primary font-semibold text-xl hover:text-accent"
-                       href="career/{{$c['slug']}}">{{$c['title']}}</a>
+                       href="{{localized_route('career')}}/{{$c['slug']}}">{{$c['title']}}</a>
                     <div class="grid md:grid-cols-4 w-full">
                         <div class="text-textsub text-lg flex gap-1.5 items-center">
                             <x-heroicon-o-map-pin class="w-5 h-5"/>
@@ -18,7 +18,7 @@
                     </div>
                 </div>
                 <div>
-                    <a class="text-primary font-semibold text-xl hover:text-accent" href="career/{{$c['slug']}}">
+                    <a class="text-primary font-semibold text-xl hover:text-accent" href="{{localized_route('career')}}/{{$c['slug']}}">
                         <x-heroicon-o-chevron-right class="w-7 h-7 stroke-textsub hover:stroke-primary"/>
                     </a>
                 </div>

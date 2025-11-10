@@ -17,21 +17,22 @@ class DateDoctor extends Component implements HasForms
 
     public $filterDate;
 
-    public $schema = [
-        'all' => 'All',
-        'monday' => 'Monday',
-        'tuesday' => 'Tuesday',
-        'wednesday' => 'Wednesday',
-        'thursday' => 'Thursday',
-        'friday' => 'Friday',
-        'saturday' => 'Saturday',
-        'sunday' => 'Sunday',
-    ];
+    public $schema;
 
     public $date = 'all';
 
     public function mount(Request $request): void
     {
+       $this->schema = [
+            'all' => __('all'),
+            'monday' => __('monday'),
+            'tuesday' => __('tuesday'),
+            'wednesday' => __('wednesday'),
+            'thursday' => __('thursday'),
+            'friday' => __('friday'),
+            'saturday' => __('saturday'),
+            'sunday' => __('sunday'),
+        ];
         if($request->day){
             $this->date = $request->day;
         }
@@ -48,7 +49,7 @@ class DateDoctor extends Component implements HasForms
             TextInput::make('filterDate.' .$this->getId())
                 ->prefixIcon('heroicon-o-magnifying-glass')
                 ->label('')
-                ->placeholder('Type Preffered Date')
+                ->placeholder(app()->getLocale() == 'en' ? 'Type Preffered Day' : 'Ketik Hari')
                 ->live()
         ]);
     }

@@ -1,5 +1,5 @@
 <div class="date-filter">
-    <span class="text-2xl font-semibold">Preferred Date</span>
+    <span class="text-2xl font-semibold">{{__('preferred.date')}}</span>
 
     <div class="mt-4">
         {{ $this->form }}

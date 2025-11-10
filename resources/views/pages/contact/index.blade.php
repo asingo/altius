@@ -34,7 +34,7 @@
         }, {threshold: 0.5});
     "
         >
-            <span class="text-xl text-texthead">On this page</span>
+            <span class="text-xl text-texthead">{{__('On this page')}}</span>
             <div class="flex gap-2 md:gap-6 mt-2 border-b border-slate-300 flex-wrap pb-8">
                 @foreach($data as $d)
                     <div @click="scrollTo('location{{$d['id']}}')" class="flex flex-shrink-0 items-center gap-2 text-primary hover:text-accent cursor-pointer">
@@ -53,10 +53,10 @@
                         <div class="grid grid-rows-3 items-center mt-6">
                             <div class="grid-cols-2 grid py-2 items-center border-textsub border-b-2">
                                 <div>
-                                    <span class="font-semibold text-lg text-textsub">Contact</span>
+                                    <span class="font-semibold text-lg text-textsub">{{__('contact')}}</span>
                                 </div>
                                 <div>
-                                    <span class="font-semibold text-lg text-textsub">Number</span>
+                                    <span class="font-semibold text-lg text-textsub">{{__('number')}}</span>
                                 </div>
                             </div>
                             <div class="grid-cols-2 grid border-slate-300 border-b  py-2 items-center">
@@ -80,7 +80,7 @@
                     </div>
                 @endforeach
                     <div @click="window.scrollTo({top: 0, behavior: 'smooth'})" class="flex items-center gap-2 text-primary border-b border-slate-300  pb-4 hover:text-accent cursor-pointer" @click="scrollToTop()">
-                        <span class="text-xl">Back On Top</span>
+                        <span class="text-xl">{{__('Back On Top')}}</span>
                         <x-heroicon-o-arrow-up class="w-5"/>
                     </div>
             </div>

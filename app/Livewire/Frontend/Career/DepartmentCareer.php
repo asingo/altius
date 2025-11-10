@@ -24,7 +24,7 @@ class DepartmentCareer extends Component implements HasForms
                 ->native(false)
                 ->live()
                 ->afterStateUpdated(fn ($state) => $this->dispatch('handleDepartmentFilter', $state))
-                ->options(fn () => ['all' => 'All Department', ...$department])
+                ->options(fn () => ['all' => __('All Department'), ...$department])
         ]);
     }
 

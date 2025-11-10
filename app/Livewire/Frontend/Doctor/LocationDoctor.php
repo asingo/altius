@@ -19,7 +19,7 @@ class LocationDoctor extends Component
     public function mount(Request $request)
     {
         $location = Location::get()->pluck('title', 'id')->toArray();
-        $all = ['all' => 'All'];
+        $all = ['all' => __('all')];
         $this->data = $all + $location;
         if($request->hospital_id){
             $this->location = $request->hospital_id;

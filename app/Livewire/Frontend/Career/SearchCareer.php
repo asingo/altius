@@ -18,7 +18,7 @@ class SearchCareer extends Component implements HasForms
     {
         return $form->schema([
             TextInput::make('search')->prefixIcon('heroicon-o-magnifying-glass')
-                ->label('')->placeholder('Search Here......')
+                ->label('')->placeholder(__('Search Here').'......')
             ->live()
             ->afterStateUpdated(fn ($state, $livewire) => $livewire->dispatch('handleSearch', $state))
         ]);

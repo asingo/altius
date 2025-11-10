@@ -18,7 +18,7 @@ class LocationScreening extends Component
     public function mount()
     {
         $location = Location::get()->pluck('title', 'id')->toArray();
-        $all = ['all' => 'All'];
+        $all = ['all' => __('all')];
         $this->data = $all + $location;
     }
 

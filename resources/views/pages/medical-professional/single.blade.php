@@ -7,7 +7,7 @@
         }
     </style>
     <div class="max-w-screen-2xl mx-auto py-24 px-6 2xl:px-0 mt-6">
-        <x-breadcrumb parent="Home" subparent="Medical Professional" subparentlink="/medical-professional" child="{{$title}}"/>
+        <x-breadcrumb parent="Home" subparent="{{__('Medical Professional')}}" subparentlink="{{localized_route('doctor')}}" child="{{$title}}"/>
         <div class="mt-8 border-b-2 border-slate-300">
             <x-typography.subheading location="page">{{$data->speciality->title}}</x-typography.subheading>
             <x-typography.heading location="page">{{$title}}
@@ -16,8 +16,8 @@
         <div class="flex flex-col-reverse md:grid md:grid-cols-5 mt-10 gap-12 md:gap-24">
             <div class="col-span-3 border-b-2 pb-12 border-slate-300">
                 <div class="flex gap-2.5 items-center mb-6">
-                    <x-button.link href="#" class="!bg-texthead rounded-xl">Overview</x-button.link>
-                    <x-button.link href="#pub" class="!bg-shade rounded-xl !text-primary">Publication</x-button.link>
+                    <x-button.link href="#" class="!bg-texthead rounded-xl">{{__('Overview')}}</x-button.link>
+                    <x-button.link href="#pub" class="!bg-shade rounded-xl !text-primary">{{__('Publication')}}</x-button.link>
                 </div>
                 @livewire('frontend.doctor.detail.location-select', ['data' => $location])
             </div>
@@ -65,22 +65,22 @@
         >
             <div class="col-span-3 space-y-12">
                 <div id="bio">
-                    <h3 class="text-4xl font-heading">Biographical Summary</h3>
+                    <h3 class="text-4xl font-heading">{{__('Biographical Summary')}}</h3>
                     <div class="mt-8">{!! tiptap_converter()->asHTML($data->biography) !!}</div>
                 </div>
 
                 <div id="expertise">
-                    <h3 class="text-4xl font-heading">Expertise</h3>
+                    <h3 class="text-4xl font-heading">{{__('Expertise')}}</h3>
                     <div class="mt-8">{!! tiptap_converter()->asHTML($data->expertise) !!}</div>
                 </div>
 
                 <div id="edu">
-                    <h3 class="text-4xl font-heading">Education</h3>
+                    <h3 class="text-4xl font-heading">{{__('Education')}}</h3>
                     <div class="mt-8">{!! tiptap_converter()->asHTML($data->education) !!}</div>
                 </div>
 
                 <div id="loc">
-                    <h3 class="text-4xl font-heading">Location</h3>
+                    <h3 class="text-4xl font-heading">{{__('location')}}</h3>
                     <div class="mt-8">
                         @foreach($location as $l)
                             <div class="flex gap-3 md:gap-6">
@@ -113,7 +113,7 @@
                 </div>
 
                 <div id="pub">
-                    <h3 class="text-4xl font-heading">Publication</h3>
+                    <h3 class="text-4xl font-heading">{{__('Publication')}}</h3>
                     <div class="mt-8">{!! tiptap_converter()->asHTML($data->publication) !!}</div>
                 </div>
             </div>
