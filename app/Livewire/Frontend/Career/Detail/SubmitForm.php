@@ -22,7 +22,6 @@ use Session;
 class SubmitForm extends Component implements HasForms
 {
     use InteractsWithForms;
-
     public $formData = [];
     public $career;
 
@@ -36,20 +35,20 @@ class SubmitForm extends Component implements HasForms
     public function form(Form $form): Form
     {
         return $form->schema([
-            TextInput::make('fullname')->label('Full Name')->required(),
+            TextInput::make('fullname')->label(__('Full Name'))->required(),
             TextInput::make('email')->label('Email')
                 ->required()
                 ->regex('/^.+@.+$/i'),
             TextInput::make('phone')->label('No. HP/ WhatsApp')->required(),
             Grid::make(['default' => 1, 'md' => 2])->schema(
                 [
-                    Select::make('province')->label('Province')->required()->placeholder('Choose Province')
+                    Select::make('province')->label(__('Province'))->required()->placeholder(__('Choose Province'))
                         ->options([
                             'Jawa Timur' => 'Jawa Timur',
                             'Jawa Tengah' => 'Jawa Tengah',
                             'Jawa Barat' => 'Jawa Barat',
                         ])->native(false),
-                    Select::make('city')->label('City')->required()->placeholder('Choose City')
+                    Select::make('city')->label(__('City'))->required()->placeholder(__('Choose City'))
                         ->options([
                             'Jawa Timur' => 'Jawa Timur',
                             'Jawa Tengah' => 'Jawa Tengah',
@@ -62,7 +61,7 @@ class SubmitForm extends Component implements HasForms
                 ->directory('resume')
                 ->previewable(false)
                 ->preserveFilenames()
-                ->helperText('*Maximum File Size 2 MB')
+                ->helperText('*'.__('Maximum File Size').' 2 MB')
                 ->required(),
             Checkbox::make('acceptance')->label('By using this form, you agree to the storage and handling of data by this website.')->required()
         ])->statePath('formData');

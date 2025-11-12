@@ -13,7 +13,7 @@
                         </div>
                         <div class="text-textsub text-lg flex gap-1.5 items-center">
                             <x-heroicon-o-clock class="w-5 h-5"/>
-                            <span>{{Carbon\Carbon::parse($c['created_at'])->format('d F Y')}}</span>
+                            <span>{{Carbon\Carbon::parse($c['created_at'])->translatedFormat('d F Y')}}</span>
                         </div>
                     </div>
                 </div>

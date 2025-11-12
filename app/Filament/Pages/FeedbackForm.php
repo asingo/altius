@@ -3,6 +3,7 @@
 namespace App\Filament\Pages;
 
 use App\Models\Setting;
+use Filament\Actions\Action;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Select;
@@ -16,6 +17,7 @@ use Filament\Pages\Page;
 class FeedbackForm extends Page implements HasForms
 {
     use InteractsWithForms;
+
 //    protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
     protected static string $view = 'filament.pages.feedback-form';
@@ -34,7 +36,7 @@ class FeedbackForm extends Page implements HasForms
     public function mount(): void
     {
         $setting = Setting::where('name', 'feedback')->first()?->value ?? [];
-      $this->form->fill($setting);
+        $this->form->fill($setting);
     }
 
     public function getBreadcrumbs(): array
@@ -48,7 +50,7 @@ class FeedbackForm extends Page implements HasForms
     public function form(Form $form): Form
     {
         return $form->schema([
-            Section::make('Form Detail')->schema([
+            Section::make('Question List')->schema([
                 Repeater::make('feedback')->label('')->schema([
                     TextInput::make('question_en')->label('Question EN')->required(),
                     TextInput::make('question_id')->label('Question ID')->required(),
@@ -61,10 +63,18 @@ class FeedbackForm extends Page implements HasForms
                     Repeater::make('options')->label('Add Select Option')->schema([
                         TextInput::make('option_en')->label('Option EN')->required(),
                         TextInput::make('option_id')->label('Option ID')->required(),
-                    ])->hidden(fn($get) => $get('type') != 'select')->columns(2)->columnSpanFull()
-                ])->addActionLabel('Add Question')->columns(2)
+                    ])->hidden(fn ($get) => $get('type') != 'select')->columns(2)->columnSpanFull()
+                ])->addActionLabel('Add Question')->columns(2)->collapsible()->itemLabel(fn (array $state): ?string => $state['question_en'] ?? null)
             ])
         ]);
+    }
+
+    protected function getHeaderActions(): array
+    {
+        return [
+            Action::make('saveForm')->label('Save Feedback')
+            ->action(fn() => $this->saveForm())
+        ];
     }
 
     public function saveForm()

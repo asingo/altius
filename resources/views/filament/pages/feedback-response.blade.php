@@ -1,5 +1,5 @@
 <x-filament-panels::page class="feedback-page">
-    <div class="grid grid-cols-3 gap-4 border-t" x-data="{title: @js(array_keys($feedback->toArray())[0])}">
+    <div class="grid grid-cols-3 gap-4 border-t" x-data="{title: @js(array_keys($feedback->toArray())[0])}" style="height: calc(100vh - 80px)">
         <div class="bg-white h-full p-8 col-span-1 border-r border-b">
             <h2 class="text-md font-semibold">Question List</h2>
             <div class="mt-5 flex flex-col gap-3">

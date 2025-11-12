@@ -20,7 +20,7 @@ class CategoryOffers extends Component
     {
         $categories = OffersCategory::get()->pluck('title', 'id')->toArray();
         $this->data = [
-            'all'=> 'All',
+            'all'=> __('All'),
             ] + $categories;
     }
 

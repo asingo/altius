@@ -34,10 +34,9 @@
         </div>
         <div class="mt-24 max-w-screen-lg mx-auto flex items-center flex-col gap-6 text-primary">
             <img src="{{asset('asset/CareerPage/Icon-Danger.svg')}}"/>
-            <h2 class="text-3xl font-medium text-center">Beware of Recruitment Scams!</h2>
+            <h2 class="text-3xl font-medium text-center">{{$page->content['warning']['title']}}</h2>
             <p class="text-center text-primary">
-                It has come to our attention that fake job offers are being made, claiming to be from Altius Hospitals.
-                Please be aware that Altius Hospitals does not require any payment from applicants seeking employment with us.
+                {{$page->content['warning']['description']}}
             </p>
         </div>
     </div>

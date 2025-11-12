@@ -30,12 +30,12 @@ class CareerController extends Controller
             abort(404);
         }
         $view = $data->firstWhere('slug', $slug);
-
+        $page = Pages::where('view', 'pages.career.index')->first();
         $isHeaderOverlay = false;
         $slug = 'career';
         $title = $view['title'];
         Session::flash('single_content', $view->toArray());
-        return view('pages.career.single', compact('view', 'title', 'isHeaderOverlay', 'slug'));
+        return view('pages.career.single', compact('view', 'title', 'isHeaderOverlay', 'page', 'slug'));
     }
 
 

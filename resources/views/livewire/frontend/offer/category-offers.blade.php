@@ -1,5 +1,5 @@
 <div class="location-filter">
-    <span class="text-2xl font-semibold">Category</span>
+    <span class="text-2xl font-semibold">{{__('Category')}}</span>
     <div class="mt-4">
         <div
             x-data="{ category: @entangle('category') }"

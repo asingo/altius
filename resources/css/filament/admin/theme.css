@@ -27,10 +27,18 @@
 /*}*/
 
 .fi-page.feedback-page section{
-    @apply gap-y-0;
+    @apply gap-y-0 pb-0;
 }
 .fi-page.feedback-page section > div{
     @apply px-0;
+}
+
+.curator-media-picker img{
+    @apply h-fit w-fit object-scale-down max-h-full;
+}
+
+.curator-media-picker li > div{
+    @apply items-center;
 }
 
 .fi-form .fi-fo-repeater-item{
@@ -56,6 +64,9 @@
     @apply p-0;
 }
 
+.curator-media-picker .squared-icon > div{
+    @apply h-fit py-12;
+}
 
 .fi-form .fi-section-header, .fi-form .fi-section-content{
  @apply p-4;

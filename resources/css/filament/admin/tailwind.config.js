@@ -2,6 +2,13 @@ import preset from '../../../../vendor/filament/filament/tailwind.config.preset'
 
 export default {
     presets: [preset],
+    theme: {
+        extend: {
+            colors: {
+                shade: '#EAF1FB',
+            }
+        }
+    },
     content: [
         './app/Filament/**/*.php',
         './resources/views/filament/**/*.blade.php',
