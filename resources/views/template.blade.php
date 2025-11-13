@@ -72,12 +72,32 @@
                 </li>
             </ul>
         </nav>
-        <div class="header-right flex items-center gap-2 sm:gap-4">
+        <div class="header-right flex items-center gap-2 sm:gap-4 relative" x-data="{openProfile: false}">
             @livewire('language-switcher')
-            <a href="#" class="btn-outline text-sm sm:text-[16px]" :class="atTop && 'btn-outline-alt' ">
+            <a   x-on:mouseenter="clearTimeout(hoverTimer); openProfile = true"
+                 x-on:mouseleave="hoverTimer = setTimeout(() => openProfile = false, 200)"
+                href="{{route('profile_'. app()->getLocale())}}" class="btn-outline text-sm sm:text-[16px]" :class="atTop && 'btn-outline-alt' ">
                 <x-heroicon-o-user-circle class="w-5 h-5"/>
-                {{__('login')}}
+                {{auth()->user() ? auth()->user()->name : __('login')}}
+
             </a>
+            <div x-show="openProfile"
+                 x-on:mouseenter="clearTimeout(hoverTimer); openProfile = true"
+                 x-on:mouseleave="hoverTimer = setTimeout(() => openProfile = false, 200)"
+                 x-cloak x-transition:enter="transition ease-out duration-500"
+                 class="absolute -bottom-[7rem] shadow right-0 py-2 px-4 bg-white rounded-2xl w-48 flex flex-col">
+                <div class="flex w-full items-center gap-4 border-b pb-2">
+                    <x-filament::avatar
+                                         src="https://ui-avatars.com/api/?name={{substr(auth()->user()->name,0,1)}}&color=FFFFFF&background=225CA8"
+                    />
+                    <div class="flex flex-col">
+                        <span class="!text-sm">Hi,</span>
+                        <div class="font-medium text-md">{{auth()->user()->name}}</div>
+                    </div>
+                </div>
+
+                <a href="{{route('logout')}}" class="text-danger-500 flex py-2 !text-[16px] items-center gap-2"><x-heroicon-o-power class="w-5 h-5"/> Logout</a>
+            </div>
             <div class="flex xl:hidden items-center">
                 <button class="text-white" :class="atTop && '!text-[#171717]'" @click="openMobile = !openMobile">
                     <x-heroicon-o-bars-3 class="w-6 h-6"/>

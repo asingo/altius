@@ -13,6 +13,7 @@ use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Log;
 use Illuminate\Support\HtmlString;
 use Livewire\Component;
 use Session;
@@ -109,10 +110,10 @@ class CreateAccount extends Component implements HasForms, HasActions
         try {
             User::create($data);
             DB::commit();
-
             Session::flash('success', 'Account created successfully!');
         } catch (\Exception $e) {
             DB::rollBack();
+            Log::error('Error creating account: ' . $e->getMessage());
             Session::flash('error', 'Error: ' . $e->getMessage());
         }
     }

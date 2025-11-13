@@ -17,6 +17,7 @@
         x-show="open"
         @click.outside="open = false"
         x-transition
+        x-cloak
         class="absolute right-0 mt-2 w-[100px] bg-white rounded-lg shadow-lg z-50"
     >
         <ul class="py-2 menu-list">
