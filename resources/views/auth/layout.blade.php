@@ -24,8 +24,8 @@
                     <img src="{{\Awcodes\Curator\Models\Media::find($setting['site']['logo_primary'])?->url}}"
                          alt="login image"/>
                     <div class="flex flex-col gap-1 text-center my-6">
-                        <h1 class="text-2xl font-medium">Welcome to Altius Hospitals</h1>
-                        <p class="text-md">Your Health Is Our Priority</p>
+                        <h1 class="text-2xl font-medium">{{__('Welcome to Altius Hospitals')}}</h1>
+                        <p class="text-md">{{__('Your Health Is Our Priority')}}</p>
                     </div>
                     {{$slot}}
                     <div

@@ -34,15 +34,19 @@ foreach ($locales as $key => $prefix) {
         Route::get('/thank-you-feedback', [HomeController::class, 'successFeedback'])->name('successFeedback_'.$key);
         Route::prefix('profile')->middleware('auth:web')->group(function () use ($key) {
             Route::get('/', [ProfileController::class, 'profile'])->name('profile_'.$key);
-
+            Route::get('/detail', \App\Livewire\Profile\DetailProfile::class)->name('detailProfile_'.$key);
+            Route::get('/edit/', \App\Livewire\Profile\EditProfile::class)->name('editProfile_'.$key);
+            Route::get('/add/', \App\Livewire\Profile\AddOtherProfile::class)->name('addOtherProfile_'.$key);
+            Route::delete('/delete/{id}', [ProfileController::class, 'delete'])->name('deleteProfile_'.$key);
         });
+        Route::get('/login', Login::class)->name('login_'.$key);
+        Route::get('/register', CreateAccount::class)->name('register_'.$key);
+        Route::get('/login/email', LoginEmail::class)->name('loginEmail_'.$key);
     });
 }
 
-Route::get('/login', Login::class)->name('login');
 Route::get('/logout',[ProfileController::class,'logout'])->name('logout');
-Route::get('/register', CreateAccount::class)->name('register');
-Route::get('/login/email', LoginEmail::class)->name('loginEmail');
+
 
 
 

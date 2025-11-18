@@ -37,7 +37,7 @@
         @endif
     <div class="text-center">
         Have an account?
-        <a href="{{route('login')}}"
+        <a href="{{localized_route('login')}}"
            class="text-primary hover:text-accent">
             Login Here
         </a>
@@ -48,7 +48,7 @@
             <x-heroicon-o-check-circle class="w-8 h-8 text-green-500"/>
             <span class="text-lg font-medium text-green-500">Account Created Successfully</span>
         </div>
-        <a href="{{route('login')}}"
+        <a href="{{localized_route('login')}}"
            class="py-3 px-6 bg-primary text-white mt-6 text-md w-full rounded-xl flex items-center justify-center gap-2">
             Back to Login
         </a>

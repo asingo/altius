@@ -14,7 +14,7 @@
     </form>
     <div class="text-center">
         Don't have an account yet?
-        <a href="{{route('register')}}"
+        <a href="{{localized_route('register')}}"
            class="text-primary hover:text-accent">
             Create Account
         </a>

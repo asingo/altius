@@ -134,8 +134,31 @@ ul:not(.menu-list){
     @apply text-lg font-normal;
 }
 
+.edit-profile .fi-fo-field-wrp-label span{
+    @apply text-sm font-normal;
+}
+
+.swal2-icon, .swal2-title, .swal2-html-container{
+    @apply mt-0 !pt-0;
+}
+
+.swal2-title{
+    @apply text-2xl font-medium;
+}
+.swal2-confirm{
+   @apply bg-primary hover:bg-accent text-white border border-primary rounded-xl px-4 py-2 m-1;
+}
+.swal2-cancel{
+    @apply bg-white border border-red-600 text-red-600 hover:border-red-900 hover:text-red-900 rounded-xl px-4 py-2 m-1;
+}
+
+
 .careerForm .fi-fo-field-wrp-label span{
     @apply text-xl font-normal text-textsub;
+}
+
+.edit-profile fieldset legend{
+    @apply text-lg font-medium;
 }
 
 .filepond--label-action{
