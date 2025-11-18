@@ -50,7 +50,7 @@
                 </div>
                 <div class="flex flex-col">
                     <span class="text-sm text-gray-600">Gender</span>
-                    <span class=""> {{ucwords($patient->gender) ?? '-'}}</span>
+                    <span class=""> {{$patient?->gender ? ucwords($patient->gender) : '-'}}</span>
                 </div>
                 <div class="flex flex-col">
                     <span class="text-sm text-gray-600">Blood Type</span>
@@ -84,15 +84,15 @@
                 </div>
                 <div class="flex flex-col">
                     <span class="text-sm text-gray-600">Province</span>
-                    <span class=""> {{\App\Models\Wilayah::where('kode',$patient->province)->first()->nama ?? '-'}}</span>
+                    <span class=""> {{\App\Models\Wilayah::where('kode',$patient?->province)->first()->nama ?? '-'}}</span>
                 </div>
                 <div class="flex flex-col">
                     <span class="text-sm text-gray-600">City</span>
-                    <span class=""> {{\App\Models\Wilayah::where('kode',$patient->regency)->first()->nama ?? '-'}}</span>
+                    <span class=""> {{\App\Models\Wilayah::where('kode',$patient?->regency)->first()->nama ?? '-'}}</span>
                 </div>
                 <div class="flex flex-col">
                     <span class="text-sm text-gray-600">Subdistrict</span>
-                    <span class=""> {{\App\Models\Wilayah::where('kode',$patient->subdistrict)->first()->nama ?? '-'}}</span>
+                    <span class=""> {{\App\Models\Wilayah::where('kode',$patient?->subdistrict)->first()->nama ?? '-'}}</span>
                 </div>
                 <div class="flex flex-col">
                     <span class="text-sm text-gray-600">RT/RW</span>

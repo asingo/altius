@@ -60,7 +60,7 @@ class EditProfile extends Component implements HasForms, HasActions
             'street' => null,
             'photo' => null,
             ...$user->toArray(),
-            ...$patient->toArray() ?? []
+            ...$patient?->toArray() ?? []
         ];
 //        dd($schema);
         $this->form->fill();
