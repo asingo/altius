@@ -13,7 +13,9 @@ return new class extends Migration
     {
         Schema::create('patients', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('user_id')->nullable()->constrained('users')->cascadeOnDelete();
+            $table->foreignId('user_id')->nullable()->constrained('users')->cascadeOnDelete()->cascadeOnUpdate();
+            $table->string('name');
+            $table->string('email');
             $table->string('id_number')->nullable();
             $table->string('gender')->nullable();
             $table->string('blood_type')->nullable();
@@ -31,6 +33,8 @@ return new class extends Migration
             $table->string('postal_code')->nullable();
             $table->string('street')->nullable();
             $table->text('photo')->nullable();
+            $table->boolean('is_child')->default(false);
+            $table->integer('parent_id')->nullable();
             $table->timestamps();
         });
     }

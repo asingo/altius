@@ -36,21 +36,21 @@
             </div>
         @endif
     <div class="text-center">
-        Have an account?
+        {{__('Have an account?')}}
         <a href="{{localized_route('login')}}"
            class="text-primary hover:text-accent">
-            Login Here
+            {{__('Login Here')}}
         </a>
     </div>
 
     @else
         <div class="flex items-center gap-4 bg-green-50 p-4 rounded-2xl justify-center">
             <x-heroicon-o-check-circle class="w-8 h-8 text-green-500"/>
-            <span class="text-lg font-medium text-green-500">Account Created Successfully</span>
+            <span class="text-lg font-medium text-green-500">{{__('Account Created Successfully')}}</span>
         </div>
         <a href="{{localized_route('login')}}"
            class="py-3 px-6 bg-primary text-white mt-6 text-md w-full rounded-xl flex items-center justify-center gap-2">
-            Back to Login
+            {{__('Back to Login')}}
         </a>
     @endif
 </div>

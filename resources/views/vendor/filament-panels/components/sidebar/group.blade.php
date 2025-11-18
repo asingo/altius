@@ -11,10 +11,17 @@
 @php
     $sidebarCollapsible = $sidebarCollapsible && filament()->isSidebarCollapsibleOnDesktop();
     $hasDropdown = filled($label) && filled($icon) && $sidebarCollapsible;
+
+    // Determine if any item is active
+    $activeItem = collect($items)->map(fn($item) => $item->isActive())->toArray();
+    $itemStatus = in_array(true, $activeItem);
 @endphp
 
 <li
-    x-data="{ label: @js($subNavigation ? "sub_navigation_{$label}" : $label) }"
+    x-data="{
+        label: @js($subNavigation ? 'sub_navigation_' . $label : $label),
+        forceOpen: @js($itemStatus),
+    }"
     data-group-label="{{ $subNavigation ? "sub_navigation_{$label}" : $label }}"
     {{
         $attributes->class([
@@ -48,9 +55,7 @@
                 />
             @endif
 
-            <span
-                class="fi-sidebar-group-label flex-1 text-sm font-medium leading-6 text-gray-500 dark:text-gray-400"
-            >
+            <span class="fi-sidebar-group-label flex-1 text-sm font-medium leading-6 text-gray-500 dark:text-gray-400">
                 {{ $label }}
             </span>
 
@@ -63,7 +68,8 @@
                     x-bind:aria-expanded="! $store.sidebarAccordion.isOpen(label)"
                     x-on:click.stop="$store.sidebar.toggleCollapsedGroup(label)"
                     class="fi-sidebar-group-collapse-button"
-                    x-bind:class="{ '-rotate-180': $store.sidebarAccordion.isOpen(label) }"
+                    x-bind:class="{ '-rotate-180': forceOpen || $store.sidebarAccordion.isOpen(label) }"
+
                 />
             @endif
         </div>
@@ -82,10 +88,10 @@
                         tooltip = $store.sidebar.isOpen
                             ? false
                             : {
-                                  content: @js($label),
-                                  placement: document.dir === 'rtl' ? 'left' : 'right',
-                                  theme: $store.theme,
-                              }
+                                content: @js($label),
+                                placement: document.dir === 'rtl' ? 'left' : 'right',
+                                theme: $store.theme,
+                            }
                     "
                     x-tooltip.html="tooltip"
                     class="relative flex flex-1 items-center justify-center gap-x-3 rounded-lg px-2 py-2 outline-none transition duration-75 hover:bg-gray-100 focus-visible:bg-gray-100 dark:hover:bg-white/5 dark:focus-visible:bg-white/5"
@@ -111,13 +117,11 @@
                             ...$childItems,
                         ];
                         $lists[] = [];
-
                         continue;
                     }
 
                     if (empty($lists)) {
                         $lists[] = [$item];
-
                         continue;
                     }
 
@@ -163,20 +167,21 @@
     <ul
         @if (filled($label))
             @if ($sidebarCollapsible)
-                x-show="$store.sidebarAccordion.isOpen(label)"
+                x-show="forceOpen || $store.sidebarAccordion.isOpen(label)"
         @mouseenter="$store.sidebarAccordion.onHover(label)"
         @mouseleave="$store.sidebarAccordion.onLeave(label)"
-{{--                x-show="$store.sidebar.isOpen ? ! $store.sidebar.groupIsCollapsed(label) : ! @js($hasDropdown)"--}}
         @else
             x-show="! $store.sidebar.groupIsCollapsed(label)"
         @endif
         x-collapse.duration.200ms
         @endif
+
         @if ($sidebarCollapsible)
             x-transition:enter="delay-100 lg:transition"
         x-transition:enter-start="opacity-0"
         x-transition:enter-end="opacity-100"
         @endif
+
         class="fi-sidebar-group-items flex flex-col gap-y-1"
     >
         @foreach ($items as $item)
@@ -189,7 +194,9 @@
                         $itemIcon = null;
                         $itemActiveIcon = null;
                     } else {
-                        throw new \Exception('Navigation group [' . $label . '] has an icon but one or more of its items also have icons. Either the group or its items can have icons, but not both. This is to ensure a proper user experience.');
+                        throw new \Exception(
+                            'Navigation group [' . $label . '] has an icon but one or more of its items also have icons. Either the group or its items can have icons, but not both.'
+                        );
                     }
                 }
             @endphp

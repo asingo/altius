@@ -26,22 +26,25 @@ class UserResource extends Resource
     {
         return $form
             ->schema([
-                TextInput::make('name')->label('Name')->required(),
-                TextInput::make('email')->label('Email')->required(),
-                Select::make('role')->label('Role')->options([
-                    'admin' => 'Admin',
-                    'content' => 'Content Manager',
-                    'hr' => 'HR'
-                ]),
-                TextInput::make('password')->label('Password')->password()
-                    ->required(),
+                Forms\Components\Section::make('User Information')->schema([
+                    TextInput::make('name')->label('Name')->required(),
+                    TextInput::make('email')->label('Email')->required(),
+                    Select::make('role')->label('Role')->options([
+                        'admin' => 'Admin',
+                        'content' => 'Content Manager',
+                        'hr' => 'HR'
+                    ]),
+                    TextInput::make('password')->label('Password')->password()
+                        ->required(),
+                ])
+
 
             ]);
     }
 
     public static function table(Table $table): Table
     {
-        return $table
+        return $table->modifyQueryUsing(fn (Builder $query) => $query->whereNot('role', 'patient'))
             ->columns([
                 TextColumn::make('name')->label('Name'),
                 TextColumn::make('email')->label('Email'),

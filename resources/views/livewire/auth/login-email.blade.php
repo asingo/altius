@@ -9,14 +9,14 @@
         @endif
         <button type="submit"
                 class="my-6 py-3 px-6 bg-primary text-white text-md w-full rounded-xl flex items-center justify-center gap-2">
-            Continue Login
+            {{__('Continue Login')}}
         </button>
     </form>
     <div class="text-center">
-        Don't have an account yet?
+        {{__("Don't have an account yet?")}}
         <a href="{{localized_route('register')}}"
            class="text-primary hover:text-accent">
-            Create Account
+            {{__('Create Account')}}
         </a>
     </div>
 </div>

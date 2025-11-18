@@ -72,7 +72,7 @@
                 </li>
             </ul>
         </nav>
-        <div class="header-right flex items-center gap-2 sm:gap-4 relative" x-data="{openProfile: false}">
+        <div class="header-right flex items-center gap-2 sm:gap-4 relative" x-data="{openProfile: false, hoverTimer: null}">
             @livewire('language-switcher')
             <a   x-on:mouseenter="clearTimeout(hoverTimer); openProfile = true"
                  x-on:mouseleave="hoverTimer = setTimeout(() => openProfile = false, 200)"

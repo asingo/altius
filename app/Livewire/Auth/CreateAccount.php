@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Auth;
 
+use App\Models\Patient;
 use App\Models\User;
 use Blade;
 use Filament\Actions\Action;
@@ -51,14 +52,14 @@ class CreateAccount extends Component implements HasForms, HasActions
                     ->description('Enter your personal details.')
                     ->schema([
                         TextInput::make('name')
-                            ->label('Fullname')
-                            ->placeholder('Enter your fullname')
+                            ->label(__('Fullname'))
+                            ->placeholder(__('Enter your fullname'))
                             ->required()
                             ->maxLength(255),
 
                         TextInput::make('email')
                             ->label('Email')
-                            ->placeholder('Enter your email')
+                            ->placeholder(__('Enter your email'))
                             ->required()
                             ->email()
                             ->unique('users', 'email', ignoreRecord: true),
@@ -69,7 +70,7 @@ class CreateAccount extends Component implements HasForms, HasActions
                     ->schema([
                         TextInput::make('password')
                             ->label('Password')
-                            ->placeholder('Enter your password')
+                            ->placeholder(__('Enter your password'))
                             ->password()
                             ->revealable()
                             ->required()
@@ -78,12 +79,12 @@ class CreateAccount extends Component implements HasForms, HasActions
                                 'min:8',
                                 'regex:/^(?=.*[A-Za-z])(?=.*\d)(?=.*[^A-Za-z0-9]).+$/u',
                             ])
-                            ->helperText('Use 8+ characters with a mix of letters, numbers, and symbols.'),
+                            ->helperText(__('Use 8+ characters with a mix of letters, numbers, and symbols.')),
 
 
                         TextInput::make('password_confirmation')
-                            ->label('Confirm Password')
-                            ->placeholder('Confirm your password')
+                            ->label(__('Confirm Password'))
+                            ->placeholder(__('Confirm your password'))
                             ->required()
                             ->password()
                             ->revealable()
@@ -92,7 +93,7 @@ class CreateAccount extends Component implements HasForms, HasActions
             ])->submitAction(new HtmlString(Blade::render(<<<BLADE
                                 <button type="submit"
                             class="py-3 px-6 bg-primary text-white text-md w-full rounded-xl flex items-center justify-center gap-2">
-                        Create Account
+                       {{__('Create Account')}}
                     </button>
             BLADE))),
         ])->statePath('data');
@@ -108,7 +109,12 @@ class CreateAccount extends Component implements HasForms, HasActions
         DB::beginTransaction();
 
         try {
-            User::create($data);
+            $user = User::create($data);
+            Patient::create([
+                'user_id' => $user->id,
+                'name' => $user->name,
+                'email' => $user->email,
+            ]);
             DB::commit();
             Session::flash('success', 'Account created successfully!');
         } catch (\Exception $e) {

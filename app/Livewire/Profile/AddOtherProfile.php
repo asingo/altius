@@ -4,6 +4,7 @@ namespace App\Livewire\Profile;
 
 use App\Class\WilayahParser;
 use App\Forms\Components\UploadProfile;
+use App\Models\Patient;
 use App\Models\PatientOther;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
@@ -60,7 +61,7 @@ class AddOtherProfile extends Component implements HasForms, HasActions
     {
         return $form->schema([
             Fieldset::make('Biography')->schema([
-                TextInput::make('name')->label('Name'),
+                TextInput::make('name')->label('Name')->required(),
                 TextInput::make('id_number')->label('ID Number'),
                 Select::make('gender')->label('Gender')->options([
                     'male' => 'Male',
@@ -79,7 +80,7 @@ class AddOtherProfile extends Component implements HasForms, HasActions
                 DatePicker::make('date_of_birth')->label('Date of Birth')
                     ->suffixIcon('heroicon-o-calendar')->native(false),
                 TextInput::make('place_of_birth')->label('Place of Birth'),
-                TextInput::make('email')->label('Email')
+                TextInput::make('email')->label('Email')->required()
                     ->email(),
                 TextInput::make('wa_number')->label('WhatsApp Number')
             ]),
@@ -139,9 +140,9 @@ class AddOtherProfile extends Component implements HasForms, HasActions
 //            }
 
         }
-//        dd($data['photo']);
-        $data['user_id'] = auth()->id();
-        PatientOther::create($data);
+        $data['parent_id'] = auth()->id();
+        $data['is_child']= true;
+        Patient::create($data);
 
         $this->dispatch('successSubmit',  ['url' => localized_route('profile')]);
     }

@@ -74,6 +74,7 @@ class AdminPanelProvider extends PanelProvider
                 SpatieLaravelTranslatablePlugin::make()->defaultLocales(['en', 'id'])
             ])
             ->navigationGroups([
+                NavigationGroup::make('Patients')->icon('icon-patient'),
                 NavigationGroup::make('Feedback')->icon('icon-feedback'),
                 NavigationGroup::make('Slider')->icon('icon-slider'),
                 NavigationGroup::make('Service & Facility')->icon('icon-services'),

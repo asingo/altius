@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Profile;
 
+use App\Models\Patient;
 use App\Models\PatientOther;
 use App\Models\User;
 
@@ -24,7 +25,7 @@ class DetailProfile extends Component
         $user = User::find(auth()->id());
         $patient = $user->patient()?->first();
         if($this->id != null){
-            $user = PatientOther::find($this->id);
+            $user = Patient::find($this->id);
             $patient = $user;
         }
         $id = $this->id;

@@ -14,7 +14,7 @@
             </div>
             <div class="mt-4 flex justify-end">
                 <div class="w-1/2 flex gap-2">
-                    <a href="{{localized_route('detailProfile')}}"
+                    <a href="{{localized_route('detailProfile',  $id != null ? ['id' => $id] : [])}}"
                        class="w-1/2 text-center  text-primary font-medium border border-primary rounded-xl px-4 py-2"><span>Cancel</span></a>
                     <button type="submit"
                             class="w-1/2 bg-primary font-medium text-white border border-primary rounded-xl px-4 py-2">

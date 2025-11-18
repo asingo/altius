@@ -4,6 +4,7 @@ namespace App\Http\Controllers\Dashboard;
 
 use App\Http\Controllers\Controller;
 use App\Models\Pages;
+use App\Models\Patient;
 use App\Models\PatientOther;
 use Illuminate\Http\Request;
 
@@ -14,7 +15,8 @@ class ProfileController extends Controller
         $isHeaderOverlay = false;
         $title = 'Profile';
         $slug = 'profile';
-        $other = PatientOther::where('user_id', auth()->user()->id)->get();
+        $other = Patient::where('is_child',true)
+            ->where('parent_id', auth()->id())->get();
         return view('dashboard.profile.index', compact('isHeaderOverlay', 'title', 'slug', 'other'));
     }
 
@@ -28,7 +30,7 @@ class ProfileController extends Controller
 
     public function delete($id)
     {
-       PatientOther::destroy($id);
+       Patient::destroy($id);
        return response()->json(['success' => true]);
     }
 

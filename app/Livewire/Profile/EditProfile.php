@@ -4,6 +4,7 @@ namespace App\Livewire\Profile;
 
 use App\Class\WilayahParser;
 use App\Forms\Components\UploadProfile;
+use App\Models\Patient;
 use App\Models\PatientOther;
 use App\Models\User;
 use Filament\Actions\Concerns\InteractsWithActions;
@@ -39,7 +40,7 @@ class EditProfile extends Component implements HasForms, HasActions
         $patient = $user->patient()?->first();
         $this->id = request()->get('id');
         if($this->id != null){
-            $user = PatientOther::find($this->id);
+            $user = Patient::find($this->id);
             $patient = $user;
         }
         $schema = [
@@ -161,7 +162,7 @@ class EditProfile extends Component implements HasForms, HasActions
         ])->toArray();
 
         if($this->id != null){
-            PatientOther::find($this->id)->update([
+            Patient::find($this->id)->update([
                 ...$userData, ...$patientData
             ]);
         }else{
