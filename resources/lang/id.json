@@ -130,7 +130,7 @@
     "Welcome": "Selamat Datang",
     "to": "di",
     "Profile incomplete. Please update your information.": "Profil Anda belum lengkap. Silakan perbarui informasi Anda.",
-    "No other profiles have been added.": "LainTidak ada profil lain yang ditambahkan.",
+    "No other profiles have been added.": "Tidak ada profil lain yang ditambahkan.",
     "Add New Profile": "Tambahkan Profil Baru",
     "Biography": "Biografi",
     "ID Number": "NIK",
@@ -146,5 +146,8 @@
     "Street": "Jalan",
     "Upload Photo": "Unggah Foto",
     "Save": "Simpan",
-    "Cancel": "Batal"
+    "Cancel": "Batal",
+    "Profile Added Successfully": "Profil Berhasil Ditambahkan",
+    "Add Profile": "Tambah Profil",
+    "Other Profile": "Profil Lainnya"
 }

@@ -74,14 +74,14 @@ class EditProfile extends Component implements HasForms, HasActions
     public function form(Form $form): Form
     {
         return $form->schema([
-            Fieldset::make('Biography')->schema([
-                TextInput::make('name')->label('Name'),
-                TextInput::make('id_number')->label('ID Number'),
-                Select::make('gender')->label('Gender')->options([
-                    'male' => 'Male',
-                    'female' => 'Female',
+            Fieldset::make(__('Biography'))->schema([
+                TextInput::make('name')->label(__('Name')),
+                TextInput::make('id_number')->label(__('ID Number')),
+                Select::make('gender')->label(__('Gender'))->options([
+                    'male' => __('Male'),
+                    'female' => __('Female'),
                 ])->native(false),
-                Select::make('blood_type')->label('Blood Type')->options([
+                Select::make('blood_type')->label(__('Blood Type'))->options([
                     'A+' => 'A+',
                     'A-' => 'A-',
                     'B+' => 'B+',
@@ -91,17 +91,17 @@ class EditProfile extends Component implements HasForms, HasActions
                     'AB+' => 'AB+',
                     'AB-' => 'AB-'
                 ])->native(false),
-                DatePicker::make('date_of_birth')->label('Date of Birth')
+                DatePicker::make('date_of_birth')->label(__('Date of Birth'))
                     ->suffixIcon('heroicon-o-calendar')->native(false),
-                TextInput::make('place_of_birth')->label('Place of Birth'),
-                TextInput::make('email')->label('Email')
+                TextInput::make('place_of_birth')->label(__('Place of Birth')),
+                TextInput::make('email')->label(__('Email'))
                     ->email(),
-                TextInput::make('wa_number')->label('WhatsApp Number')
+                TextInput::make('wa_number')->label(__('WhatsApp Number'))
             ]),
-            Fieldset::make('Address')->schema([
-                TextInput::make('address')->label('Address'),
+            Fieldset::make(__('Address'))->schema([
+                TextInput::make('address')->label(__('Address')),
                 Select::make('province')
-                    ->label('Province')
+                    ->label(__('Province'))
                     ->options(fn () => WilayahParser::getProvinces())
                     ->native(false)
                     ->live()
@@ -112,7 +112,7 @@ class EditProfile extends Component implements HasForms, HasActions
                     }),
 
                 Select::make('regency')
-                    ->label('Regency')
+                    ->label(__('Regency'))
                     ->options(fn ($get) => WilayahParser::getRegencies($get('province')))
                     ->native(false)
                     ->live()
@@ -120,13 +120,13 @@ class EditProfile extends Component implements HasForms, HasActions
                         // Reset subdistrict ketika regency berubah
                         $set('subdistrict', null);
                     }),
-                Select::make('subdistrict')->label('Subdistrict')
+                Select::make('subdistrict')->label(__('Subdistrict'))
                     ->options(fn ($get) => WilayahParser::getDistricts($get('regency')))
                     ->native(false)
                     ->live(),
-                TextInput::make('rt_rw')->label('RT/RW'),
-                TextInput::make('postal_code')->label('Postal Code')->numeric(),
-                TextInput::make('street')->label('Street')
+                TextInput::make('rt_rw')->label(__('RT/RW')),
+                TextInput::make('postal_code')->label(__('Postal Code'))->numeric(),
+                TextInput::make('street')->label(__('Street'))
             ])
         ])->statePath('data');
     }

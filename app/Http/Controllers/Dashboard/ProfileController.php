@@ -13,7 +13,7 @@ class ProfileController extends Controller
     public function profile()
     {
         $isHeaderOverlay = false;
-        $title = 'Profile';
+        $title = __('Profile');
         $slug = 'profile';
         $other = Patient::where('is_child',true)
             ->where('parent_id', auth()->id())->get();
@@ -23,7 +23,7 @@ class ProfileController extends Controller
     public function editProfile()
     {
         $isHeaderOverlay = false;
-        $title = 'Detail Profile';
+        $title = __('Detail Profile');
         $slug = 'detail';
         return view('dashboard.profile.detail', compact('isHeaderOverlay', 'title', 'slug'));
     }

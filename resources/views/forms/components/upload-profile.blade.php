@@ -64,7 +64,7 @@
             flex items-center gap-2 transition-all duration-200
             hover:bg-blue-900 hover:text-white hover:shadow-md hover:-translate-y-0.5
         ">
-            Upload Photo
+            {{__('Upload Photo')}}
             <x-heroicon-o-arrow-up-tray class="w-4 h-4"/>
             <input
                 type="file"

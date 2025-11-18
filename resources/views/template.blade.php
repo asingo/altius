@@ -106,60 +106,67 @@
                     <x-heroicon-o-bars-3 class="w-6 h-6"/>
                 </button>
 
-                <div
-                    x-show="openMobile"
-                    @click.outside="openMobile = false"
-                    x-transition:enter="transition ease-out duration-500"
-                    x-transition:enter-start="opacity-0 -translate-y-5"
-                    x-transition:enter-end="opacity-100 translate-y-0"
-                    x-transition:leave="transition ease-in duration-500"
-                    x-transition:leave-start="opacity-100 translate-y-0"
-                    x-transition:leave-end="opacity-0 -translate-y-5"
-                    class="absolute bg-white w-screen left-0 h-screen top-14 z-50"
-                >
-                    <ul class="menu-list flex flex-col gap-5 mx-6 mt-4 pt-4 border-t">
-                        @foreach(\App\Models\MenuHeader::with('pages')->get() as $menu)
-                            <li>
-                                <a href="{{localized_route($menu->pages->route_name)}}" class="relative group w-full">
+
+            </div>
+
+
+        </div>
+    </div>
+    <div
+        x-show="openMobile"
+        x-cloak
+        @click.outside="openMobile = false"
+        x-transition:enter="transition ease-out duration-500"
+        x-transition:enter-start="opacity-0 -translate-y-5"
+        x-transition:enter-end="opacity-100 translate-y-0"
+        x-transition:leave="transition ease-in duration-500"
+        x-transition:leave-start="opacity-100 translate-y-0"
+        x-transition:leave-end="opacity-0 -translate-y-5"
+        class="absolute bg-white w-screen left-0 h-screen top-14 z-50"
+    >
+        <ul class="menu-list flex flex-col gap-5 mx-6 mt-4 pt-4 border-t">
+            @foreach(\App\Models\MenuHeader::with('pages')->get() as $menu)
+                <li>
+                    <a href="{{localized_route($menu->pages->route_name)}}" class="relative group w-full">
                                     <span
                                         :class="[atTop && 'hover:!text-primary', slug == '{{$menu->pages->slug}}' ? '!text-primary' : '']">{{$menu->title}}</span>
-                                    <span class="menu-interaction"
-                                          :class="[atTop && '!bg-primary', slug == '{{$menu->pages->slug}}' ? '!bg-primary !scale-x-100' :'']"></span>
-                                </a>
-                            </li>
-                        @endforeach
-                        {{--                        <li>--}}
-                        {{--                            <a href="{{localized_route('about')}}" class="relative group w-full">--}}
-                        {{--                                <span :class="[atTop && 'hover:!text-primary', slug == 'about' ? '!text-primary' : '']">About Us</span>--}}
-                        {{--                                <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'about' ? '!bg-primary !scale-x-100' :'']"></span>--}}
-                        {{--                            </a>--}}
-                        {{--                        </li>--}}
-                        {{--                        <li>--}}
-                        {{--                            <a href="{{localized_route('location')}}" class="relative group">--}}
-                        {{--                                <span :class="[atTop && 'hover:!text-primary', slug == 'location' ? '!text-primary' : '']">Location</span>--}}
-                        {{--                                <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'location' ? '!bg-primary !scale-x-100' :'']"></span>--}}
-                        {{--                            </a>--}}
-                        {{--                        </li>--}}
-                        {{--                        <li>--}}
-                        {{--                            <a href="{{localized_route('doctor')}}" class="relative group">--}}
-                        {{--                                <span :class="[atTop && 'hover:!text-primary', slug == 'medical-professional' ? '!text-primary' : '']">Medical Professionals</span>--}}
-                        {{--                                <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'medical-professional' ? '!bg-primary !scale-x-100' :'']"></span>--}}
-                        {{--                            </a>--}}
-                        {{--                        </li>--}}
-                        {{--                        <li>--}}
-                        {{--                            <a href="{{localized_route('screening')}}" class="relative group">--}}
-                        {{--                                <span :class="[atTop && 'hover:!text-primary', slug == 'health-screening' ? '!text-primary' : '']">Health Screening</span>--}}
-                        {{--                                <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'health-screening' ? '!bg-primary !scale-x-100' :'']"></span>--}}
-                        {{--                            </a>--}}
-                        {{--                        </li>--}}
-                        {{--                        <li>--}}
-                        {{--                            <a href="{{localized_route('contact')}}" class="relative group">--}}
-                        {{--                                <span :class="[atTop && 'hover:!text-primary', slug == 'contact-us' ? '!text-primary' : '']">Contact Us</span>--}}
-                        {{--                                <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'contact-us' ? '!bg-primary !scale-x-100' :'']"></span>--}}
-                        {{--                            </a>--}}
-                        {{--                        </li>--}}
-                        <li>
-                            <a href="tel:021{{$setting['contact']['emergency']}}" class="relative group">
+                        <span class="menu-interaction"
+                              :class="[atTop && '!bg-primary', slug == '{{$menu->pages->slug}}' ? '!bg-primary !scale-x-100' :'']"></span>
+                    </a>
+                </li>
+            @endforeach
+            {{--                        <li>--}}
+            {{--                            <a href="{{localized_route('about')}}" class="relative group w-full">--}}
+            {{--                                <span :class="[atTop && 'hover:!text-primary', slug == 'about' ? '!text-primary' : '']">About Us</span>--}}
+            {{--                                <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'about' ? '!bg-primary !scale-x-100' :'']"></span>--}}
+            {{--                            </a>--}}
+            {{--                        </li>--}}
+            {{--                        <li>--}}
+            {{--                            <a href="{{localized_route('location')}}" class="relative group">--}}
+            {{--                                <span :class="[atTop && 'hover:!text-primary', slug == 'location' ? '!text-primary' : '']">Location</span>--}}
+            {{--                                <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'location' ? '!bg-primary !scale-x-100' :'']"></span>--}}
+            {{--                            </a>--}}
+            {{--                        </li>--}}
+            {{--                        <li>--}}
+            {{--                            <a href="{{localized_route('doctor')}}" class="relative group">--}}
+            {{--                                <span :class="[atTop && 'hover:!text-primary', slug == 'medical-professional' ? '!text-primary' : '']">Medical Professionals</span>--}}
+            {{--                                <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'medical-professional' ? '!bg-primary !scale-x-100' :'']"></span>--}}
+            {{--                            </a>--}}
+            {{--                        </li>--}}
+            {{--                        <li>--}}
+            {{--                            <a href="{{localized_route('screening')}}" class="relative group">--}}
+            {{--                                <span :class="[atTop && 'hover:!text-primary', slug == 'health-screening' ? '!text-primary' : '']">Health Screening</span>--}}
+            {{--                                <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'health-screening' ? '!bg-primary !scale-x-100' :'']"></span>--}}
+            {{--                            </a>--}}
+            {{--                        </li>--}}
+            {{--                        <li>--}}
+            {{--                            <a href="{{localized_route('contact')}}" class="relative group">--}}
+            {{--                                <span :class="[atTop && 'hover:!text-primary', slug == 'contact-us' ? '!text-primary' : '']">Contact Us</span>--}}
+            {{--                                <span class="menu-interaction" :class="[atTop && '!bg-primary', slug == 'contact-us' ? '!bg-primary !scale-x-100' :'']"></span>--}}
+            {{--                            </a>--}}
+            {{--                        </li>--}}
+            <li>
+                <a href="tel:021{{$setting['contact']['emergency']}}" class="relative group">
                         <span class="flex gap-2 items-center" :class="atTop && 'hover:!text-primary' ">
                             <svg width="20" height="20" viewBox="0 0 20 20" class="fill-white"
                                  :class="atTop && '!fill-red-500' "
@@ -170,15 +177,10 @@
 </svg>
 
                             Emergency {{$setting['contact']['emergency']}}</span>
-                                <span class="menu-interaction" :class="atTop && '!bg-primary' "></span>
-                            </a>
-                        </li>
-                    </ul>
-                </div>
-            </div>
-
-
-        </div>
+                    <span class="menu-interaction" :class="atTop && '!bg-primary' "></span>
+                </a>
+            </li>
+        </ul>
     </div>
 </header>
 @yield('content')

@@ -11,9 +11,9 @@
 </head>
 <body class="h-screen flex flex-col justify-between">
 <main class="h-full flex flex-col justify-center items-center">
-    <div class="max-w-screen-2xl mx-auto px-6 2xl:px-0">
-        <div class="grid grid-cols-2 gap-10">
-            <div>
+    <div class="md:max-w-screen-2xl w-full  mx-auto px-6 2xl:px-0">
+        <div class="grid md:grid-cols-2 gap-10">
+            <div class="hidden md:block">
                 <img src="{{asset('asset/login-bg.jpg')}}" class="rounded-2xl" alt="login image"/>
             </div>
             @php
