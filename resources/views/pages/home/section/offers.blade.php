@@ -9,6 +9,7 @@
                 <x-grid.basic
                     image="{{\Awcodes\Curator\Models\Media::find($o->image)->url}}"
                     heading="{!! $o->title !!}"
+                    slug="{{localized_route('offers').'/'.$o->slug}}"
                 />
             </x-slider.slider-item>
         @endforeach

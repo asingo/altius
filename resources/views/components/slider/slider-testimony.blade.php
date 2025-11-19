@@ -32,7 +32,7 @@
             </div>
         </div>
 
-        <h3 class="my-4 text-3xl sm:text-4xl font-medium text-secondary">
+        <h3 class="my-4 text-3xl font-medium text-secondary">
             {{ $title }}
         </h3>
 

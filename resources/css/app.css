@@ -168,6 +168,22 @@ ul:not(.menu-list){
 .filepond--label-action{
     @apply !text-primary;
 }
+
+.choices__list.choices__list--single {
+    text-wrap:nowrap;
+    width: 100%;
+    overflow-x: clip;
+}
+
+.slider-testimonySlider .swiper-wrapper {
+    align-items: stretch !important;
+}
+
+.slider-testimonySlider .swiper-slide {
+    display: flex !important;
+    height: auto !important;
+}
+
 /*.doctor-filter div.choices__list.choices__list--dropdown{*/
 /*    @apply !hidden;*/
 /*}*/

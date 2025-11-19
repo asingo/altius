@@ -11,7 +11,7 @@ class DoctorController extends Controller
 {
     public function doctor()
     {
-        $data = Doctor::with(['speciality', 'hasLocation'])->get();
+        $data = Doctor::with(['speciality', 'hasLocation'])->orderBy('name', 'asc')->get();
         $isHeaderOverlay = true;
         $view = 'pages.medical-professional.index';
         $page = Pages::where('view', $view)->first();

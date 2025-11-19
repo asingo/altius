@@ -11,7 +11,7 @@ class ListDoctors extends Component
     public $data;
     public $filteredData;
     public $page = 1;
-    public $perPage = 5;
+    public $perPage = 10;
     public $search = '';
     public $location = '';
     public $speciality = '';

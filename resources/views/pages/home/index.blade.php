@@ -23,7 +23,7 @@
         }
     </style>
     <!-- Swiper -->
-    <div class="swiper hero">
+    <div class="swiper hero !z-20">
         <div class="swiper-wrapper">
             @if(!$sliderSetting->value['is_video'])
             @foreach($slider as $s)
@@ -93,7 +93,7 @@
     @include('pages.home.section.testimony')
     {{--    Section Background--}}
     <div>
-        <img src="{{asset('asset/image-home.jpg')}}">
+        <img class="h-[100vw] sm:h-full object-cover" src="{{asset('asset/image-home.jpg')}}">
     </div>
     {{--/    Section Background--}}
     @include('pages.home.section.health-screening')

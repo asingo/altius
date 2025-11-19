@@ -1,7 +1,7 @@
 <div class="grid grid-cols-1 gap-6 mt-6 md:mt-10">
 
     @foreach($doctors as $d)
-        <div class="shadow-grid p-5 flex md:flex-row flex-col gap-5 rounded">
+        <div class="shadow-grid p-5 flex flex-row gap-5 rounded">
             <div class="flex md:w-1/6 w-1/2 ">
                 <img
                     src="{{asset( \Awcodes\Curator\Models\Media::find($d->image)?->url??'asset/doctor/image-doctor.jpg')}}"

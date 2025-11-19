@@ -328,7 +328,19 @@
         </div>
     </div>
 </footer>
-<div class="fixed bottom-0 right-0 w-32 h-32 overflow-hidden z-[99]">
+<div class="fixed bottom-0 right-0 w-32 h-32 overflow-hidden z-10"
+    x-data="{ showElement: false }"
+    x-init="window.addEventListener('scroll', () => {
+        showElement = window.scrollY > 100;
+    })"
+    x-show="showElement"
+    x-transition:enter="transition ease-out duration-500 opacity-0"
+    x-transition:enter-start="opacity-0"
+    x-transition:enter-end="opacity-100"
+    x-transition:leave="transition ease-in duration-500 opacity-100"
+    x-transition:leave-start="opacity-100"
+    x-transition:leave-end="opacity-0"
+>
     <div @click="openFeedback = true"
         class="absolute bottom-0 rotate-180 cursor-pointer right-0 w-full  h-full border-b-[128px] border-l-[128px] border-transparent border-l-primary">
     <span class="text-white text-xl top-7 rotate-[135deg] absolute z-99 right-10 font-semibold">
@@ -336,16 +348,16 @@
     </span>
     </div>
 </div>
-<div x-show="openFeedback" x-cloak class="bg-black/50 fixed inset-0 z-[9999]" :class="openFeedback ? 'block' : 'hidden'">
-    <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[80%]">
-        <div class="absolute cursor-pointer -top-10 -right-10"  @click="openFeedback = false">
+<div x-show="openFeedback" x-cloak class="bg-black/50 fixed inset-0 z-[99]" :class="openFeedback ? 'block' : 'hidden'">
+    <div class="absolute w-screen sm:w-fit top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 h-[80%]">
+        <div class="absolute  cursor-pointer -top-10 right-2 sm:-right-10"  @click="openFeedback = false">
             <x-heroicon-o-x-mark
                 class="text-white w-10 h-10"
 
             />
         </div>
         <div
-            class="bg-white rounded-2xl  p-6  h-full"
+            class="bg-white mx-4 sm:mx-0 rounded-2xl p-4 sm:p-6  h-full"
         >
             <!-- Scrollable inner content -->
             <div class="h-full overflow-y-auto">

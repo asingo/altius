@@ -15,7 +15,7 @@
                     </x-typography.heading>
                 </div>
 
-                <div class="bg-slate-50 rounded-xl p-4 text-gray-600 text-lg my-6">
+                <div class="bg-[#EAF1FB] rounded-xl p-4 text-gray-600 text-lg my-6">
                     <div class="flex flex-col">
                         <span class="font-semibold">{{__('location')}}</span>
                         <div class="flex gap-4">
@@ -40,7 +40,7 @@
                         </div>
                         <div class="flex flex-col">
                             <span class="font-semibold">{{__('Age')}}</span>
-                            <div class="flex gap-4">
+                            <div class="flex gap-4 gap-y-0 flex-wrap">
                                 @foreach($data->hasAge as $d)
                                     <span>{{$d->age->title}}</span>
                                 @endforeach
@@ -51,6 +51,12 @@
                 <h2 class="font-heading text-2xl mt-8">{{__('Description')}}</h2>
                 <div class="mt-4 post-content">
                     {!! tiptap_converter()->asHTML($data->description) !!}
+                </div>
+                <div>
+                    <h2 class="font-heading text-2xl mt-8">{{__('Price')}}</h2>
+                    <div class="mt-4 text-3xl text-primary font-semibold">
+                        Rp {{number_format($data->price, 0, ',', '.')}}
+                    </div>
                 </div>
                 <div>
                     <x-button.link href="#" class="w-full text-center mt-4">{{__('Claim This Package')}}</x-button.link>

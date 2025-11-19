@@ -63,22 +63,24 @@
     "
             class="flex flex-col-reverse md:grid md:grid-cols-5 mt-12 gap-12 md:gap-24"
         >
-            <div class="col-span-3 space-y-12">
+            <div class="col-span-3">
                 <div id="bio">
                     <h3 class="text-4xl font-heading">{{__('Biographical Summary')}}</h3>
                     <div class="mt-8">{!! tiptap_converter()->asHTML($data->biography) !!}</div>
                 </div>
 
+                <div class="border-t-2 border-slate-300 my-12"></div>
+
                 <div id="expertise">
                     <h3 class="text-4xl font-heading">{{__('Expertise')}}</h3>
                     <div class="mt-8">{!! tiptap_converter()->asHTML($data->expertise) !!}</div>
                 </div>
-
+                <div class="border-t-2 border-slate-300 my-12"></div>
                 <div id="edu">
                     <h3 class="text-4xl font-heading">{{__('Education')}}</h3>
                     <div class="mt-8">{!! tiptap_converter()->asHTML($data->education) !!}</div>
                 </div>
-
+                <div class="border-t-2 border-slate-300 my-12"></div>
                 <div id="loc">
                     <h3 class="text-4xl font-heading">{{__('location')}}</h3>
                     <div class="mt-8">
@@ -111,7 +113,7 @@
 
                     </div>
                 </div>
-
+                <div class="border-t-2 border-slate-300 my-12"></div>
                 <div id="pub">
                     <h3 class="text-4xl font-heading">{{__('Publication')}}</h3>
                     <div class="mt-8">{!! tiptap_converter()->asHTML($data->publication) !!}</div>

@@ -71,6 +71,7 @@ lg:!right-[unset]'}}"></div>
 <script>
     var swiper{{$id}} = new Swiper(".slider-{{$id}} .swiper", {
         spaceBetween: 30,
+        autoHeight: false,
         slidesPerView: {{$items != null && $items_mobile != null ? $items_mobile : $items}},
         @if($autoplay == "true")
         speed: 1500,

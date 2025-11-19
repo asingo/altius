@@ -13,7 +13,7 @@
                 <div class="space-y-4 mb-6 md:space-y-6">
                     <h3 class="font-heading text-2xl md:text-3xl">{{$view->about_title}}</h3>
                     <p>{{implode(', ',$meta)}}</p>
-                    <x-button.link href="#">{{__('Learn More About Us')}}</x-button.link>
+                    <x-button.link href="{{localized_route('about')}}">{{__('Learn More About Us')}}</x-button.link>
                 </div>
                 <div class="space-y-6">
                     {!! $view['about_description'] !!}
@@ -207,7 +207,7 @@
                         <span class="text-lg text-textsub">General Number</span>
                     </div>
                     <div>
-                        <span class="text-lg text-textsub">{{$view['general_number']}}</span>
+                        <a href="tel:{{$view['general_number']}}"><span class="text-lg text-textsub hover:!text-primary">{{$view['general_number']}}</span></a>
                     </div>
                 </div>
                 <div class="grid-cols-2 grid border-slate-300 border-b  py-2 items-center">
@@ -215,7 +215,7 @@
                         <span class="text-lg text-textsub">Customer Care</span>
                     </div>
                     <div>
-                        <span class="text-lg text-textsub">{{$view['customer_care']}}</span>
+                        <a href="tel:{{$view['customer_care']}}"><span class="text-lg text-textsub">{{$view['customer_care']}}</span></a>
                     </div>
                 </div>
 

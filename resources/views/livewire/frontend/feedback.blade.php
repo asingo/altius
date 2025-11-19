@@ -1,4 +1,4 @@
-<div class="max-w-md mx-auto p-6 bg-white space-y-6">
+<div class="max-w-md mx-auto p-6 bg-white space-y-4 sm:space-y-6">
     <form wire:submit.prevent="submit">
        {{$this->form}}
         <div class="w-full justify-center flex">

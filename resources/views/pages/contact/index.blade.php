@@ -64,7 +64,7 @@
                                     <span class="text-lg text-textsub">General Number</span>
                                 </div>
                                 <div>
-                                    <span class="text-lg text-textsub">{{$d->general_number}}</span>
+                                    <a href="tel:{{$d->general_number}}"><span class="text-lg text-textsub hover:!text-primary">{{$d->general_number}}</span></a>
                                 </div>
                             </div>
                             <div class="grid-cols-2 grid border-slate-300 border-b  py-2 items-center">
@@ -72,7 +72,7 @@
                                     <span class="text-lg text-textsub">Customer Care</span>
                                 </div>
                                 <div>
-                                    <span class="text-lg text-textsub">{{$d->customer_care}}</span>
+                                    <a href="tel:{{$d->customer_care}}"><span class="text-lg text-textsub  hover:!text-primary">{{$d->customer_care}}</span></a>
                                 </div>
                             </div>
 

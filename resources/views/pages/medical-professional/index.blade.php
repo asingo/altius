@@ -15,7 +15,7 @@
     <div class="max-w-screen-2xl mx-auto py-16 px-6 2xl:px-0">
         <x-breadcrumb parent="Home" child="{{$page->title}}"/>
             <div class="md:mt-10">
-                <div  x-data="{ open: false }" class="grid lg:grid-cols-3 lg:gap-24 gap-10">
+                <div  x-data="{ open: false }" class="grid lg:grid-cols-5 lg:gap-12 gap-10">
                     <div
                         class="lg:col-span-1 space-y-6"
                     >
@@ -27,7 +27,7 @@
                         </div>
                     </div>
 
-                    <div class="lg:col-span-2">
+                    <div class="lg:col-span-4">
                         @livewire('frontend.doctor.search-doctor')
                         <!-- Header -->
                         <div

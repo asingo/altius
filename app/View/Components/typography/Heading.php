@@ -14,7 +14,7 @@ class Heading extends Component
     /**
      * Create a new component instance.
      */
-    public function __construct($class = '', $location = 'section')
+    public function __construct($class = '', $location = '')
     {
         $this->class = $class;
         $this->location = $location;
