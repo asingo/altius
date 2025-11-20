@@ -8,7 +8,7 @@
             </x-typography.heading>
         </div>
         <div class="mt-8">
-            <x-image :id="$view->cover_image" :class="'rounded-2xl w-full object-cover'"/>
+            <x-image :id="$view->cover_image" :class="'rounded-2xl w-full object-cover h-full aspect-[4/3] sm:aspect-auto'"/>
             <div class="grid md:grid-cols-2 mt-12 mb-24">
                 <div class="space-y-4 mb-6 md:space-y-6">
                     <h3 class="font-heading text-2xl md:text-3xl">{{$view->about_title}}</h3>
@@ -44,7 +44,7 @@
                         x-transition:leave="transition ease-in duration-200"
                         x-transition:leave-start="opacity-100 translate-y-0"
                         x-transition:leave-end="opacity-0 -translate-y-2"
-                        class="grid divide-y divide-dashed border-y border-dashed mt-4"
+                        class="grid divide-y divide-dashed border-y border-dashed mt-4 divide-slate-300"
                     >
                         @foreach($coe as $c)
                             <div class="px-4 py-2">
@@ -77,7 +77,7 @@
                             x-transition:leave="transition ease-in duration-200"
                             x-transition:leave-start="opacity-100 translate-y-0"
                             x-transition:leave-end="opacity-0 -translate-y-2"
-                            class="grid divide-y divide-dashed border-y border-dashed mt-4"
+                            class="grid divide-y divide-dashed border-y border-dashed divide-slate-300 mt-4"
                         >
                             @foreach($v as $c)
                                 <div class="px-4 py-2">
@@ -110,7 +110,7 @@
                         x-transition:leave="transition ease-in duration-200"
                         x-transition:leave-start="opacity-100 translate-y-0"
                         x-transition:leave-end="opacity-0 -translate-y-2"
-                        class="grid divide-y divide-dashed border-y border-dashed mt-4"
+                        class="grid divide-y divide-dashed border-y border-dashed mt-4 divide-slate-300"
                     >
                         @foreach($speciality as $c)
                             <div class="px-4 py-2">
@@ -141,7 +141,7 @@
                         x-transition:leave="transition ease-in duration-200"
                         x-transition:leave-start="opacity-100 translate-y-0"
                         x-transition:leave-end="opacity-0 -translate-y-2"
-                        class="grid divide-y divide-dashed border-y border-dashed mt-4"
+                        class="grid divide-y divide-dashed border-y border-dashed mt-4 divide-slate-300"
                     >
                         @foreach($facilities as $c)
                             <div class="px-4 py-2">
@@ -172,7 +172,7 @@
                         x-transition:leave="transition ease-in duration-200"
                         x-transition:leave-start="opacity-100 translate-y-0"
                         x-transition:leave-end="opacity-0 -translate-y-2"
-                        class="grid divide-y divide-dashed border-y border-dashed mt-4"
+                        class="grid divide-y divide-dashed border-y border-dashed mt-4 divide-slate-300"
                     >
                         @foreach($emergency as $c)
                             <div class="px-4 py-2">

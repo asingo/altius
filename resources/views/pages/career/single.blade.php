@@ -50,6 +50,7 @@
                 @livewire('frontend.career.detail.submit-form', ['career' => $view->id])
             </div>
         </div>
+        <x-share-bar title="{{$title}}"/>
         <div class="mt-24 max-w-screen-lg mx-auto flex items-center flex-col gap-6 text-primary">
             <img src="{{asset('asset/CareerPage/Icon-Danger.svg')}}"/>
             <h2 class="text-3xl font-medium text-center">{{$page->content['warning']['title']}}</h2>

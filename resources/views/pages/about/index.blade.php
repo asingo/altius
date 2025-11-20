@@ -10,7 +10,7 @@
             </x-typography.heading>
         </div>
         <div>
-            <img src="{{ \Awcodes\Curator\Models\Media::find($page->image)?->url }}" alt="about" class="w-full rounded-2xl h-auto mt-10">
+            <img src="{{ \Awcodes\Curator\Models\Media::find($page->image)?->url }}" alt="about" class="w-full rounded-2xl object-cover object-center h-auto mt-10 aspect-[4/3] sm:aspect-auto">
         </div>
         @include('pages.about.section.who-we-are')
         @include('pages.about.section.vision')

@@ -3,7 +3,7 @@
 @section('content')
     @filamentStyles()
     <div class="h-[700px] relative"
-         style="background-image: url({{Media::find($page->image)->url}})">
+         style="background-image: url({{Media::find($page->image)->url}}); background-position: center center; background-size: cover;">
         <div class="h-full relative" style="background: rgba(0,0,0,0.2)">
             <div class="absolute text-white max-w-screen-2xl mx-auto px-6 2xl:px-0 left-0 bottom-1/2 top-1/2 right-0">
                 <h1 class="text-5xl text-white mb-4 font-semibold">{{$page->content['section']['heading']}}</h1>

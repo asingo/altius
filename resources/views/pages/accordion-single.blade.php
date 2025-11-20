@@ -13,7 +13,10 @@
                 <x-typography.heading location="page">{{$page->title}}
                 </x-typography.heading>
             </div>
-            {!! tiptap_converter()->asHTML($page->content['content']) !!}
+            <div class="post-content">
+                {!! tiptap_converter()->asHTML($page->content['content']) !!}
+            </div>
+
             <div class="mt-8 flex gap-2 flex-col">
                 @foreach($page->content['faq'] as $k=>$v)
                     <div x-data="{ show: true }">
@@ -41,7 +44,7 @@
                             x-transition:leave-end="opacity-0 -translate-y-2"
                             class="grid divide-y divide-dashed border-y border-dashed py-4 mt-4"
                         >
-                            <div>
+                            <div class="post-content">
                                 {!! tiptap_converter()->asHTML($v['content']) !!}
                             </div>
 {{--                            @foreach($v as $c)--}}

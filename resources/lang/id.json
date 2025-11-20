@@ -151,5 +151,12 @@
     "Add Profile": "Tambah Profil",
     "Other Profile": "Profil Lainnya",
     "Price": "Harga",
-    "Data not Found": "Data tidak ditemukan"
+    "Data not Found": "Data tidak ditemukan",
+    "Please fill in your full name": "Silakan isi nama lengkap Anda",
+    "Please provide a valid email address": "Silakan masukkan alamat email yang valid",
+    "Please provide a valid phone number": "Silakan masukkan nomor telepon yang valid",
+    "Please select a province": "Silakan pilih provinsi",
+    "Please select a city": "Silakan pilih kota",
+    "Please upload a valid resume file": "Silakan unggah file resume yang valid",
+    "Please agree to the terms": "Silakan setujui syarat dan ketentuan"
 }

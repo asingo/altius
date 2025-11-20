@@ -36,14 +36,30 @@ class SubmitForm extends Component implements HasForms
     public function form(Form $form): Form
     {
         return $form->schema([
-            TextInput::make('fullname')->label(__('Full Name'))->required(),
-            TextInput::make('email')->label('Email')
+            TextInput::make('fullname')
+                ->label(__('Full Name'))
                 ->required()
-                ->regex('/^.+@.+$/i'),
-            TextInput::make('phone')->label('No. HP/ WhatsApp')->required(),
+                ->validationMessages([
+                    'required' => __('Please fill in your full name'),
+                ]),
+            TextInput::make('email')
+                ->label(__('Email'))
+                ->required()
+                ->regex('/^.+@.+$/i')
+                ->validationMessages([
+                    'required' => __('Please provide a valid email address'),
+                    'regex' => __('Please provide a valid email address'),
+                ]),
+            TextInput::make('phone')
+                ->label(__('No. HP/ WhatsApp'))
+                ->required()
+                ->validationMessages([
+                    'required' => __('Please provide a valid phone number'),
+                ]),
             Grid::make(['default' => 1, 'md' => 2])->schema(
                 [
-                    Select::make('province')->placeholder(__('Choose Province'))
+                    Select::make('province')
+                        ->placeholder(__('Choose Province'))
                         ->label(__('Province'))
                         ->options(fn () => WilayahParser::getProvinces())
                         ->native(false)
@@ -52,27 +68,45 @@ class SubmitForm extends Component implements HasForms
                             // Reset regency & subdistrict ketika province berubah
                             $set('regency', null);
                             $set('subdistrict', null);
-                        }),
+                        })
+                        ->required()
+                        ->validationMessages([
+                            'required' => __('Please select a province'),
+                        ]),
 
-                    Select::make('city')->placeholder(__('Choose City'))
+                    Select::make('city')
+                        ->placeholder(__('Choose City'))
                         ->label(__('City'))
                         ->options(fn ($get) => WilayahParser::getRegencies($get('province')))
                         ->native(false)
                         ->live()
+                        ->required()
                         ->afterStateUpdated(function ($state, callable $set) {
                             // Reset subdistrict ketika regency berubah
                             $set('subdistrict', null);
-                        }),
+                        })
+                        ->validationMessages([
+                            'required' => __('Please select a city'),
+                        ]),
                 ]
             ),
-            FileUpload::make('photo')->label('Upload Resume/ CV (PDF/JPG)')
+            FileUpload::make('photo')
+                ->label(__('Upload Resume/ CV (PDF/JPG)'))
                 ->maxSize(2048)
                 ->directory('resume')
                 ->previewable(false)
                 ->preserveFilenames()
                 ->helperText('*'.__('Maximum File Size').' 2 MB')
-                ->required(),
-            Checkbox::make('acceptance')->label('By using this form, you agree to the storage and handling of data by this website.')->required()
+                ->required()
+                ->validationMessages([
+                    'required' => __('Please upload a valid resume file'),
+                ]),
+            Checkbox::make('acceptance')
+                ->label(__('By using this form, you agree to the storage and handling of data by this website.'))
+                ->required()
+                ->validationMessages([
+                    'required' => __('Please agree to the terms'),
+                ]),
         ])->statePath('formData');
     }
 

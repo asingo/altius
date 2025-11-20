@@ -184,6 +184,10 @@ ul:not(.menu-list){
     height: auto !important;
 }
 
+.post-content a{
+    @apply text-primary hover:text-accent;
+}
+
 /*.doctor-filter div.choices__list.choices__list--dropdown{*/
 /*    @apply !hidden;*/
 /*}*/
