@@ -18,7 +18,7 @@
                 profile="{{\Awcodes\Curator\Models\Media::find($t->image)->url}}"
                 video="{{\Awcodes\Curator\Models\Media::find($t->video)?->url}}"
                 name="{{$t->name}}"
-                date="{{$t->created_at->format('d F Y')}}"
+                date="{{\Carbon\Carbon::parse($t->date)->translatedFormat('d F Y')}}"
                 title="{{$t->title}}"
             >
                {!! tiptap_converter()->asHTML($t->content) !!}

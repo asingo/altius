@@ -7,6 +7,7 @@ use App\Filament\Resources\TestimonyResource\RelationManagers;
 use App\Models\Testimony;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Filament\Forms;
+use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Form;
 use Filament\Resources\Concerns\Translatable;
 use Filament\Resources\Resource;
@@ -35,7 +36,12 @@ class TestimonyResource extends Resource
                             Forms\Components\TextInput::make('title')->label('Title')
                                 ->required(),
                             Forms\Components\TextInput::make('name')->label('Patient Name')
-                                ->required()
+                                ->required(),
+                            DatePicker::make('date')->label('Date')
+                                ->displayFormat('d F Y')
+                                ->native(false)
+                                ->icon('heroicon-o-calendar')
+                                ->label('Testimony Date'),
                         ]),
                         Forms\Components\Section::make('Video Testimony')->schema([
                             CuratorPicker::make('video')->label('Video Testimony')
