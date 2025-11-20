@@ -7,6 +7,7 @@ use App\View\Components\Grid;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Awcodes\Curator\Models\Media;
 use Filament\Actions\Action;
+use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
 use Filament\Forms\Components\Split;
@@ -116,11 +117,27 @@ class GeneralSetting extends Page implements HasForms
         return $form->schema($schema)->statePath('general');
     }
 
+    public function ctaForm(Form $form): Form
+    {
+        $schema = [
+            Section::make('CTA Setting')->schema([
+                Fieldset::make('Message Prefix')->schema([
+                    TextInput::make('prefix_en')->label('Prefix EN'),
+                    TextInput::make('prefix_id')->label('Prefix ID'),
+                ]),
+                TextInput::make('whatsapp')->label('Whatsapp Number')
+                ->helperText('Please use only numbers e.g 6281230000'),
+            ])->statePath('cta')
+        ];
+        return $form->schema($schema)->statePath('general');
+    }
+
     protected function getForms(): array
     {
         return [
             'siteForm',
             'contactForm',
+            'ctaForm'
         ];
     }
 
@@ -175,7 +192,7 @@ class GeneralSetting extends Page implements HasForms
 
     public function saveSetting()
     {
-        $form = [...$this->siteForm->getState(), ...$this->contactForm->getState()];
+        $form = [...$this->siteForm->getState(), ...$this->contactForm->getState(), ...$this->ctaForm->getState()];
 
         $setting = Setting::where('name', 'general');
         if ($setting->exists()) {

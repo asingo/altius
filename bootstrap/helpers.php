@@ -1,13 +1,16 @@
 <?php
-if (! function_exists('localized_route')) {
+
+use App\Models\Setting;
+
+if (!function_exists('localized_route')) {
     /**
      * Generate a localized URL based on the current app locale.
      *
      * Example:
      *  localized_route('about') → /about or /id/about
      *
-     * @param  string  $name     The route name (e.g. 'about')
-     * @param  array   $params   Route parameters (optional)
+     * @param string $name The route name (e.g. 'about')
+     * @param array $params Route parameters (optional)
      * @return string
      */
     function localized_route(string $name, array $params = []): string
@@ -24,7 +27,7 @@ if (! function_exists('localized_route')) {
     }
 }
 
-if (! function_exists('limit_words')) {
+if (!function_exists('limit_words')) {
     function limit_words($string, $words = 10)
     {
         $wordsArray = explode(' ', trim($string));
@@ -35,5 +38,18 @@ if (! function_exists('limit_words')) {
         }
 
         return $string;
+    }
+}
+
+if (!function_exists('get_wa_link')) {
+    function get_wa_link($title)
+    {
+        $cta = Setting::getCtaSetting();
+        if ($cta) {
+            $number = $cta['whatsapp'];
+            $text = app()->getLocale() == 'en' ? $cta['prefix_en'] : $cta['prefix_id'];
+            return 'https://wa.me/' . $number . '?text=' . $text . ' ' . $title;
+        }
+        return '#';
     }
 }

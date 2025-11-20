@@ -44,6 +44,7 @@ class ScreeningController extends Controller
         $title = $data['title'];
         $page = Pages::where('view', 'pages.health-screening.index')->first();
         $slug = $page->slug;
+
         Session::flash('single_content', $data->toArray());
         return view('pages.health-screening.single', compact('data', 'isHeaderOverlay', 'title', 'slug', 'others'));
 

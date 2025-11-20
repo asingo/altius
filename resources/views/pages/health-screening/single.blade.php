@@ -60,7 +60,7 @@
                     </div>
                 </div>
                 <div>
-                    <x-button.link href="#" class="w-full text-center mt-4">{{__('Claim This Package')}}</x-button.link>
+                    <x-button.link href="{{get_wa_link($title)}}" class="w-full text-center mt-4">{{__('Claim This Package')}}</x-button.link>
                 </div>
             </div>
         </div>
