@@ -2,26 +2,44 @@
 @section('content')
     @filamentStyles()
     <div class="max-w-screen-2xl mx-auto py-24 px-6 2xl:px-0 mt-6">
-        <x-breadcrumb parent="Home" subparent="{{__('Career')}}" subparentlink="{{localized_route('career')}}" child="{{$title}}"/>
+        <x-breadcrumb parent="Home" subparent="{{__('Career')}}" subparentlink="{{localized_route('career')}}"
+                      child="{{$title}}"/>
         <div class="flex md:flex-row flex-col gap-12">
             <div class="md:w-1/2 mt-8 flex flex-col gap-6">
 
                 <div class="flex flex-col gap-5">
-                    <span class="text-lg text-textsub">{{__('Post on')}} {{\Carbon\Carbon::parse($view['created_at'])->translatedFormat('d F Y')}}</span>
+                    <span
+                        class="text-lg text-textsub">{{__('Post on')}} {{\Carbon\Carbon::parse($view['created_at'])->translatedFormat('d F Y')}}</span>
                     <h1 class="text-5xl font-medium">{{$title}}</h1>
 
+                </div>
+                <div class="flex gap-2 xl:gap-0 flex-wrap justify-between bg-[#EAF1FB] rounded-xl p-4 text-gray-600 text-lg my-2">
+                    <div class="flex flex-col">
+                        <span class="font-semibold">{{__('Type')}}</span>
+                        {{$view->type->title}}
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-semibold">{{__('Department')}}</span>
+                        {{$view->department->title}}
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-semibold">{{__('Location')}}</span>
+                        {{$view->location->title}}
+                    </div>
                 </div>
                 <div>
                     <h3 class="text-2xl font-medium">{{__('Qualification')}}</h3>
                     <div class="mt-4">
                         {!! tiptap_converter()->asHTML($view['qualification']) !!}
                     </div>
-                </div> <div>
+                </div>
+                <div>
                     <h3 class="text-2xl font-medium">{{__('Description')}}</h3>
                     <div class="mt-4">
                         {!!tiptap_converter()->asHTML($view['description']) !!}
                     </div>
-                </div> <div>
+                </div>
+                <div>
                     <h3 class="text-2xl font-medium">{{__('location')}}</h3>
                     <div class="mt-4">
                         <p>{{ $view->location->title}}</p>

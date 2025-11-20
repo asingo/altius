@@ -58,10 +58,14 @@ class ListCareer extends Component
     {
         $this->filteredData = $this->data->filter(function ($career) {
             $matchesSearch = $this->search === '' ||
-                str_contains(strtolower($career['title']), strtolower($this->search));
+                str_contains(strtolower($career->title), strtolower($this->search));
+
             $matchesType = $this->type === 'All'
-                || strtolower($career['type']) == strtolower($this->type);
-            $matchesDepartment = $this->department === 'All Department' || strtolower($career['departement']) == strtolower($this->department);
+                || $career->career_category_id == $this->type;
+
+            $matchesDepartment = $this->department === 'all'
+                ||$career->department_id == $this->department;
+
             return $matchesSearch && $matchesType && $matchesDepartment;
         })->values();
     }

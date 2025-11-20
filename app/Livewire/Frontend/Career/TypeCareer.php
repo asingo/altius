@@ -15,17 +15,17 @@ class TypeCareer extends Component
     public function mount(): void
     {
         $locale = 'en';
-        $type = CareerCategory::get()->map(function ($item) use ($locale){
-            return $item->getTranslation('title', $locale);
+        $type = CareerCategory::get()->mapWithKeys(function ($item) use ($locale) {
+            return [$item->id => $item->getTranslation('title', $locale)];
         })->toArray();
 
         $this->data = [
-            'All',
-            ...$type
-        ];
+                'All' => 'All'
+            ] + $type;
     }
 
-    public function typeChanged(){
+    public function typeChanged()
+    {
         $this->dispatch('handleTypeFilter', $this->type);
     }
 

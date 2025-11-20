@@ -2,6 +2,7 @@
 
 namespace App\Models;
 
+use App\Models\Career\CareerCategory;
 use App\Models\Career\Department;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
@@ -25,5 +26,10 @@ class Career extends Model
     public function department(): BelongsTo
     {
         return $this->belongsTo(Department::class, 'department_id');
+    }
+
+    public function type(): BelongsTo
+    {
+        return $this->belongsTo(CareerCategory::class, 'career_category_id');
     }
 }

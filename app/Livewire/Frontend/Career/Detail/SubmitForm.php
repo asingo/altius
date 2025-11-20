@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Frontend\Career\Detail;
 
+use App\Class\WilayahParser;
 use App\Models\Career;
 use App\Models\CareerSubmission;
 use Filament\Forms\Components\Checkbox;
@@ -42,18 +43,26 @@ class SubmitForm extends Component implements HasForms
             TextInput::make('phone')->label('No. HP/ WhatsApp')->required(),
             Grid::make(['default' => 1, 'md' => 2])->schema(
                 [
-                    Select::make('province')->label(__('Province'))->required()->placeholder(__('Choose Province'))
-                        ->options([
-                            'Jawa Timur' => 'Jawa Timur',
-                            'Jawa Tengah' => 'Jawa Tengah',
-                            'Jawa Barat' => 'Jawa Barat',
-                        ])->native(false),
-                    Select::make('city')->label(__('City'))->required()->placeholder(__('Choose City'))
-                        ->options([
-                            'Jawa Timur' => 'Jawa Timur',
-                            'Jawa Tengah' => 'Jawa Tengah',
-                            'Jawa Barat' => 'Jawa Barat',
-                        ])->native(false),
+                    Select::make('province')->placeholder(__('Choose Province'))
+                        ->label(__('Province'))
+                        ->options(fn () => WilayahParser::getProvinces())
+                        ->native(false)
+                        ->live()
+                        ->afterStateUpdated(function ($state, callable $set) {
+                            // Reset regency & subdistrict ketika province berubah
+                            $set('regency', null);
+                            $set('subdistrict', null);
+                        }),
+
+                    Select::make('city')->placeholder(__('Choose City'))
+                        ->label(__('City'))
+                        ->options(fn ($get) => WilayahParser::getRegencies($get('province')))
+                        ->native(false)
+                        ->live()
+                        ->afterStateUpdated(function ($state, callable $set) {
+                            // Reset subdistrict ketika regency berubah
+                            $set('subdistrict', null);
+                        }),
                 ]
             ),
             FileUpload::make('photo')->label('Upload Resume/ CV (PDF/JPG)')

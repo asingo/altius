@@ -1,5 +1,9 @@
 <div class="grid grid-cols-1 gap-6 mt-6 md:mt-10">
-
+    @if(count($doctors) < 1)
+        <div>
+            <h2 class="text-2xl">{{__('Data not Found')}}</h2>
+        </div>
+    @endif
     @foreach($doctors as $d)
         <div class="shadow-grid p-5 flex flex-row gap-5 rounded">
             <div class="flex md:w-1/6 w-1/2 ">

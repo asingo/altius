@@ -5,6 +5,7 @@ namespace App\Filament\Resources;
 use App\Filament\Resources\CareerResource\Pages;
 use App\Filament\Resources\CareerResource\RelationManagers;
 use App\Models\Career;
+use App\Models\Career\CareerCategory;
 use App\Models\Location;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Filament\Forms;
@@ -24,9 +25,11 @@ use Illuminate\Support\Str;
 class CareerResource extends Resource
 {
     use Translatable;
+
     protected static ?string $model = Career::class;
-protected static ?string $navigationGroup = 'Career';
-protected static ?int $navigationSort = 1;
+    protected static ?string $navigationGroup = 'Career';
+    protected static ?int $navigationSort = 1;
+
 //    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 
     public static function form(Form $form): Form
@@ -42,15 +45,19 @@ protected static ?int $navigationSort = 1;
                                 })
                                 ->live(onBlur: true)
                                 ->required(),
-                            Forms\Components\Grid::make(2)->schema([
+                            Forms\Components\Grid::make(3)->schema([
                                 Select::make('location_id')
-                                    ->options(fn() => Location::all()->pluck('title', 'id'))
+                                    ->options(fn () => Location::all()->pluck('title', 'id'))
                                     ->native(false)
                                     ->label('Location'),
                                 Select::make('department_id')
-                                    ->options(fn() => Career\Department::all()->pluck('title', 'id'))
+                                    ->options(fn () => Career\Department::all()->pluck('title', 'id'))
                                     ->native(false)
                                     ->label('Department'),
+                                Select::make('career_category_id')
+                                    ->options(fn () => CareerCategory::all()->pluck('title', 'id'))
+                                    ->native(false)
+                                    ->label('Category'),
                             ]),
                         ]),
                         Forms\Components\Section::make('Qualification')->schema([

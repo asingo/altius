@@ -39,8 +39,8 @@ class CareerSubmissionResource extends Resource
         return $infolist->schema([
 TextEntry::make('full_name')->label('Name'),
             TextEntry::make('email')->label('Email'),  TextEntry::make('phone')->label('Phone'),
-            TextEntry::make('province')->label('Province'),
-            TextEntry::make('city')->label('City'),
+            TextEntry::make('provinceData.nama')->label('Province'),
+            TextEntry::make('cityData.nama')->label('City'),
             TextEntry::make('job_title')->label('Job Title'),
             TextEntry::make('location')->label('Location'),
             TextEntry::make('cv')->label('Resume')
@@ -57,11 +57,11 @@ TextEntry::make('full_name')->label('Name'),
         return $table
             ->columns([
                 TextColumn::make('created_at')->label('Date')->sortable(),
-                TextColumn::make('full_name')->label('Name')->sortable(),
-                TextColumn::make('phone')->label('Phone')->sortable(),
-                TextColumn::make('province')->label('Province')->sortable(),
-                TextColumn::make('city')->label('City')->sortable(),
-                TextColumn::make('job_title')->label('Job Title')->sortable(),
+                TextColumn::make('full_name')->label('Name'),
+                TextColumn::make('phone')->label('Phone'),
+                TextColumn::make('provinceData.nama')->label('Province'),
+                TextColumn::make('cityData.nama')->label('City'),
+                TextColumn::make('job_title')->label('Job Title'),
                TextColumn::make('cv')->label('Resume')
                    ->icon('heroicon-o-document-text')
                    ->color('primary')
