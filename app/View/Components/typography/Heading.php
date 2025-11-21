@@ -10,14 +10,16 @@ class Heading extends Component
 {
     public $class;
     public $location;
+    public $tag;
 
     /**
      * Create a new component instance.
      */
-    public function __construct($class = '', $location = '')
+    public function __construct($class = '', $location = '', $tag = 'h2')
     {
         $this->class = $class;
         $this->location = $location;
+        $this->tag = $tag;
     }
 
     /**

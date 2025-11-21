@@ -39,12 +39,14 @@ class SubmitForm extends Component implements HasForms
             TextInput::make('fullname')
                 ->label(__('Full Name'))
                 ->required()
+                ->prefixIcon('heroicon-o-user-circle')
                 ->validationMessages([
                     'required' => __('Please fill in your full name'),
                 ]),
             TextInput::make('email')
                 ->label(__('Email'))
                 ->required()
+                ->prefixIcon('heroicon-o-envelope')
                 ->regex('/^.+@.+$/i')
                 ->validationMessages([
                     'required' => __('Please provide a valid email address'),
@@ -52,6 +54,7 @@ class SubmitForm extends Component implements HasForms
                 ]),
             TextInput::make('phone')
                 ->label(__('No. HP/ WhatsApp'))
+                ->prefixIcon('heroicon-o-phone')
                 ->required()
                 ->validationMessages([
                     'required' => __('Please provide a valid phone number'),
@@ -60,6 +63,7 @@ class SubmitForm extends Component implements HasForms
                 [
                     Select::make('province')
                         ->placeholder(__('Choose Province'))
+                        ->prefixIcon('heroicon-o-map')
                         ->label(__('Province'))
                         ->options(fn () => WilayahParser::getProvinces())
                         ->native(false)
@@ -76,6 +80,7 @@ class SubmitForm extends Component implements HasForms
 
                     Select::make('city')
                         ->placeholder(__('Choose City'))
+                        ->prefixIcon('heroicon-o-map')
                         ->label(__('City'))
                         ->options(fn ($get) => WilayahParser::getRegencies($get('province')))
                         ->native(false)

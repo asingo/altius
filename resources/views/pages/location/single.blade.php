@@ -4,7 +4,7 @@
         <x-breadcrumb parent="Home" subparent="{{__('Location')}}" subparentlink="{{localized_route('location')}}" child="{{$title}}"/>
         <div class="mt-8">
             <x-typography.subheading location="page">Altius Hospitals</x-typography.subheading>
-            <x-typography.heading location="page">{{$title}}
+            <x-typography.heading tag="h1" location="page">{{$title}}
             </x-typography.heading>
         </div>
         <div class="mt-8">

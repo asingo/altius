@@ -47,7 +47,7 @@
                 :class="atTop && '!text-[#171717]' ">
                 @foreach(\App\Models\MenuHeader::with('pages')->get() as $menu)
                     <li>
-                        <a href="{{localized_route($menu->pages->route_name)}}" class="relative group w-full">
+                        <a href="{{localized_route($menu->pages->route_name)}}" class="relative group w-full menu-item">
                             <span
                                 :class="[atTop && 'hover:!text-primary', slug == '{{$menu->pages->slug}}' ? '!text-primary' : '']">{{$menu->title}}</span>
                             <span class="menu-interaction"
@@ -56,7 +56,7 @@
                     </li>
                 @endforeach
                 <li>
-                    <a href="tel:021{{$setting['contact']['emergency']}}" class="relative group">
+                    <a href="tel:021{{$setting['contact']['emergency']}}" class="relative group menu-item">
                         <span class="flex gap-2 items-center" :class="atTop && 'hover:!text-primary' ">
                             <svg width="20" height="20" viewBox="0 0 20 20" class="fill-white"
                                  :class="atTop && '!fill-red-500' "
@@ -127,7 +127,7 @@
         <ul class="menu-list flex flex-col gap-5 mx-6 mt-4 pt-4 border-t">
             @foreach(\App\Models\MenuHeader::with('pages')->get() as $menu)
                 <li>
-                    <a href="{{localized_route($menu->pages->route_name)}}" class="relative group w-full">
+                    <a href="{{localized_route($menu->pages->route_name)}}" class="relative group w-full menu-item">
                                     <span
                                         :class="[atTop && 'hover:!text-primary', slug == '{{$menu->pages->slug}}' ? '!text-primary' : '']">{{$menu->title}}</span>
                         <span class="menu-interaction"
@@ -166,7 +166,7 @@
             {{--                            </a>--}}
             {{--                        </li>--}}
             <li>
-                <a href="tel:021{{$setting['contact']['emergency']}}" class="relative group">
+                <a href="tel:021{{$setting['contact']['emergency']}}" class="relative group menu-item">
                         <span class="flex gap-2 items-center" :class="atTop && 'hover:!text-primary' ">
                             <svg width="20" height="20" viewBox="0 0 20 20" class="fill-white"
                                  :class="atTop && '!fill-red-500' "
@@ -198,8 +198,12 @@
                     <x-heroicon-s-envelope class="w-10 h-10 fill-white"/>
                 </div>
                 <span class="text-[24px]">{{__('footer.contact')}}</span>
-                <span
-                    class="text-[20px]">{{$generalSetting ? $generalSetting['contact']['email'] : 'care@altiushospitals.id'}}</span>
+                <a href="mailto:{{$generalSetting ? $generalSetting['contact']['email'] : 'care@altiushospitals.id'}}" class="!text-white group menu-item relative">
+                      <span
+                          class="text-[20px] !text-white">{{$generalSetting ? $generalSetting['contact']['email'] : 'care@altiushospitals.id'}}</span>
+                    <span class="menu-interaction"></span>
+                </a>
+
             </div>
 
             <!-- Call Us -->
@@ -208,7 +212,11 @@
                     <x-heroicon-s-phone class="w-10 h-10 fill-white"/>
                 </div>
                 <span class="text-[24px]">{{__('footer.call')}}</span>
+                <a href="tel:{{$generalSetting ? $generalSetting['contact']['phone'] : '021 - 3000 8877'}}" class="!text-white group menu-item relative">
+
                 <span class="text-[20px]">{{$generalSetting ? $generalSetting['contact']['phone'] : '021 - 3000 8877'}} Available 24/7</span>
+                    <span class="menu-interaction"></span>
+                </a>
             </div>
 
             <!-- Whatsapp -->
@@ -229,8 +237,13 @@
 </g>
 </svg>
                 </div>
+
                 <span class="text-[24px]">WhatsApp</span>
+                <a href="https://wa.me/{{str_replace(' ', '', $generalSetting ? $generalSetting['contact']['whatsapp'] : '0857 8877 8877')}}" class="!text-white group menu-item relative">
+
                 <span class="text-[20px]">{{$generalSetting ? $generalSetting['contact']['whatsapp'] : '0857 8877 8877'}} Available 24/7</span>
+                    <span class="menu-interaction"></span>
+                </a>
             </div>
 
             <!-- Visit -->
@@ -239,7 +252,7 @@
                     <x-heroicon-s-map-pin class="w-10 h-10 fill-white"/>
                 </div>
                 <span class="text-[24px]">{{__('visit.hospitals')}}</span>
-                <x-button.link href="{{$generalSetting ? $generalSetting['contact']['link_maps'] : '#'}}"
+                <x-button.link href="{{$generalSetting ? $generalSetting['contact']['link_maps'] : '#'}}" newTab="_blank"
                                outlined="true" class="text-sm !font-normal !py-2 !px-4">{{__('get.directions')}}
                 </x-button.link>
             </div>
@@ -251,9 +264,9 @@
                     <span class="text-[24px] text-white font-semibold ">{{__('follow.altius')}}</span>
                     <div class="flex gap-2 h-12 mt-4 items-center">
                         @foreach($generalSetting['contact']['social_media'] as $socmed)
-                            <a href="{{$socmed['link']}}">
-                                <div class="border w-12 h-12 border-white p-2.5 rounded-full">
-                                    <img src="{{\Awcodes\Curator\Models\Media::find($socmed['icon'])?->url}}">
+                            <a href="{{$socmed['link']}}" target="_blank">
+                                <div class="border w-12 h-12 border-white p-2.5 rounded-full group hover:bg-white transition-all duration-300 ease-in-out">
+                                    <img class=" group-hover:[filter:invert(96%)_sepia(91%)_saturate(6200%)_hue-rotate(200deg)_brightness(145%)_contrast(100%)]" src="{{\Awcodes\Curator\Models\Media::find($socmed['icon'])?->url}}">
                                 </div>
                             </a>
                         @endforeach
@@ -276,7 +289,7 @@
                         <ul class="menu-list flex md:h-12 text-lg items-center md:flex-row flex-col gap-6 text-white">
                             @foreach(\App\Models\MenuFooter::get() as $menu)
                                 <li>
-                                    <a href="{{localized_route($menu->pages->route_name)}}" class="relative group">
+                                    <a href="{{localized_route($menu->pages->route_name)}}" class="relative group menu-item">
                                         <span>{{$menu->title}}</span>
                                         <span class="menu-interaction"></span>
                                     </a>
@@ -328,7 +341,7 @@
         </div>
     </div>
 </footer>
-<div class="fixed bottom-0 right-0 w-32 h-32 overflow-hidden z-10"
+<div class="fixed bottom-0 right-0 w-24 h-24 overflow-hidden z-10"
     x-data="{ showElement: false }"
     x-init="window.addEventListener('scroll', () => {
         showElement = window.scrollY > 100;
@@ -342,8 +355,8 @@
     x-transition:leave-end="opacity-0"
 >
     <div @click="openFeedback = true"
-        class="absolute bottom-0 rotate-180 cursor-pointer right-0 w-full  h-full border-b-[128px] border-l-[128px] border-transparent border-l-primary">
-    <span class="text-white text-xl top-7 rotate-[135deg] absolute z-99 right-10 font-semibold">
+        class="absolute bottom-0 rotate-180 cursor-pointer right-0 w-full  h-full border-b-[96px] border-l-[96px] border-transparent border-l-primary">
+    <span class="text-white text-sm top-5 rotate-[135deg] absolute z-99 right-8 font-semibold">
       Feedback
     </span>
     </div>

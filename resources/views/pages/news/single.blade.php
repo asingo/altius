@@ -3,7 +3,7 @@
     <div class="max-w-screen-2xl mx-auto py-24 px-6 2xl:px-0 mt-6">
         <x-breadcrumb parent="Home" subparent="{{__('News')}}" subparentlink="{{localized_route('news')}}" child="{{$title}}"/>
         <div class="mt-10">
-            <x-typography.heading location="page">{{$title}}
+            <x-typography.heading tag="h1" location="page">{{$title}}
             </x-typography.heading>
         </div>
         <div class="mt-8">

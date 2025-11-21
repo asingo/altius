@@ -12,24 +12,24 @@
             </div>
             <div class="md:col-span-2">
                 <div>
-                    <x-typography.heading location="page">{{$title}}
+                    <x-typography.heading tag="h1" location="page">{{$title}}
                     </x-typography.heading>
                 </div>
 
-                <div class="bg-[#EAF1FB] rounded-xl p-4 text-gray-600 text-lg my-6">
+                <div class="bg-[#EAF1FB] rounded-xl p-4 text-gray-600 text-lg my-6 flex flex-col gap-4">
                     <div class="flex flex-col">
-                        <span class="font-semibold">{{__('location')}}</span>
+                        <span class="font-semibold">{{__('Location')}}</span>
                         <div class="flex gap-4">
                             @foreach($data->hasLocation as $d)
-                                <span>{{$d->location->title}}</span>
+                                <span class="bg-slate-50 py-1 px-2 rounded-xl">{{$d->location->title}}</span>
                             @endforeach
                         </div>
                     </div>
-                    <div class="flex flex-row gap-12 mt-4">
+                    <div class="flex flex-row">
                         <div class="flex flex-col">
                             <span class="font-semibold">{{__('gender')}}</span>
                             <div class="flex gap-4">
-                                <span>
+                                <span class="bg-slate-50 py-1 px-2 rounded-xl">
                                     @php
                                         echo match($data->gender){
                                                'all' => __('all'),
@@ -39,13 +39,14 @@
                                 </span>
                             </div>
                         </div>
-                        <div class="flex flex-col">
-                            <span class="font-semibold">{{__('Age')}}</span>
-                            <div class="flex gap-4 gap-y-0 flex-wrap">
-                                @foreach($data->hasAge as $d)
-                                    <span>{{$d->age->title}}</span>
-                                @endforeach
-                            </div>
+
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-semibold">{{__('Age')}}</span>
+                        <div class="flex gap-4 gap-y-0 flex-wrap">
+                            @foreach($data->hasAge as $d)
+                                <span class="bg-slate-50 py-1 px-2 rounded-xl">{{$d->age->title}}</span>
+                            @endforeach
                         </div>
                     </div>
                 </div>

@@ -4,7 +4,7 @@
         <x-breadcrumb parent="Home" child="{{$title}}" />
         <div class="mt-8">
             <x-typography.subheading location="page">{{$title}}</x-typography.subheading>
-            <x-typography.heading location="page" class="mt-4">{{$page->content['heading']['heading']}}
+            <x-typography.heading tag="h1" location="page" class="mt-4">{{$page->content['heading']['heading']}}
                 <br/>
                 <span class="!text-primary">&mdash; {{$page->content['heading']['colored_heading']}}</span>
             </x-typography.heading>

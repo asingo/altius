@@ -14,11 +14,21 @@
         src: url("../fonts/DMSerifText-Regular.ttf") format("truetype");
     }
 }
+
+.doctor-filter .fi-fo-field-wrp-label, .careerForm .fi-fo-field-wrp-label{
+    @apply ms-3
+}
+
 body{
     font-family: "Overused Grotesk", sans-serif;
 }
 
-p, ol, ul:not(.menu-list) li{
+p{
+    font-size: 16px;
+    color: #525252;
+}
+
+ ol, ul:not(.menu-list) li{
     font-size: 20px;
     color: #525252;
 }
@@ -59,7 +69,7 @@ sup{
 .filter-doctor .fi-fo-field-wrp-label span{
     @apply text-[16px] text-primary font-medium;
 }
-.filter-doctor .fi-input-wrp-prefix, .doctor-search .fi-input-wrp-prefix, .speciality-filter .fi-input-wrp-prefix, .date-filter .fi-input-wrp-prefix {
+.filter-doctor .fi-input-wrp-prefix, .careerForm .fi-input-wrp-prefix, .doctor-search .fi-input-wrp-prefix, .speciality-filter .fi-input-wrp-prefix, .date-filter .fi-input-wrp-prefix {
     @apply border-none pe-0;
 }
 
@@ -184,8 +194,16 @@ ul:not(.menu-list){
     height: auto !important;
 }
 
-.post-content a{
-    @apply text-primary hover:text-accent;
+.post-content a, a:not(.menu-item) span{
+    @apply !text-primary hover:!text-accent;
+}
+
+.btn{
+    @apply transition-all duration-300 ease-in-out;
+}
+
+.btn-primary{
+    @apply bg-primary hover:bg-btn-secondary text-white transition-all duration-300 ease-in-out;
 }
 
 /*.doctor-filter div.choices__list.choices__list--dropdown{*/

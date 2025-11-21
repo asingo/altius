@@ -13,6 +13,7 @@ export default {
                 primary: '#225CA8',
                 'primary-600': '#225CA8',
                 secondary: '#5590DD',
+                'btn-secondary': '#0b4693',
                 accent: '#1A467F',
                 shade: '#EAF1FB',
                 textsub: '#525252',

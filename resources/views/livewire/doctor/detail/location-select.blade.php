@@ -29,7 +29,7 @@
     </div>
     <div class="flex flex-col gap-4">
         <span class="text-2xl font-semibold">{{__('Regular Schedule')}}</span>
-        <div class="md:w-2/3">
+        <div class="w-full">
             <div class="grid grid-cols-[150px_auto] px-3 rounded-xl py-2 bg-shade text-lg text-primary font-semibold">
                 <span>{{__('Day')}}</span>
                 <span>{{__('Time')}}</span>

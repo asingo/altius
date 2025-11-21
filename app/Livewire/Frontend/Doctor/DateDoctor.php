@@ -49,7 +49,7 @@ class DateDoctor extends Component implements HasForms
             TextInput::make('filterDate.' .$this->getId())
                 ->prefixIcon('heroicon-o-magnifying-glass')
                 ->label('')
-                ->placeholder(app()->getLocale() == 'en' ? 'Type Preffered Day' : 'Ketik Hari')
+                ->placeholder(app()->getLocale() == 'en' ? 'Type Preferred Day' : 'Ketik Hari')
                 ->live()
         ]);
     }

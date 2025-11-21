@@ -24,7 +24,8 @@
                 </p>
             </div>
             <div class="mt-auto pt-6">
-                <img src="{{ \Awcodes\Curator\Models\Media::find($page->content['vision']['vision_image'])->url }}" alt="vision" class="w-full rounded-2xl">
+                <img src="{{ \Awcodes\Curator\Models\Media::find($page->content['vision']['vision_image'])->url }}" alt="vision"
+                     class="w-full rounded-2xl aspect-[10/7] object-cover">
             </div>
         </div>
 
@@ -48,7 +49,8 @@
                 </p>
             </div>
             <div class="mt-auto pt-6">
-                <img src="{{ \Awcodes\Curator\Models\Media::find($page->content['vision']['mission_image'])->url }}" alt="mission" class="w-full rounded-2xl">
+                <img src="{{ \Awcodes\Curator\Models\Media::find($page->content['vision']['mission_image'])->url }}" alt="mission"
+                     class="w-full rounded-2xl aspect-[10/7] object-cover">
             </div>
         </div>
     </div>

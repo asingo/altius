@@ -11,11 +11,11 @@
             </div>
             <div class="md:col-span-2">
                 <div>
-                    <x-typography.heading location="page">{{$title}}
+                    <x-typography.heading tab="h1" location="page">{{$title}}
                     </x-typography.heading>
                 </div>
 
-                <div class="bg-slate-50 rounded-xl p-4 text-gray-600 text-lg my-6">
+                <div class="bg-[#EAF1FB] rounded-xl p-4 text-gray-600 text-lg my-6">
                     <div class="flex flex-col">
                         <span class="font-semibold">{{__('Location')}}</span>
                         <div class="flex gap-4">
@@ -44,18 +44,7 @@
                 </div>
             </div>
         </div>
-        <div class="bg-[#EAF1FB] my-24 py-4 text-lg rounded-xl flex justify-center items-center">
-            <span class="me-3">{{__('Share to')}}</span>
-            <a href="whatsapp://send?text={{\Illuminate\Support\Str::sanitizeHtml($title . ' ')}}{{request()->url()}}"
-               class="mx-2">
-                <x-icon-whatsapp/>
-            </a> <a href="https://facebook.com/share.php?u={{request()->url()}}" class="mx-2">
-                <x-icon-facebook/>
-            </a> <a href="mailto:?subject={{\Illuminate\Support\Str::sanitizeHtml($title .' ')}}{{request()->url()}}"
-                    class="mx-2">
-                <x-icon-email/>
-            </a>
-        </div>
+   ,<x-share-bar title="{{$title}}"/>
     </div>
     <div class="pb-12 pt-6">
         <div class="max-w-screen-2xl mx-auto px-6 2xl:px-0">

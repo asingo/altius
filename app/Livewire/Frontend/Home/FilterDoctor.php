@@ -31,7 +31,7 @@ class FilterDoctor extends Component implements HasForms
             )->prefixIcon('heroicon-o-magnifying-glass')->preload(5)->native(false)->searchable(),
             Select::make('hospital_id')->label(__('hospital'))->placeholder(__('select.hospital'))->options(
                 fn() => Location::pluck('title', 'id')->toArray()
-            )->native(false)->searchable()->preload(),
+            )->native(false)->searchable()->preload()->prefixIcon('heroicon-o-building-office-2'),
             Select::make('speciality_id')->label(__('speciality'))->placeholder(__('select.speciality'))->options(
                 fn() => Speciality::pluck('title', 'id')->toArray()
             )->native(false)->searchable()->prefixIcon('heroicon-o-magnifying-glass')->preload(),

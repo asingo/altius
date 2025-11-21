@@ -10,7 +10,7 @@
         <x-breadcrumb parent="Home" subparent="{{__('Medical Professional')}}" subparentlink="{{localized_route('doctor')}}" child="{{$title}}"/>
         <div class="mt-8 border-b-2 border-slate-300">
             <x-typography.subheading location="page">{{$data->speciality->title}}</x-typography.subheading>
-            <x-typography.heading location="page">{{$title}}
+            <x-typography.heading tag="h1" location="page">{{$title}}
             </x-typography.heading>
         </div>
         <div class="flex flex-col-reverse md:grid md:grid-cols-5 mt-10 gap-12 md:gap-24">
