@@ -286,7 +286,7 @@
                 <div class="flex items-center md:items-end flex-col">
                     <span class="text-[24px] text-white font-semibold ">{{__('about.altius')}}</span>
                     <nav class="menu-footer mt-4">
-                        <ul class="menu-list flex md:h-12 text-lg items-center md:flex-row flex-col gap-6 text-white">
+                        <ul class="menu-list flex md:h-12 text-md items-center md:flex-row flex-col gap-3 sm:gap-6 text-white">
                             @foreach(\App\Models\MenuFooter::get() as $menu)
                                 <li>
                                     <a href="{{localized_route($menu->pages->route_name)}}" class="relative group menu-item">
@@ -334,8 +334,8 @@
                     <span>&copy; {{date('Y')}} Altius Hospitals. All rights reserved</span>
                 </div>
                 <div class="flex gap-8 md:gap-4">
-                    <a href="{{localized_route('terms')}}">{{__('terms.conditions')}}</a>
-                    <a href="{{localized_route('privacy')}}">{{__('privacy.policy')}}</a>
+                    <a class="hover:text-primary transition-all duration-300 ease-in-out" href="{{localized_route('terms')}}">{{__('terms.conditions')}}</a>
+                    <a class="hover:text-primary transition-all duration-300 ease-in-out" href="{{localized_route('privacy')}}">{{__('privacy.policy')}}</a>
                 </div>
             </div>
         </div>
@@ -355,7 +355,7 @@
     x-transition:leave-end="opacity-0"
 >
     <div @click="openFeedback = true"
-        class="absolute bottom-0 rotate-180 cursor-pointer right-0 w-full  h-full border-b-[96px] border-l-[96px] border-transparent border-l-primary">
+        class="absolute bottom-0 rotate-180 cursor-pointer right-0 w-full  h-full border-b-[108px] border-l-[108px] border-transparent border-l-primary">
     <span class="text-white text-sm top-5 rotate-[135deg] absolute z-99 right-8 font-semibold">
       Feedback
     </span>

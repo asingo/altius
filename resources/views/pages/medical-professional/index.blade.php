@@ -14,52 +14,52 @@
     </div>
     <div class="max-w-screen-2xl mx-auto py-16 px-6 2xl:px-0">
         <x-breadcrumb parent="Home" child="{{$page->title}}"/>
-            <div class="md:mt-10">
-                <div  x-data="{ open: false }" class="grid lg:grid-cols-5 lg:gap-12 gap-10">
-                    <div
-                        class="lg:col-span-1 space-y-6"
-                    >
-                        <div class="space-y-6 hidden lg:block">
-                            <livewire:frontend.doctor.location-doctor key="desktop"/>
-                            <livewire:frontend.doctor.speciality-doctor key="desktop"/>
-                            <livewire:frontend.doctor.date-doctor key="desktop"/>
+        <div class="md:mt-10">
+            <div x-data="{ open: false }" class="grid lg:grid-cols-5 lg:gap-12 gap-10">
+                <div
+                    class="lg:col-span-1 space-y-6"
+                >
+                    <div class="space-y-6 hidden lg:block">
+                        <livewire:frontend.doctor.location-doctor key="desktop"/>
+                        <livewire:frontend.doctor.speciality-doctor key="desktop"/>
+                        <livewire:frontend.doctor.date-doctor key="desktop"/>
 
-                        </div>
-                    </div>
-
-                    <div class="lg:col-span-4">
-                        @livewire('frontend.doctor.search-doctor')
-                        <!-- Header -->
-                        <div
-                            class="flex justify-between items-center lg:hidden mt-6"
-                            @click="open = !open"
-                        >
-                            <span class="text-2xl font-semibold">Filter Doctor</span>
-                            <x-heroicon-o-adjustments-horizontal
-                                class="w-8 h-8 cursor-pointer"
-                            />
-                        </div>
-
-                        <!-- Mobile Dropdown -->
-                        <div
-                            x-show="open"
-                            x-transition:enter="transition ease-out duration-200"
-                            x-transition:enter-start="opacity-0 transform -translate-y-2"
-                            x-transition:enter-end="opacity-100 transform translate-y-0"
-                            x-transition:leave="transition ease-in duration-150"
-                            x-transition:leave-start="opacity-100 transform translate-y-0"
-                            x-transition:leave-end="opacity-0 transform -translate-y-2"
-                            class="space-y-6 lg:hidden"
-                        >
-                            <livewire:frontend.doctor.location-doctor key="mobile"/>
-                            <livewire:frontend.doctor.speciality-doctor key="mobile"/>
-                            <livewire:frontend.doctor.date-doctor key="mobile"/>
-                        </div>
-                        @livewire('frontend.doctor.list-doctors', ['data' => $data])
                     </div>
                 </div>
 
+                <div class="lg:col-span-4">
+                    @livewire('frontend.doctor.search-doctor')
+                    <!-- Header -->
+                    <div
+                        class="transition-all duration-300 ease-in-out flex items-center w-fit gap-2 lg:hidden mt-6 border border-primary text-primary hover:bg-primary hover:text-white py-2 px-4 rounded-2xl cursor-pointer"
+                        @click="open = !open"
+                    >
+                        <span class="text-xl">Filter Doctor</span>
+                        <x-heroicon-o-adjustments-horizontal
+                            class="w-6 h-6 cursor-pointer"
+                        />
+                    </div>
+
+                    <!-- Modal -->
+                    <div class="fixed z-50 inset-0 flex items-center justify-center" x-show="open">
+                        <div class="fixed inset-0 bg-gray-900 opacity-75"></div>
+                        <div class="bg-white rounded-lg p-6 relative max-w-xl mx-auto">
+                            <div class="absolute top-0 right-0 text-gray-400 hover:text-red-500 cursor-pointer"
+                                 @click="open = false">
+                                <x-heroicon-o-x-mark class="w-6 h-6"/>
+                            </div>
+                            <div class="space-y-6">
+                                <livewire:frontend.doctor.location-doctor key="mobile"/>
+                                <livewire:frontend.doctor.speciality-doctor key="mobile"/>
+                                <livewire:frontend.doctor.date-doctor key="mobile"/>
+                            </div>
+                        </div>
+                    </div>
+                    @livewire('frontend.doctor.list-doctors', ['data' => $data])
+                </div>
             </div>
+
+        </div>
     </div>
     @filamentStyles()
 @endsection

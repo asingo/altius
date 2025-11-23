@@ -36,7 +36,7 @@
             <div
                 x-show="open"
                 x-transition
-                class="bg-white rounded-2xl overflow-visible shadow-xl w-full  max-w-2xl  relative"
+                class="bg-white rounded-2xl overflow-visible shadow-xl w-full  max-w-screen-xl  relative"
             >
                 <button
                     @click="open = false"

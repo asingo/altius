@@ -1,4 +1,4 @@
-@props(['image' => '','heading' => '','description' => '', 'slug' => ''])
+@props(['image' => '','heading' => '','description' => '', 'slug' => '', 'price' => ''])
 <div>
     <a href="{{$slug}}" class="group">
         <div class="rounded-2xl">
@@ -9,6 +9,10 @@
             <p>
                 {{limit_words($description, 10)}}
             </p>
+            @if($price != '')
+                <span
+                    class="text-primary text-xl font-medium mt-2">Rp {{number_format($price, 0, ',','.')}}</span>
+            @endif
         </div>
     </a>
 

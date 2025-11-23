@@ -12,6 +12,7 @@
                     heading="{{$h->title}}"
                     slug="{{localized_route('screening')}}/{{$h->slug}}"
                     description="{{$h->description}}"
+                    price="{{$h->price}}"
                 />
             </x-slider.slider-item>
         @endforeach

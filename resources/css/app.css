@@ -19,13 +19,20 @@
     @apply ms-3
 }
 
+:root{
+    @apply text-[16px] md:text-[17px] xl:text-[18px];
+}
+
 body{
     font-family: "Overused Grotesk", sans-serif;
 }
 
 p{
-    font-size: 16px;
     color: #525252;
+}
+
+p{
+    @apply text-[1rem] sm:text-[1.25rem] ;
 }
 
  ol, ul:not(.menu-list) li{
@@ -204,6 +211,14 @@ ul:not(.menu-list){
 
 .btn-primary{
     @apply bg-primary hover:bg-btn-secondary text-white transition-all duration-300 ease-in-out;
+}
+
+.swiper-navigation > div{
+    @apply hover:bg-primary hover:border-primary transition-all duration-300 ease-in-out;
+}
+
+.swiper-navigation > div:hover:after{
+    color: #ffffff;
 }
 
 /*.doctor-filter div.choices__list.choices__list--dropdown{*/
