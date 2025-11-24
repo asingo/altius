@@ -11,7 +11,7 @@
             </div>
             <div class="md:col-span-2">
                 <div>
-                    <x-typography.heading tab="h1" location="page">{{$title}}
+                    <x-typography.heading tag="h1" location="page">{{$title}}
                     </x-typography.heading>
                 </div>
 
@@ -20,7 +20,7 @@
                         <span class="font-semibold">{{__('Location')}}</span>
                         <div class="flex gap-4">
                             @foreach($data->hasLocation as $d)
-                                <span>{{$d->location->title}}</span>
+                                <span class="bg-slate-50 py-1 px-2 rounded-xl">{{$d->location->title}}</span>
                             @endforeach
                         </div>
                     </div>
@@ -28,14 +28,14 @@
                         <div class="flex flex-col">
                             <span class="font-semibold">{{__('Category')}}</span>
                             <div class="flex gap-4">
-                                <span>
+                                <span class="bg-slate-50 py-1 px-2 rounded-xl">
                                    {{$data->category->title}}
                                 </span>
                             </div>
                         </div>
                     </div>
                 </div>
-                <h2 class="font-heading text-2xl mt-8">{{__('Description')}}</h2>
+                <h2 class="font-heading mt-8">{{__('Description')}}</h2>
                 <div class="mt-4 post-content">
                     {!! tiptap_converter()->asHTML($data->content) !!}
                 </div>
