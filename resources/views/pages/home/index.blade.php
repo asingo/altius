@@ -23,7 +23,7 @@
         }
     </style>
     <!-- Swiper -->
-    <div class="swiper hero !z-20">
+    <div class="swiper hero !z-20 relative">
         <div class="swiper-wrapper">
             @if(!$sliderSetting->value['is_video'])
             @foreach($slider as $s)
@@ -45,13 +45,13 @@
             @endforeach
             @else
             <div class="swiper-slide">
-                <video width="100%" autoplay loop muted>
-                    <source src="{{\Awcodes\Curator\Models\Media::find($sliderSetting->value['video'])?->url}}" type="video/mp4">
+                <video width="100%" autoplay loop muted class="h-screen object-cover">
+                    <source src="{{\Awcodes\Curator\Models\Media::find(is_array($sliderSetting->value['video']) ? $sliderSetting->value['video'][0] : $sliderSetting->value['video'])?->url}}" type="video/mp4">
                 </video>
             </div>
             @endif
         </div>
-        <div class="hero-heading absolute bottom-0 left-0 right-0 z-50 mb-[12rem] lg:mb-[16rem]">
+        <div class="hero-heading absolute bottom-[25vh] md:bottom-[30vh] left-0 right-0 z-50" >
             <div class="mx-auto w-full max-w-screen-2xl text-white px-6 2xl:px-0">
                 @if(!$sliderSetting->value['is_item_text'])
                 <h2 class="font-medium text-2xl lg:text-3xl">{{$sliderSetting->value['description_en']}}</h2>
