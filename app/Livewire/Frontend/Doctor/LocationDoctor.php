@@ -10,13 +10,14 @@ class LocationDoctor extends Component
 {
     public $data;
     public $location = 'all';
+    public $mode = 'desktop';
 
     public function locationChanged()
     {
         $this->dispatch('handleLocationFilter', $this->location);
     }
 
-    public function mount(Request $request)
+    public function mount($mode, Request $request)
     {
         $location = Location::get()->pluck('title', 'id')->toArray();
         $all = ['all' => __('all')];
@@ -24,6 +25,7 @@ class LocationDoctor extends Component
         if($request->hospital_id){
             $this->location = $request->hospital_id;
         }
+        $this->mode = $mode;
     }
 
     public function render()

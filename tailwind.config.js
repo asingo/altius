@@ -1,5 +1,6 @@
 import preset from './vendor/filament/support/tailwind.config.preset'
 import colors from "tailwindcss/colors";
+import { fontSize } from 'tailwindcss/defaultConfig'
 
 export default {
     presets: [preset],
@@ -27,7 +28,11 @@ export default {
             },
             boxShadow:{
                 'grid': '0 0 30px 7px rgba(100, 100, 111, 0.09)'
-            }
+            },
+            fontSize: {
+                'md': '1rem',
+
+            },
         }
     },
     content: [

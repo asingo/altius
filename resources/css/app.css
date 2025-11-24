@@ -32,7 +32,21 @@ p{
 }
 
 p{
-    @apply text-[1rem] sm:text-[1.25rem] ;
+    @apply text-md sm:text-lg;
+}
+
+h3{
+    @apply text-[1.8rem];
+}
+
+h4{
+    @apply text-[1.6rem];
+}
+h5{
+    @apply text-[1.4rem];
+}
+h6{
+    @apply text-[1.2rem];
 }
 
  ol, ul:not(.menu-list) li{
@@ -74,7 +88,7 @@ sup{
 }
 
 .filter-doctor .fi-fo-field-wrp-label span{
-    @apply text-[16px] text-primary font-medium;
+    @apply text-md text-primary font-medium;
 }
 .filter-doctor .fi-input-wrp-prefix, .careerForm .fi-input-wrp-prefix, .doctor-search .fi-input-wrp-prefix, .speciality-filter .fi-input-wrp-prefix, .date-filter .fi-input-wrp-prefix {
     @apply border-none pe-0;
@@ -148,7 +162,7 @@ ul:not(.menu-list){
 }
 
 .fi-fo-field-wrp-label span{
-    @apply text-lg font-normal;
+    @apply text-md font-normal;
 }
 
 .edit-profile .fi-fo-field-wrp-label span{
@@ -173,6 +187,13 @@ ul:not(.menu-list){
     @apply !shadow-none;
 }
 
+h2{
+    @apply !text-4xl;
+}
+
+button{
+    @apply !text-md;
+}
 
 .careerForm .fi-fo-field-wrp-label span{
     @apply text-xl font-normal text-textsub;

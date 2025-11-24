@@ -1,4 +1,4 @@
-<div class="max-w-screen-2xl mx-auto py-24 px-6 2xl:px-0">
+<div class="max-w-screen-2xl mx-auto pt-12 py-24 px-6 2xl:px-0">
     <div class="flex flex-col mb-8">
         <x-typography.subheading location="section">{{$page->content['offer']['title']}}</x-typography.subheading>
         <x-typography.heading>{{$page->content['offer']['heading']}}</x-typography.heading>

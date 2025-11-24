@@ -20,9 +20,9 @@
                     class="lg:col-span-1 space-y-6"
                 >
                     <div class="space-y-6 hidden lg:block">
-                        <livewire:frontend.doctor.location-doctor key="desktop"/>
-                        <livewire:frontend.doctor.speciality-doctor key="desktop"/>
-                        <livewire:frontend.doctor.date-doctor key="desktop"/>
+                        <livewire:frontend.doctor.location-doctor mode="desktop"/>
+                        <livewire:frontend.doctor.speciality-doctor mode="desktop"/>
+                        <livewire:frontend.doctor.date-doctor mode="desktop"/>
 
                     </div>
                 </div>
@@ -34,24 +34,29 @@
                         class="transition-all duration-300 ease-in-out flex items-center w-fit gap-2 lg:hidden mt-6 border border-primary text-primary hover:bg-primary hover:text-white py-2 px-4 rounded-2xl cursor-pointer"
                         @click="open = !open"
                     >
-                        <span class="text-xl">Filter Doctor</span>
+                        <span class="text-xl">Filter</span>
                         <x-heroicon-o-adjustments-horizontal
                             class="w-6 h-6 cursor-pointer"
                         />
                     </div>
 
                     <!-- Modal -->
-                    <div class="fixed z-50 inset-0 flex items-center justify-center" x-show="open">
+                    <div class="fixed z-[99] inset-0 flex items-center justify-center" x-show="open" x-cloak>
                         <div class="fixed inset-0 bg-gray-900 opacity-75"></div>
-                        <div class="bg-white rounded-lg p-6 relative max-w-xl mx-auto">
-                            <div class="absolute top-0 right-0 text-gray-400 hover:text-red-500 cursor-pointer"
+                        <div class="bg-white rounded-lg p-6 relative w-screen mx-6">
+                            <div class="absolute -top-10 right-0 text-gray-400 hover:text-red-500 cursor-pointer"
                                  @click="open = false">
-                                <x-heroicon-o-x-mark class="w-6 h-6"/>
+                                <x-heroicon-o-x-mark class="w-8 h-8 text-white"/>
                             </div>
                             <div class="space-y-6">
-                                <livewire:frontend.doctor.location-doctor key="mobile"/>
-                                <livewire:frontend.doctor.speciality-doctor key="mobile"/>
-                                <livewire:frontend.doctor.date-doctor key="mobile"/>
+                                <div class="text-xl font-semibold">
+                                    Filter
+                                </div>
+                                @livewire('frontend.doctor.filter-mobile')
+                                <button class="bg-primary text-white px-4 py-2 rounded-lg w-full hover:bg-btn-secondary transition-all duration-300"
+                                x-on:click="open = false">
+{{__('Apply')}}
+                                </button>
                             </div>
                         </div>
                     </div>

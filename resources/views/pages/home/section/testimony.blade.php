@@ -1,4 +1,4 @@
-<div class="max-w-screen-2xl mx-auto py-24 px-6 2xl:px-0"
+<div class="max-w-screen-2xl mx-auto pt-12 py-24 px-6 2xl:px-0"
      x-data="{ open: false, videoSrc: '' }"
      x-on:open-video.window="
         videoSrc = $event.detail.src;
