@@ -95,14 +95,14 @@ sup{
 }
 
 .doctor-search input, .speciality-filter input, .date-filter input, .careerForm input{
-    @apply text-lg py-2 bg-white;
+    @apply text-md py-2 bg-white;
 }
 .department-filter .fi-fo-select, .careerForm .fi-fo-select{
     @apply py-0.5;
 }
 
 .location-filter > div span, .department-filter .fi-fo-select .choices__item, .careerForm .fi-fo-select .choices__item {
-    @apply text-lg font-normal;
+    @apply text-md font-normal;
 }
 
 .create-account-form input{
@@ -134,7 +134,7 @@ sup{
 }
 
 .careerForm .filepond--drop-label label{
-    @apply text-lg text-slate-400;
+    @apply text-md text-slate-400;
 }
 
 .careerForm .filepond--drop-label label span{
@@ -196,7 +196,7 @@ button{
 }
 
 .careerForm .fi-fo-field-wrp-label span{
-    @apply text-xl font-normal text-textsub;
+    @apply text-md font-normal text-textsub;
 }
 
 .edit-profile fieldset legend{
