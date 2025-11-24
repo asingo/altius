@@ -1,5 +1,5 @@
 <div class="speciality-filter">
-    <span class="text-2xl font-semibold">{{__('speciality')}}</span>
+    <span class="text-md font-semibold">{{__('speciality')}}</span>
 
     <div class="mt-4">
         {{ $this->form }}
@@ -15,7 +15,7 @@
                 >
                     <label
                         for="speciality-{{ $this->getId() }}-{{ $k }}"
-                        class="text-lg flex-1 cursor-pointer"
+                        class="text-md flex-1 cursor-pointer"
                     >
                         {{ $d }}
                     </label>

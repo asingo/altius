@@ -1,5 +1,5 @@
 <div class="location-filter">
-    <span class="text-2xl font-semibold">{{__('location')}}</span>
+    <span class="text-md font-semibold">{{__('location')}}</span>
 
     <div class="mt-4">
         <div x-data="{ location: @entangle('location') }" class="space-y-2">
@@ -10,7 +10,7 @@
                 >
                     <label
                         for="location-{{ $this->getId() }}-{{ $k }}"
-                        class="text-lg flex-1 cursor-pointer"
+                        class="text-md flex-1 cursor-pointer"
                     >
                         {{ ucwords($d) }}
                     </label>

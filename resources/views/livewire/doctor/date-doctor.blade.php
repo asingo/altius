@@ -1,5 +1,5 @@
 <div class="date-filter">
-    <span class="text-2xl font-semibold">{{__('preferred.date')}}</span>
+    <span class="text-md font-semibold">{{__('preferred.date')}}</span>
 
     <div class="mt-4">
         {{ $this->form }}
@@ -15,7 +15,7 @@
                 >
                     <label
                         for="date-{{ $this->getId() }}-{{ $k }}"
-                        class="text-lg flex-1 cursor-pointer"
+                        class="text-md flex-1 cursor-pointer"
                     >
                         {{ $d }}
                     </label>

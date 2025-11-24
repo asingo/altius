@@ -11,7 +11,7 @@
             @livewire('frontend.screening.category-screening')
         </div>
         <div class="mt-8 hidden md:block">
-            <span class="text-xl font-medium">Filter</span>
+            <span class="text-lg font-medium">Filter</span>
         </div>
         <div class="grid md:grid-cols-5 md:mt-8 gap-6 md:gap-12" x-data="{ open: false }">
             <div class="md:col-span-1">

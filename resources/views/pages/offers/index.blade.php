@@ -25,7 +25,7 @@
                     class="transition-all duration-300 ease-in-out flex items-center w-fit gap-2 lg:hidden mt-4 border border-primary text-primary hover:bg-primary hover:text-white py-2 px-4 rounded-2xl cursor-pointer"
                     @click="open = !open"
                 >
-                    <span class="text-xl">Filter</span>
+                    <span class="text-lg">Filter</span>
                     <x-heroicon-o-adjustments-horizontal
                         class="w-6 h-6 cursor-pointer"
                     />

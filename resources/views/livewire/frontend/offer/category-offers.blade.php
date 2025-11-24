@@ -1,5 +1,5 @@
 <div class="location-filter">
-    <span class="text-2xl font-semibold">{{__('Category')}}</span>
+    <span class="text-md font-semibold">{{__('Category')}}</span>
     <div class="mt-4">
         <div
             x-data="{ category: @entangle('category') }"
@@ -9,7 +9,7 @@
                 <label
                     class="flex items-center justify-between gap-2 cursor-pointer border-b-[1.5px] py-2 border-slate-300 w-full"
                 >
-                    <span class="text-lg flex-1">{{ $d }}</span>
+                    <span class="text-md flex-1">{{ $d }}</span>
                     <input
                         type="radio"
                         name="category"

@@ -14,7 +14,7 @@
             </div>
             <div class="flex flex-col gap-2 md:gap-6 w-full md:w-5/6">
                 <a class="text-primary text-xl font-semibold underline hover:text-accent"
-                   href="{{localized_route('doctor')}}/{{$d['slug']}}">{{$d['name']}}</a>
+                   href="{{localized_route('doctor')}}/{{$d['slug']}}"><h6>{{$d['name']}}</h6></a>
                 <span class="font-semibold text-xl">{{$d->speciality->title}}</span>
                 <div class="flex md:divide-x-[1.5px] divide-textsub md:flex-row flex-col">
                     @foreach($d->hasLocation as $l)

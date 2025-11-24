@@ -1,5 +1,5 @@
 <div class="location-filter">
-    <span class="text-2xl font-semibold">{{__('Age')}}</span>
+    <span class="text-md font-semibold">{{__('Age')}}</span>
     <div class="mt-4">
         <div
             x-data="{ age: @entangle('age') }"
@@ -9,7 +9,7 @@
                 <label
                     class="flex items-center justify-between gap-2 cursor-pointer border-b-[1.5px] py-2 border-slate-300 w-full" for="age-{{$this->getId()}}-{{$d['id']}}"
                 >
-    <span class="text-lg flex-wrap">
+    <span class="text-md flex-wrap">
         {{ ucwords($d['name']) }}{{$d['age'] == '' ? '' : ':'}} <small>{{ $d['age'] }}</small>
     </span>
                     <input
