@@ -46,7 +46,7 @@
             @else
             <div class="swiper-slide">
                 <video width="100%" autoplay loop muted>
-                    <source src="{{\Awcodes\Curator\Models\Media::find($sliderSetting->value['video'])->url}}" type="video/mp4">
+                    <source src="{{\Awcodes\Curator\Models\Media::find($sliderSetting->value['video'])?->url}}" type="video/mp4">
                 </video>
             </div>
             @endif
