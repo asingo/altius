@@ -1,7 +1,7 @@
 <div class="flex flex-col gap-8">
     <div class="flex flex-col gap-4">
         <span class="text-2xl font-semibold">{{__('location')}}</span>
-        <div class="flex gap-6 flex-col md:flex-row" x-data="{location: @entangle('location')}">
+        <div class="flex gap-6 flex-col" x-data="{location: @entangle('location')}">
 
             @foreach($data as $d)
 

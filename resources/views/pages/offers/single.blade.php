@@ -1,7 +1,7 @@
 @extends('template')
 @section('content')
     <div class="max-w-screen-2xl mx-auto pt-24 px-6 2xl:px-0 mt-6">
-        <x-breadcrumb parent="Home" subparent="{{__('Offers')}}" subparentlink="{{localized_route('screening')}}" child="{{$title}}"/>
+        <x-breadcrumb parent="Home" subparent="{{__('Offers')}}" subparentlink="{{localized_route('offers')}}" child="{{$title}}"/>
         <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mt-10">
             <div class="md:col-span-1">
                 {{--                <div class="mt-8">--}}
