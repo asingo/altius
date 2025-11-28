@@ -32,7 +32,7 @@ p{
 }
 
 p{
-    @apply text-md sm:text-lg;
+    @apply text-md;
 }
 
 h1{
