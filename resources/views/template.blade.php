@@ -24,6 +24,16 @@
         @if($isHeaderOverlay)
             @scroll.window="if (!openMobile) atTop = window.scrollY > 50;"
         @endif
+        x-init="
+    const handleHash = () => {
+        if (window.location.hash) {
+            atTop = true;
+        }
+    };
+
+    handleHash();
+    window.addEventListener('hashchange', handleHash);
+"
         x-effect="
         if (openMobile) {
             topStatus = atTop;

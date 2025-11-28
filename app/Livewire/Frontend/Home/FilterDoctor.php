@@ -53,7 +53,7 @@ class FilterDoctor extends Component implements HasForms
     public function findDoctor()
     {
         $data = $this->form->getState();
-        return redirect()->to(localized_route('doctor', $data));
+        return redirect()->to(localized_route('doctor', $data).'#listDoctor');
     }
 
     public function resetForm()

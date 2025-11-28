@@ -12,7 +12,7 @@
             </div>
         </div>
     </div>
-    <div class="max-w-screen-2xl mx-auto py-16 px-6 2xl:px-0">
+    <div class="max-w-screen-2xl mx-auto py-16 px-6 2xl:px-0"  id="listDoctor" >
         <x-breadcrumb parent="Home" child="{{$page->title}}"/>
         <div class="md:mt-10">
             <div x-data="{ open: false }" class="grid lg:grid-cols-5 lg:gap-12 gap-10">
