@@ -22,17 +22,33 @@ class DynamicMailServiceProvider extends ServiceProvider
      */
     public function boot(): void
     {
-        $smtp = false;
         $setting = Setting::where('name', 'general')->first()?->value;
-        if (isset($setting['email'])) {
-            if ($setting['email']) {
-                $smtp = (object) $setting['email'];
-                config(['mail.mailers.smtp.host' => $smtp->smtp_host]);
-                config(['mail.mailers.smtp.port' => $smtp->smtp_port]);
-                config(['mail.mailers.smtp.encryption' => $smtp->smtp_encryption]);
-                config(['mail.mailers.smtp.username' => $smtp->smtp_username]);
-                config(['mail.mailers.smtp.password' => $smtp->smtp_password]);
-            }
+
+        if (!isset($setting['email'])) {
+            return;
         }
+
+        $smtp = (object) $setting['email'];
+
+        config([
+            'mail.default' => 'smtp',
+            'mail.mailers.smtp.transport' => 'smtp',
+            'mail.mailers.smtp.host' => $smtp->smtp_host,
+            'mail.mailers.smtp.port' => $smtp->smtp_port,
+            'mail.mailers.smtp.encryption' => $smtp->smtp_encryption,
+            'mail.mailers.smtp.username' => $smtp->smtp_username,
+            'mail.mailers.smtp.password' => $smtp->smtp_password,
+            'mail.from.address' => $smtp->smtp_username,
+            'mail.from.name' => config('app.name'),
+        ]);
+
+        // CRITICAL: Reset mailer so new config is used
+        app()->forgetInstance('mail.manager');
+        app()->forgetInstance('mailer');
+
+        Mail::alwaysFrom(
+            config('mail.from.address'),
+            config('mail.from.name')
+        );
     }
 }
