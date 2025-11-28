@@ -72,7 +72,7 @@
                                     <span class="text-lg text-textsub">Customer Care</span>
                                 </div>
                                 <div>
-                                    <a href="https://wa.me/{{str_replace(' ', '', $view['customer_care'] ? $view['customer_care'] : '0857 8877 8877')}}"><span class="text-lg text-textsub  hover:!text-primary">{{$d->customer_care}}</span></a>
+                                    <a href="https://wa.me/{{str_replace(' ', '', $d->customer_care ? $d->customer_care : '0857 8877 8877')}}"><span class="text-lg text-textsub  hover:!text-primary">{{$d->customer_care}}</span></a>
                                 </div>
                             </div>
 
