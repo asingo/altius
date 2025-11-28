@@ -160,17 +160,7 @@
 
         </div>
         <div class="z-[99] fixed bottom-0 left-0 right-0">
-            <div class="bg-white px-6 py-2 drop-shadow-[0_-3px_10px_rgba(0,0,0,0.1)] rounded-t-2xl flex-col sm:flex-row max-w-screen-2xl mx-auto flex justify-between gap-2 sm:items-center">
-                <div>
-                    <p class="text-textsub">Book your Appointment now with</p>
-                    <h6 class="font-bold">{{$title}}</h6>
-                </div>
-                <div>
-                    <x-button.link href="#" class="w-full sm:w-fit text-center">Book Now</x-button.link>
-                </div>
-
-            </div>
-
+            @livewire('frontend.doctor.detail.booking-bar', ['name' => $title, 'initLocation' => $location])
         </div>
 
     </div>

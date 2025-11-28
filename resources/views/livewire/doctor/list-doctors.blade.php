@@ -16,11 +16,12 @@
                 <a class="text-primary text-xl font-semibold underline hover:text-accent"
                    href="{{localized_route('doctor')}}/{{$d['slug']}}"><h6>{{$d['name']}}</h6></a>
                 <span class=" text-md">{{$d->speciality->title}}</span>
-                <div class="flex md:divide-x-[1.5px] divide-textsub md:flex-row flex-col">
+                <div class="flex divide-textsub md:flex-row flex-col">
+                    @php $i = 1 @endphp
                     @foreach($d->hasLocation as $l)
-
+                        @php $i++ @endphp
                         <span
-                            class="{{count($d->hasLocation) > 1 ? 'md:first:pr-4 md:last:pl-4': ''}}  text-md text-textsub">
+                            class="text-md text-textsub {{count($d->hasLocation) < $i ? '' : 'md:border-r md:pr-2 md:mr-2 md:border-textsub'}}">
                            {{$l->location->title}}
                          </span>
                     @endforeach
