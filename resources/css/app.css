@@ -35,18 +35,26 @@ p{
     @apply text-md sm:text-lg;
 }
 
+h1{
+    @apply text-5xl;
+}
+
+h2{
+    @apply text-4xl;
+}
+
 h3{
-    @apply text-[1.8rem];
+    @apply text-3xl;
 }
 
 h4{
-    @apply text-[1.6rem];
+    @apply text-2xl;
 }
 h5{
-    @apply text-[1.4rem];
+    @apply text-xl;
 }
 h6{
-    @apply text-[1.2rem];
+    @apply text-lg;
 }
 
  ol, ul:not(.menu-list) li{
@@ -106,7 +114,7 @@ sup{
 }
 
 .create-account-form input{
-    @apply text-lg px-4 py-2 placeholder:text-slate-400;
+    @apply text-md px-4 py-2 placeholder:text-slate-400;
 }
 
 .create-account-form .fi-input-wrp{
@@ -242,6 +250,13 @@ button{
     color: #ffffff;
 }
 
+.otp-container input{
+    appearance: textfield !important;
+}
+
+.otp-container input:focus{
+    @apply ring-1 ring-primary;
+}
 /*.doctor-filter div.choices__list.choices__list--dropdown{*/
 /*    @apply !hidden;*/
 /*}*/

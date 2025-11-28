@@ -47,6 +47,14 @@ foreach ($locales as $key => $prefix) {
 
 Route::get('/logout',[ProfileController::class,'logout'])->name('logout');
 
+$setting = \App\Models\Setting::where('name','general')->first()?->value;
+$email = [
+    'logo' => \Awcodes\Curator\Models\Media::find($setting['site']['logo_primary'])?->url,
+    'otp' => '123456',
+    'socmeds' => $setting['contact']['social_media'],
+    'subject' => 'OTP Verification'
+];
+Route::get('/template-email', fn() => view('emails.otp.send', $email));
 
 
 

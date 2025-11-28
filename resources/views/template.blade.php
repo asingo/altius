@@ -37,7 +37,7 @@
 >
     <div class="flex items-center justify-end mb-4 xl:hidden">
         <a href="tel:021{{$setting['contact']['emergency']}}" class="relative group menu-item">
-                        <span class="flex text-md gap-2 text-white items-center" :class="atTop && 'hover:!text-primary text-black' ">
+                        <span class="flex text-md gap-2 text-white items-center" :class="atTop && 'hover:!text-primary !text-black' ">
                             <svg width="20" height="20" viewBox="0 0 20 20" class="fill-white"
                                  :class="atTop && '!fill-red-500' "
                                  xmlns="http://www.w3.org/2000/svg">

@@ -27,14 +27,14 @@
                 <img src="{{ $profile }}" class="w-16 h-16 rounded-full object-cover" alt="testimony">
             </div>
             <div class="flex flex-col">
-                <span class="text-2xl font-medium">{{ $name }}</span>
+                <span class="text-lg font-medium">{{ $name }}</span>
                 <span class="text-slate-400">{{ $date }}</span>
             </div>
         </div>
 
-        <h3 class="my-4 text-3xl font-medium text-secondary">
+        <h5 class="my-4 font-medium text-secondary">
             {{ $title }}
-        </h3>
+        </h5>
 
         {{ $slot }}
     </div>

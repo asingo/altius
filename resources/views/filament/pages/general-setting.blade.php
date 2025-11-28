@@ -25,13 +25,13 @@
                 <x-heroicon-o-chat-bubble-bottom-center-text class="w-5 h-5"/>
                 CTA
             </div>
-{{--            <div--}}
-{{--                class="flex gap-2 items-center cursor-pointer p-2 text-sm rounded-lg hover:bg-shade hover:text-primary-600"--}}
-{{--                x-on:click="tab = 3"--}}
-{{--                :class="tab == 3 ? 'bg-shade text-primary-600':''">--}}
-{{--                <x-heroicon-o-envelope class="w-5 h-5"/>--}}
-{{--                Email Configuration--}}
-{{--            </div>--}}
+            <div
+                class="flex gap-2 items-center cursor-pointer p-2 text-sm rounded-lg hover:bg-shade hover:text-primary-600"
+                x-on:click="tab = 4"
+                :class="tab == 4 ? 'bg-shade text-primary-600':''">
+                <x-heroicon-o-envelope class="w-5 h-5"/>
+                Email Configuration
+            </div>
 
         </div>
         <div class="col-span-4 my-6 fi-form">
@@ -43,6 +43,10 @@
             </div>
             <div x-show="tab == 3">
                 {{$this->ctaForm}}
+            </div>
+            <div x-show="tab == 4">
+                {{$this->emailConfigForm}}
+                @livewire('email-tester')
             </div>
         </div>
     </div>

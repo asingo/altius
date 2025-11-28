@@ -36,8 +36,8 @@
                     @if($sliderSetting->value['is_item_text'])
                     <div class="hero-heading absolute bottom-0 left-0 right-0 z-50 mb-[14rem] lg:mb-[18rem]">
                         <div class="mx-auto w-full max-w-screen-2xl text-white px-6 2xl:px-0">
-                            <h2 class="font-medium text-2xl lg:text-3xl">{{$s->description}}</h2>
-                            <h1 class="font-semibold text-3xl lg:text-6xl">{{$s->title}}</h1>
+                            <h3 class="font-medium">{{$s->description}}</h3>
+                            <h1 class="font-semibold">{{$s->title}}</h1>
                         </div>
                     </div>
                     @endif
@@ -54,8 +54,8 @@
         <div class="hero-heading absolute bottom-[25vh] md:bottom-[30vh] left-0 right-0 z-50" >
             <div class="mx-auto w-full max-w-screen-2xl text-white px-6 2xl:px-0">
                 @if(!$sliderSetting->value['is_item_text'])
-                <h2 class="font-medium text-2xl lg:text-3xl">{{$sliderSetting->value['description_en']}}</h2>
-                <h1 class="font-semibold text-3xl lg:text-6xl">{{$sliderSetting->value['heading_en']}}</h1>
+                <h3 class="font-medium">{{$sliderSetting->value['description_en']}}</h3>
+                <h1 class="font-semibold">{{$sliderSetting->value['heading_en']}}</h1>
                 @endif
                 <div class="swiper-pagination mt-4"></div>
             </div>

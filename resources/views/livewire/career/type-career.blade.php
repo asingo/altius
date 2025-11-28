@@ -1,5 +1,5 @@
 <div class="location-filter">
-    <span class="text-2xl">{{__('Type')}}</span>
+    <span class="text-xl">{{__('Type')}}</span>
     <div class="mt-4 py-2">
         <div
             x-data="{ type: @entangle('type') }"

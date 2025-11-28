@@ -10,7 +10,7 @@
                     <span class="text-textsub">{{__('Add or manage your own or family member profiles')}}</span>
                 </div>
                 <div class="mt-6">
-                    <h2>{{__('My Self')}}</h2>
+                    <h3>{{__('My Self')}}</h3>
                     <div class="mt-4 border rounded-xl px-4 py-2 flex sm:flex-row flex-col items-center gap-4 justify-between w-full">
                         @php
                             $photo = 'https://ui-avatars.com/api/?name='. substr(auth()->user()->first_name,0,1). '&color=FFFFFF&background=225CA8';
@@ -26,7 +26,7 @@
                                 :src="$photo"
                             />
                             <div class="flex flex-col gap-1 flex-1">
-                                <h3>{{__('Welcome')}}, {{auth()->user()->first_name}} {{__('to')}} Altius Hospitals</h3>
+                                <h4>{{__('Welcome')}}, {{auth()->user()->first_name}} {{__('to')}} Altius Hospitals</h4>
                                 {{--                        Data Not Complete--}}
                                 <div class="bg-warning-50 px-4 py-2 rounded-xl w-fit">
                                     <span class="text-warning-500 text-md">{{__('Profile incomplete. Please update your information.')}}</span>
@@ -42,7 +42,7 @@
                     </div>
                 </div>
                 <div class="mt-8">
-                    <h2>{{__('Others')}}</h2>
+                    <h3>{{__('Others')}}</h3>
                     <div
                         class="mt-4 bg-slate-50 rounded-xl px-6 py-4 flex-col flex items-center gap-4 space-between w-full">
                         {{--                  No Profile Found--}}

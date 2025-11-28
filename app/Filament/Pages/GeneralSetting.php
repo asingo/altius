@@ -4,12 +4,14 @@ namespace App\Filament\Pages;
 
 use App\Models\Setting;
 use App\View\Components\Grid;
+use Artisan;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Awcodes\Curator\Models\Media;
 use Filament\Actions\Action;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Select;
 use Filament\Forms\Components\Split;
 use Filament\Forms\Components\Tabs;
 use Filament\Forms\Components\TextInput;
@@ -132,12 +134,32 @@ class GeneralSetting extends Page implements HasForms
         return $form->schema($schema)->statePath('general');
     }
 
+    public function emailConfigForm(Form $form): Form
+    {
+        return $form->schema([
+            Section::make('Email / SMTP Configuration')->schema([
+                TextInput::make('smtp_host')->label('SMTP Host')->columnSpan(2),
+                TextInput::make('smtp_port')->label('SMTP Port'),
+                Select::make('smtp_encryption')->label('SMTP Encryption')->options([
+                    'none' => 'No Encryption',
+                    'ssl' => 'SSL',
+                    'tls' => 'TLS'
+                ])
+            ])->columns(4),
+            Section::make('Authentication')->schema([
+                TextInput::make('smtp_username')->label('SMTP Username'),
+                TextInput::make('smtp_password')->label('SMTP Password')->password()->revealable(),
+            ])->columns(2)
+        ])->statePath('general.email');
+    }
+
     protected function getForms(): array
     {
         return [
             'siteForm',
             'contactForm',
-            'ctaForm'
+            'ctaForm',
+            'emailConfigForm'
         ];
     }
 
@@ -192,7 +214,7 @@ class GeneralSetting extends Page implements HasForms
 
     public function saveSetting()
     {
-        $form = [...$this->siteForm->getState(), ...$this->contactForm->getState(), ...$this->ctaForm->getState()];
+        $form = [...$this->siteForm->getState(), ...$this->contactForm->getState(), ...$this->ctaForm->getState(), ...['email' =>$this->emailConfigForm->getState()]];
 
         $setting = Setting::where('name', 'general');
         if ($setting->exists()) {
@@ -205,7 +227,7 @@ class GeneralSetting extends Page implements HasForms
                 'value' => $form
             ]);
         }
-
+        Artisan::call('config:clear');
         return Notification::make()->success()->title('Success')->body('Setting saved successfully!')->send();
     }
 }

@@ -5,11 +5,11 @@
     </a>
     <div class="bg-white rounded-2xl shadow p-6 mt-4">
         <div class="flex flex-col gap-1">
-            <h2 class="text-lg font-semibold">{{__('Patient Profile')}}</h2>
+            <h2 class="font-semibold">{{__('Patient Profile')}}</h2>
             <span class="text-textsub">{{__('Add or manage your own or family member profiles')}}</span>
         </div>
         <div class="mt-6">
-            <h2>{{$id == null ? __('My Self') :__('Other Profile')}}</h2>
+            <h3>{{$id == null ? __('My Self') :__('Other Profile')}}</h3>
             <div class="mt-4 border rounded-xl px-4 py-2 flex flex-col md:flex-row items-center gap-4 justify-between w-full">
                 @php
                     $photo = 'https://ui-avatars.com/api/?name='. substr($user->name,0,1). '&color=FFFFFF&background=225CA8';
@@ -25,7 +25,7 @@
                         :src="$photo"
                     />
                     <div class="flex flex-col gap-1 flex-1">
-                        <h3>{{__('Welcome')}}, {{$user->name}} {{__('to')}} Altius Hospitals</h3>
+                        <h4>{{__('Welcome')}}, {{$user->name}} {{__('to')}} Altius Hospitals</h4>
                         {{--                        Data Not Complete--}}
                         <div class="bg-warning-50 px-4 py-2 rounded-xl w-fit">
                         <span
@@ -42,7 +42,7 @@
             </div>
         </div>
         <div class="mt-8">
-            <h2 class="font-semibold text-lg">{{__('Biography')}}</h2>
+            <h4 class="font-semibold text-lg">{{__('Biography')}}</h4>
             <div class="mt-4 py-4 grid grid-cols-1 md:grid-cols-2 gap-6 w-full border-t-2">
                 {{--                  No Profile Found--}}
                 <div class="flex flex-col">
@@ -78,7 +78,7 @@
             </div>
         </div>
         <div class="mt-8">
-            <h2 class="font-semibold text-lg">{{__('Address')}}</h2>
+            <h4 class="font-semibold text-lg">{{__('Address')}}</h4>
             <div class="mt-4 py-4 grid grid-cols-1 md:grid-cols-2 gap-6 w-full border-t-2">
                 {{--                  No Profile Found--}}
                 <div class="flex flex-col md:col-span-2">

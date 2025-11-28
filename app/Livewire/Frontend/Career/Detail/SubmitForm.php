@@ -39,6 +39,7 @@ class SubmitForm extends Component implements HasForms
             TextInput::make('fullname')
                 ->label(__('Full Name'))
                 ->required()
+                ->placeholder(__('Enter your full name'))
                 ->prefixIcon('heroicon-o-user-circle')
                 ->validationMessages([
                     'required' => __('Please fill in your full name'),
@@ -46,6 +47,7 @@ class SubmitForm extends Component implements HasForms
             TextInput::make('email')
                 ->label(__('Email'))
                 ->required()
+                ->placeholder(__('Enter your email'))
                 ->prefixIcon('heroicon-o-envelope')
                 ->regex('/^.+@.+$/i')
                 ->validationMessages([
@@ -54,6 +56,7 @@ class SubmitForm extends Component implements HasForms
                 ]),
             TextInput::make('phone')
                 ->label(__('No. HP/ WhatsApp'))
+                ->placeholder(__('Enter your phone or whatsapp number'))
                 ->prefixIcon('heroicon-o-phone')
                 ->required()
                 ->validationMessages([

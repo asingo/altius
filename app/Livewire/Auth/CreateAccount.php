@@ -2,8 +2,10 @@
 
 namespace App\Livewire\Auth;
 
+use App\Mail\SendOtp;
 use App\Models\Patient;
 use App\Models\User;
+use App\Models\VerifyOtp;
 use Blade;
 use Filament\Actions\Action;
 use Filament\Actions\Concerns\InteractsWithActions;
@@ -15,6 +17,7 @@ use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Log;
+use Illuminate\Support\Facades\Mail;
 use Illuminate\Support\HtmlString;
 use Livewire\Component;
 use Session;
@@ -29,8 +32,32 @@ class CreateAccount extends Component implements HasForms, HasActions
 
     public $data = [];
 
+    public $otp = ['', '', '', '', '', ''];
+
+//    public function getOtpString()
+//    {
+//        return implode('', $this->otp);
+//    }
+
+    protected function generateOtp()
+    {
+        $otp = rand(100000, 999999);
+        $data = [
+            'email' => $this->data['email'],
+            'otp' => $otp,
+            'expire_at' => now()->addMinutes(5)
+        ];
+        VerifyOtp::create($data);
+        Mail::to($this->data['email'])->send(new SendOtp($otp));
+    }
+
     public function nextStep()
     {
+
+        $checkOtp = VerifyOtp::where('email', $this->data['email'])->exists();
+        if(!$checkOtp){
+          $this->generateOtp();
+        }
         $this->step++;
     }
 
@@ -41,62 +68,81 @@ class CreateAccount extends Component implements HasForms, HasActions
 
     public function mount(): void
     {
-        $this->form->fill();
+        $this->nameForm->fill();
     }
 
-    public function form(Form $form): Form
+    protected function getForms():array
     {
+        return [
+            'nameForm',
+            'passwordForm'
+        ];
+    }
+
+    public function passwordForm(Form $form): Form{
         return $form->schema([
-            Wizard::make([
-                Wizard\Step::make('Account Information')
-                    ->description('Enter your personal details.')
-                    ->schema([
-                        TextInput::make('name')
-                            ->label(__('Fullname'))
-                            ->placeholder(__('Enter your fullname'))
-                            ->required()
-                            ->maxLength(255),
-
-                        TextInput::make('email')
-                            ->label('Email')
-                            ->placeholder(__('Enter your email'))
-                            ->required()
-                            ->email()
-                            ->unique('users', 'email', ignoreRecord: true),
-                    ]),
-
-                Wizard\Step::make('Set Password')
-                    ->description('Secure your account.')
-                    ->schema([
-                        TextInput::make('password')
-                            ->label('Password')
-                            ->placeholder(__('Enter your password'))
-                            ->password()
-                            ->revealable()
-                            ->required()
-                            ->rules([
-                                'required',
-                                'min:8',
-                                'regex:/^(?=.*[A-Za-z])(?=.*\d)(?=.*[^A-Za-z0-9]).+$/u',
-                            ])
-                            ->helperText(__('Use 8+ characters with a mix of letters, numbers, and symbols.')),
+            TextInput::make('password')
+                ->label('Password')
+                ->placeholder(__('Enter your password'))
+                ->password()
+                ->revealable()
+                ->required()
+                ->rules([
+                    'required',
+                    'min:8',
+                    'regex:/^(?=.*[A-Za-z])(?=.*\d)(?=.*[^A-Za-z0-9]).+$/u',
+                ])
+                ->helperText(__('Use 8+ characters with a mix of letters, numbers, and symbols.')),
 
 
-                        TextInput::make('password_confirmation')
-                            ->label(__('Confirm Password'))
-                            ->placeholder(__('Confirm your password'))
-                            ->required()
-                            ->password()
-                            ->revealable()
-                            ->same('password'),
-                    ]),
-            ])->submitAction(new HtmlString(Blade::render(<<<BLADE
-                                <button type="submit"
-                            class="py-3 px-6 bg-primary text-white text-md w-full rounded-xl flex items-center justify-center gap-2">
-                       {{__('Create Account')}}
-                    </button>
-            BLADE))),
+            TextInput::make('password_confirmation')
+                ->label(__('Confirm Password'))
+                ->placeholder(__('Confirm your password'))
+                ->required()
+                ->password()
+                ->revealable()
+                ->same('password'),
         ])->statePath('data');
+    }
+
+    public function nameForm(Form $form): Form{
+        return $form->schema([
+            TextInput::make('name')
+                ->label(__('Fullname'))
+                ->placeholder(__('Enter your fullname'))
+                ->required()
+                ->maxLength(255),
+
+            TextInput::make('email')
+                ->label('Email')
+                ->placeholder(__('Enter your email'))
+                ->required()
+                ->email()
+                ->unique('users', 'email', ignoreRecord: true),
+        ])->statePath('data');
+    }
+
+    public function resendOtp()
+    {
+        $checkOtp = VerifyOtp::where('email', $this->data['email'])->exists();
+        if($checkOtp){
+            VerifyOtp::where('email', $this->data['email'])->delete();
+        }
+        $this->generateOtp();
+        Session::flash('successOtp');
+    }
+
+    public function submitOtp(){
+        $data = $this->data;
+        $checkOtp = VerifyOtp::where('email', $data['email'])->where('otp', $this->otp)->exists();
+        if(!$checkOtp){
+         return Session::flash('errorOtp');
+        }
+        $otp = VerifyOtp::where('email', $data['email'])->where('otp', $this->otp)->first();
+        if($otp->expire_at < now()){
+            return Session::flash('errorOtp');
+        }
+        $this->step++;
     }
 
     public function submit()

@@ -158,5 +158,20 @@
     "Please select a province": "Silakan pilih provinsi",
     "Please select a city": "Silakan pilih kota",
     "Please upload a valid resume file": "Silakan unggah file resume yang valid",
-    "Please agree to the terms": "Silakan setujui syarat dan ketentuan"
+    "Please agree to the terms": "Silakan setujui syarat dan ketentuan",
+    "Next": "Selanjutnya",
+    "OTP Verification": "Verifikasi OTP",
+    "We have sent an OTP to your email. Please enter the OTP to verify your email address.": "Kami telah mengirimkan OTP ke email Anda. Silakan masukkan OTP untuk memverifikasi alamat email Anda.",
+    "Resend OTP": "Kirim Ulang OTP",
+    "Submit": "Kirim",
+    "OTP Successfully Sent. Check your email.": "OTP Berhasil Dikirim. Cek email Anda.",
+    "OTP Wrong or Expired. Please try again.": "OTP Salah atau Kadaluarsa. Silakan coba lagi.",
+    "Didn't get OTP?": "Tidak Mendapatkan OTP?",
+    "Resend": "Kirim Ulang",
+    "Previous": "Sebelumnya",
+    "Submit OTP": "Kirim OTP",
+    "Enter your full name": "Masukkan Nama Lengkap anda",
+    "Enter your email": "Masukkan Email anda",
+    "Enter your phone or whatsapp number": "Masukkan Nomor HP/ WhatsApp anda",
+    "By using this form, you agree to the storage and handling of data by this website.": "Dengan menggunakan formulir ini, Anda setuju bahwa data Anda akan disimpan dan diolah oleh situs web ini."
 }
