@@ -47,7 +47,7 @@
                 @foreach($data as $d)
                     <div id="location{{$d['id']}}">
                         <div class="flex flex-col md:w-5/12 gap-4">
-                            <h3 class="text-3xl font-bold">{{$d->title}}</h3>
+                            <h3 class="font-bold">{{$d->title}}</h3>
                             <p>{{$d->address}}</p>
                         </div>
                         <div class="grid grid-rows-3 items-center mt-6">
@@ -86,7 +86,7 @@
             </div>
         </div>
         <div class="mt-12">
-            <h3 class="font-heading text-4xl" >{{$page->content['staff']['title']}}</h3>
+            <h3 class="font-heading" >{{$page->content['staff']['title']}}</h3>
             <p class="mt-4">
                 {!! $page->content['staff']['description'] !!}
             </p>

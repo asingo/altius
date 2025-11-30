@@ -128,7 +128,8 @@
 
             <div class="flex xl:hidden items-center">
                 <button class="text-white" :class="atTop && '!text-[#171717]'" @click="openMobile = !openMobile">
-                    <x-heroicon-o-bars-3 class="w-6 h-6"/>
+                    <x-heroicon-o-bars-3 x-show="openMobile == false" class="w-6 h-6"/>
+                    <x-heroicon-o-x-mark x-show="openMobile == true" class="w-6 h-6"/>
                 </button>
 
 
@@ -147,9 +148,9 @@
         x-transition:leave="transition ease-in duration-500"
         x-transition:leave-start="opacity-100 translate-y-0"
         x-transition:leave-end="opacity-0 -translate-y-5"
-        class="absolute bg-white w-screen left-0 h-screen top-14 z-50"
+        class="absolute bg-white w-screen left-0 h-screen top-25 z-50"
     >
-        <ul class="menu-list flex flex-col gap-5 mx-6 mt-4 pt-4 border-t">
+        <ul class="menu-list flex flex-col gap-5 mx-6 mt-0 pt-4 border-t">
             @foreach(\App\Models\MenuHeader::with('pages')->get() as $menu)
                 <li>
                     <a href="{{localized_route($menu->pages->route_name)}}" class="relative group w-full menu-item">

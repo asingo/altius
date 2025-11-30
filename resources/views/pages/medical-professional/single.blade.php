@@ -39,7 +39,7 @@
                 @endif
 
             </div>
-            <div class="md:col-span-2 md:mr-24 md:border-b-2 md:border-slate-300 w-full pb-12">
+            <div class="md:col-span-2 md:mr-24 md:border-b-2 md:border-slate-300 w-full md:pb-12">
                 <img
                     src="{{asset(\Awcodes\Curator\Models\Media::find($data->image)?->url ?? 'asset/doctor/image-doctor.jpg')}}"
                     alt="image" class="rounded-2xl w-full">
