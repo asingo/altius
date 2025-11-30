@@ -178,3 +178,7 @@
 .fi-sidebar-header{
     @apply ring-0 shadow-none;
 }
+
+.active-menu{
+    @apply bg-[#EAF1FB] text-primary-600;
+}
