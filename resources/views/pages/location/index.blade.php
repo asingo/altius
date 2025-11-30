@@ -17,8 +17,7 @@
 
                 <div class="grid grid-cols-1 md:grid-cols-2 md:gap-10 gap-3">
                     <div>
-
-                        <x-image :id="$v->id" :class="'rounded-xl w-full object-cover aspect-[5/3]'"/>
+                        <x-image :id="$v->image" :class="'rounded-xl w-full object-cover aspect-[5/3]'"/>
                         {{--                        <img class="rounded-xl w-full object-cover" src="{{asset($v->thumbnail)}}" alt=""/>--}}
                     </div>
                     <div class="flex flex-col gap-3 md:gap-5">
