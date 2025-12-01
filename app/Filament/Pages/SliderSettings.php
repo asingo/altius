@@ -31,7 +31,9 @@ class SliderSettings extends Page implements HasForms
         $getSetting = Setting::where('name', 'slider')->first();
         if ($getSetting) {
             $this->formData = $getSetting->value;
-            $this->formData['video'] =[ Media::find($getSetting->value['video'])];
+            if (isset($getSetting->value['video'])){
+                $this->formData['video'] = [Media::find($getSetting->value['video'])];
+            }
         } else {
             $this->formData = [
                 'heading_en' => '',
