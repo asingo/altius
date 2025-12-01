@@ -59,7 +59,7 @@
                 <!-- LOGO -->
                 <tr>
                     <td align="center" style="padding:25px 20px 15px;">
-                        <img src="{{ $logo }}"
+                        <img src="{{ asset('asset/logo.png') }}"
                              alt="{{config('app.name')}}"
                              style="max-width:160px;height:auto;">
                     </td>
