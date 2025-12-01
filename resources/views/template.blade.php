@@ -266,7 +266,7 @@
                 </div>
 
                 <span class="text-[24px]">WhatsApp</span>
-                <a href="https://wa.me/{{str_replace(' ', '', $generalSetting ? $generalSetting['contact']['whatsapp'] : '0857 8877 8877')}}" class="!text-white group menu-item relative">
+                <a href="https://wa.me/{{whatsapp_number($generalSetting ? $generalSetting['contact']['whatsapp'] : '0857 8877 8877')}}" class="!text-white group menu-item relative">
 
                 <span class="text-[20px]">{{$generalSetting ? $generalSetting['contact']['whatsapp'] : '0857 8877 8877'}} Available 24/7</span>
                     <span class="menu-interaction"></span>

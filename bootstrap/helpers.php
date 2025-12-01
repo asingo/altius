@@ -79,3 +79,37 @@ if (!function_exists('tracking_after')) {
         return $seo['after_body'] ?? null;
     }
 }
+
+if (! function_exists('whatsapp_number')) {
+    /**
+     * @param  string|null  $value
+     * @return string|null  returns normalized number or null if invalid
+     */
+    function whatsapp_number(?string $value): ?string
+    {
+        if ($value === null) {
+            return null;
+        }
+
+        $digits = preg_replace('/\D+/', '', $value);
+
+        if (!$digits || strlen($digits) < 8) {
+            return null;
+        }
+
+        if (preg_match('/^0/', $digits)) {
+            $digits = '62' . preg_replace('/^0+/', '', $digits);
+            return $digits;
+        }
+
+        if (preg_match('/^8\d{7,}$/', $digits)) {
+            return '62' . $digits;
+        }
+
+        if (preg_match('/^62\d+$/', $digits)) {
+            return $digits;
+        }
+
+        return null;
+    }
+}

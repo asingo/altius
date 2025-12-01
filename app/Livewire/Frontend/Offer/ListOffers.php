@@ -34,8 +34,8 @@ class ListOffers extends Component
 
     public function applyFilter(){
         $this->filteredData = $this->data->filter(function($item) {
-           $matchesLocation = $this->location === 'all' || $item->hasLocation()->where('location_id', $this->location)->exists();
-           $matchesCategory = $this->category === 'all' || $item->offers_category_id == $this->category;
+           $matchesLocation = $this->location === 'all' ||$this->location == null || $item->hasLocation()->where('location_id', $this->location)->exists();
+           $matchesCategory = $this->category === 'all' ||$this->category == null || $item->offers_category_id == $this->category;
            return $matchesLocation && $matchesCategory;
         });
     }

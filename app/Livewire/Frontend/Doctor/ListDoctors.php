@@ -77,15 +77,18 @@ class ListDoctors extends Component
 
     protected function applyFilter()
     {
+
         $this->filteredData = $this->data->filter(function ($doctor) {
-
             $matchesSearch = $this->search === ''
-                || str_contains(strtolower($doctor['name']), strtolower($this->search));
+                || str_contains(strtolower($doctor['name']), strtolower($this->search))
+                || str_contains(strtolower($doctor['speciality']['title']), strtolower($this->search));
 
-            $matchesSpeciality = $this->speciality === '' || strtolower($this->speciality) === 'all'
+            $matchesSpeciality = $this->speciality === '' || $this->speciality == null
+                || strtolower($this->speciality) === 'all'
                 || $doctor->speciality_id == $this->speciality;
 
-            $matchesLocation = $this->location === '' || strtolower($this->location) === 'all'
+            $matchesLocation = $this->location === '' || $this->speciality == null
+                || strtolower($this->location) === 'all'
                 || $doctor->hasLocation()->where('location_id', $this->location)->exists();
 
 //            $matchesDate = $this->date === ''

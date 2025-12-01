@@ -99,7 +99,7 @@ class SubmitForm extends Component implements HasForms
                 ]
             ),
             FileUpload::make('photo')
-                ->label(__('Upload Resume/ CV (PDF/JPG)'))
+                ->label(__('Upload Resume/ CV (PDF/JPG/JPEG/PNG)'))
                 ->maxSize(2048)
                 ->directory('resume')
                 ->previewable(false)

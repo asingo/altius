@@ -215,7 +215,7 @@
                         <span class="text-lg text-textsub">Customer Care</span>
                     </div>
                     <div>
-                        <a href="https://wa.me/{{str_replace(' ', '', $view['customer_care'] ? $view['customer_care'] : '0857 8877 8877')}}"><span class="text-lg text-textsub">{{$view['customer_care']}}</span></a>
+                        <a href="https://wa.me/{{whatsapp_number($view['customer_care'] ? $view['customer_care'] : '0857 8877 8877')}}"><span class="text-lg text-textsub">{{$view['customer_care']}}</span></a>
                     </div>
                 </div>
 

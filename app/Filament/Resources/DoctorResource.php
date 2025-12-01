@@ -29,7 +29,7 @@ class DoctorResource extends Resource
 
     protected static ?string $model = Doctor::class;
 
-  protected static ?string $navigationIcon = 'icon-doctor';
+    protected static ?string $navigationIcon = 'icon-doctor';
 
     public static function form(Form $form): Form
     {
@@ -87,7 +87,7 @@ class DoctorResource extends Resource
                                 ->live()
                                 ->label('Location')
                         ])
-                      ,
+                        ,
                         Forms\Components\Section::make('Schedule')->schema([
                             Forms\Components\Repeater::make('scheduleRepeater')->label('')
                                 ->schema([
@@ -114,7 +114,7 @@ class DoctorResource extends Resource
                                 ->orderColumn(false)
                                 ->deletable(false)
                         ])
-                     ,
+                        ,
                         Forms\Components\Section::make('Biography')->schema([
                             TiptapEditor::make('biography')->label(''),
                         ]),
@@ -147,7 +147,7 @@ class DoctorResource extends Resource
         return $table
             ->columns([
                 TextColumn::make('name')->label('Name')->searchable(),
-                TextColumn::make('speciality.title')->label('Speciality'),
+                TextColumn::make('speciality.title')->label('Speciality')->searchable(),
                 TextColumn::make('hasLocation.location.title')->label('Location')
             ])
             ->filters([
