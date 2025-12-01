@@ -141,7 +141,7 @@
                 {{--                </div>--}}
             </div>
 
-            <div class="col-span-2 md:mr-24 sticky top-16 md:top-24 bg-white">
+            <div class="col-span-2 md:mr-24 sticky top-[6.5rem] md:top-24 bg-white">
                 <div
                     class="flex md:flex-col w-full py-6 md:py-0 flex-nowrap overflow-x-auto text-lg text-primary md:sticky md:top-24 md:px-10 gap-4 md:space-y-4">
                     <template x-for="sec in sections" :key="sec.id">

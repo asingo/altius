@@ -53,3 +53,29 @@ if (!function_exists('get_wa_link')) {
         return '#';
     }
 }
+
+if (!function_exists('tracking_before')) {
+    function tracking_before()
+    {
+        $seo = Cache::rememberForever('seo_tracking', function () {
+            $value = Setting::where('name', 'seo')->first()?->value;
+
+            return is_string($value) ? json_decode($value, true) : $value;
+        });
+
+        return $seo['before_body'] ?? null;
+    }
+}
+
+if (!function_exists('tracking_after')) {
+    function tracking_after()
+    {
+        $seo = Cache::rememberForever('seo_tracking', function () {
+            $value = Setting::where('name', 'seo')->first()?->value;
+
+            return is_string($value) ? json_decode($value, true) : $value;
+        });
+
+        return $seo['after_body'] ?? null;
+    }
+}

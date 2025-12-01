@@ -1,8 +1,4 @@
 <x-filament-panels::page class="feedback-page">
-{{--    <form wire:submit.prevent="saveSetting">--}}
-{{--        {{$this->siteForm}}--}}
-{{--        <x-filament::button type="submit" class="mt-6">Save</x-filament::button>--}}
-{{--    </form>--}}
     <div class="grid grid-cols-5 gap-4 border-t" style="height: calc(100vh - 80px)" x-data="{tab: 1}">
         <div class="bg-white h-full p-8 col-span-1 border-r border-b flex flex-col gap-2">
             <div

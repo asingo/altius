@@ -16,6 +16,7 @@
     <title>{{$title}} - {{env('APP_NAME')}}</title>
     @filamentStyles()
     @vite(['resources/css/app.css', 'resources/js/app.js'])
+    {!! tracking_before() !!}
 </head>
 <body x-data="{openFeedback: false}">
 
@@ -408,6 +409,7 @@
     </div>
 
 </div>
+{!! tracking_after() !!}
 @filamentScripts()
 </body>
 </html>
