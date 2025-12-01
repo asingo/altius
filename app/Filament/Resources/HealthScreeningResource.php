@@ -61,7 +61,7 @@ class HealthScreeningResource extends Resource
             ->options(fn() => HealthScreening\CategoryAge::get()->mapWithKeys(fn($item) => [$item->id => $item->title . ' - ' . $item->age])),
                         TextInput::make('price')->label('Price')->numeric()->required()
                         ->prefix('Rp'),
-                        Forms\Components\Textarea::make('description')->label('Description')->required(),
+                        TiptapEditor::make('description')->label('Description')->required(),
                     ])->columnSpan(3),
                     Forms\Components\Grid::make(1)->schema([
                         Forms\Components\Section::make('Page Details')
