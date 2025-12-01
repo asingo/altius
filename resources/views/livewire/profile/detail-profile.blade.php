@@ -75,6 +75,12 @@
                     <span class="text-sm text-gray-600">{{__('WhatsApp Number')}}</span>
                     <span class=""> {{$patient->wa_number ?? '-'}}</span>
                 </div>
+                @if($id != null )
+                    <div class="flex flex-col">
+                        <span class="text-sm text-gray-600">{{__('Relation')}}</span>
+                        <span class=""> {{$patient->family_relation ?? '-'}}</span>
+                    </div>
+                    @endif
             </div>
         </div>
         <div class="mt-8">

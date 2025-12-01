@@ -46,6 +46,7 @@ class AddOtherProfile extends Component implements HasForms, HasActions
             'postal_code' => null,
             'street' => null,
             'photo' => null,
+            'family_relation' => null
 //            ...auth()->user()->toArray(),
 //            ...auth()->user()->patient()->first()?->toArray() ?? []
         ];
@@ -82,7 +83,15 @@ class AddOtherProfile extends Component implements HasForms, HasActions
                 TextInput::make('place_of_birth')->label(__('Place of Birth')),
                 TextInput::make('email')->label('Email')->required()
                     ->email(),
-                TextInput::make('wa_number')->label(__('WhatsApp Number'))
+                TextInput::make('wa_number')->label(__('WhatsApp Number')),
+                Select::make('family_relation')->label(__('Relation'))->options([
+                    'Children' => __('Children'),
+                    'Husband' => __('Husband/ Wife'),
+                    'Father' => __('Father'),
+                    'Mother' => __('Mother'),
+                    'Other' => __('Other'),
+                    'Relatives' => __('Relatives')
+                ])
             ]),
             Fieldset::make(__('Address'))->schema([
                 TextInput::make('address')->label(__('Address')),
