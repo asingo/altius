@@ -125,7 +125,6 @@ class PagesResource extends Resource
                                             'pages.privacy.index' => 'privacy',
                                             'pages.terms.index' => 'terms',
                                             default => null
-
                                         };
 
                                         $route_name_detail = match ($state) {
