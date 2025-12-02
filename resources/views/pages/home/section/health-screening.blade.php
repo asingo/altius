@@ -8,7 +8,7 @@
         @foreach($healthScreening as $h)
             <x-slider.slider-item>
                 <x-grid.basic
-                    image="{{\Awcodes\Curator\Models\Media::find($h->image)->url}}"
+                    image="{{\Awcodes\Curator\Models\Media::find(get_image_id($h->image))->url}}"
                     :equal="true"
                     heading="{{$h->title}}"
                     slug="{{localized_route('screening')}}/{{$h->slug}}"
