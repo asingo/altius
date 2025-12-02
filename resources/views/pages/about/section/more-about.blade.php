@@ -2,8 +2,16 @@
     <h3 class="text-3xl font-heading">{{__('more.about')}}</h3>
     <x-grid class="mt-10">
         @foreach($page->content['more_about']['grid'] as $grid)
+            @php
+                $gridIcon = $grid['icon'];
+                if(is_array($gridIcon)){
+                    foreach($gridIcon as $i){
+                        $gridIcon = $i['id'];
+                    }
+                }
+            @endphp
             <x-grid.items-icon
-                icon="{{ \Awcodes\Curator\Models\Media::find($grid['icon'])?->url }}"
+                icon="{{ \Awcodes\Curator\Models\Media::find($gridIcon)?->url }}"
                 title="{{$grid['title']}}"
             >
                {!! $grid['content'] !!}

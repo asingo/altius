@@ -8,7 +8,7 @@
             </x-typography.heading>
         </div>
         <div class="mt-8">
-            <x-image :id="$view->cover_image" :class="'rounded-2xl w-full object-cover h-full aspect-[4/3] sm:aspect-auto'"/>
+            <x-image :id="$view->cover_image" :class="'rounded-2xl w-full object-cover h-full aspect-[4/3] sm:aspect-[22/9]'"/>
             <div class="grid md:grid-cols-2 mt-12 mb-24">
                 <div class="space-y-4 mb-6 md:space-y-6">
                     <h3 class="font-heading text-2xl md:text-3xl">{{$view->about_title}}</h3>
@@ -16,7 +16,7 @@
                     <x-button.link href="{{localized_route('about')}}">{{__('Learn More About Us')}}</x-button.link>
                 </div>
                 <div class="space-y-6">
-                    {!! $view['about_description'] !!}
+                    {!! tiptap_converter()->asHTML($view['about_description']) !!}
                 </div>
             </div>
             <h3 class="font-heading text-2xl md:text-3xl">{{__('Services and Facilities')}}</h3>
@@ -215,7 +215,7 @@
                         <span class="text-lg text-textsub">Customer Care</span>
                     </div>
                     <div>
-                        <a href="https://wa.me/{{str_replace(' ', '', $view['customer_care'] ? $view['customer_care'] : '0857 8877 8877')}}"><span class="text-lg text-textsub">{{$view['customer_care']}}</span></a>
+                        <a href="https://wa.me/{{whatsapp_number($view['customer_care'] ? $view['customer_care'] : '0857 8877 8877')}}"><span class="text-lg text-textsub">{{$view['customer_care']}}</span></a>
                     </div>
                 </div>
 

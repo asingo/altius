@@ -40,25 +40,25 @@ class PagesResource extends Resource
                         if ($get('view') == 'pages.about.index') {
                             $schema = FormSchema::about();
                         }
-                        if($get('view') == 'pages.home.index'){
+                        if ($get('view') == 'pages.home.index') {
                             $schema = FormSchema::home();
                         }
-                        if($get('view') == 'pages.career.index'){
+                        if ($get('view') == 'pages.career.index') {
                             $schema = FormSchema::career();
                         }
-                        if($get('view') == 'pages.location.index'||$get('view') == 'pages.health-screening.index'||$get('view') == 'pages.offers.index'){
+                        if ($get('view') == 'pages.location.index' || $get('view') == 'pages.health-screening.index' || $get('view') == 'pages.offers.index') {
                             $schema = FormSchema::general();
                         }
-                        if($get('view') == 'pages.medical-professional.index'){
+                        if ($get('view') == 'pages.medical-professional.index') {
                             $schema = FormSchema::withHero();
                         }
-                        if($get('view') == 'pages.news.index'){
+                        if ($get('view') == 'pages.news.index') {
                             $schema = FormSchema::withHeroAndBody();
                         }
-                        if($get('view') == 'pages.contact.index'){
+                        if ($get('view') == 'pages.contact.index') {
                             $schema = FormSchema::contact();
                         }
-                        if($get('view') == 'pages.privacy.index' || $get('view') == 'pages.terms.index'){
+                        if ($get('view') == 'pages.privacy.index' || $get('view') == 'pages.terms.index') {
                             $schema = FormSchema::generalAccordion();
                         }
 
@@ -72,8 +72,24 @@ class PagesResource extends Resource
                                 ->extraFieldWrapperAttributes(['class' => 'no-asterisk'])
                                 ->extraInputAttributes(['class' => '!text-2xl'])
                                 ->live(onBlur: true),
-                            ...$schema
-                            ,
+                            ...$schema,
+                            Forms\Components\Section::make('SEO Settings')->schema([
+                                Forms\Components\TextInput::make('seo_title')
+                                    ->label('SEO Title')
+                                    ->placeholder('Enter SEO Title'),
+                                Forms\Components\TextInput::make('seo_keyword')
+                                    ->label('SEO Keyword')
+                                    ->placeholder('Enter SEO Keyword'),
+                                Forms\Components\TextInput::make('seo_description')
+                                    ->label('SEO Description')
+                                    ->placeholder('Enter SEO Description'),
+                                Forms\Components\Select::make('seo_index')
+                                    ->label('Indexing Status')
+                                    ->options([
+                                        true => 'Yes',
+                                        false => 'No'
+                                    ])->native(false)
+                            ])
 
                         ];
                     })->columnSpan(3),
@@ -125,7 +141,6 @@ class PagesResource extends Resource
                                             'pages.privacy.index' => 'privacy',
                                             'pages.terms.index' => 'terms',
                                             default => null
-
                                         };
 
                                         $route_name_detail = match ($state) {
@@ -133,7 +148,7 @@ class PagesResource extends Resource
                                             'pages.medical-professional.index' => 'doctorDetail',
                                             'pages.career.index' => 'careerDetail',
                                             'pages.news.index' => 'newsDetail',
-                                            'pages.screening.index' => 'screeningDetail',
+                                            'pages.health-screening.index' => 'screeningDetail',
                                             'pages.offers.index' => 'offersDetail',
                                             default => null
 
@@ -151,7 +166,6 @@ class PagesResource extends Resource
                             CuratorPicker::make('image')
                         ])
                     ])->columnSpan(1),
-
                 ])
 
             ]);

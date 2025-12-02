@@ -24,6 +24,8 @@ class TypeCareer extends Component
             ] + $type;
     }
 
+
+
     public function typeChanged()
     {
         $this->dispatch('handleTypeFilter', $this->type);

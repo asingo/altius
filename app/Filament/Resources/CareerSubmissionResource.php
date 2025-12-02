@@ -37,17 +37,21 @@ class CareerSubmissionResource extends Resource
     public static function infolist(Infolist $infolist): Infolist
     {
         return $infolist->schema([
-TextEntry::make('full_name')->label('Name'),
-            TextEntry::make('email')->label('Email'),  TextEntry::make('phone')->label('Phone'),
+            TextEntry::make('full_name')->label('Name'),
+            TextEntry::make('email')->label('Email'), TextEntry::make('phone')->label('Phone'),
             TextEntry::make('provinceData.nama')->label('Province'),
             TextEntry::make('cityData.nama')->label('City'),
             TextEntry::make('job_title')->label('Job Title'),
             TextEntry::make('location')->label('Location'),
             TextEntry::make('cv')->label('Resume')
-            ->icon('heroicon-o-document-text')
-            ->color('primary')
-            ->formatStateUsing(fn($state) => '<a href="'.asset('storage/'.$state).'" target="_blank">Download</a>')
-            ->html(),
+                ->icon('heroicon-o-document-text')
+                ->color('primary')
+                ->url(fn ($state) => asset('storage/' . $state), shouldOpenInNewTab: true)
+                ->formatStateUsing(fn ($state) => 'Download'), TextEntry::make('pendukung')->label('Requirement Docs')
+                ->icon('heroicon-o-document-text')
+                ->color('primary')
+                ->url(fn ($state) => asset('storage/' . $state), shouldOpenInNewTab: true)
+                ->formatStateUsing(fn ($state) => 'Download'),
 
         ]);
     }
@@ -62,11 +66,19 @@ TextEntry::make('full_name')->label('Name'),
                 TextColumn::make('provinceData.nama')->label('Province'),
                 TextColumn::make('cityData.nama')->label('City'),
                 TextColumn::make('job_title')->label('Job Title'),
-               TextColumn::make('cv')->label('Resume')
-                   ->icon('heroicon-o-document-text')
-                   ->color('primary')
-                ->formatStateUsing(fn($state) => '<a href="'.asset('storage/'.$state).'" target="_blank">Download</a>')
-                ->html(),
+                TextColumn::make('cv')
+                    ->label('Resume')
+                    ->icon('heroicon-o-document-text')
+                    ->color('primary')
+                    ->url(fn ($state) => asset('storage/' . $state), shouldOpenInNewTab: true)
+                    ->formatStateUsing(fn ($state) => 'Download'),
+                TextColumn::make('pendukung')
+                    ->label('Requirements')
+                    ->icon('heroicon-o-document-text')
+                    ->color('primary')
+                    ->url(fn ($state) => asset('storage/' . $state), shouldOpenInNewTab: true)
+                    ->formatStateUsing(fn ($state) => 'Download'),
+
             ])
             ->filters([
                 //

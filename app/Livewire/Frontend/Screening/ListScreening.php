@@ -64,9 +64,9 @@ class ListScreening extends Component
         $this->filteredData = $this->data->filter(function ($screening) {
             $matchesCategory = $this->category === 'all' || is_null($screening->health_screening_category_id)
                 || $screening->health_screening_category_id == $this->category;
-            $matchesLocation = $this->location === 'all' || $screening->hasLocation()->where('location_id', $this->location)->exists();
-            $matchesAge = $this->age === 'all' || $screening->hasAge()->where('age_id', $this->age)->exists();
-            $matchesGender = $this->gender === 'all' || strtolower($this->gender) === strtolower($screening['gender']);
+            $matchesLocation = $this->location === 'all' || $this->location == null ||$screening->hasLocation()->where('location_id', $this->location)->exists();
+            $matchesAge = $this->age === 'all' || $this->age == null || $screening->hasAge()->where('age_id', $this->age)->exists();
+            $matchesGender = $this->gender === 'all' || $this->gender == null || strtolower($this->gender) === strtolower($screening['gender']);
             return $matchesCategory && $matchesLocation && $matchesAge && $matchesGender;
         });
     }

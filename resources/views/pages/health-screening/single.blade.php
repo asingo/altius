@@ -53,8 +53,8 @@
                 <div class="mt-6 text-3xl text-primary font-semibold">
                     Rp {{number_format($data->price, 0, ',', '.')}}
                 </div>
-                <h2 class="font-heading text-2xl mt-8">{{__('Description')}}</h2>
-                <div class="mt-4 post-content">
+{{--                <h2 class="font-heading text-2xl mt-8">{{__('Description')}}</h2>--}}
+                <div class="mt-8 post-content">
                     {!! tiptap_converter()->asHTML($data->description) !!}
                 </div>
                 <div>

@@ -35,8 +35,8 @@
                         </div>
                     </div>
                 </div>
-                <h2 class="font-heading mt-8">{{__('Description')}}</h2>
-                <div class="mt-4 post-content">
+{{--                <h2 class="font-heading mt-8">{{__('Description')}}</h2>--}}
+                <div class="mt-8 post-content">
                     {!! tiptap_converter()->asHTML($data->content) !!}
                 </div>
                 <div>

@@ -81,8 +81,7 @@ class GeneralSetting extends Page implements HasForms
     {
         $schema = [
             Section::make('Site Information')->schema([
-                CuratorPicker::make('logo_primary')
-                ->maxWidth("50px"),
+                CuratorPicker::make('logo_primary'),
                 CuratorPicker::make('logo_alternative'),
                 CuratorPicker::make('favicon'),
                 Toggle::make('is_no_robots')->label('Disable Search Engine Tracking for this site'),

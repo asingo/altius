@@ -23,7 +23,7 @@
                 <div class="flex flex-col justify-center items-center h-full">
                     <a href="/{{app()->getLocale() == 'en' ? '' : 'id'}}">
                     <img src="{{\Awcodes\Curator\Models\Media::find($setting['site']['logo_primary'])?->url}}"
-                         alt="login image"/>
+                         alt="login image" class="w-[250px]"/>
                     </a>
                     <div class="flex flex-col gap-1 text-center my-6">
                         <h1 class="text-2xl font-medium">{{__('Welcome to Altius Hospitals')}}</h1>
