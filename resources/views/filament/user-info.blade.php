@@ -4,7 +4,7 @@
        return $item;
     })->toArray();
 @endphp
-<div class="bg-white border-t-2  px-4 py-4 relative" x-data="{userHover: false, hoverTimeout: null}">
+<div class="bg-slate-100 rounded-xl px-4 py-4 relative" x-data="{userHover: false, hoverTimeout: null}">
     <div class="flex items-center gap-2" :class="$store.sidebar.isOpen ? '' : 'justify-center cursor-pointer'">
         <x-filament::avatar  x-on:mouseenter="clearTimeout(hoverTimeout); userHover = true;"
                              x-on:mouseleave="hoverTimeout = setTimeout(() => {userHover = false},300);"

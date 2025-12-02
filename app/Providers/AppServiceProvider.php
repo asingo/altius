@@ -117,7 +117,7 @@ class AppServiceProvider extends ServiceProvider
 //            }
 //        );
         FilamentView::registerRenderHook(
-            PanelsRenderHook::SIDEBAR_FOOTER,
+            PanelsRenderHook::SIDEBAR_NAV_START,
             fn() => view('filament.user-info', [
                 'user' => auth()->user(),
             ])
