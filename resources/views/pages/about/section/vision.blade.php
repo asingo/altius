@@ -24,7 +24,15 @@
                 </p>
             </div>
             <div class="mt-auto pt-6">
-                <img src="{{ \Awcodes\Curator\Models\Media::find($page->content['vision']['vision_image'])->url }}" alt="vision"
+                @php
+                    $vision = $page->content['vision']['vision_image'];
+                    if(is_array($vision)){
+                        foreach($vision as $i){
+                            $vision = $i['id'];
+                        }
+                    }
+                @endphp
+                <img src="{{ \Awcodes\Curator\Models\Media::find($vision)->url }}" alt="vision"
                      class="w-full rounded-2xl aspect-[10/7] object-cover">
             </div>
         </div>
@@ -45,11 +53,19 @@
             </div>
             <div>
                 <p>
-                   {{$page->content['vision']['mission']}}
+                   {!! $page->content['vision']['mission'] !!}
                 </p>
             </div>
             <div class="mt-auto pt-6">
-                <img src="{{ \Awcodes\Curator\Models\Media::find($page->content['vision']['mission_image'])->url }}" alt="mission"
+                @php
+                    $mission = $page->content['vision']['mission_image'];
+                    if(is_array($mission)){
+                        foreach($mission as $i){
+                            $mission = $i['id'];
+                        }
+                    }
+                @endphp
+                <img src="{{ \Awcodes\Curator\Models\Media::find($mission)->url }}" alt="mission"
                      class="w-full rounded-2xl aspect-[10/7] object-cover">
             </div>
         </div>

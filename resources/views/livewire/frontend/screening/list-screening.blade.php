@@ -14,7 +14,7 @@
                     </div>
                     <div class="mt-4 flex flex-col h-full justify-stretch">
                         <h5 class=" font-medium flex-grow group-hover:text-primary transition ease-in-out duration-150">{{$d['title']}}</h5>
-                        <p class="my-4 mb-6">{{limit_words($d['description'], 10)}}</p>
+                        <p class="my-4 mb-6">{!! limit_words($d['description'], 10)  !!}</p>
                         <span
                             class="text-primary text-xl font-medium">Rp {{number_format($d['price'], 0, ',','.')}}</span>
                     </div>
