@@ -14,6 +14,15 @@
     if($parent == '/admin/health-screening'){
         $parent = getParentUrl(4);
     }
+    if($parent == '/admin/offer'){
+        $parent = getParentUrl(4);
+    }
+    if($parent == '/admin/news-cat'){
+        $parent = getParentUrl(4);
+    }
+    if($parent == '/admin/career'){
+        $parent = getParentUrl(4);
+    }
 @endphp
 
 {{-- format-ignore-start --}}
@@ -203,7 +212,7 @@
 
                             </ul>
                         </div>
-                        <div class="bg-white mx-2 p-6 absolute -top-1/2 -right-[220px] shadow-lg rounded-2xl" x-show="$store.sidebar.isOpen && menu"
+                        <div class="bg-white mx-2 p-6 absolute -top-1/2 -right-[220px] w-[200px] shadow-lg rounded-2xl" x-show="$store.sidebar.isOpen && menu"
                              x-on:mouseover="menu = true"
                              x-on:mouseout="menu = false"
                              x-transition:enter="transition ease-out duration-200 delay-100"
@@ -266,7 +275,7 @@
 
                             </ul>
                         </div>
-                        <div class="bg-white mx-2 p-6 absolute -top-1/2 -right-[220px] shadow-lg rounded-2xl" x-show="$store.sidebar.isOpen && menu"
+                        <div class="bg-white mx-2 p-6 absolute -top-1/2 -right-[220px] w-[200px] shadow-lg rounded-2xl" x-show="$store.sidebar.isOpen && menu"
                              x-on:mouseover="menu = true"
                              x-on:mouseout="menu = false"
                              x-transition:enter="transition ease-out duration-200 delay-100"
@@ -278,6 +287,265 @@
                         >
                             <ul class="border-l-2  border-gray-400 pl-3 flex flex-col gap-y-3">
                                 @foreach($healthScreenChild as $k => $v)
+                                    <li class="submenu-item relative group {{$parent == $v ? 'active-menu' : ''}}">
+                                        <a href="{{$v}}"
+                                           class="flex text-sm items-center gap-3 group-hover:text-primary-600">
+                                            <span x-show="$store.sidebar.isOpen">{{$k}}</span>
+                                        </a>
+                                    </li>
+                                @endforeach
+
+                            </ul>
+                        </div>
+
+                    </li>
+                    @php
+                        $offersChild = [
+                            'List Offers' => '/admin/offers',
+                            'Category' => '/admin/offer/offers-categories',
+
+                        ];
+                        $offers = in_array($parent, array_values($offersChild));
+
+                    @endphp
+                    <li class="relative" x-data="{items: @js($offers), menu: false}">
+                        <a href="#"
+                           x-on:mouseover="!items ? menu = true : null"
+                           x-on:mouseout="!items ? menu = false : null"
+
+                           class="flex group justify-between text-sm items-center gap-3 hover:!bg-[#EAF1FB] hover:text-primary-600 rounded-lg px-3 py-2">
+                            <div class="flex items-center gap-3">
+                                <x-icon-offers class="group-hover:text-primary-600"/>
+                                <span x-show="$store.sidebar.isOpen">Offers</span>
+                            </div>
+                            <div>
+                                <x-heroicon-o-chevron-up x-show="$store.sidebar.isOpen"
+                                                         class="group-hover:text-primary-600 group-hover:rotate-90 transition-all duration-300 ease-in-out w-4 h-4"
+                                                         x-bind:class="items ? 'rotate-180' : ''"/>
+                            </div>
+                        </a>
+                        <div class="bg-gray-100 mx-2 py-4 rounded-lg" x-show="$store.sidebar.isOpen && items">
+                            <ul class="border-l-2  border-gray-400 pl-3 ml-6 flex flex-col gap-y-3">
+                                @foreach($offersChild as $k => $v)
+                                    <li class="submenu-item relative group {{$parent == $v ? 'active-menu' : ''}}">
+                                        <a href="{{$v}}"
+                                           class="flex text-sm items-center gap-3 group-hover:text-primary-600">
+                                            <span x-show="$store.sidebar.isOpen">{{$k}}</span>
+                                        </a>
+                                    </li>
+                                @endforeach
+
+                            </ul>
+                        </div>
+                        <div class="bg-white mx-2 p-6 absolute -top-1/2 -right-[220px] w-[200px] shadow-lg rounded-2xl" x-show="$store.sidebar.isOpen && menu"
+                             x-on:mouseover="menu = true"
+                             x-on:mouseout="menu = false"
+                             x-transition:enter="transition ease-out duration-200 delay-100"
+                             x-transition:enter-start="opacity-0 "
+                             x-transition:enter-end="opacity-100 "
+                             x-transition:leave="transition ease-in duration-200"
+                             x-transition:leave-start="opacity-100"
+                             x-transition:leave-end="opacity-0"
+                        >
+                            <ul class="border-l-2  border-gray-400 pl-3 flex flex-col gap-y-3">
+                                @foreach($offersChild as $k => $v)
+                                    <li class="submenu-item relative group {{$parent == $v ? 'active-menu' : ''}}">
+                                        <a href="{{$v}}"
+                                           class="flex text-sm items-center gap-3 group-hover:text-primary-600">
+                                            <span x-show="$store.sidebar.isOpen">{{$k}}</span>
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </li>
+                    @php
+                        $newsChild = [
+                            'List News' => '/admin/news',
+                            'Category' => '/admin/news-cat/categories',
+
+                        ];
+                        $news = in_array($parent, array_values($newsChild));
+
+                    @endphp
+                    <li class="relative" x-data="{items: @js($news), menu: false}">
+                        <a href="#"
+                           x-on:mouseover="!items ? menu = true : null"
+                           x-on:mouseout="!items ? menu = false : null"
+
+                           class="flex group justify-between text-sm items-center gap-3 hover:!bg-[#EAF1FB] hover:text-primary-600 rounded-lg px-3 py-2">
+                            <div class="flex items-center gap-3">
+                                <x-icon-news class="group-hover:text-primary-600"/>
+                                <span x-show="$store.sidebar.isOpen">News</span>
+                            </div>
+                            <div>
+                                <x-heroicon-o-chevron-up x-show="$store.sidebar.isOpen"
+                                                         class="group-hover:text-primary-600 group-hover:rotate-90 transition-all duration-300 ease-in-out w-4 h-4"
+                                                         x-bind:class="items ? 'rotate-180' : ''"/>
+                            </div>
+                        </a>
+                        <div class="bg-gray-100 mx-2 py-4 rounded-lg" x-show="$store.sidebar.isOpen && items">
+                            <ul class="border-l-2  border-gray-400 pl-3 ml-6 flex flex-col gap-y-3">
+                                @foreach($newsChild as $k => $v)
+                                    <li class="submenu-item relative group {{$parent == $v ? 'active-menu' : ''}}">
+                                        <a href="{{$v}}"
+                                           class="flex text-sm items-center gap-3 group-hover:text-primary-600">
+                                            <span x-show="$store.sidebar.isOpen">{{$k}}</span>
+                                        </a>
+                                    </li>
+                                @endforeach
+
+                            </ul>
+                        </div>
+                        <div class="bg-white mx-2 p-6 absolute -top-1/2 -right-[220px] w-[200px] shadow-lg rounded-2xl" x-show="$store.sidebar.isOpen && menu"
+                             x-on:mouseover="menu = true"
+                             x-on:mouseout="menu = false"
+                             x-transition:enter="transition ease-out duration-200 delay-100"
+                             x-transition:enter-start="opacity-0 "
+                             x-transition:enter-end="opacity-100 "
+                             x-transition:leave="transition ease-in duration-200"
+                             x-transition:leave-start="opacity-100"
+                             x-transition:leave-end="opacity-0"
+                        >
+                            <ul class="border-l-2  border-gray-400 pl-3 flex flex-col gap-y-3">
+                                @foreach($newsChild as $k => $v)
+                                    <li class="submenu-item relative group {{$parent == $v ? 'active-menu' : ''}}">
+                                        <a href="{{$v}}"
+                                           class="flex text-sm items-center gap-3 group-hover:text-primary-600">
+                                            <span x-show="$store.sidebar.isOpen">{{$k}}</span>
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </li>
+                    @php
+                        $careerChild = [
+                            'List Careers' => '/admin/careers',
+                            'Categories' => '/admin/career/career-categories',
+                            'Departments' => '/admin/career/departments',
+                            'Submissions' => '/admin/career-submissions',
+
+                        ];
+                        $career = in_array($parent, array_values($careerChild));
+
+                    @endphp
+                    <li class="relative" x-data="{items: @js($career), menu: false}">
+                        <a href="#"
+                           x-on:mouseover="!items ? menu = true : null"
+                           x-on:mouseout="!items ? menu = false : null"
+
+                           class="flex group justify-between text-sm items-center gap-3 hover:!bg-[#EAF1FB] hover:text-primary-600 rounded-lg px-3 py-2">
+                            <div class="flex items-center gap-3">
+                                <x-icon-careers class="group-hover:text-primary-600"/>
+                                <span x-show="$store.sidebar.isOpen">Careers</span>
+                            </div>
+                            <div>
+                                <x-heroicon-o-chevron-up x-show="$store.sidebar.isOpen"
+                                                         class="group-hover:text-primary-600 group-hover:rotate-90 transition-all duration-300 ease-in-out w-4 h-4"
+                                                         x-bind:class="items ? 'rotate-180' : ''"/>
+                            </div>
+                        </a>
+                        <div class="bg-gray-100 mx-2 py-4 rounded-lg" x-show="$store.sidebar.isOpen && items">
+                            <ul class="border-l-2  border-gray-400 pl-3 ml-6 flex flex-col gap-y-3">
+                                @foreach($careerChild as $k => $v)
+                                    <li class="submenu-item relative group {{$parent == $v ? 'active-menu' : ''}}">
+                                        <a href="{{$v}}"
+                                           class="flex text-sm items-center gap-3 group-hover:text-primary-600">
+                                            <span x-show="$store.sidebar.isOpen">{{$k}}</span>
+                                        </a>
+                                    </li>
+                                @endforeach
+
+                            </ul>
+                        </div>
+                        <div class="bg-white mx-2 p-6 absolute -top-1/2 -right-[220px] w-[200px] shadow-lg rounded-2xl" x-show="$store.sidebar.isOpen && menu"
+                             x-on:mouseover="menu = true"
+                             x-on:mouseout="menu = false"
+                             x-transition:enter="transition ease-out duration-200 delay-100"
+                             x-transition:enter-start="opacity-0 "
+                             x-transition:enter-end="opacity-100 "
+                             x-transition:leave="transition ease-in duration-200"
+                             x-transition:leave-start="opacity-100"
+                             x-transition:leave-end="opacity-0"
+                        >
+                            <ul class="border-l-2  border-gray-400 pl-3 flex flex-col gap-y-3">
+                                @foreach($careerChild as $k => $v)
+                                    <li class="submenu-item relative group {{$parent == $v ? 'active-menu' : ''}}">
+                                        <a href="{{$v}}"
+                                           class="flex text-sm items-center gap-3 group-hover:text-primary-600">
+                                            <span x-show="$store.sidebar.isOpen">{{$k}}</span>
+                                        </a>
+                                    </li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    </li>
+                </ul>
+            </li>
+            <li>
+                <label class="text-sm text-gray-500 ml-3" x-show="$store.sidebar.isOpen">Manage</label>
+                <ul class="mt-3">
+                    <li class="group  hover:!bg-[#EAF1FB] hover:text-primary-600 rounded-lg px-3 py-2 {{$parent == '/admin/media' ? 'active-menu' : ''}}">
+                        <a href="/admin/media"
+                           class="flex text-sm items-center gap-3">
+                            <x-icon-media class="group-hover:text-primary-600"/>
+                            <span x-show="$store.sidebar.isOpen">Media</span>
+                        </a>
+                    </li>
+                    @php
+                        $serviceChild = [
+                            'Center of Excellence' => '/admin/coes',
+                            'Emergencies' => '/admin/emergencies',
+                            'Facilities' => '/admin/facilities',
+                            'Services' => '/admin/services',
+                            'Specialities' => '/admin/specialities'
+                        ];
+                        $services = in_array($parent, array_values($serviceChild));
+
+                    @endphp
+                    <li class="relative" x-data="{items: @js($services), menu: false}">
+                        <a href="#"
+                           x-on:mouseover="!items ? menu = true : null"
+                           x-on:mouseout="!items ? menu = false : null"
+
+                           class="flex group justify-between text-sm items-center gap-3 hover:!bg-[#EAF1FB] hover:text-primary-600 rounded-lg px-3 py-2">
+                            <div class="flex items-center gap-3">
+                                <x-icon-services class="group-hover:text-primary-600"/>
+                                <span x-show="$store.sidebar.isOpen">Services</span>
+                            </div>
+                            <div>
+                                <x-heroicon-o-chevron-up x-show="$store.sidebar.isOpen"
+                                                         class="group-hover:text-primary-600 group-hover:rotate-90 transition-all duration-300 ease-in-out w-4 h-4"
+                                                         x-bind:class="items ? 'rotate-180' : ''"/>
+                            </div>
+                        </a>
+
+                        <div class="bg-gray-100 mx-2 py-4 rounded-lg" x-show="$store.sidebar.isOpen && items">
+                            <ul class="border-l-2  border-gray-400 pl-3 ml-6 flex flex-col gap-y-3">
+                                @foreach($serviceChild as $k => $v)
+                                    <li class="submenu-item relative group {{$parent == $v ? 'active-menu' : ''}}">
+                                        <a href="{{$v}}"
+                                           class="flex text-sm items-center gap-3 group-hover:text-primary-600">
+                                            <span x-show="$store.sidebar.isOpen">{{$k}}</span>
+                                        </a>
+                                    </li>
+                                @endforeach
+
+                            </ul>
+                        </div>
+                        <div class="bg-white mx-2 p-6 absolute -top-1/2 -right-[220px] w-[200px] shadow-lg rounded-2xl" x-show="$store.sidebar.isOpen && menu"
+                             x-on:mouseover="menu = true"
+                             x-on:mouseout="menu = false"
+                             x-transition:enter="transition ease-out duration-200 delay-100"
+                             x-transition:enter-start="opacity-0 "
+                             x-transition:enter-end="opacity-100 "
+                             x-transition:leave="transition ease-in duration-200"
+                             x-transition:leave-start="opacity-100"
+                             x-transition:leave-end="opacity-0"
+                        >
+                            <ul class="border-l-2  border-gray-400 pl-3 flex flex-col gap-y-3">
+                                @foreach($serviceChild as $k => $v)
                                     <li class="submenu-item relative group {{$parent == $v ? 'active-menu' : ''}}">
                                         <a href="{{$v}}"
                                            class="flex text-sm items-center gap-3 group-hover:text-primary-600">
