@@ -74,6 +74,7 @@ class HealthScreeningResource extends Resource
                                 ->placeholder('Enter SEO Description'),
                             Forms\Components\Select::make('seo_index')
                                 ->label('Indexing Status')
+                                ->default(true)
                                 ->options([
                                     true => 'Yes',
                                     false => 'No'
