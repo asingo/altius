@@ -62,6 +62,23 @@ class HealthScreeningResource extends Resource
                         TextInput::make('price')->label('Price')->numeric()->required()
                         ->prefix('Rp'),
                         TiptapEditor::make('description')->label('Description')->required(),
+                        Forms\Components\Section::make('SEO Settings')->schema([
+                            Forms\Components\TextInput::make('seo_title')
+                                ->label('SEO Title')
+                                ->placeholder('Enter SEO Title'),
+                            Forms\Components\TextInput::make('seo_keyword')
+                                ->label('SEO Keyword')
+                                ->placeholder('Enter SEO Keyword'),
+                            Forms\Components\TextInput::make('seo_description')
+                                ->label('SEO Description')
+                                ->placeholder('Enter SEO Description'),
+                            Forms\Components\Select::make('seo_index')
+                                ->label('Indexing Status')
+                                ->options([
+                                    true => 'Yes',
+                                    false => 'No'
+                                ])->native(false)
+                        ])
                     ])->columnSpan(3),
                     Forms\Components\Grid::make(1)->schema([
                         Forms\Components\Section::make('Page Details')
