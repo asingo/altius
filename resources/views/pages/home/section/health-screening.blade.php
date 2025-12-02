@@ -12,7 +12,7 @@
                     :equal="true"
                     heading="{{$h->title}}"
                     slug="{{localized_route('screening')}}/{{$h->slug}}"
-                    description="{!! $h->description !!}"
+                    :description="$h->description"
                     price="{{$h->price}}"
                 />
             </x-slider.slider-item>
