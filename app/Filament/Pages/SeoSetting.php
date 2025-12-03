@@ -9,7 +9,9 @@ use Filament\Actions\Action;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
 use Filament\Forms\Components\Section;
+use Filament\Forms\Components\Split;
 use Filament\Forms\Components\Textarea;
+use Filament\Forms\Components\TextInput;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
 use Filament\Forms\Form;
@@ -20,6 +22,7 @@ use Illuminate\Support\Facades\Cache;
 class SeoSetting extends Page implements HasForms, HasActions
 {
     use InteractsWithForms, InteractsWithActions;
+
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
     protected static string $view = 'filament.pages.seo-setting';
@@ -44,14 +47,15 @@ class SeoSetting extends Page implements HasForms, HasActions
     public function getForms(): array
     {
         return [
-            'trackingForm'
+            'trackingForm',
+            'generalForm'
         ];
     }
 
     protected function getHeaderActions(): array
     {
         return [
-            Action::make('saveSetting')->action(fn() => $this->saveSetting())
+            Action::make('saveSetting')->action(fn () => $this->saveSetting())
                 ->icon('heroicon-o-paper-airplane')
                 ->iconPosition('after'),
         ];
@@ -59,7 +63,7 @@ class SeoSetting extends Page implements HasForms, HasActions
 
     public function saveSetting()
     {
-        $form = [...$this->trackingForm->getState() ];
+        $form = [...$this->trackingForm->getState()];
 
         $setting = Setting::where('name', 'seo');
         if ($setting->exists()) {
@@ -81,10 +85,26 @@ class SeoSetting extends Page implements HasForms, HasActions
         return $form->schema([
             Section::make('Tracking Configuration')->schema([
                 Textarea::make('before_body')->label('Before Body')
-                ->rows(5),
+                    ->rows(5),
                 Textarea::make('after_body')->label('After Body')
-                ->rows(5),
+                    ->rows(5),
             ])
         ])->statePath('seo');
+    }
+
+    public function generalForm(Form $form): Form
+    {
+        return $form->schema([
+            TextInput::make('website_name')->label('Website Name')
+                ->placeholder('Used for global metadata and page titles'),
+            Split::make([
+                Textarea::make('meta_description')->label('Default Meta Description')
+                    ->rows(5)
+                    ->helperText('Brief description used in search results and social sharing.'),
+                Textarea::make('meta_keywords')->label('Default Meta Description')
+                    ->rows(5)
+                    ->helperText('Comma-separated keywords used for General SEO metadata.'),
+            ])
+        ]);
     }
 }

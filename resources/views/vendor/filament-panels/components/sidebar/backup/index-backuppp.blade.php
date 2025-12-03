@@ -1,4 +1,3 @@
-@php use App\Class\AdminSlug; @endphp
 @props([
     'navigation',
 ])
@@ -7,72 +6,70 @@
     $openSidebarClasses = 'fi-sidebar-open w-[--sidebar-width] translate-x-0 shadow-xl ring-1 ring-gray-950/5 dark:ring-white/10 rtl:-translate-x-0';
     $isRtl = __('filament-panels::layout.direction') === 'rtl';
 
-    $adminSlug = AdminSlug::getSlug();
-
     function getParentUrl($length){
          $request = request()->getPathInfo();
         return implode('/',array_slice(explode('/', $request),0,$length));
     }
    $parent = getParentUrl(3);
-    if($parent == '/'. $adminSlug .'/health-screening'){
+    if($parent == '/admin/health-screening'){
         $parent = getParentUrl(4);
     }
-    if($parent == '/'. $adminSlug .'/offer'){
+    if($parent == '/admin/offer'){
         $parent = getParentUrl(4);
     }
-    if($parent == '/'. $adminSlug .'/news-cat'){
+    if($parent == '/admin/news-cat'){
         $parent = getParentUrl(4);
     }
-    if($parent == '/'. $adminSlug .'/career'){
+    if($parent == '/admin/career'){
         $parent = getParentUrl(4);
     }
 @endphp
 
 {{-- format-ignore-start --}}
 <aside
-    x-data="{}"
-    @if (filament()->isSidebarCollapsibleOnDesktop() && (! filament()->hasTopNavigation()))
-        x-cloak
-    x-bind:class="
+        x-data="{}"
+        @if (filament()->isSidebarCollapsibleOnDesktop() && (! filament()->hasTopNavigation()))
+            x-cloak
+        x-bind:class="
             $store.sidebar.isOpen
                 ? @js($openSidebarClasses . ' ' . '')
                 : '-translate-x-full rtl:translate-x-full lg:translate-x-0 rtl:lg:-translate-x-0'
         "
-    @else
-        @if (filament()->hasTopNavigation())
+        @else
+            @if (filament()->hasTopNavigation())
+                x-cloak
+        x-bind:class="$store.sidebar.isOpen ? @js($openSidebarClasses) : '-translate-x-full rtl:translate-x-full'"
+        @elseif (filament()->isSidebarFullyCollapsibleOnDesktop())
             x-cloak
-    x-bind:class="$store.sidebar.isOpen ? @js($openSidebarClasses) : '-translate-x-full rtl:translate-x-full'"
-    @elseif (filament()->isSidebarFullyCollapsibleOnDesktop())
-        x-cloak
-    x-bind:class="$store.sidebar.isOpen ? @js($openSidebarClasses . ' ' . '') : '-translate-x-full rtl:translate-x-full'"
-    @else
-        x-cloak="-lg"
-    x-bind:class="
+        x-bind:class="$store.sidebar.isOpen ? @js($openSidebarClasses . ' ' . '') : '-translate-x-full rtl:translate-x-full'"
+        @else
+            x-cloak="-lg"
+        x-bind:class="
                 $store.sidebar.isOpen
                     ? @js($openSidebarClasses . ' ' . '')
                     : 'w-[--sidebar-width] -translate-x-full rtl:translate-x-full'
             "
-    @endif
-    @endif
-    {{
-        $attributes->class([
-            'fi-sidebar inset-y-0 start-0 z-30 flex flex-col h-screen content-start bg-white transition-all dark:bg-gray-900 lg:z-0 lg:bg-transparent lg:shadow-none lg:ring-0 lg:transition-none dark:lg:bg-transparent',
-            'lg:translate-x-0 rtl:lg:-translate-x-0' => ! (filament()->isSidebarCollapsibleOnDesktop() || filament()->isSidebarFullyCollapsibleOnDesktop() || filament()->hasTopNavigation()),
-            'lg:-translate-x-full rtl:lg:translate-x-full' => filament()->hasTopNavigation(),
-        ])
-    }}
+        @endif
+        @endif
+        {{
+            $attributes->class([
+                'fi-sidebar inset-y-0 start-0 z-30 flex flex-col h-screen content-start bg-white transition-all dark:bg-gray-900 lg:z-0 lg:bg-transparent lg:shadow-none lg:ring-0 lg:transition-none dark:lg:bg-transparent',
+                'lg:translate-x-0 rtl:lg:-translate-x-0' => ! (filament()->isSidebarCollapsibleOnDesktop() || filament()->isSidebarFullyCollapsibleOnDesktop() || filament()->hasTopNavigation()),
+                'lg:-translate-x-full rtl:lg:translate-x-full' => filament()->hasTopNavigation(),
+            ])
+        }}
 >
     <div class="overflow-x-clip">
         <header
-            class="fi-sidebar-header flex h-16 items-center bg-white px-6 ring-1 ring-gray-950/5 dark:bg-gray-900 dark:ring-white/10 lg:shadow-sm"
+                class="fi-sidebar-header flex h-16 items-center bg-white px-6 ring-1 ring-gray-950/5 dark:bg-gray-900 dark:ring-white/10 lg:shadow-sm"
         >
             <div
-                @if (filament()->isSidebarCollapsibleOnDesktop())
-                    x-show="$store.sidebar.isOpen"
-                x-transition:enter="lg:transition lg:delay-100"
-                x-transition:enter-start="opacity-0"
-                x-transition:enter-end="opacity-100"
-                @endif
+                    @if (filament()->isSidebarCollapsibleOnDesktop())
+                        x-show="$store.sidebar.isOpen"
+                    x-transition:enter="lg:transition lg:delay-100"
+                    x-transition:enter-start="opacity-0"
+                    x-transition:enter-end="opacity-100"
+                    @endif
             >
                 @if ($homeUrl = filament()->getHomeUrl())
                     <a {{ \Filament\Support\generate_href_html($homeUrl) }}>
@@ -85,53 +82,53 @@
 
             @if (filament()->isSidebarCollapsibleOnDesktop())
                 <x-filament::icon-button
-                    color="gray"
-                    :icon="$isRtl ? 'heroicon-o-chevron-left' : 'heroicon-o-chevron-right'"
-                    {{-- @deprecated Use `panels::sidebar.expand-button.rtl` instead of `panels::sidebar.expand-button` for RTL. --}}
-                    :icon-alias="$isRtl ? ['panels::sidebar.expand-button.rtl', 'panels::sidebar.expand-button'] : 'panels::sidebar.expand-button'"
-                    icon-size="lg"
-                    :label="__('filament-panels::layout.actions.sidebar.expand.label')"
-                    x-cloak
-                    x-data="{}"
-                    x-on:click="$store.sidebar.open()"
-                    x-show="! $store.sidebar.isOpen"
-                    class="mx-auto"
+                        color="gray"
+                        :icon="$isRtl ? 'heroicon-o-chevron-left' : 'heroicon-o-chevron-right'"
+                        {{-- @deprecated Use `panels::sidebar.expand-button.rtl` instead of `panels::sidebar.expand-button` for RTL. --}}
+                        :icon-alias="$isRtl ? ['panels::sidebar.expand-button.rtl', 'panels::sidebar.expand-button'] : 'panels::sidebar.expand-button'"
+                        icon-size="lg"
+                        :label="__('filament-panels::layout.actions.sidebar.expand.label')"
+                        x-cloak
+                        x-data="{}"
+                        x-on:click="$store.sidebar.open()"
+                        x-show="! $store.sidebar.isOpen"
+                        class="mx-auto"
                 />
             @endif
 
             @if (filament()->isSidebarCollapsibleOnDesktop() || filament()->isSidebarFullyCollapsibleOnDesktop())
                 <x-filament::icon-button
-                    color="gray"
-                    :icon="$isRtl ? 'heroicon-o-chevron-right' : 'heroicon-o-chevron-left'"
-                    {{-- @deprecated Use `panels::sidebar.collapse-button.rtl` instead of `panels::sidebar.collapse-button` for RTL. --}}
-                    :icon-alias="$isRtl ? ['panels::sidebar.collapse-button.rtl', 'panels::sidebar.collapse-button'] : 'panels::sidebar.collapse-button'"
-                    icon-size="lg"
-                    :label="__('filament-panels::layout.actions.sidebar.collapse.label')"
-                    x-cloak
-                    x-data="{}"
-                    x-on:click="$store.sidebar.close()"
-                    x-show="$store.sidebar.isOpen"
-                    class="ms-auto hidden lg:flex"
+                        color="gray"
+                        :icon="$isRtl ? 'heroicon-o-chevron-right' : 'heroicon-o-chevron-left'"
+                        {{-- @deprecated Use `panels::sidebar.collapse-button.rtl` instead of `panels::sidebar.collapse-button` for RTL. --}}
+                        :icon-alias="$isRtl ? ['panels::sidebar.collapse-button.rtl', 'panels::sidebar.collapse-button'] : 'panels::sidebar.collapse-button'"
+                        icon-size="lg"
+                        :label="__('filament-panels::layout.actions.sidebar.collapse.label')"
+                        x-cloak
+                        x-data="{}"
+                        x-on:click="$store.sidebar.close()"
+                        x-show="$store.sidebar.isOpen"
+                        class="ms-auto hidden lg:flex"
                 />
             @endif
         </header>
     </div>
 
     <nav
-        class="fi-sidebar-nav flex-grow flex flex-col gap-y-7 bg-white px-6 py-8"
-        style="scrollbar-gutter: stable"
+            class="fi-sidebar-nav flex-grow flex flex-col gap-y-7 bg-white px-6 py-8"
+            style="scrollbar-gutter: stable"
     >
         {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::SIDEBAR_NAV_START) }}
 
         @if (filament()->hasTenancy() && filament()->hasTenantMenu())
             <div
-                @class([
-                    'fi-sidebar-nav-tenant-menu-ctn',
-                    '-mx-2' => ! filament()->isSidebarCollapsibleOnDesktop(),
-                ])
-                @if (filament()->isSidebarCollapsibleOnDesktop())
-                    x-bind:class="$store.sidebar.isOpen ? '-mx-2' : '-mx-4'"
-                @endif
+                    @class([
+                        'fi-sidebar-nav-tenant-menu-ctn',
+                        '-mx-2' => ! filament()->isSidebarCollapsibleOnDesktop(),
+                    ])
+                    @if (filament()->isSidebarCollapsibleOnDesktop())
+                        x-bind:class="$store.sidebar.isOpen ? '-mx-2' : '-mx-4'"
+                    @endif
             >
                 <x-filament-panels::tenant-menu/>
             </div>
@@ -142,21 +139,21 @@
             <li>
                 <label class="text-sm text-gray-500 ml-3" x-show="$store.sidebar.isOpen">Health Care</label>
                 <ul class="mt-3">
-                    <li class="group  hover:!bg-[#EAF1FB] hover:text-primary-600 rounded-lg px-3 py-2 {{$parent == '/'.$adminSlug.'' ? 'active-menu' : ''}}">
-                        <a href="/{{$adminSlug}}" class="flex text-sm items-center gap-3">
+                    <li class="group  hover:!bg-[#EAF1FB] hover:text-primary-600 rounded-lg px-3 py-2 {{$parent == '/admin' ? 'active-menu' : ''}}">
+                        <a href="/admin" class="flex text-sm items-center gap-3">
                             <x-icon-home class="group-hover:text-primary-600"/>
                             <span x-show="$store.sidebar.isOpen">Dashboard</span>
                         </a>
                     </li>
-                    <li class="group  hover:!bg-[#EAF1FB] hover:text-primary-600 rounded-lg px-3 py-2 {{$parent == '/'.$adminSlug.'/doctors' ? 'active-menu' : ''}}">
-                        <a href="/{{$adminSlug}}/doctors"
+                    <li class="group  hover:!bg-[#EAF1FB] hover:text-primary-600 rounded-lg px-3 py-2 {{$parent == '/admin/doctors' ? 'active-menu' : ''}}">
+                        <a href="/admin/doctors"
                            class="flex text-sm items-center gap-3">
                             <x-icon-doctor class="group-hover:text-primary-600"/>
                             <span x-show="$store.sidebar.isOpen">Doctors</span>
                         </a>
                     </li>
-                    <li class="group  hover:!bg-[#EAF1FB] hover:text-primary-600 rounded-lg px-3 py-2 {{$parent == '/'.$adminSlug.'/patients' ? 'active-menu' : ''}}">
-                        <a href="/{{$adminSlug}}/patients"
+                    <li class="group  hover:!bg-[#EAF1FB] hover:text-primary-600 rounded-lg px-3 py-2 {{$parent == '/admin/patients' ? 'active-menu' : ''}}">
+                        <a href="/admin/patients"
                            class="flex text-sm items-center gap-3">
                             <x-icon-patient class="group-hover:text-primary-600"/>
                             <span x-show="$store.sidebar.isOpen">Patients</span>
@@ -167,8 +164,8 @@
             <li>
                 <label class="text-sm text-gray-500 ml-3" x-show="$store.sidebar.isOpen">Content</label>
                 <ul class="mt-3">
-                    <li class="group  hover:!bg-[#EAF1FB] hover:text-primary-600 rounded-lg px-3 py-2 {{$parent == '/'.$adminSlug.'/pages' ? 'active-menu' : ''}}">
-                        <a href="/{{$adminSlug}}/pages"
+                    <li class="group  hover:!bg-[#EAF1FB] hover:text-primary-600 rounded-lg px-3 py-2 {{$parent == '/admin/pages' ? 'active-menu' : ''}}">
+                        <a href="/admin/pages"
                            class="flex text-sm items-center gap-3">
                             <x-icon-pages class="group-hover:text-primary-600"/>
                             <span x-show="$store.sidebar.isOpen">Pages</span>
@@ -176,11 +173,11 @@
                     </li>
                     @php
                         $serviceChild = [
-                            'Center of Excellence' => '/'.$adminSlug.'/coes',
-                            'Emergencies' => '/'.$adminSlug.'/emergencies',
-                            'Facilities' => '/'.$adminSlug.'/facilities',
-                            'Services' => '/'.$adminSlug.'/services',
-                            'Specialities' => '/'.$adminSlug.'/specialities'
+                            'Center of Excellence' => '/admin/coes',
+                            'Emergencies' => '/admin/emergencies',
+                            'Facilities' => '/admin/facilities',
+                            'Services' => '/admin/services',
+                            'Specialities' => '/admin/specialities'
                         ];
                         $services = in_array($parent, array_values($serviceChild));
 
@@ -241,9 +238,9 @@
                     </li>
                     @php
                         $healthScreenChild = [
-                            'Health Screenings' => '/'.$adminSlug.'/health-screenings',
-                            'Category' => '/'.$adminSlug.'/health-screening/categories',
-                            'Age' => '/'.$adminSlug.'/health-screening/category-ages',
+                            'Health Screenings' => '/admin/health-screenings',
+                            'Category' => '/admin/health-screening/categories',
+                            'Age' => '/admin/health-screening/category-ages',
                         ];
                         $healthScreen = in_array($parent, array_values($healthScreenChild));
 
@@ -304,8 +301,8 @@
                     </li>
                     @php
                         $offersChild = [
-                            'List Offers' => '/'.$adminSlug.'/offers',
-                            'Category' => '/'.$adminSlug.'/offer/offers-categories',
+                            'List Offers' => '/admin/offers',
+                            'Category' => '/admin/offer/offers-categories',
 
                         ];
                         $offers = in_array($parent, array_values($offersChild));
@@ -364,8 +361,8 @@
                     </li>
                     @php
                         $newsChild = [
-                            'List News' => '/'.$adminSlug.'/news',
-                            'Category' => '/'.$adminSlug.'/news-cat/categories',
+                            'List News' => '/admin/news',
+                            'Category' => '/admin/news-cat/categories',
 
                         ];
                         $news = in_array($parent, array_values($newsChild));
@@ -424,10 +421,10 @@
                     </li>
                     @php
                         $careerChild = [
-                            'List Careers' => '/'.$adminSlug.'/careers',
-                            'Categories' => '/'.$adminSlug.'/career/career-categories',
-                            'Departments' => '/'.$adminSlug.'/career/departments',
-                            'Submissions' => '/'.$adminSlug.'/career-submissions',
+                            'List Careers' => '/admin/careers',
+                            'Categories' => '/admin/career/career-categories',
+                            'Departments' => '/admin/career/departments',
+                            'Submissions' => '/admin/career-submissions',
 
                         ];
                         $career = in_array($parent, array_values($careerChild));
@@ -489,22 +486,22 @@
             <li>
                 <label class="text-sm text-gray-500 ml-3" x-show="$store.sidebar.isOpen">Manage</label>
                 <ul class="mt-3">
-                    <li class="group  hover:!bg-[#EAF1FB] hover:text-primary-600 rounded-lg px-3 py-2 {{$parent == '/'.$adminSlug.'/media' ? 'active-menu' : ''}}">
-                        <a href="/{{$adminSlug}}/media"
+                    <li class="group  hover:!bg-[#EAF1FB] hover:text-primary-600 rounded-lg px-3 py-2 {{$parent == '/admin/media' ? 'active-menu' : ''}}">
+                        <a href="/admin/media"
                            class="flex text-sm items-center gap-3">
                             <x-icon-media class="group-hover:text-primary-600"/>
                             <span x-show="$store.sidebar.isOpen">Media</span>
                         </a>
                     </li>
-                    <li class="group  hover:!bg-[#EAF1FB] hover:text-primary-600 rounded-lg px-3 py-2 {{$parent == '/'.$adminSlug. '/locations' ? 'active-menu' : ''}}">
-                        <a href="/{{$adminSlug}}/locations"
+                    <li class="group  hover:!bg-[#EAF1FB] hover:text-primary-600 rounded-lg px-3 py-2 {{$parent == '/admin/locations' ? 'active-menu' : ''}}">
+                        <a href="/admin/locations"
                            class="flex text-sm items-center gap-3">
                             <x-icon-location class="group-hover:text-primary-600"/>
                             <span x-show="$store.sidebar.isOpen">Locations</span>
                         </a>
                     </li>
-                    <li class="group  hover:!bg-[#EAF1FB] hover:text-primary-600 rounded-lg px-3 py-2 {{$parent == '/'.$adminSlug . '/testimonies' ? 'active-menu' : ''}}">
-                        <a href="/{{$adminSlug}}/testimonies"
+                    <li class="group  hover:!bg-[#EAF1FB] hover:text-primary-600 rounded-lg px-3 py-2 {{$parent == '/admin/testimonies' ? 'active-menu' : ''}}">
+                        <a href="/admin/testimonies"
                            class="flex text-sm items-center gap-3">
                             <x-icon-testimonies class="group-hover:text-primary-600"/>
                             <span x-show="$store.sidebar.isOpen">Testimonies</span>
@@ -512,8 +509,8 @@
                     </li>
                     @php
                         $sliderChild = [
-                            'List Sliders' => '/' .$adminSlug. '/sliders',
-                            'Settings' => '/'.$adminSlug . '/slider-settings',
+                            'List Sliders' => '/admin/sliders',
+                            'Settings' => '/admin/slider-settings',
                         ];
                         $slider = in_array($parent, array_values($sliderChild));
 
@@ -574,8 +571,8 @@
                     </li>
                     @php
                         $feedbackChild = [
-                            'Form Lists' => '/'.$adminSlug . '/feedback-form',
-                            'Responses' => '/'.$adminSlug . '/feedback-response',
+                            'Form Lists' => '/admin/feedback-form',
+                            'Responses' => '/admin/feedback-response',
                         ];
                         $slider = in_array($parent, array_values($feedbackChild));
 
@@ -641,13 +638,8 @@
                 <ul class="mt-3">
                     @php
                         $settingChild = [
-                             'General' => '/'.$adminSlug . '/general-setting',
-                             'Users' => '/'.$adminSlug . '/users',
-                             'Logs' => '/'.$adminSlug . '/user-logs',
-                             'Menu' => '/'.$adminSlug . '/menu-setting',
-                             'Security' => '/'.$adminSlug . '/security-settings',
-                            'SEO' => '/'.$adminSlug . '/seo-setting',
-
+                            'SEO' => '/admin/seo-setting',
+                            'Menu' => '/admin/menu-setting'
 
                         ];
                         $setting = in_array($parent, array_values($settingChild));

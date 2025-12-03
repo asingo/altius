@@ -178,3 +178,19 @@
 .fi-sidebar-header{
     @apply ring-0 shadow-none;
 }
+
+.active-menu:not(.submenu-item){
+    @apply bg-[#EAF1FB] text-primary-600;
+}
+
+.submenu-item:hover a:before{
+    @apply content-[''] block w-[2px] h-5 bg-primary-600 absolute -left-[14px] z-10;
+}
+
+.submenu-item.active-menu a:before{
+    @apply content-[''] block w-[2px] h-5 bg-primary-600 absolute -left-[14px] z-10;
+}
+
+.submenu-item.active-menu{
+    @apply text-primary-600;
+}
