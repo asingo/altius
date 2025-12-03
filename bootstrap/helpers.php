@@ -113,3 +113,14 @@ if (! function_exists('whatsapp_number')) {
         return null;
     }
 }
+
+if(!function_exists('get_image_id')) {
+    function get_image_id($image) {
+        if(is_array($image)){
+            foreach($image as $i){
+                $image = $i['id'];
+            }
+        }
+        return $image;
+    }
+}

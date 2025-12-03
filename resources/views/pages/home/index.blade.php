@@ -28,7 +28,7 @@
             @if(!$sliderSetting->value['is_video'])
             @foreach($slider as $s)
                 @php
-                    $media = \Awcodes\Curator\Models\Media::find($s->image);
+                    $media = \Awcodes\Curator\Models\Media::find(get_image_id($s->image));
                 @endphp
 
                 <div class="swiper-slide">

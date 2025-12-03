@@ -23,7 +23,7 @@ return new class extends Migration {
                 $table->text('seo_title')->nullable();
                 $table->text('seo_keyword')->nullable();
                 $table->text('seo_description')->nullable();
-                $table->boolean('seo_index')->default(true);
+                $table->boolean('seo_index')->nullable()->default(true);
             });
         }
     }

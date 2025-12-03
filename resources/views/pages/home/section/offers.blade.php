@@ -7,7 +7,7 @@
         @foreach($offers as $o)
             <x-slider.slider-item>
                 <x-grid.basic
-                    image="{{\Awcodes\Curator\Models\Media::find($o->image)->url}}"
+                    image="{{\Awcodes\Curator\Models\Media::find(get_image_id($o->image))->url}}"
                     heading="{!! $o->title !!}"
                     slug="{{localized_route('offers').'/'.$o->slug}}"
                 />
