@@ -2,6 +2,7 @@
 
 namespace App\Providers\Filament;
 
+use App\Class\AdminSlug;
 use App\Filament\Auth\Login;
 use Filament\Enums\ThemeMode;
 use Filament\Http\Middleware\Authenticate;
@@ -28,7 +29,7 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->id('admin')
-            ->path('admin')
+            ->path(AdminSlug::getSlug())
             ->login(\App\Filament\Pages\Login::class)
             ->brandLogo(asset('asset/logo.png'))
             ->colors([

@@ -55,7 +55,9 @@ $email = [
     'subject' => 'OTP Verification'
 ];
 Route::get('/template-email', fn() => view('emails.otp.send', $email));
-
+Route::get('/sitemap.xml', function () {
+    return response()->file(public_path('sitemap.xml'));
+});
 
 
 //);
