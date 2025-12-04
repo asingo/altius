@@ -73,8 +73,8 @@
  @apply p-4;
 }
 
-.fi-form .fi-section-header{
-    @apply pb-0;
+.fi-form .fi-section-content{
+    @apply pt-0;
 }
 
 .fi-form .fi-fo-field-wrp-label span{

@@ -526,7 +526,7 @@
                            class="flex group justify-between text-sm items-center gap-3 hover:!bg-[#EAF1FB] hover:text-primary-600 rounded-lg px-3 py-2">
                             <div class="flex items-center gap-3">
                                 <x-icon-slider class="group-hover:text-primary-600"/>
-                                <span x-show="$store.sidebar.isOpen">Services</span>
+                                <span x-show="$store.sidebar.isOpen">Slider</span>
                             </div>
                             <div>
                                 <x-heroicon-o-chevron-up x-show="$store.sidebar.isOpen"
