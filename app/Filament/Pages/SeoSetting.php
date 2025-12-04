@@ -84,9 +84,9 @@ class SeoSetting extends Page implements HasForms, HasActions
     {
         return $form->schema([
             Section::make('Tracking Configuration')->schema([
-                Textarea::make('before_body')->label('Before Body')
+                Textarea::make('before_body')->label('Header')
                     ->rows(5),
-                Textarea::make('after_body')->label('After Body')
+                Textarea::make('after_body')->label('Body')
                     ->rows(5),
             ])
         ])->statePath('seo');
@@ -101,7 +101,7 @@ class SeoSetting extends Page implements HasForms, HasActions
                 Textarea::make('meta_description')->label('Default Meta Description')
                     ->rows(5)
                     ->helperText('Brief description used in search results and social sharing.'),
-                Textarea::make('meta_keywords')->label('Default Meta Description')
+                Textarea::make('meta_keywords')->label('Default Meta Keywords')
                     ->rows(5)
                     ->helperText('Comma-separated keywords used for General SEO metadata.'),
             ])
