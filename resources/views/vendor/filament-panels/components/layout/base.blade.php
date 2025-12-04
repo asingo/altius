@@ -109,7 +109,7 @@
                 ->class([
                     'fi-body',
                     'fi-panel-' . filament()->getId(),
-                    'min-h-screen bg-gray-50 font-normal text-gray-950 antialiased dark:bg-gray-950 dark:text-white',
+                    'min-h-screen bg-gray-50 font-normal relative text-gray-950 antialiased dark:bg-gray-950 dark:text-white',
                 ]) }}
     >
         {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::BODY_START, scopes: $livewire?->getRenderHookScopes()) }}
@@ -141,5 +141,10 @@
         {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::SCRIPTS_AFTER, scopes: $livewire?->getRenderHookScopes()) }}
 
         {{ \Filament\Support\Facades\FilamentView::renderHook(\Filament\View\PanelsRenderHook::BODY_END, scopes: $livewire?->getRenderHookScopes()) }}
+
+        <div class="absolute bottom-0 flex justify-end w-full px-4 py-2 text-gray-500 text-sm">
+            <span>Altius Hospitals CMS V1.0 build by <a href="https://grapiku.com">Grapiku</a></span>
+        </div>
+
     </body>
 </html>

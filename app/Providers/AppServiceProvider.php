@@ -124,6 +124,11 @@ class AppServiceProvider extends ServiceProvider
         );
 
 //        FilamentView::registerRenderHook(
+//            PanelsRenderHook::BODY_END,
+//            fn() => view('filament.footer-info')
+//        );
+
+//        FilamentView::registerRenderHook(
 //            PanelsRenderHook::TOPBAR_END,
 //            function(){
 //                $controller = request()->route()?->getController();

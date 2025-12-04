@@ -49,6 +49,7 @@
     @apply relative;
 }
 
+
 .fi-form .fi-fieldset{
     @apply p-0 border-none;
 }
