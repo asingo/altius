@@ -53,12 +53,15 @@ class CreateAccount extends Component implements HasForms, HasActions
 
     public function nextStep()
     {
-
-        $checkOtp = VerifyOtp::where('email', $this->data['email'])->exists();
-        if(!$checkOtp){
-          $this->generateOtp();
+        $patient = User::where('email', $this->data['email'])->exists();
+        if($patient){
+            return Session::flash('errorEmail', 'Email already exists!');
         }
-        $this->step++;
+        $checkOtp = VerifyOtp::where('email', $this->data['email'])->exists();
+//        if(!$checkOtp){
+//          $this->generateOtp();
+//        }
+//        $this->step++;
     }
 
     public function prevStep()
@@ -111,14 +114,18 @@ class CreateAccount extends Component implements HasForms, HasActions
                 ->label(__('Fullname'))
                 ->placeholder(__('Enter your fullname'))
                 ->required()
+                ->live()
+                ->afterStateUpdated(fn() => session()->remove('errorsEmail'))
                 ->maxLength(255),
 
             TextInput::make('email')
                 ->label('Email')
                 ->placeholder(__('Enter your email'))
                 ->required()
+                ->live()
+                ->afterStateUpdated(fn() => session()->remove('errorsEmail'))
                 ->email()
-                ->unique('users', 'email', ignoreRecord: true),
+                ->unique('users', 'email'),
         ])->statePath('data');
     }
 

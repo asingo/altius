@@ -3,6 +3,11 @@
         @if($step == 1)
             <form class="w-full create-account-form" wire:submit.prevent="nextStep">
                 {{$this->nameForm}}
+                @if(session('errorEmail'))
+                    <div class="bg-danger-50 text-red-500 mt-4 p-2 rounded-xl">
+                        {{__('Email is already in use. Please login instead.')}}
+                    </div>
+                @endif
                 <div class="flex justify-end">
                     <button type="submit"
                             class="py-3 px-6 bg-primary text-white mt-6 text-md w-fit rounded-xl flex items-center justify-center gap-2">{{__('Next')}}</button>
@@ -93,45 +98,46 @@
             {{__('Back to Login')}}
         </a>
     @endif
-        <script>
-            function otpForm() {
-                return {
+    <script>
+        function otpForm() {
+            return {
 
-                    getInputs() {
-                        // ✅ Always force array
-                        return document.querySelectorAll('[x-ref="inputs"]');
-                    },
+                getInputs() {
+                    // ✅ Always force array
+                    return document.querySelectorAll('[x-ref="inputs"]');
+                },
 
-                    next(index, event) {
-                        let inputs = this.getInputs();
-                        event.target.value = event.target.value.replace(/\D/g, '');
+                next(index, event) {
+                    let inputs = this.getInputs();
+                    event.target.value = event.target.value.replace(/\D/g, '');
 
-                        if (event.target.value && index < inputs.length - 1) {
-                            inputs[index + 1].focus();
-                        }
-
-                        this.sync();
-                    },
-
-                    back(index) {
-                        let inputs = this.getInputs();
-
-                        if (!inputs[index].value && index > 0) {
-                            inputs[index - 1].focus();
-                        }
-
-                        this.sync();
-                    },
-
-                    sync() {
-                        let inputs = this.getInputs();
-                        let otp = '';
-
-                        inputs.forEach(el => otp += el.value);
-
-                        @this.set('otp', otp);
+                    if (event.target.value && index < inputs.length - 1) {
+                        inputs[index + 1].focus();
                     }
-                };
-            }
-        </script>
+
+                    this.sync();
+                },
+
+                back(index) {
+                    let inputs = this.getInputs();
+
+                    if (!inputs[index].value && index > 0) {
+                        inputs[index - 1].focus();
+                    }
+
+                    this.sync();
+                },
+
+                sync() {
+                    let inputs = this.getInputs();
+                    let otp = '';
+
+                    inputs.forEach(el => otp += el.value);
+
+                    @this.
+                    set('otp', otp);
+                }
+            };
+        }
+    </script>
 </div>
