@@ -2,6 +2,7 @@
 
 namespace App\Filament\Pages;
 
+use App\Class\RoleManager;
 use Filament\Pages\Page;
 use App\Models\FeedbackResponse as FeedbackResponseModel;
 
@@ -14,7 +15,10 @@ class FeedbackResponse extends Page
     protected static ?string $navigationGroup = 'Feedback';
 
     public $feedback = [];
-
+    public static function canAccess(): bool
+    {
+        return RoleManager::getAcl('feedback', auth()->user()->role, 'view');
+    }
     public function mount(): void
     {
         $data = FeedbackResponseModel::get()->groupBy('question')

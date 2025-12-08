@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Class\RoleManager;
 use App\Filament\Resources\HealthScreeningResource\Pages;
 use App\Filament\Resources\HealthScreeningResource\RelationManagers;
 use App\Models\HealthScreening;
@@ -29,6 +30,11 @@ class HealthScreeningResource extends Resource
     protected static ?string $model = HealthScreening::class;
 
 //    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
+
+    public static function canViewAny(): bool
+    {
+        return RoleManager::getAcl('health-screening', auth()->user()->role, 'view');
+    }
 
     public static function form(Form $form): Form
     {

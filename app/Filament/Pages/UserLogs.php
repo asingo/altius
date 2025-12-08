@@ -2,6 +2,7 @@
 
 namespace App\Filament\Pages;
 
+use App\Class\RoleManager;
 use App\Models\UserLog;
 use Filament\Pages\Page;
 use Filament\Tables\Actions\BulkActionGroup;
@@ -18,6 +19,11 @@ class UserLogs extends Page implements HasTable
     protected static ?string $navigationIcon = 'heroicon-o-document-text';
 
     protected static string $view = 'filament.pages.user-logs';
+
+    public static function canAccess(): bool
+    {
+        return RoleManager::getAcl('settings', auth()->user()->role, 'view');
+    }
 
     public function table(Table $table): Table
     {

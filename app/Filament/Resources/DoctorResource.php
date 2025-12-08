@@ -21,6 +21,7 @@ use Filament\Tables\Table;
 use FilamentTiptapEditor\TiptapEditor;
 use Illuminate\Contracts\Support\Htmlable;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
 
@@ -31,6 +32,11 @@ class DoctorResource extends Resource
     protected static ?string $model = Doctor::class;
 
     protected static ?string $navigationIcon = 'icon-doctor';
+
+    public static function canViewAny(): bool
+    {
+        return RoleManager::getAcl('doctors', auth()->user()->role, 'view');
+    }
 
     public static function form(Form $form): Form
     {

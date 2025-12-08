@@ -27,6 +27,11 @@ class ServiceResource extends Resource
 
     protected static ?string $navigationGroup = 'Service & Facility';
 
+    public static function canViewAny(): bool
+    {
+        return RoleManager::getAcl('services', auth()->user()->role, 'view');
+    }
+
     public static function form(Form $form): Form
     {
         return $form

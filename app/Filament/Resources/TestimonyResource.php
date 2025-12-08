@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Class\RoleManager;
 use App\Filament\Resources\TestimonyResource\Pages;
 use App\Filament\Resources\TestimonyResource\RelationManagers;
 use App\Models\Testimony;
@@ -25,6 +26,11 @@ class TestimonyResource extends Resource
     protected static ?string $model = Testimony::class;
 
     protected static ?string $navigationIcon = 'icon-testimonies';
+
+    public static function canViewAny(): bool
+    {
+        return RoleManager::getAcl('testimonies', auth()->user()->role, 'view');
+    }
 
     public static function form(Form $form): Form
     {

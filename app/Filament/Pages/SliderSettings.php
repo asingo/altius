@@ -2,6 +2,7 @@
 
 namespace App\Filament\Pages;
 
+use App\Class\RoleManager;
 use App\Models\Setting;
 use Awcodes\Curator\Components\Forms\CuratorPicker;
 use Awcodes\Curator\Models\Media;
@@ -23,6 +24,11 @@ class SliderSettings extends Page implements HasForms
     protected static ?string $navigationGroup = 'Slider';
 
     protected static string $view = 'filament.pages.slider-settings';
+
+    public static function canAccess(): bool
+    {
+        return RoleManager::getAcl('settings', auth()->user()->role, 'view');
+    }
 
     public $formData;
 

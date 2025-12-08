@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Career;
 
+use App\Class\RoleManager;
 use App\Filament\Resources\Career\CareerCategoryResource\Pages;
 use App\Filament\Resources\Career\CareerCategoryResource\RelationManagers;
 use App\Models\Career\CareerCategory;
@@ -20,6 +21,11 @@ class CareerCategoryResource extends Resource
     protected static ?string $navigationGroup = 'Career';
     protected static ?string $model = CareerCategory::class;
     protected static ?string $navigationLabel = 'Category';
+
+    public static function canViewAny(): bool
+    {
+        return RoleManager::getAcl('careers', auth()->user()->role, 'view');
+    }
 //    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 protected static ?int $navigationSort = 2;
 

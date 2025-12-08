@@ -77,6 +77,13 @@ class RoleManagement extends Component implements HasForms, HasActions
             'delete' => true,
             'deny' => true,
         ],
+        'articles' => [
+            'create' => true,
+            'view' => true,
+            'update' => true,
+            'delete' => true,
+            'deny' => true,
+        ],
         'careers' => [
             'create' => true,
             'view' => true,
@@ -177,6 +184,13 @@ class RoleManagement extends Component implements HasForms, HasActions
             'delete' => false,
             'deny' => false,
         ],
+        'articles' => [
+            'create' => false,
+            'view' => false,
+            'update' => false,
+            'delete' => false,
+            'deny' => false,
+        ],
         'careers' => [
             'create' => false,
             'view' => false,
@@ -271,6 +285,13 @@ class RoleManagement extends Component implements HasForms, HasActions
             'deny' => false,
         ],
         'news' => [
+            'create' => false,
+            'view' => false,
+            'update' => false,
+            'delete' => false,
+            'deny' => false,
+        ],
+        'articles' => [
             'create' => false,
             'view' => false,
             'update' => false,
@@ -642,6 +663,46 @@ class RoleManagement extends Component implements HasForms, HasActions
                             }
                         }),
                 ])->columns(2)->columnSpan(1)->statePath('news')->collapsible(),
+                Section::make('Articles')->schema([
+                    Toggle::make('create')->label('Create')
+                        ->live()
+                        ->afterStateUpdated(function (callable $set, $state) {
+                            if ($state) {
+                                $set('deny', false);
+                            }
+                        }),
+                    Toggle::make('view')->label('View')
+                        ->live()
+                        ->afterStateUpdated(function (callable $set, $state) {
+                            if ($state) {
+                                $set('deny', false);
+                            }
+                        }),
+                    Toggle::make('update')->label('Update')
+                        ->live()
+                        ->afterStateUpdated(function (callable $set, $state) {
+                            if ($state) {
+                                $set('deny', false);
+                            }
+                        }),
+                    Toggle::make('delete')->label('Delete')
+                        ->live()
+                        ->afterStateUpdated(function (callable $set, $state) {
+                            if ($state) {
+                                $set('deny', false);
+                            }
+                        }),
+                    Toggle::make('deny')->label('Deny')
+                        ->live()
+                        ->afterStateUpdated(function (callable $set, $state) {
+                            if ($state) {
+                                $set('create', false);
+                                $set('view', false);
+                                $set('update', false);
+                                $set('delete', false);
+                            }
+                        }),
+                ])->columns(2)->columnSpan(1)->statePath('articles')->collapsible(),
                 Section::make('Careers')->schema([
                     Toggle::make('create')->label('Create')
                         ->live()

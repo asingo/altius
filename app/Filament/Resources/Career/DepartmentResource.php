@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Career;
 
+use App\Class\RoleManager;
 use App\Filament\Resources\Career\DepartmentResource\Pages;
 use App\Filament\Resources\Career\DepartmentResource\RelationManagers;
 use App\Models\Career\Department;
@@ -21,7 +22,10 @@ class DepartmentResource extends Resource
     protected static ?string $model = Department::class;
     protected static ?int $navigationSort = 3;
 //    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
+    public static function canViewAny(): bool
+    {
+        return RoleManager::getAcl('careers', auth()->user()->role, 'view');
+    }
     public static function form(Form $form): Form
     {
         return $form

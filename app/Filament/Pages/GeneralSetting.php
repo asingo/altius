@@ -2,6 +2,7 @@
 
 namespace App\Filament\Pages;
 
+use App\Class\RoleManager;
 use App\Models\Setting;
 use App\View\Components\Grid;
 use Artisan;
@@ -35,6 +36,11 @@ class GeneralSetting extends Page implements HasForms
     protected static ?string $navigationGroup = 'Settings';
 
     public ?array $general = [];
+
+    public static function canAccess(): bool
+    {
+        return RoleManager::getAcl('settings', auth()->user()->role, 'view');
+    }
 
     public function mount()
     {

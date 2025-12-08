@@ -2,6 +2,7 @@
 
 namespace App\Filament\Pages;
 
+use App\Class\RoleManager;
 use App\Models\Setting;
 use Filament\Actions\Action;
 use Filament\Forms\Components\Repeater;
@@ -23,6 +24,11 @@ class FeedbackForm extends Page implements HasForms
     protected static string $view = 'filament.pages.feedback-form';
 
     protected static ?string $navigationGroup = 'Feedback';
+
+    public static function canAccess(): bool
+    {
+        return RoleManager::getAcl('feedback', auth()->user()->role, 'view');
+    }
 
     public $feedback = [];
 

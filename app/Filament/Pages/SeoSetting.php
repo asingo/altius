@@ -2,6 +2,7 @@
 
 namespace App\Filament\Pages;
 
+use App\Class\RoleManager;
 use App\Models\Setting;
 use Artisan;
 use Awcodes\Curator\Models\Media;
@@ -28,6 +29,11 @@ class SeoSetting extends Page implements HasForms, HasActions
     protected static string $view = 'filament.pages.seo-setting';
 
     protected static ?string $navigationLabel = 'SEO';
+
+    public static function canAccess(): bool
+    {
+        return RoleManager::getAcl('settings', auth()->user()->role, 'view');
+    }
 
     protected static ?string $navigationGroup = 'Settings';
 

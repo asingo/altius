@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Class\RoleManager;
 use App\Filament\Resources\ArticleResource\Pages;
 use App\Filament\Resources\ArticleResource\RelationManagers;
 use App\Models\Article;
@@ -26,6 +27,11 @@ class ArticleResource extends Resource
     protected static ?string $model = Article::class;
 
     protected static ?string $navigationIcon = 'heroicon-o-newspaper';
+
+    public static function canViewAny(): bool
+    {
+        return RoleManager::getAcl('articles', auth()->user()->role, 'view');
+    }
 
     public static function form(Form $form): Form
     {

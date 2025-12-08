@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Class\RoleManager;
 use App\Filament\Resources\LocationResource\Pages;
 use App\Filament\Resources\LocationResource\RelationManagers;
 use App\Models\Location;
@@ -27,6 +28,11 @@ class LocationResource extends Resource
     protected static ?string $model = Location::class;
 
     protected static ?string $navigationIcon = 'icon-location';
+
+    public static function canViewAny(): bool
+    {
+        return RoleManager::getAcl('locations', auth()->user()->role, 'view');
+    }
 
     public static function form(Form $form): Form
     {

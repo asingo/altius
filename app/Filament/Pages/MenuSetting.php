@@ -2,6 +2,7 @@
 
 namespace App\Filament\Pages;
 
+use App\Class\RoleManager;
 use App\Models\MenuHeader;
 use Filament\Actions\Concerns\InteractsWithActions;
 use Filament\Actions\Contracts\HasActions;
@@ -23,5 +24,8 @@ class MenuSetting extends Page{
 
     protected static string $view = 'filament.pages.menu-setting';
 
-
+    public static function canAccess(): bool
+    {
+        return RoleManager::getAcl('settings', auth()->user()->role, 'view');
+    }
 }

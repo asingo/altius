@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Class\RoleManager;
 use App\Filament\Resources\OfferResource\Pages;
 use App\Filament\Resources\OfferResource\RelationManagers;
 use App\Models\Location;
@@ -24,6 +25,11 @@ class OfferResource extends Resource
     use Translatable;
     protected static ?string $navigationGroup = 'Offers';
     protected static ?string $model = Offer::class;
+
+    public static function canViewAny(): bool
+    {
+        return RoleManager::getAcl('offers', auth()->user()->role, 'view');
+    }
 
 //    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 

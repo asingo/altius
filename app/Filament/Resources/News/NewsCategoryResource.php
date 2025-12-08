@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\News;
 
+use App\Class\RoleManager;
 use App\Filament\Resources\News\NewsCategoryResource\Pages;
 use App\Filament\Resources\News\NewsCategoryResource\RelationManagers;
 use App\Models\News\NewsCategory;
@@ -27,7 +28,10 @@ class NewsCategoryResource extends Resource
     protected static ?string $slug = 'news-cat/categories';
 
 //    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
+    public static function canViewAny(): bool
+    {
+        return RoleManager::getAcl('news', auth()->user()->role, 'view');
+    }
     public static function form(Form $form): Form
     {
         return $form

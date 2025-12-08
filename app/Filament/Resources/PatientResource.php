@@ -29,6 +29,11 @@ class PatientResource extends Resource
     protected static ?string $navigationLabel = 'List Patients';
     protected static ?string $navigationGroup = 'Patients';
 
+    public static function canViewAny(): bool
+    {
+        return RoleManager::getAcl('patients', auth()->user()->role, 'view');
+    }
+
     public static function form(Form $form): Form
     {
         return $form

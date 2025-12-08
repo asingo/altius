@@ -2,6 +2,7 @@
 
 namespace App\Filament\Pages;
 
+use App\Class\RoleManager;
 use App\Models\Setting;
 use Awcodes\Curator\Models\Media;
 use Filament\Forms\Components\Grid;
@@ -27,6 +28,11 @@ class PrivacyPolicy extends Page implements HasForms
 
     protected static bool $shouldRegisterNavigation = false;
     public ?array $privacy_policy = [];
+
+    public static function canAccess(): bool
+    {
+        return RoleManager::getAcl('settings', auth()->user()->role, 'view');
+    }
 
     public function mount()
     {

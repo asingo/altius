@@ -32,6 +32,11 @@ class PagesResource extends Resource
 
     protected static ?string $navigationIcon = 'icon-pages';
 
+    public static function canViewAny(): bool
+    {
+        return RoleManager::getAcl('pages', auth()->user()->role, 'view');
+    }
+
     public static function form(Form $form): Form
     {
         return $form

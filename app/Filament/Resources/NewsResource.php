@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Class\RoleManager;
 use App\Filament\Resources\NewsResource\Pages;
 use App\Filament\Resources\NewsResource\RelationManagers;
 use App\Models\Location;
@@ -30,6 +31,10 @@ class NewsResource extends Resource
 //    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
     protected static ?string $navigationGroup = 'News';
 
+    public static function canViewAny(): bool
+    {
+        return RoleManager::getAcl('news', auth()->user()->role, 'view');
+    }
     public static function form(Form $form): Form
     {
         return $form

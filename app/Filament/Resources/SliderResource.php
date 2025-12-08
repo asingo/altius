@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Class\RoleManager;
 use App\Filament\Resources\SliderResource\Pages;
 use App\Filament\Resources\SliderResource\RelationManagers;
 use App\Models\Slider;
@@ -28,7 +29,10 @@ class SliderResource extends Resource
     protected static ?string $navigationGroup = 'Slider';
 
 //    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
+    public static function canViewAny(): bool
+    {
+        return RoleManager::getAcl('slider', auth()->user()->role, 'view');
+    }
     public static function form(Form $form): Form
     {
         return $form

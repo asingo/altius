@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\Offer;
 
+use App\Class\RoleManager;
 use App\Filament\Resources\Offer\OffersCategoryResource\Pages;
 use App\Filament\Resources\Offer\OffersCategoryResource\RelationManagers;
 use App\Models\Offers\OffersCategory;
@@ -24,7 +25,10 @@ class OffersCategoryResource extends Resource
     protected static ?string $model = OffersCategory::class;
 
 //    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
-
+    public static function canViewAny(): bool
+    {
+        return RoleManager::getAcl('offers', auth()->user()->role, 'view');
+    }
     public static function form(Form $form): Form
     {
         return $form
