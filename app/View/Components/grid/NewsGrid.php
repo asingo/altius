@@ -12,15 +12,17 @@ class NewsGrid extends Component
     public $category;
     public $date;
     public $slug;
+    public $type;
     /**
      * Create a new component instance.
      */
-    public function __construct($title, $category, $date, $slug)
+    public function __construct($title, $category, $date, $slug, $type = 'news')
     {
         $this->title = $title;
         $this->category = $category;
         $this->date = $date;
         $this->slug = $slug;
+        $this->type = $type;
     }
 
     /**

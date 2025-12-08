@@ -15,7 +15,7 @@ class EditPages extends EditRecord
     {
         return [
             Actions\LocaleSwitcher::make()->label('Language'),
-            Actions\DeleteAction::make(),
+//            Actions\DeleteAction::make(),
         ];
     }
 

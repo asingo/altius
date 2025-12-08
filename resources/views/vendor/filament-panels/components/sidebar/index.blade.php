@@ -213,6 +213,8 @@
                                 ['title'=>'Category','url'=>'/'.$adminSlug.'/news-cat/categories','perm'=>'news-categories'],
                             ],
                         ],
+                         ['title'=>'Articles','url'=>'/'.$adminSlug.'/articles','icon'=>'heroicon-o-clipboard-document-list','perm'=>'articles'],
+
                         [
                             'title'=>'Careers','icon'=>'careers',
                             'children'=> [

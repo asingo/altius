@@ -3,6 +3,7 @@
 namespace App\Filament\Resources;
 
 use App\Class\RoleManager;
+use App\Class\TemplateConfig;
 use App\Filament\Resources\PagesResource\FormSchema;
 use App\Filament\Resources\PagesResource\Pages;
 use App\Filament\Resources\PagesResource\RelationManagers;
@@ -36,69 +37,49 @@ class PagesResource extends Resource
         return $form
             ->schema([
                 Forms\Components\Grid::make(4)->schema([
-                    Forms\Components\Grid::make(1)->schema(function ($get) {
-                        $schema = [];
-                        if ($get('view') == 'pages.about.index') {
-                            $schema = FormSchema::about();
-                        }
-                        if ($get('view') == 'pages.home.index') {
-                            $schema = FormSchema::home();
-                        }
-                        if ($get('view') == 'pages.career.index') {
-                            $schema = FormSchema::career();
-                        }
-                        if ($get('view') == 'pages.location.index' || $get('view') == 'pages.health-screening.index' || $get('view') == 'pages.offers.index') {
-                            $schema = FormSchema::general();
-                        }
-                        if ($get('view') == 'pages.medical-professional.index') {
-                            $schema = FormSchema::withHero();
-                        }
-                        if ($get('view') == 'pages.news.index') {
-                            $schema = FormSchema::withHeroAndBody();
-                        }
-                        if ($get('view') == 'pages.contact.index') {
-                            $schema = FormSchema::contact();
-                        }
-                        if ($get('view') == 'pages.privacy.index' || $get('view') == 'pages.terms.index') {
-                            $schema = FormSchema::generalAccordion();
-                        }
+                    // LEFT SIDE
+                    Forms\Components\Grid::make(1)
+                        ->schema(function ($get) {
 
-                        return [
-                            Forms\Components\TextInput::make('title')
-                                ->label('')->placeholder('Enter a Title')
-                                ->afterStateUpdated(function ($set, $state) {
-                                    $set('slug', Str::slug($state));
-                                })
-                                ->required()
-                                ->extraFieldWrapperAttributes(['class' => 'no-asterisk'])
-                                ->extraInputAttributes(['class' => '!text-2xl'])
-                                ->live(onBlur: true),
-                            ...$schema,
-                            Forms\Components\Section::make('SEO Settings')->schema([
-                                Forms\Components\TextInput::make('seo_title')
-                                    ->label('SEO Title')
-                                    ->placeholder('Enter SEO Title'),
-                                Forms\Components\TextInput::make('seo_keyword')
-                                    ->label('SEO Keyword')
-                                    ->placeholder('Enter SEO Keyword'),
-                                Forms\Components\TextInput::make('seo_description')
-                                    ->label('SEO Description')
-                                    ->placeholder('Enter SEO Description'),
-                                Forms\Components\Select::make('seo_index')
-                                    ->label('Indexing Status')
-                                    ->default(true)
-                                    ->options([
-                                        true => 'Yes',
-                                        false => 'No'
-                                    ])->native(false)
-                            ])
+                            $map = TemplateConfig::map();
+                            $view = $get('view');
+                            $schema = $map[$view]['schema'] ?? [];
+                            return [
+                                Forms\Components\TextInput::make('title')
+                                    ->label('')
+                                    ->placeholder('Enter a Title')
+                                    ->required()
+                                    ->live(onBlur: true)
+                                    ->afterStateUpdated(fn ($set, $state) => $set('slug', Str::slug($state)))
+                                    ->extraFieldWrapperAttributes(['class' => 'no-asterisk'])
+                                    ->extraInputAttributes(['class' => '!text-2xl']),
 
-                        ];
-                    })->columnSpan(3),
+                                ...$schema,
+
+                                Forms\Components\Section::make('SEO Settings')
+                                    ->schema([
+                                        Forms\Components\TextInput::make('seo_title'),
+                                        Forms\Components\TextInput::make('seo_keyword'),
+                                        Forms\Components\TextInput::make('seo_description'),
+                                        Forms\Components\Select::make('seo_index')
+                                            ->default(true)
+                                            ->options([
+                                                true => 'Yes',
+                                                false => 'No',
+                                            ])
+                                            ->native(false),
+                                    ]),
+                            ];
+                        })
+                        ->live() // ini cukup, tidak perlu reactive
+                        ->columnSpan(3),
+
+                    // RIGHT SIDE
                     Forms\Components\Grid::make(1)->schema([
                         Forms\Components\Section::make('Page Details')
                             ->schema([
                                 Forms\Components\TextInput::make('slug'),
+
                                 Forms\Components\Select::make('view')
                                     ->label('Template')
                                     ->live()
@@ -111,64 +92,32 @@ class PagesResource extends Resource
                                         'pages.location.index' => 'Location',
                                         'pages.medical-professional.index' => 'Medical Professional',
                                         'pages.news.index' => 'News',
+                                        'pages.article.index' => 'Articles',
                                         'pages.offers.index' => 'Offers',
                                         'pages.privacy.index' => 'Privacy Policy',
                                         'pages.terms.index' => 'Terms & Conditions',
-                                    ])->afterStateUpdated(function ($state, $set) {
-                                        $controller = match ($state) {
-                                            'pages.home.index' => 'App\Http\Controllers\Pages\HomeController',
-                                            'pages.about.index' => 'App\Http\Controllers\Pages\AboutController',
-                                            'pages.location.index' => 'App\Http\Controllers\Pages\LocationController',
-                                            'pages.medical-professional.index' => 'App\Http\Controllers\Pages\DoctorController',
-                                            'pages.career.index' => 'App\Http\Controllers\Pages\CareerController',
-                                            'pages.health-screening.index' => 'App\Http\Controllers\Pages\ScreeningController',
-                                            'pages.contact.index' => 'App\Http\Controllers\Pages\ContactController',
-                                            'pages.news.index' => 'App\Http\Controllers\Pages\NewsController',
-                                            'pages.offers.index' => 'App\Http\Controllers\OffersController',
-                                            'pages.privacy.index' => 'App\Http\Controllers\Pages\PrivacyController',
-                                            'pages.terms.index' => 'App\Http\Controllers\Pages\TermsController',
-                                            default => null
-                                        };
+                                    ])
+                                    ->afterStateUpdated(function ($state, $set) {
+                                        $map = TemplateConfig::map();
+                                        if (!isset($map[$state])) return;
 
-                                        $route_name = match ($state) {
-                                            'pages.home.index' => 'home',
-                                            'pages.about.index' => 'about',
-                                            'pages.location.index' => 'location',
-                                            'pages.medical-professional.index' => 'doctor',
-                                            'pages.career.index' => 'career',
-                                            'pages.health-screening.index' => 'screening',
-                                            'pages.contact.index' => 'contact',
-                                            'pages.news.index' => 'news',
-                                            'pages.offers.index' => 'offers',
-                                            'pages.privacy.index' => 'privacy',
-                                            'pages.terms.index' => 'terms',
-                                            default => null
-                                        };
-
-                                        $route_name_detail = match ($state) {
-                                            'pages.location.index' => 'locationDetail',
-                                            'pages.medical-professional.index' => 'doctorDetail',
-                                            'pages.career.index' => 'careerDetail',
-                                            'pages.news.index' => 'newsDetail',
-                                            'pages.health-screening.index' => 'screeningDetail',
-                                            'pages.offers.index' => 'offersDetail',
-                                            default => null
-
-                                        };
-
-                                        $set('controller', $controller);
-                                        $set('route_name', $route_name);
-                                        $set('route_name_detail', $route_name_detail);
+                                        $set('controller', $map[$state]['controller']);
+                                        $set('route_name', $map[$state]['route']);
+                                        $set('route_name_detail', $map[$state]['detail_route']);
                                     }),
+
                                 Forms\Components\Hidden::make('controller'),
                                 Forms\Components\Hidden::make('route_name'),
                                 Forms\Components\Hidden::make('route_name_detail'),
-                            ])->columnSpan(1),
-                        Forms\Components\Section::make('Featured Image')->schema([
-                            CuratorPicker::make('image')
-                        ])
+                            ]),
+
+                        Forms\Components\Section::make('Featured Image')
+                            ->schema([
+                                CuratorPicker::make('image')
+                            ]),
                     ])->columnSpan(1),
                 ])
+
 
             ]);
     }

@@ -166,8 +166,10 @@ class FormSchema
                 ])->statePath('body'),
             ])->hidden(fn ($get) => match ($get('view')) {
                 'pages.news.index' => false,
+                'pages.article.index' => false,
                 default => true
             })->dehydrated(fn ($get) => match ($get('view')) {
+                'pages.article.index' => true,
                 'pages.news.index' => true,
                 default => false
             })->statePath('content')
