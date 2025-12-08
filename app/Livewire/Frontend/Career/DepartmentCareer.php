@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Frontend\Career;
 
+use App\Models\Career\Department;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Concerns\InteractsWithForms;
 use Filament\Forms\Contracts\HasForms;
@@ -12,26 +13,18 @@ class DepartmentCareer extends Component implements HasForms
 {
     use InteractsWithForms;
 
-    public $department = 'All Department';
+    public $department = 'all';
 
-    public $data = [
-        'All Department',
-        'Health Information Management',
-        'Nurse',
-        'Administration',
-        'Sales',
-        'Manager',
-        'Radiographer'
-    ];
 
     public function form(Form $form): Form
     {
+        $department = Department::get()->mapWithKeys(fn ($item) => [$item->id => $item->title])->toArray();
         return $form->schema([
             Select::make('department')->label('')->placeholder('')
                 ->native(false)
                 ->live()
                 ->afterStateUpdated(fn ($state) => $this->dispatch('handleDepartmentFilter', $state))
-                ->options(fn () => collect($this->data)->mapWithKeys(fn ($item) => [$item => $item])->toArray())
+                ->options(fn () => ['all' => __('All Department')] + $department)
         ]);
     }
 

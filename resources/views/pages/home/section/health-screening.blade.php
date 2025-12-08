@@ -1,83 +1,23 @@
-<div class="max-w-screen-2xl mx-auto py-24 px-6 2xl:px-0">
+<div class="max-w-screen-2xl mx-auto pb-12  py-24 px-6 2xl:px-0">
     <div class="flex flex-col mb-8">
-        <x-typography.subheading location="section">Your Health, Your Priority</x-typography.subheading>
-        <x-typography.heading>Discover Our Health Screening Package</x-typography.heading>
+        <x-typography.subheading location="section">{{$page->content['health_screening']['title']}}</x-typography.subheading>
+        <x-typography.heading>{{$page->content['health_screening']['heading']}}</x-typography.heading>
     </div>
-    <x-slider autoplay="false" id="screeningSlider" class="mb-12" arrow="bottom-right" items="4" mobile="1" infinity="true" centered="true">
-        <x-slider.slider-item>
-            <x-grid.basic
-                image="{{asset('asset/ScreeningPackage/cover-1.jpg')}}"
-                heading="General Health Screening Package"
-                description="Recommended for age group from
-            25-35 years old for both male and
-            female"
-            />
-        </x-slider.slider-item>
-        <x-slider.slider-item>
-            <x-grid.basic
-                image="{{asset('asset/ScreeningPackage/cover-1.jpg')}}"
-                heading="General Health Screening Package"
-                description="Recommended for age group from
-            25-35 years old for both male and
-            female"
-            />
-        </x-slider.slider-item>
-        <x-slider.slider-item>
-            <x-grid.basic
-                image="{{asset('asset/ScreeningPackage/cover-1.jpg')}}"
-                heading="General Health Screening Package"
-                description="Recommended for age group from
-            25-35 years old for both male and
-            female"
-            />
-        </x-slider.slider-item>
-        <x-slider.slider-item>
-            <x-grid.basic
-                image="{{asset('asset/ScreeningPackage/cover-1.jpg')}}"
-                heading="General Health Screening Package"
-                description="Recommended for age group from
-            25-35 years old for both male and
-            female"
-            />
-        </x-slider.slider-item>
-        <x-slider.slider-item>
-            <x-grid.basic
-                image="{{asset('asset/ScreeningPackage/cover-1.jpg')}}"
-                heading="General Health Screening Package"
-                description=""
-            />
-        </x-slider.slider-item>
-        <x-slider.slider-item>
-            <x-grid.basic
-                image="{{asset('asset/ScreeningPackage/cover-1.jpg')}}"
-                heading="General Health Screening Package"
-                description=""
-            />
-        </x-slider.slider-item>
-        <x-slider.slider-item>
-            <x-grid.basic
-                image="{{asset('asset/ScreeningPackage/cover-1.jpg')}}"
-                heading="General Health Screening Package"
-                description=""
-            />
-        </x-slider.slider-item>
-        <x-slider.slider-item>
-            <x-grid.basic
-                image="{{asset('asset/ScreeningPackage/cover-1.jpg')}}"
-                heading="General Health Screening Package"
-                description=""
-            />
-        </x-slider.slider-item>
-        <x-slider.slider-item>
-            <x-grid.basic
-                image="{{asset('asset/ScreeningPackage/cover-1.jpg')}}"
-                heading="General Health Screening Package"
-                description="Recommended for age group from
-            25-35 years old for both male and
-            female"
-            />
-        </x-slider.slider-item>
+    <x-slider autoplay="false" id="screeningSlider" class="mb-12" arrow="bottom-right" items="4" mobile="1"
+              infinity="true" centered="true">
+        @foreach($healthScreening as $h)
+            <x-slider.slider-item>
+                <x-grid.basic
+                    image="{{\Awcodes\Curator\Models\Media::find(get_image_id($h->image))->url}}"
+                    :equal="true"
+                    heading="{{$h->title}}"
+                    slug="{{localized_route('screening')}}/{{$h->slug}}"
+                    :description="$h->description"
+                    price="{{$h->price}}"
+                />
+            </x-slider.slider-item>
+        @endforeach
     </x-slider>
-    <x-button.link href="{{route('screening')}}" class="-mt-2.5">More Health Screening Package</x-button.link>
+    <x-button.link href="{{localized_route('screening')}}" class="-mt-2.5">{{$page->content['health_screening']['button_label']}}</x-button.link>
 
 </div>

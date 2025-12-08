@@ -14,19 +14,78 @@
         src: url("../fonts/DMSerifText-Regular.ttf") format("truetype");
     }
 }
+
+.doctor-filter .fi-fo-field-wrp-label, .careerForm .fi-fo-field-wrp-label{
+    @apply ms-3
+}
+
+:root{
+    @apply text-[16px] md:text-[17px] xl:text-[18px];
+}
+
 body{
     font-family: "Overused Grotesk", sans-serif;
 }
 
-p, ol, ul:not(.menu-list) li{
+p{
+    color: #525252;
+}
+
+p{
+    @apply text-md;
+}
+
+h1{
+    @apply text-5xl;
+}
+
+h2{
+    @apply text-4xl;
+}
+
+h3{
+    @apply text-3xl;
+}
+
+h4{
+    @apply text-2xl;
+}
+h5{
+    @apply text-xl;
+}
+h6{
+    @apply text-lg;
+}
+
+ ol, ul:not(.menu-list) li{
     font-size: 20px;
     color: #525252;
+}
+
+.create-account-form .fi-fo-wizard-header{
+    @apply hidden;
+}
+
+.create-account-form .fi-fo-wizard{
+    @apply ring-0;
+}
+
+.create-account-form .fi-fo-wizard > div:nth-child(5) span:nth-child(3) button,
+.create-account-form .fi-fo-wizard > div:nth-child(5) span:nth-child(4) button{
+    @apply py-3 px-6 border text-white bg-primary w-full rounded-xl flex items-center justify-center gap-2;
+}
+.create-account-form .fi-fo-wizard > div:nth-child(5) span:nth-child(1) button{
+    @apply py-3 px-6 border w-full rounded-xl flex items-center justify-center gap-2;
 }
 
 .menu-interaction {
     @apply absolute -left-0.5 -bottom-1 h-[1.5px] w-full bg-white
     origin-center scale-x-0 transition-transform duration-300 ease-in-out
     group-hover:scale-x-100;
+}
+
+sup{
+    @apply !text-red-600;
 }
 
 .btn-outline {
@@ -37,21 +96,37 @@ p, ol, ul:not(.menu-list) li{
 }
 
 .filter-doctor .fi-fo-field-wrp-label span{
-    @apply text-[16px] text-primary;
+    @apply text-md text-primary font-medium;
 }
-.filter-doctor .fi-input-wrp-prefix, .doctor-search .fi-input-wrp-prefix, .speciality-filter .fi-input-wrp-prefix, .date-filter .fi-input-wrp-prefix {
+.filter-doctor .fi-input-wrp-prefix, .careerForm .fi-input-wrp-prefix, .doctor-search .fi-input-wrp-prefix, .speciality-filter .fi-input-wrp-prefix, .date-filter .fi-input-wrp-prefix {
     @apply border-none pe-0;
 }
 
 .doctor-search input, .speciality-filter input, .date-filter input, .careerForm input{
-    @apply text-lg py-2 bg-white;
+    @apply text-md py-2 bg-white;
 }
 .department-filter .fi-fo-select, .careerForm .fi-fo-select{
     @apply py-0.5;
 }
 
 .location-filter > div span, .department-filter .fi-fo-select .choices__item, .careerForm .fi-fo-select .choices__item {
-    @apply text-lg font-normal;
+    @apply text-md font-normal;
+}
+
+.create-account-form input{
+    @apply text-md px-4 py-2 placeholder:text-slate-400;
+}
+
+.create-account-form .fi-input-wrp{
+    @apply border border-slate-400 rounded-xl focus-within:border-primary focus-within:border-2;
+}
+
+.create-account-form .fi-icon-btn-icon{
+    @apply fill-primary;
+}
+
+.create-account-form .fi-input-wrp-suffix{
+    @apply border-slate-400;
 }
 
 .post-content h3{
@@ -67,7 +142,7 @@ p, ol, ul:not(.menu-list) li{
 }
 
 .careerForm .filepond--drop-label label{
-    @apply text-lg text-slate-400;
+    @apply text-md text-slate-400;
 }
 
 .careerForm .filepond--drop-label label span{
@@ -90,10 +165,98 @@ ul:not(.menu-list){
     @apply list-disc text-lg ml-5;
 }
 
-.careerForm .fi-fo-field-wrp-label span{
-    @apply text-xl font-normal text-textsub;
+.fi-fo-repeater ul{
+    @apply list-none ml-0;
 }
 
-.doctor-filter div.choices__list.choices__list--dropdown{
-    @apply !hidden;
+.fi-fo-field-wrp-label span{
+    @apply text-md font-normal;
 }
+
+.edit-profile .fi-fo-field-wrp-label span{
+    @apply text-sm font-normal;
+}
+
+.swal2-icon, .swal2-title, .swal2-html-container{
+    @apply mt-0 !pt-0;
+}
+
+.swal2-title{
+    @apply text-2xl font-medium;
+}
+.swal2-confirm{
+   @apply bg-primary hover:bg-accent text-white border border-primary rounded-xl px-4 py-2 m-1;
+}
+.swal2-cancel{
+    @apply bg-white border border-red-600 text-red-600 hover:border-red-900 hover:text-red-900 rounded-xl px-4 py-2 m-1;
+}
+
+.fi-fo-wizard{
+    @apply !shadow-none;
+}
+
+h2{
+    @apply !text-4xl;
+}
+
+button{
+    @apply !text-md;
+}
+
+.careerForm .fi-fo-field-wrp-label span{
+    @apply text-md font-normal text-textsub;
+}
+
+.edit-profile fieldset legend{
+    @apply text-lg font-medium;
+}
+
+.filepond--label-action{
+    @apply !text-primary;
+}
+
+.choices__list.choices__list--single {
+    text-wrap:nowrap;
+    width: 100%;
+    overflow-x: clip;
+}
+
+.slider-testimonySlider .swiper-wrapper {
+    align-items: stretch !important;
+}
+
+.slider-testimonySlider .swiper-slide {
+    display: flex !important;
+    height: auto !important;
+}
+
+.post-content a, a:not(.menu-item) span{
+    @apply !text-primary hover:!text-accent;
+}
+
+.btn{
+    @apply transition-all duration-300 ease-in-out;
+}
+
+.btn-primary{
+    @apply bg-primary hover:bg-btn-secondary text-white transition-all duration-300 ease-in-out;
+}
+
+.swiper-navigation > div{
+    @apply hover:bg-primary hover:border-primary transition-all duration-300 ease-in-out;
+}
+
+.swiper-navigation > div:hover:after{
+    color: #ffffff;
+}
+
+.otp-container input{
+    appearance: textfield !important;
+}
+
+.otp-container input:focus{
+    @apply ring-1 ring-primary;
+}
+/*.doctor-filter div.choices__list.choices__list--dropdown{*/
+/*    @apply !hidden;*/
+/*}*/

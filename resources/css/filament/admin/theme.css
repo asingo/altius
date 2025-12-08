@@ -1,6 +1,8 @@
 @import '../../../../vendor/filament/filament/resources/css/base.css';
 @import '../../../../node_modules/cropperjs/dist/cropper.css';
 @import '../../../../vendor/awcodes/filament-curator/resources/css/plugin.css';
+@import '../../../../vendor/awcodes/filament-tiptap-editor/resources/css/plugin.css';
+
 
 
 @tailwind base;
@@ -9,3 +11,187 @@
 @tailwind variants;
 
 @config 'tailwind.config.js';
+
+/*.fi-sidebar-group:not(:first-of-type) .fi-sidebar-group-items:not(.fi-active) {*/
+/*    display: flex !important;*/
+/*    max-height: 0;*/
+/*    opacity: 0;*/
+/*    height: auto!important;*/
+/*    overflow: hidden;*/
+/*    transform: translateY(-6px);*/
+/*    transition-delay: 0.1s;*/
+/*    transition:*/
+/*        max-height 0.45s cubic-bezier(0.25, 0.1, 0.25, 1),*/
+/*        opacity 0.3s ease,*/
+/*        transform 0.4s ease;*/
+/*}*/
+
+.fi-page.feedback-page section{
+    @apply gap-y-0 pb-0;
+}
+.fi-page.feedback-page section > div{
+    @apply px-0;
+}
+
+.curator-media-picker img{
+    @apply h-fit w-fit object-scale-down max-h-full;
+}
+
+.curator-media-picker li > div{
+    @apply items-center;
+}
+
+.fi-form .fi-fo-repeater-item{
+    @apply ring-0 shadow-none;
+}
+
+.fi-page{
+    @apply relative;
+}
+
+
+.fi-form .fi-fieldset{
+    @apply p-0 border-none;
+}
+
+.fi-form .fi-fieldset .fi-fo-component-ctn{
+    @apply mt-2 bg-slate-50 p-4 rounded-xl;
+}
+
+.fi-form .fi-fo-repeater-item-content > div{
+    @apply !gap-3;
+}
+.fi-form .fi-fo-repeater-item-content{
+    @apply p-0;
+}
+
+.curator-media-picker .squared-icon > div{
+    @apply h-fit py-12;
+}
+
+.fi-form .fi-section-header, .fi-form .fi-section-content{
+ @apply p-4;
+}
+
+.fi-form .fi-section-content{
+    @apply pt-0;
+}
+
+.fi-form .fi-fo-field-wrp-label span{
+    @apply font-normal;
+}
+/*.fi-form .fi-section-header h3{*/
+/*    @apply text-[20px];*/
+/*}*/
+
+.fi-form .fi-section-content-ctn{
+    @apply border-none;
+}
+
+.fi-dropdown-header-label{
+    @apply font-semibold
+}
+
+.fi-simple-main{
+    @apply p-0 m-0 max-w-full min-h-screen bg-transparent;
+}
+
+.fi-main{
+    @apply px-0;
+}
+.fi-section-content-ctn{
+    @apply !px-0;
+}
+
+.fi-sidebar-item.fi-active a{
+    @apply bg-[#EAF1FB];
+}
+.fi-sidebar-item.fi-active .fi-sidebar-item-icon{
+    @apply !stroke-[#225CA8];
+}
+
+.fi-main section > div, .fi-header{
+    @apply px-4 md:px-6 lg:px-8;
+}
+
+.fi-main section{
+    @apply pt-0;
+}
+
+.fi-header{
+    @apply bg-white py-3 shadow-sm;
+}
+
+.fi-topbar{
+    @apply hidden;
+}
+
+.fi-header > div{
+    @apply mt-0;
+}
+
+.fi-page .fi-form-actions{
+    @apply fixed right-0 bottom-0 bg-white w-full px-4 md:px-6 lg:px-8 shadow border-t;
+}
+.fi-page:not(.fi-resource-services) .fi-form{
+    @apply mb-20;
+}
+.fi-form-actions .fi-ac{
+    @apply justify-end p-4;
+}
+
+.no-asterisk sup{
+    @apply hidden;
+}
+
+/*.fi-sidebar-group:hover .fi-sidebar-group-items:not(.fi-active) {*/
+/*    max-height: 500px; !* Adjust based on expected content height *!*/
+/*    opacity: 1;*/
+/*    transition-delay: 0s;*/
+/*    overflow: visible;*/
+/*    transform: translateY(0);*/
+/*    transition:*/
+/*        max-height 0.55s cubic-bezier(0.19, 1, 0.22, 1),*/
+/*        opacity 0.35s ease-out,*/
+/*        transform 0.45s ease-out;*/
+/*}*/
+
+.fi-main-ctn{
+    @apply w-full;
+}
+
+.fi-main{
+    @apply !max-w-[100%];
+}
+
+.fi-topbar nav{
+    @apply h-fit shadow-none ring-0;
+}
+
+.fi-sidebar{
+    @apply bg-white;
+}
+
+.fi-sidebar-nav{
+    @apply pt-2;
+}
+
+.fi-sidebar-header{
+    @apply ring-0 shadow-none;
+}
+
+.active-menu:not(.submenu-item){
+    @apply bg-[#EAF1FB] text-primary-600;
+}
+
+.submenu-item:hover a:before{
+    @apply content-[''] block w-[2px] h-5 bg-primary-600 absolute -left-[14px] z-10;
+}
+
+.submenu-item.active-menu a:before{
+    @apply content-[''] block w-[2px] h-5 bg-primary-600 absolute -left-[14px] z-10;
+}
+
+.submenu-item.active-menu{
+    @apply text-primary-600;
+}

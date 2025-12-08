@@ -1,10 +1,16 @@
 
 <div>
     <div class="grid md:grid-cols-2 lg:grid-cols-3 gap-x-6 gap-y-12 items-stretch">
+        @if(count($offers) < 1)
+            <div>
+                <h2 class="text-2xl">{{__('Data not Found')}}</h2>
+            </div>
+        @endif
         @foreach ($offers as $d)
             <x-grid.basic
-                image="{{asset('asset/Offers/cover-01.jpg')}}"
+                image="{{\Awcodes\Curator\Models\Media::find($d['image'])?->url}}"
                 heading="{!! $d['title'] !!}"
+                slug="{{localized_route('offers')}}/{{$d['slug']}}"
             />
         @endforeach
     </div>

@@ -3,20 +3,22 @@
 namespace App\Models;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Database\Eloquent\Relations\BelongsTo;
+use Illuminate\Database\Eloquent\Relations\HasMany;
+use Spatie\Translatable\HasTranslations;
 use Sushi\Sushi;
 
 class Doctor extends Model
 {
-    use Sushi;
+    use HasTranslations;
+    public array $translatable = ['biography', 'expertise', 'education', 'publication'];
 
-    public function getRows()
+    public function speciality(): BelongsTo
     {
-        $data = file_get_contents(base_path('database/schema/doctor-altius.json'));
-        return json_decode($data, true);
+        return $this->belongsTo(Speciality::class, 'speciality_id');
     }
 
-    protected $casts = [
-        'location' => 'array',
-        'schedule' => 'array',
-    ];
+    public function hasLocation(): HasMany{
+        return $this->hasMany(DoctorHasLocation::class);
+    }
 }

@@ -11,14 +11,16 @@ class Link extends Component
     public $href;
     public $class;
     public $outlined;
+    public $newTab;
     /**
      * Create a new component instance.
      */
-    public function __construct($href, $class = '', $outlined = false)
+    public function __construct($href, $class = '', $outlined = false, $newTab = false)
     {
         $this->href = $href;
         $this->class = $class;
         $this->outlined = $outlined;
+        $this->newTab = $newTab ? '_blank':'_self';
     }
 
     /**

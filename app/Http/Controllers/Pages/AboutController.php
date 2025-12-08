@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
+use App\Models\Pages;
 use Illuminate\Http\Request;
 
 class AboutController extends Controller
@@ -10,8 +11,13 @@ class AboutController extends Controller
     public function about()
     {
         $isHeaderOverlay = false;
-        $title = 'About Altius Hospitals';
-        $slug = 'about';
-        return view('pages.about.index', compact('isHeaderOverlay', 'title', 'slug'));
+        $view = 'pages.about.index';
+        $page = Pages::where('view', $view)->first();
+        if($page == null){
+           abort(404);
+        }
+        $title = $page->title;
+        $slug = $page->slug;
+        return view($view, compact('isHeaderOverlay','page', 'title', 'slug'));
     }
 }

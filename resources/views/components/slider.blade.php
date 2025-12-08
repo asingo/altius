@@ -60,7 +60,7 @@
         </div>
     </div>
     <div class="swiper-navigation {{$arrow == 'bottom-right' ? 'relative right-0 -bottom-2 xs:bottom-0' :
-'flex gap-7 justify-center  mt-10  2xl:bottom-1/2' }}
+'flex gap-7 justify-center  mt-10 sm:mt-0  2xl:bottom-1/2' }}
 ">
         <div class="swiper-button-prev after:!text-[16px] sm:after:!text-[20px] !p-4.5 !w-[36px] !h-[36px] xs:!w-[48px] xs:!h-[48px] {{$arrow == 'bottom-right' ? '!right-[45px] xs:!right-[60px] !left-[unset]': '!relative lg:!absolute lg:!left-0
 lg:!right-[unset]'}}"></div>
@@ -71,6 +71,7 @@ lg:!right-[unset]'}}"></div>
 <script>
     var swiper{{$id}} = new Swiper(".slider-{{$id}} .swiper", {
         spaceBetween: 30,
+        autoHeight: false,
         slidesPerView: {{$items != null && $items_mobile != null ? $items_mobile : $items}},
         @if($autoplay == "true")
         speed: 1500,

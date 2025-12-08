@@ -2,6 +2,7 @@
 
 namespace App\Livewire\Frontend\Doctor\Detail;
 
+use Livewire\Attributes\On;
 use Livewire\Component;
 
 class LocationSelect extends Component
@@ -15,16 +16,26 @@ class LocationSelect extends Component
     public function mount($data): void
     {
         $this->data = $data;
-        $this->location = $this->location ?? $data[0]['name'];
-        $this->schedule = $this->schedule ?? $data[0]['schedule'];
+        $this->location = $this->location ?? $data->first()->location_id;
+        $this->schedule = $this->schedule ?? $data->first()->schedule;
+
     }
+
 
     public function locationChanged($value)
     {
-        $this->schedule = collect($this->data)->filter(function ($item) use ($value) {
-            return $item['name'] === $value;
-        })->first()['schedule'];
-}
+        $this->schedule = $this->data->where('location_id', $value)
+            ->map(function ($item) {
+                $item['location_name'] = $item->location->title;
+                return $item;
+            })->first()->schedule;
+        $this->dispatch('handleLocation', $this->location);
+    }
+
+//    public function booted(): void{
+//        $this->dispatch('handleLocation', $this->location)->to('frontend.doctor.detail.booking-bar');
+//        logger('Dispatching from A', [$this->location]);
+//    }
 
     public function render()
     {

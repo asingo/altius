@@ -2,6 +2,9 @@
 
 namespace App\Livewire\Frontend\Home;
 
+use App\Models\Doctor;
+use App\Models\Location;
+use App\Models\Speciality;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Concerns\InteractsWithForms;
@@ -23,28 +26,39 @@ class FilterDoctor extends Component implements HasForms
     public function form(Form $form): Form
     {
         return $form->schema([
-            Select::make('doctor_id')->label('Doctor Name')->placeholder('Find Doctor Name')->options([
-                1 => 'Dr. ',
-            ])->native(false)->searchable()->prefixIcon('heroicon-o-magnifying-glass')->preload(),
-            Select::make('hospital_id')->label('Hospital')->placeholder('Select Hospital')->options([
-                1 => 'Rumah Sakit',
-            ])->native(false)->searchable()->preload(),
-            Select::make('speciality_id')->label('Speciality')->placeholder('Select Speciality')->options([
-                1 => 'Urology',
-            ])->native(false)->searchable()->prefixIcon('heroicon-o-magnifying-glass')->preload(),
-            Select::make('day')->label('Preffered Day')->options([
-                1 => 'Monday',
-                2 => 'Tuesday',
-                3 => 'Wednesday',
-                4 => 'Thursday',
-                5 => 'Friday',
-                6 => 'Saturday',
-                7 => 'Sunday',
+            Select::make('doctor_id')->label(__('doctor.name'))->placeholder(__('find.doctor.name'))->options(
+                fn() => Doctor::pluck('name', 'id')->toArray()
+            )->prefixIcon('heroicon-o-magnifying-glass')->preload(5)->native(false)->searchable(),
+            Select::make('hospital_id')->label(__('hospital'))->placeholder(__('select.hospital'))->options(
+                fn() => Location::pluck('title', 'id')->toArray()
+            )->native(false)->searchable()->preload()->prefixIcon('heroicon-o-building-office-2'),
+            Select::make('speciality_id')->label(__('speciality'))->placeholder(__('select.speciality'))->options(
+                fn() => Speciality::pluck('title', 'id')->toArray()
+            )->native(false)->searchable()->prefixIcon('heroicon-o-magnifying-glass')->preload(),
+            Select::make('day')->label(__('preferred.day'))->options([
+                'monday' => 'Monday',
+                'tuesday' => 'Tuesday',
+                'wednesday' => 'Wednesday',
+                'thursday' => 'Thursday',
+                'friday' => 'Friday',
+                'saturday' => 'Saturday',
+                'sunday' => 'Sunday',
             ])->native(false)->prefixIcon('heroicon-o-calendar'),
 //            DatePicker::make('date')->label('Date')->placeholder('Pick a Date')->format('Y-m-d')
 //                ->native(false)
 //                ->prefixIcon('heroicon-o-calendar'),
         ])->statePath('data')->columns(4);
+    }
+
+    public function findDoctor()
+    {
+        $data = $this->form->getState();
+        return redirect()->to(localized_route('doctor', $data).'#listDoctor');
+    }
+
+    public function resetForm()
+    {
+        $this->form->fill([]); // or to defaults, or from record
     }
 
     public function render()

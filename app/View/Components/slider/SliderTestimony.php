@@ -12,17 +12,19 @@ class SliderTestimony extends Component
     public $profile;
     public $name;
     public $date;
+    public $video;
     public $title;
     /**
      * Create a new component instance.
      */
-    public function __construct($thumbnail, $profile, $name, $date, $title)
+    public function __construct($thumbnail, $profile, $name, $date, $title, $video)
     {
         $this->thumbnail = $thumbnail;
         $this->profile = $profile;
         $this->name = $name;
         $this->date = $date;
         $this->title = $title;
+        $this->video = $video;
     }
 
     /**

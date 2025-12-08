@@ -2,15 +2,18 @@
 
 namespace App\Providers\Filament;
 
+use App\Class\AdminSlug;
+use App\Filament\Auth\Login;
 use Filament\Enums\ThemeMode;
 use Filament\Http\Middleware\Authenticate;
 use Filament\Http\Middleware\AuthenticateSession;
 use Filament\Http\Middleware\DisableBladeIconComponents;
 use Filament\Http\Middleware\DispatchServingFilamentEvent;
+use Filament\Navigation\NavigationGroup;
 use Filament\Pages;
 use Filament\Panel;
 use Filament\PanelProvider;
-use Filament\Support\Colors\Color;
+use Filament\SpatieLaravelTranslatablePlugin;
 use Filament\Widgets;
 use Illuminate\Cookie\Middleware\AddQueuedCookiesToResponse;
 use Illuminate\Cookie\Middleware\EncryptCookies;
@@ -26,10 +29,11 @@ class AdminPanelProvider extends PanelProvider
         return $panel
             ->default()
             ->id('admin')
-            ->path('admin')
-            ->login()
+            ->path(AdminSlug::getSlug())
+            ->login(\App\Filament\Pages\Login::class)
+            ->brandLogo(asset('asset/logo.png'))
             ->colors([
-                'primary' => Color::Blue,
+                'primary' => '#225CA8',
             ])
             ->defaultThemeMode(ThemeMode::Light)
             ->darkMode(false)
@@ -41,8 +45,8 @@ class AdminPanelProvider extends PanelProvider
             ->viteTheme('resources/css/filament/admin/theme.css')
             ->discoverWidgets(in: app_path('Filament/Widgets'), for: 'App\\Filament\\Widgets')
             ->widgets([
-                Widgets\AccountWidget::class,
-                Widgets\FilamentInfoWidget::class,
+//                Widgets\AccountWidget::class,
+//                Widgets\FilamentInfoWidget::class,
             ])
             ->middleware([
                 EncryptCookies::class,
@@ -55,6 +59,7 @@ class AdminPanelProvider extends PanelProvider
                 DisableBladeIconComponents::class,
                 DispatchServingFilamentEvent::class,
             ])
+            ->sidebarCollapsibleOnDesktop()
             ->authMiddleware([
                 Authenticate::class,
             ])
@@ -66,8 +71,19 @@ class AdminPanelProvider extends PanelProvider
                     ->navigationSort(3)
                     ->navigationCountBadge()
                     ->registerNavigation(true)
-                    ->defaultListView('grid' || 'list')
-//                    ->resource(\App\Filament\Resources\MediaResource::class)
+                    ->defaultListView('grid' || 'list'),
+                SpatieLaravelTranslatablePlugin::make()->defaultLocales(['en', 'id'])
+            ])
+            ->navigationGroups([
+                NavigationGroup::make('Patients')->icon('icon-patient'),
+                NavigationGroup::make('Feedback')->icon('icon-feedback'),
+                NavigationGroup::make('Slider')->icon('icon-slider'),
+                NavigationGroup::make('Service & Facility')->icon('icon-services'),
+                NavigationGroup::make('News')->icon('icon-news'),
+                NavigationGroup::make('Career')->icon('icon-careers'),
+                NavigationGroup::make('Offers')->icon('icon-offers'),
+                NavigationGroup::make('Health Screening')->icon('icon-healthscreening'),
+                NavigationGroup::make('Settings')->icon('icon-settings'),
             ]);
     }
 }

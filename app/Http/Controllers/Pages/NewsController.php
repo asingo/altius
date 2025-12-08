@@ -3,34 +3,38 @@
 namespace App\Http\Controllers\Pages;
 
 use App\Http\Controllers\Controller;
+use App\Models\News;
+use App\Models\Pages;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Session;
 
 class NewsController extends Controller
 {
-
     public function news()
     {
-        $data = json_decode(file_get_contents(base_path('database/schema/article-altius.json')), true);
+        $data = News::with('category')->get();
         $isHeaderOverlay = true;
-        $title = 'News';
-        $slug = 'news';
-        return view('pages.news.index', compact('data', 'isHeaderOverlay', 'title', 'slug'));
+        $view = 'pages.news.index';
+        $page = Pages::where('view', $view)->first();
+        if($page == null){
+            abort(404);
+        }
+        $title = $page->title;
+        $slug = $page->slug;
+        return view('pages.news.index', compact('data','page', 'isHeaderOverlay', 'title', 'slug'));
     }
 
     public function newsDetail($slug)
     {
-        $schema = json_decode(file_get_contents(base_path('database/schema/article-altius.json')), true);
-        $data = collect($schema)->filter(function ($item) use ($slug) {
-            return $item['slug'] === $slug;
-        })->first();
+        $locale = app()->getLocale();
+        $data = News::with('category')->where('slug->'.$locale, $slug)->first();
         if($data == null){
             abort(404);
         }
-        $others = collect($schema)->reject(function ($item) use ($slug) {
-            return $item['slug'] === $slug;
-        })->take(3);
+        $others = News::with('category')->whereNot('slug->'.$locale, $slug)->get()->take(3);
         $isHeaderOverlay = false;
         $title = $data['title'];
+       Session::flash('single_content', $data->toArray());
         return view('pages.news.single', compact('data', 'isHeaderOverlay', 'title', 'slug', 'others'));
 
     }

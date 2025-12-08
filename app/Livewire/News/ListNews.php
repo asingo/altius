@@ -7,7 +7,7 @@ use Livewire\Component;
 class ListNews extends Component
 {
     public $rawData;
-    public $perPage = 5;
+    public $perPage = 6;
 
     public function mount($data): void
     {
@@ -16,7 +16,7 @@ class ListNews extends Component
 
     public function loadMore()
     {
-        $this->perPage += 5;
+        $this->perPage += 6;
     }
 
     public function getDataProperty(){
