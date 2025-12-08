@@ -10,13 +10,16 @@ class RoleManager
     {
 
         $setting = Setting::where('name', 'role')->first()?->value;
-        if (! $setting) {
+
+        if($role == null || $role == 'admin'){
             return true;
         }
 
-        if($role == null){
-            return true;
+        if (! $setting) {
+            return false;
         }
+
+
 
 
         // Role not found
