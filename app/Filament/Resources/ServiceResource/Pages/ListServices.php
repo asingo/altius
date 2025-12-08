@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources\ServiceResource\Pages;
 
+use App\Class\RoleManager;
 use App\Filament\Resources\ServiceResource;
 use Filament\Actions;
 use Filament\Resources\Pages\ListRecords;
@@ -15,7 +16,9 @@ class ListServices extends ListRecords
     {
         return [
             Actions\LocaleSwitcher::make(),
-            Actions\CreateAction::make(),
+            Actions\CreateAction::make()->visible(fn (): bool =>
+            RoleManager::getAcl('services', auth()->user()->role, 'create')
+            ),
         ];
     }
 }

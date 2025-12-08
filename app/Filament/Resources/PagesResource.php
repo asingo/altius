@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Class\RoleManager;
 use App\Filament\Resources\PagesResource\FormSchema;
 use App\Filament\Resources\PagesResource\Pages;
 use App\Filament\Resources\PagesResource\RelationManagers;
@@ -183,12 +184,19 @@ class PagesResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\ViewAction::make()->visible(fn (): bool =>
+                RoleManager::getAcl('pages', auth()->user()->role, 'read')
+                ),
+                Tables\Actions\EditAction::make()->visible(fn (): bool =>
+                RoleManager::getAcl('pages', auth()->user()->role, 'update')
+                ),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                ])->visible(fn (): bool =>
+                RoleManager::getAcl('pages', auth()->user()->role, 'delete')
+                ),
             ]);
     }
 

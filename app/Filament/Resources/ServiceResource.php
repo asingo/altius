@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Class\RoleManager;
 use App\Filament\Resources\ServiceResource\Pages;
 use App\Filament\Resources\ServiceResource\RelationManagers;
 use App\Models\Service;
@@ -62,12 +63,19 @@ class ServiceResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
+                Tables\Actions\ViewAction::make()->visible(fn (): bool =>
+                RoleManager::getAcl('services', auth()->user()->role, 'read')
+                ),
+                Tables\Actions\EditAction::make()->visible(fn (): bool =>
+                RoleManager::getAcl('services', auth()->user()->role, 'update')
+                ),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                ])->visible(fn (): bool =>
+                RoleManager::getAcl('services', auth()->user()->role, 'delete')
+                ),
             ]);
     }
 

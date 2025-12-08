@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Class\RoleManager;
 use App\Class\WilayahParser;
 use App\Filament\Resources\PatientResource\Pages;
 use App\Filament\Resources\PatientResource\RelationManagers;
@@ -104,13 +105,19 @@ class PatientResource extends Resource
             ])
             ->actions([
 //                Tables\Actions\EditAction::make(),
-            Tables\Actions\ViewAction::make(),
-                Tables\Actions\DeleteAction::make(),
+            Tables\Actions\ViewAction::make()->visible(fn (): bool =>
+            RoleManager::getAcl('patients', auth()->user()->role, 'read')
+            ),
+                Tables\Actions\DeleteAction::make()->visible(fn (): bool =>
+                RoleManager::getAcl('patients', auth()->user()->role, 'delete')
+                ),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                ])->visible(fn (): bool =>
+                RoleManager::getAcl('patients', auth()->user()->role, 'delete')
+                ),
             ]);
     }
 

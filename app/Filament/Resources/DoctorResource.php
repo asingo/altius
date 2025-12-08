@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Class\RoleManager;
 use App\Filament\Resources\DoctorResource\Pages;
 use App\Filament\Resources\DoctorResource\RelationManagers;
 use App\Models\Doctor;
@@ -154,13 +155,16 @@ class DoctorResource extends Resource
                 //
             ])
             ->actions([
-                Tables\Actions\EditAction::make(),
-                Tables\Actions\DeleteAction::make(),
+                Tables\Actions\EditAction::make()->visible(fn (): bool => RoleManager::getAcl('doctors', auth()->user()->role, 'update')
+                ),
+                Tables\Actions\DeleteAction::make()->visible(fn (): bool => RoleManager::getAcl('doctors', auth()->user()->role, 'delete')
+                ),
             ])
             ->bulkActions([
                 Tables\Actions\BulkActionGroup::make([
                     Tables\Actions\DeleteBulkAction::make(),
-                ]),
+                ])->visible(fn (): bool => RoleManager::getAcl('doctors', auth()->user()->role, 'delete')
+                ),
             ]);
     }
 
