@@ -28,7 +28,7 @@
         {{-- Previous Button --}}
         <button
             wire:click="setPage({{ $page - 1 }})"
-            class="w-5 h-5"
+            class="w-5 h-5"  @click="scrollToTop()"
             @if($page <= 1) disabled @endif
         >
             <x-heroicon-o-chevron-left class="{{$page<= 1 ? 'stroke-slate-300': 'stroke-primary'}}"/>
@@ -37,7 +37,7 @@
         {{-- Numbered Pages --}}
         @for ($i = 1; $i <= $totalPages; $i++)
             <button
-                wire:click="setPage({{ $i }})"
+                wire:click="setPage({{ $i }})"  @click="scrollToTop()"
                 class="w-8 h-8 flex items-center justify-center rounded-full font-semibold {{ $page === $i ? 'bg-accent text-white' : '' }}"
             >
                 <span class="!text-2xl/0">{{ $i }}</span>
@@ -47,10 +47,17 @@
         {{-- Next Button --}}
         <button
             wire:click="setPage({{ $page + 1 }})"
+            @click="scrollToTop()"
             class="w-5 h-5"
             @if($page >= $totalPages) disabled @endif
         >
             <x-heroicon-o-chevron-right class="{{$page >= $totalPages ? 'stroke-slate-300': 'stroke-primary'}}"/>
         </button>
     </div>
+    {{-- JS listener must be inside component DOM --}}
+    <script>
+        function scrollToTop() {
+            window.scrollTo({top: 300, behavior: 'smooth'});
+        }
+    </script>
 </div>

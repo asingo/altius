@@ -57,6 +57,7 @@ class ListScreening extends Component
         if ($page >= 1 && $page <= $totalPages) {
             $this->page = $page;
         }
+        $this->dispatch('scrollToTop');
     }
 
     public function applyFilter()
