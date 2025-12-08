@@ -28,7 +28,7 @@ class UserResource extends Resource
             ->schema([
                 Forms\Components\Section::make('User Information')->schema([
                     TextInput::make('name')->label('Name')->required(),
-                    TextInput::make('email')->label('Email')->required(),
+                    TextInput::make('email')->label('Email')->required()->unique(ignoreRecord: true),
                     Select::make('role')->label('Role')->options([
                         'admin' => 'Admin',
                         'content' => 'Content Manager',
