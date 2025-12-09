@@ -58,10 +58,10 @@ class CreateAccount extends Component implements HasForms, HasActions
             return Session::flash('errorEmail', 'Email already exists!');
         }
         $checkOtp = VerifyOtp::where('email', $this->data['email'])->exists();
-//        if(!$checkOtp){
-//          $this->generateOtp();
-//        }
-//        $this->step++;
+        if(!$checkOtp){
+          $this->generateOtp();
+        }
+        $this->step++;
     }
 
     public function prevStep()
