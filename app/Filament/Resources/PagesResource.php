@@ -37,7 +37,7 @@ class PagesResource extends Resource
     {
         return RoleManager::getAcl('pages', auth()->user()->role, 'view');
     }
-    public static function canEdit(): bool
+    public static function canEdit(Model $model): bool
     {
         return RoleManager::getAcl('careers', auth()->user()->role, 'edit');
     }

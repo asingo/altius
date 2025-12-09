@@ -35,7 +35,7 @@ class PatientResource extends Resource
         return RoleManager::getAcl('patients', auth()->user()->role, 'view');
     }
 
-    public static function canEdit(): bool
+    public static function canEdit(Model $model): bool
     {
         return RoleManager::getAcl('patients', auth()->user()->role, 'edit');
     }
