@@ -2,6 +2,7 @@
 
 namespace App\Filament\Resources;
 
+use App\Class\RoleManager;
 use App\Filament\Resources\CoeResource\Pages;
 use App\Filament\Resources\CoeResource\RelationManagers;
 use App\Models\Coe;
@@ -18,6 +19,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use FilamentTiptapEditor\TiptapEditor;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
 

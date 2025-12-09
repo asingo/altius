@@ -13,6 +13,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class CareerCategoryResource extends Resource
@@ -26,6 +27,12 @@ class CareerCategoryResource extends Resource
     {
         return RoleManager::getAcl('careers', auth()->user()->role, 'view');
     }
+
+    public static function canEdit(Model $record): bool
+    {
+        return RoleManager::getAcl('careers', auth()->user()->role, 'edit');
+    }
+
 //    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';
 protected static ?int $navigationSort = 2;
 

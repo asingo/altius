@@ -18,6 +18,7 @@ use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class SliderResource extends Resource
@@ -32,6 +33,11 @@ class SliderResource extends Resource
     public static function canViewAny(): bool
     {
         return RoleManager::getAcl('slider', auth()->user()->role, 'view');
+    }
+
+    public static function canEdit(Model $record): bool
+    {
+        return RoleManager::getAcl('slider', auth()->user()->role, 'edit');
     }
     public static function form(Form $form): Form
     {

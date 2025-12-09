@@ -20,6 +20,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class PatientResource extends Resource
@@ -32,6 +33,11 @@ class PatientResource extends Resource
     public static function canViewAny(): bool
     {
         return RoleManager::getAcl('patients', auth()->user()->role, 'view');
+    }
+
+    public static function canEdit(): bool
+    {
+        return RoleManager::getAcl('patients', auth()->user()->role, 'edit');
     }
 
     public static function form(Form $form): Form

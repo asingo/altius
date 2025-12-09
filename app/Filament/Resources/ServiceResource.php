@@ -15,6 +15,7 @@ use Filament\Resources\Resource;
 use Filament\Tables;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
 
@@ -30,6 +31,11 @@ class ServiceResource extends Resource
     public static function canViewAny(): bool
     {
         return RoleManager::getAcl('services', auth()->user()->role, 'view');
+    }
+
+    public static function canEdit(Model $record): bool
+    {
+        return RoleManager::getAcl('services', auth()->user()->role, 'edit');
     }
 
     public static function form(Form $form): Form

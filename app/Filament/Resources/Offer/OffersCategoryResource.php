@@ -14,6 +14,7 @@ use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class OffersCategoryResource extends Resource
@@ -29,6 +30,12 @@ class OffersCategoryResource extends Resource
     {
         return RoleManager::getAcl('offers', auth()->user()->role, 'view');
     }
+
+    public static function canEdit(Model $record): bool
+    {
+        return RoleManager::getAcl('offers', auth()->user()->role, 'edit');
+    }
+
     public static function form(Form $form): Form
     {
         return $form
