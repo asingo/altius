@@ -8,7 +8,7 @@
         @endif
         @foreach ($offers as $d)
             <x-grid.basic
-                image="{{\Awcodes\Curator\Models\Media::find($d['image'])?->url}}"
+                image="{{\Awcodes\Curator\Models\Media::find(get_image_id($d['image']))?->url}}"
                 heading="{!! $d['title'] !!}"
                 slug="{{localized_route('offers')}}/{{$d['slug']}}"
             />
