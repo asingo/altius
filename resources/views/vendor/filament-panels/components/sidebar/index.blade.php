@@ -170,7 +170,7 @@
             // --- MENU DEFINITION (make sure this is present) -----------------------
             $menu = [
                 [
-                    'label' => 'Health Care',
+                    'label' => 'Healthcare',
                     'items' => [
 //                        ['title'=>'Dashboard','url'=>'/'.$adminSlug,'icon'=>'home','perm'=>'dashboard'],
                         ['title'=>'Doctors','url'=>'/'.$adminSlug.'/doctors','icon'=>'doctor','perm'=>'doctors'],
