@@ -72,7 +72,7 @@
                     <a href="{{localized_route('screening')}}/{{$d->slug}}" class="group">
                         <div class="flex flex-col h-full">
                             <div class="rounded-2xl">
-                                <img src="{{\Awcodes\Curator\Models\Media::find($d['image'])->url}}" alt="image"
+                                <img src="{{\Awcodes\Curator\Models\Media::find(get_image_id($d['image']))?->url}}" alt="image"
                                      class="w-full object-cover rounded-2xl"/>
                             </div>
                             <div class="mt-4 flex flex-col h-full justify-stretch">

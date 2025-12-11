@@ -9,7 +9,7 @@ use Spatie\Translatable\HasTranslations;
 class Offer extends Model
 {
     use HasTranslations;
-    public array $translatable = ['title','slug', 'content'];
+    public array $translatable = ['title','slug', 'content', 'image'];
 
     public function category()
     {

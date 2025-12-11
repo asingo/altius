@@ -12,7 +12,7 @@ class HealthScreening extends Model
 {
     use HasTranslations;
 
-    protected ?array $translatable = ['title', 'slug', 'description'];
+    protected ?array $translatable = ['title', 'slug', 'description', 'image'];
 
     public function category(): BelongsTo
     {

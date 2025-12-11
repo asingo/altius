@@ -5,7 +5,7 @@
         <div class="grid grid-cols-1 md:grid-cols-3 gap-10 mt-10">
             <div class="md:col-span-1">
                 {{--                <div class="mt-8">--}}
-                <img src="{{asset(\Awcodes\Curator\Models\Media::find($data['image'])?->url)}}" alt=""
+                <img src="{{asset(\Awcodes\Curator\Models\Media::find(get_image_id($data['image']))?->url)}}" alt=""
                      class="w-full h-auto rounded-xl">
                 {{--                </div>--}}
             </div>
