@@ -17,6 +17,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use FilamentTiptapEditor\TiptapEditor;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Psy\Util\Str;
 
@@ -29,6 +30,11 @@ class OfferResource extends Resource
     public static function canViewAny(): bool
     {
         return RoleManager::getAcl('offers', auth()->user()->role, 'view');
+    }
+
+    public static function canEdit(Model $record): bool
+    {
+        return RoleManager::getAcl('offers', auth()->user()->role, 'edit');
     }
 
 //    protected static ?string $navigationIcon = 'heroicon-o-rectangle-stack';

@@ -27,6 +27,7 @@ class ListDoctors extends Component
     public function mount($data, Request $request): void
     {
         $this->data = collect($data);
+
         $this->filteredData = $this->data;
         if ($request->speciality_id) {
             $this->speciality = $request->speciality_id;
@@ -87,17 +88,9 @@ class ListDoctors extends Component
                 || strtolower($this->speciality) === 'all'
                 || $doctor->speciality_id == $this->speciality;
 
-            $matchesLocation = $this->location === '' || $this->speciality == null
-                || strtolower($this->location) === 'all'
+            $matchesLocation = $this->location == '' || $this->location == null
+                || strtolower($this->location) == 'all'
                 || $doctor->hasLocation()->where('location_id', $this->location)->exists();
-
-//            $matchesDate = $this->date === ''
-//                || strtolower($this->date) === 'all'
-//                || collect($doctor->hasLocation)->contains(function ($location) {
-//                    $day = strtolower($this->date);;
-//                    return isset($location['schedule'][$day])
-//                        && $location['schedule'][$day] !== '-';
-//                });
             $matchesDate = true; // default true if no filter
             if (!empty($this->date) && strtolower($this->date) !== 'all') {
                 if ($this->date) {

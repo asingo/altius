@@ -18,6 +18,7 @@ use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Table;
 use FilamentTiptapEditor\TiptapEditor;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Str;
 
@@ -32,6 +33,12 @@ class ArticleResource extends Resource
     {
         return RoleManager::getAcl('articles', auth()->user()->role, 'view');
     }
+
+    public static function canEdit(Model $record): bool
+    {
+        return RoleManager::getAcl('articles', auth()->user()->role, 'edit');
+    }
+
 
     public static function form(Form $form): Form
     {

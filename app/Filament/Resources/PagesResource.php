@@ -20,6 +20,7 @@ use Filament\Tables;
 use Filament\Tables\Table;
 use FilamentTiptapEditor\TiptapEditor;
 use Illuminate\Database\Eloquent\Builder;
+use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\HtmlString;
 use Illuminate\Support\Str;
@@ -36,6 +37,11 @@ class PagesResource extends Resource
     {
         return RoleManager::getAcl('pages', auth()->user()->role, 'view');
     }
+    public static function canEdit(Model $model): bool
+    {
+        return RoleManager::getAcl('careers', auth()->user()->role, 'edit');
+    }
+
 
     public static function form(Form $form): Form
     {

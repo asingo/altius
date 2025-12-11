@@ -14,7 +14,7 @@
     <div class="md:max-w-screen-2xl w-full  mx-auto px-6 2xl:px-0">
         <div class="grid md:grid-cols-2 gap-10">
             <div class="hidden md:block">
-                    <img src="{{asset('asset/login-bg.jpg')}}" class="rounded-2xl" alt="login image"/>
+                    <img src="{{asset('asset/bg-login-altius.webp')}}" class="rounded-2xl" alt="login image"/>
             </div>
             @php
                 $setting = \App\Models\Setting::where('name','general')->first()?->value;
@@ -27,7 +27,7 @@
                     </a>
                     <div class="flex flex-col gap-1 text-center my-6">
                         <h1 class="text-2xl font-medium">{{__('Welcome to Altius Hospitals')}}</h1>
-                        <p class="text-md">{{__('Your Health Is Our Priority')}}</p>
+                        <p class="text-md">{{__('When Your Health Is Our Utmost Priority')}}</p>
                     </div>
                     {{$slot}}
                     <div

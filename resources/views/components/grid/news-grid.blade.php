@@ -1,4 +1,4 @@
-@props(['title', 'slug', 'category', 'date', 'type'])
+@props(['title', 'slug', 'category', 'date', 'type' => 'news'])
 <a href="{{localized_route($type == 'news' ? 'newsDetail' : 'articleDetail',[$slug])}}" class="group">
     <div class="border rounded-xl p-4 space-y-2 border-textsub">
         <div class="flex justify-between w-fit gap-2 items-center text-textsub">

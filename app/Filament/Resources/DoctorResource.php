@@ -38,6 +38,11 @@ class DoctorResource extends Resource
         return RoleManager::getAcl('doctors', auth()->user()->role, 'view');
     }
 
+    public static function canEdit(Model $record): bool
+    {
+        return RoleManager::getAcl('doctors', auth()->user()->role, 'edit');
+    }
+
     public static function form(Form $form): Form
     {
         return $form
