@@ -85,7 +85,7 @@ class SliderSettings extends Page implements HasForms
             Toggle::make('is_video')->label('Use Video as a Slider'),
             CuratorPicker::make('video')->label('Video Slider')
                 ->helperText('Maximum File Size is 50 MB')
-                ->acceptedFileTypes(['video/*'])->maxSize(50000),
+                ->acceptedFileTypes(['video/*'])->maxSize(500000),
 
         ])->statePath('formData');
     }

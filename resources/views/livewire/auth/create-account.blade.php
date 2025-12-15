@@ -102,7 +102,18 @@
         function otpForm() {
             return {
                 getInputs(el) {
-                    return el.closest('[x-data]').querySelectorAll('input');
+                    return el.closest('[x-data]').querySelectorAll('input[type="text"]');
+                },
+
+                updateOtp(el) {
+                    const inputs = this.getInputs(el);
+                    const otp = [...inputs].map(i => i.value).join('');
+
+                    // Sync to Livewire
+                    if (window.Livewire) {
+                        Livewire.find(el.closest('[wire\\:id]').getAttribute('wire:id'))
+                            .set('otp', otp);
+                    }
                 },
 
                 next(event) {
@@ -115,6 +126,8 @@
                     if (input.value && inputs[index + 1]) {
                         inputs[index + 1].focus();
                     }
+
+                    this.updateOtp(input);
                 },
 
                 back(event) {
@@ -125,6 +138,8 @@
                     if (!input.value && inputs[index - 1]) {
                         inputs[index - 1].focus();
                     }
+
+                    this.updateOtp(input);
                 },
 
                 paste(event) {
@@ -143,6 +158,8 @@
                     if (inputs[pasted.length - 1]) {
                         inputs[pasted.length - 1].focus();
                     }
+
+                    this.updateOtp(input);
                 }
             }
         }
