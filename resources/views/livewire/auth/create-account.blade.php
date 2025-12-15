@@ -25,15 +25,15 @@
                     wire:ignore
                     class="grid grid-cols-6 gap-2 mt-4"
                 >
-                    <template x-for="(val, index) in 6" :key="index">
+                    <template x-for="index in 6" :key="index">
                         <input
                             type="text"
                             maxlength="1"
                             inputmode="numeric"
                             class="border-2 border-slate-300 rounded-xl p-2 text-center text-3xl"
-                            x-ref="inputs"
-                            @input="next(index, $event)"
-                            @keydown.backspace="back(index)"
+                            @input="next($event)"
+                            @keydown.backspace="back($event)"
+                            @paste.prevent="paste($event)"
                         >
                     </template>
                 </div>
@@ -101,43 +101,50 @@
     <script>
         function otpForm() {
             return {
-
-                getInputs() {
-                    // ✅ Always force array
-                    return document.querySelectorAll('[x-ref="inputs"]');
+                getInputs(el) {
+                    return el.closest('[x-data]').querySelectorAll('input');
                 },
 
-                next(index, event) {
-                    let inputs = this.getInputs();
-                    event.target.value = event.target.value.replace(/\D/g, '');
+                next(event) {
+                    const input = event.target;
+                    input.value = input.value.replace(/\D/g, '');
 
-                    if (event.target.value && index < inputs.length - 1) {
+                    const inputs = this.getInputs(input);
+                    const index = [...inputs].indexOf(input);
+
+                    if (input.value && inputs[index + 1]) {
                         inputs[index + 1].focus();
                     }
-
-                    this.sync();
                 },
 
-                back(index) {
-                    let inputs = this.getInputs();
+                back(event) {
+                    const input = event.target;
+                    const inputs = this.getInputs(input);
+                    const index = [...inputs].indexOf(input);
 
-                    if (!inputs[index].value && index > 0) {
+                    if (!input.value && inputs[index - 1]) {
                         inputs[index - 1].focus();
                     }
-
-                    this.sync();
                 },
 
-                sync() {
-                    let inputs = this.getInputs();
-                    let otp = '';
+                paste(event) {
+                    const input = event.target;
+                    const inputs = this.getInputs(input);
 
-                    inputs.forEach(el => otp += el.value);
+                    const pasted = event.clipboardData
+                        .getData('text')
+                        .replace(/\D/g, '')
+                        .slice(0, inputs.length);
 
-                    @this.
-                    set('otp', otp);
+                    pasted.split('').forEach((digit, i) => {
+                        inputs[i].value = digit;
+                    });
+
+                    if (inputs[pasted.length - 1]) {
+                        inputs[pasted.length - 1].focus();
+                    }
                 }
-            };
+            }
         }
     </script>
 </div>
